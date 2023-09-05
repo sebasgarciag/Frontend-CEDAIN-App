@@ -1,0 +1,13 @@
+{
+  "expo": {
+    "scheme": "acme",
+    "web": {
+      "bundler": "metro"
+    },
+    "plugins": [
+      "expo-router"
+    ],
+    "name": "Frontend-CEDAIN-App",
+    "slug": "Frontend-CEDAIN-App"
+  }
+}
