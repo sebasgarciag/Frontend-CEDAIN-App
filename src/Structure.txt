@@ -1,0 +1,28 @@
+
+Pages
+
+This folder should contain one folder for each page in your application. 
+Inside of those page specific folders should be a single root file that is your page (generally index.js)
+alongside all the files that are only applicable to that page. 
+Also the hooks are made in this folders.
+
+
+Components
+Components folder is further broken down into subfolders. 
+These subfolders are really useful since they help keep your components organized into different sections 
+instead of just being one massive blob of components. 
+In our example we have a ui folder which contains all our UI components like 
+buttons, modals, cards, etc. We also have a form folder for form specific controls 
+like checkboxes, inputs, date pickers, etc.
+
+assets
+The assets folder contains all images, css files, font files, etc. for your project. 
+Pretty much anything that isn’t code related will be stored in this folder.
+
+
+
+
+
+
+https://blog.webdevsimplified.com/2022-07/react-folder-structure/
+
