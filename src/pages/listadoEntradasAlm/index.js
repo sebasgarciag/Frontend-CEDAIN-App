@@ -1,14 +1,19 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Button } from 'react-native-material-ui';
+import {Stack} from "expo-router";
 
-const ListadoEntradas = () => {
+const ListadoEntradasAlm = () => {
   return (
-    <View style={styles.container}>
-      <View style={styles.buttonContainer}>
-        <Button raised primary text="Volver" />
+    <>
+      <Stack.Screen  options={{title: "Listado Entradas Almacenista"}} />
+      <View style={styles.container}>
+        <View style={styles.buttonContainer}>
+          <Button raised primary text="Volver" />
+        </View>
       </View>
-    </View>
+    </>
+    
   );
 };
 
@@ -25,4 +30,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ListadoEntradas;
+export default ListadoEntradasAlm;
