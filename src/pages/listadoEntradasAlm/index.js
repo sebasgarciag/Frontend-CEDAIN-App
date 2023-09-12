@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import { Button } from 'react-native-material-ui';
+import { Button, Icon } from 'react-native-material-ui';
 import {Stack} from "expo-router";
-
+import BurgerButton from '../../components/uiComponents';
 const ListadoEntradasAlm = () => {
   return (
     <>
@@ -10,6 +10,7 @@ const ListadoEntradasAlm = () => {
       <View style={styles.container}>
         <View style={styles.buttonContainer}>
           <Button raised primary text="Volver" />
+          <BurgerButton onPress={() => console.log('Burger button')} />
         </View>
       </View>
     </>
