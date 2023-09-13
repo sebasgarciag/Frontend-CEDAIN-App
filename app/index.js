@@ -16,8 +16,8 @@ const Home = () => {
   return (
     <>
         
-        <View>
-           <ListadoEntradasAlm/>
+        <View flex={1}>
+           <SalidaAlm/>
         </View>
     </>
   );

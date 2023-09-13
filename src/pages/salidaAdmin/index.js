@@ -1,15 +1,35 @@
 import React from 'react';
-import { View, StyleSheet, Text } from 'react-native';
-import { Button } from 'react-native-material-ui';
-import {Stack} from "expo-router";
+import { StyleSheet } from 'react-native';
+import { Stack, Text, Spacer } from "@react-native-material/core";
+import {BurgerButton, UserButton, VolverButton} from '../../components/UI/uiButtons';
+import BarraBusqueda from '../../components/UI/searchbar';
+
 
 const SalidaAdmin = () => {
   return (
     <>
-        <Stack.Screen options={{title: "Salida Administrador"}}/>
-        <View style={styles.container}>
-            <Text>Salida administrador</Text>
-        </View>
+    <Stack flex={1}>
+
+      <Stack direction='row' justify='center' m={4}>
+        <BurgerButton/>
+        <BarraBusqueda/>
+        <UserButton/>
+      </Stack>
+
+
+      <Stack direction='row' justify='center' flex={1}>
+        <Text variant="body1">
+          salidas admin...
+        </Text>
+      </Stack>
+
+      <Stack direction='row' justify='center' items='flex-end'>
+          <VolverButton />
+      </Stack>
+
+      <Spacer/>
+
+      </Stack>
     </>
   );
 };
