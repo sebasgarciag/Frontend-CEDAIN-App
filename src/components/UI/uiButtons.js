@@ -4,7 +4,6 @@
 import React from 'react';
 import { View } from 'react-native';
 import { Button, IconButton } from 'react-native-paper'
-import Icon from 'react-native-vector-icons/MaterialIcons';
 //import { Stack, Button } from "@react-native-material/core"
 import buttonStyles from '../../assets/buttons/styles';
 
@@ -25,10 +24,12 @@ const BurgerButton = ({ onPress }) => {
 
 const VolverButton = ({ onPress }) => {
   return (
-    <Button style={buttonStyles.volverB}
-      onPress={onPress}
-      title="Volver"
-    />
+    <Button 
+    style={buttonStyles.volverB}
+    mode="contained" 
+    onPress={() => console.log('Volver Pressed')}>
+    Volver
+  </Button>
   );
 };
 

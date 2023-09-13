@@ -1,19 +1,23 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import { Stack, HStack, Button, Text } from "@react-native-material/core";
+import { Text } from "@react-native-material/core";
+
+import { VStack, HStack, Stack } from "@react-native-material/core";
 import {BurgerButton, UserButton, VolverButton} from '../../components/UI/uiButtons';
 import BarraBusqueda from '../../components/UI/searchbar';
 
 const ListadoEntradasAlm = () => {
 
   return (
-    <Stack options={{title: "Listado Entradas Almacenista"}} >
+    <>
+    <Stack options={{title: "Listado Entradas Almacenista"}}>
 
-      <HStack>
+      <Stack direction='row'>
         <BurgerButton/>
         <BarraBusqueda/>
         <UserButton/>
-      </HStack>
+      </Stack>
+
 
       <Stack>
         <Text variant="body1">
@@ -26,21 +30,9 @@ const ListadoEntradasAlm = () => {
       </Stack>
 
   </Stack>
-    
+  </>
   );
 };
 
-const styles = StyleSheet.create({
-  mainScreen: {
-    flex: 1,
-  },
-  bbbburgerButton: {
-    flexDirection: 'row',
-    justifyContent: 'flex-start', // Align to the start (left)
-    width: '100%',
-    padding: 10, // Add some padding
-  },
-
-});
 
 export default ListadoEntradasAlm;

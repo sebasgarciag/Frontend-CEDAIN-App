@@ -1,6 +1,6 @@
 import React from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { View} from 'react-native';
+import { View } from 'react-native';
 import ListadoEntradasAlm from '../src/pages/listadoEntradasAlm/index.js'; // Adjust the path based on where you placed the LandingPage component
 import ListadoEntradasAdmin from '../src/pages/listadoEntradasAdmin/index.js';
 import ListadoSalidasAlm from '../src/pages/listadoSalidasAlm/index.js';
@@ -15,9 +15,9 @@ import {Stack, Redirect} from "expo-router";
 const Home = () => {
   return (
     <>
-        <Stack.Screen options={{title: "Inventario"}}/>
+        
         <View>
-           <ListadoEntradasAdmin/>
+           <ListadoEntradasAlm/>
         </View>
     </>
   );
