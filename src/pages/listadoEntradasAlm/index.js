@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Stack, HStack, Button, Text } from "@react-native-material/core";
-import {BurgerButton, VolverButton} from '../../components/UI/uiButtons';
+import {BurgerButton, UserButton, VolverButton} from '../../components/UI/uiButtons';
 
 const ListadoEntradasAlm = () => {
 
@@ -10,6 +10,7 @@ const ListadoEntradasAlm = () => {
 
       <HStack>
         <BurgerButton onPress={() => console.log('Burger button')} />
+        <UserButton/>
       </HStack>
 
       <Stack>

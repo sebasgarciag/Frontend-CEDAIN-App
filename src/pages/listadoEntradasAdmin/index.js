@@ -2,13 +2,14 @@ import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import { Button } from 'react-native-material-ui';
 import {Stack} from "expo-router";
+import { UserButton } from '../../components/UI/uiButtons';
 
 const ListadoEntradasAdmin = () => {
   return (
     <>
         <Stack.Screen options={{title: "Listado Entradas Administrador"}}/>
-        <View style={styles.container}>
-            <Text>Listado Entradas Administrador</Text>
+        <View>
+            <UserButton />
         </View>
     </>
   );

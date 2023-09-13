@@ -1,12 +1,14 @@
 
 //ENTRADAS Y SALIDAS
 
-//BURGER BUTTON
 import React from 'react';
 import { View } from 'react-native';
-import { Icon } from 'react-native-material-ui';
-import { Stack, Button } from "@react-native-material/core"
+import { Button, IconButton } from 'react-native-paper'
+import Icon from 'react-native-vector-icons/MaterialIcons';
+//import { Stack, Button } from "@react-native-material/core"
 import buttonStyles from '../../assets/buttons/styles';
+
+
 
 const BurgerButton = ({ onPress }) => {
   return (
@@ -28,5 +30,17 @@ const VolverButton = ({ onPress }) => {
   );
 };
 
-export {BurgerButton, VolverButton};
+const UserButton = () => {
+  return (
+    <View style={buttonStyles.userButtonContainer}>
+        <IconButton
+          icon="account"
+          size={30}
+          onPress={() => console.log('Pressed')}
+        />
+    </View>
+  );
+};
+
+export {BurgerButton, VolverButton, UserButton};
 
