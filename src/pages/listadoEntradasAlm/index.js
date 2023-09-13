@@ -1,34 +1,43 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import { Button, Icon } from 'react-native-material-ui';
-import {Stack} from "expo-router";
-import BurgerButton from '../../components/uiComponents';
+import { Stack, HStack, Button, Text } from "@react-native-material/core";
+import {BurgerButton, VolverButton} from '../../components/eq3y4/uiComponents';
+
 const ListadoEntradasAlm = () => {
+
   return (
-    <>
-      <Stack.Screen  options={{title: "Listado Entradas Almacenista"}} />
-      <View style={styles.container}>
-        <View style={styles.buttonContainer}>
-          <Button raised primary text="Volver" />
-          <BurgerButton onPress={() => console.log('Burger button')} />
-        </View>
-      </View>
-    </>
+    <Stack options={{title: "Listado Entradas Almacenista"}} >
+
+      <HStack>
+        <BurgerButton onPress={() => console.log('Burger button')} />
+      </HStack>
+
+      <Stack>
+        <Text variant="body1">
+          Aqui va la lista de entradas...
+        </Text>
+      </Stack>
+
+      <Stack>
+          <VolverButton/>
+      </Stack>
+
+  </Stack>
     
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
+  mainScreen: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
-  buttonContainer: {
+  bbbburgerButton: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    width: '80%',
+    justifyContent: 'flex-start', // Align to the start (left)
+    width: '100%',
+    padding: 10, // Add some padding
   },
+
 });
 
 export default ListadoEntradasAlm;
