@@ -2,6 +2,7 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Stack, HStack, Button, Text } from "@react-native-material/core";
 import {BurgerButton, UserButton, VolverButton} from '../../components/UI/uiButtons';
+import BarraBusqueda from '../../components/UI/searchbar';
 
 const ListadoEntradasAlm = () => {
 
@@ -10,6 +11,7 @@ const ListadoEntradasAlm = () => {
 
       <HStack>
         <BurgerButton/>
+        <BarraBusqueda/>
         <UserButton/>
       </HStack>
 

@@ -17,7 +17,7 @@ const Home = () => {
     <>
         <Stack.Screen options={{title: "Inventario"}}/>
         <View>
-           <ListadoSalidasAlm/>
+           <ListadoEntradasAdmin/>
         </View>
     </>
   );
