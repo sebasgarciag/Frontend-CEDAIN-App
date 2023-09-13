@@ -12,7 +12,8 @@ const buttonStyles = {
         justifyContent: 'center', // Center vertically
         alignItems: 'center', // Center horizontally
         width: 'auto',
-        padding: 10, // Add some padding
+        padding: 'auto', // Add some padding
+        
     }
 
 

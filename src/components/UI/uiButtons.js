@@ -6,7 +6,7 @@ import React from 'react';
 import { View } from 'react-native';
 import { Icon } from 'react-native-material-ui';
 import { Stack, Button } from "@react-native-material/core"
-import buttonStyles from '../../assets/eq3y4/styles';
+import buttonStyles from '../../assets/buttons/styles';
 
 const BurgerButton = ({ onPress }) => {
   return (

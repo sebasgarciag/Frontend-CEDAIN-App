@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Stack, HStack, Button, Text } from "@react-native-material/core";
-import {BurgerButton, VolverButton} from '../../components/eq3y4/uiComponents';
+import {BurgerButton, VolverButton} from '../../components/UI/uiButtons';
 
 const ListadoEntradasAlm = () => {
 
@@ -19,7 +19,7 @@ const ListadoEntradasAlm = () => {
       </Stack>
 
       <Stack>
-          <VolverButton/>
+          <VolverButton />
       </Stack>
 
   </Stack>
