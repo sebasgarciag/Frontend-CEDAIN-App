@@ -28,6 +28,24 @@ const buttonStyles = {
         justifyContent: 'center',
       },
 
+      burgerButtonContainer: {
+        position: 'absolute',
+        top: 10,
+        left: 10,
+        width: 55, // Adjust the width and height as needed
+        height: 50,
+        borderRadius: 20, // Make sure it's half of the width and height for a circular shape
+        backgroundColor: 'lightgray', // You can change the background color or remove it
+        alignItems: 'center',
+        justifyContent: 'center',
+      },
+
+      burgerButton: {
+        width: 55, // Adjust the width and height as needed
+        height: 50,
+        borderRadius: 20, // Make sure it's half of the width and height for a circular shape
+      },
+
 
 
 

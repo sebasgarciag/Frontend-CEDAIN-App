@@ -9,7 +9,7 @@ const ListadoEntradasAlm = () => {
     <Stack options={{title: "Listado Entradas Almacenista"}} >
 
       <HStack>
-        <BurgerButton onPress={() => console.log('Burger button')} />
+        <BurgerButton/>
         <UserButton/>
       </HStack>
 

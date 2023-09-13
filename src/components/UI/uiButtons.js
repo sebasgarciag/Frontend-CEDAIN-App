@@ -12,12 +12,14 @@ import buttonStyles from '../../assets/buttons/styles';
 
 const BurgerButton = ({ onPress }) => {
   return (
-    <Button style={buttonStyles.menuB}
-      onPress={onPress}
-      title="menu"
-     
-      
+    <View style={buttonStyles.burgerButtonContainer}>
+    <IconButton
+      icon="dots-horizontal"
+      size={30}
+      style={buttonStyles.burgerButton}
+      onPress={() => console.log('Pressed')}
     />
+    </View> 
   );
 };
 
