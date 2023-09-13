@@ -7,7 +7,7 @@ const Home = () => {
     return ( 
     <SafeAreaProvider> 
         <View> 
-            <NavBar/>
+            <NavBar/>{/* Borrar esto solo prueba */}
         </View> 
     </SafeAreaProvider> ) }
 
