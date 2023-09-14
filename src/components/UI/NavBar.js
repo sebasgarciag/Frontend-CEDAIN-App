@@ -5,22 +5,20 @@ import { Appbar, Searchbar } from 'react-native-paper';
 const NavBar = () => {
   return (
     <Appbar.Header style={{ backgroundColor: '#fff' }}>
-      {/* Botón de menú */}
       <Appbar.Action
         icon="menu"
         onPress={() => {
-          // Acción al presionar el botón de menú
         }}
       />
       
-      {/* Barra de búsqueda */}
       <Searchbar
         style={{
           flex: 1,
           marginLeft: 5,
           marginRight: 10,
-          height: 50,  // Ajuste de altura
-          borderRadius: 15,  // Hace las esquinas redondeadas
+          height: 50,  
+          borderRadius: 15,
+          backgroundColor: '#D2B48C',
 
         
         }}

@@ -8,9 +8,10 @@ const Home = () => {
     return ( 
     <SafeAreaProvider> 
         <View> 
+            <NavBar/>
             <BotonASC 
-                textoBoton1="siguiente" 
-                textoBoton2="cancelar" 
+                textoBoton1="Entrada" 
+                textoBoton2="Salida" 
             />
         </View> 
     </SafeAreaProvider> ) }

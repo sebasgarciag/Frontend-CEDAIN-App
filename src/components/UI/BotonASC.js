@@ -5,10 +5,18 @@ import { Button } from 'react-native-paper';
 const BotonASC = ({ textoBoton1, textoBoton2, accionBoton1, accionBoton2 }) => {
   return (
     <View style={styles.buttonContainer}>
-      <Button mode="contained" onPress={accionBoton1}>
+      <Button 
+        mode="contained" 
+        onPress={accionBoton1}
+        style={{ backgroundColor: '#D2B48C' }}  // Color tierra clara para el fondo
+      >
         {textoBoton1}
       </Button>
-      <Button mode="contained" onPress={accionBoton2}>
+      <Button 
+        mode="contained" 
+        onPress={accionBoton2} 
+        style={{ backgroundColor: '#D2B48C' }}  // Color tierra clara para el fondo
+      >
         {textoBoton2}
       </Button>
     </View>
@@ -19,10 +27,12 @@ const styles = StyleSheet.create({
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    marginBottom: 20,
+    marginTop: 650,
     padding: 10,
+    margin: 80,
   },
 });
 
 export default BotonASC;
+
 
