@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import { Stack, Text, Spacer } from "@react-native-material/core";
+import { HStack, Stack, Text, Spacer } from "@react-native-material/core";
 
 import { BurgerButton, FiltrosButton, UserButton, VolverButton } from '../../components/UI/uiButtons';
 import BarraBusqueda from '../../components/UI/searchbar';
@@ -9,11 +9,11 @@ const ListadoEntradasAlm = () => {
     return (
         <>
         <Stack options={{ title: "Listado Entradas Almacenista" }} flex={1}>
-            <Stack direction='row' justify='center' m={4}>
+            <HStack direction='row' justify='center' m={4}>
                 <BurgerButton />
                 <BarraBusqueda />
                 <UserButton />
-            </Stack>
+            </HStack>
 
             {/*Boton de aplicar Filtros a lista de entradas */}
             <Stack direction='row' justify='end' m={5}>
