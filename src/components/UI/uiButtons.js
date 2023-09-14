@@ -8,7 +8,6 @@ import { Button, IconButton } from 'react-native-paper'
 import buttonStyles from '../../assets/buttons/styles';
 
 
-
 const BurgerButton = ({ onPress }) => {
   return (
     <View style={buttonStyles.burgerButtonContainer}>
@@ -45,5 +44,16 @@ const UserButton = () => {
   );
 };
 
-export {BurgerButton, VolverButton, UserButton};
+const FiltrosButton = ({ onPress }) => {
+    return (
+      <Button 
+      style={buttonStyles.filtrosB}
+      mode="contained" 
+      onPress={() => console.log('Filtros Button')}>
+      Filtros
+    </Button>
+    );
+  };
+
+export {BurgerButton, VolverButton, UserButton, FiltrosButton};
 

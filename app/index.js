@@ -15,9 +15,8 @@ import {Stack, Redirect} from "expo-router";
 const Home = () => {
   return (
     <>
-        
         <View flex={1}>
-           <SalidaAlm/>
+           <ListadoSalidasAlm/>
         </View>
     </>
   );

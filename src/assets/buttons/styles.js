@@ -9,13 +9,17 @@ const buttonStyles = {
     },
 
     volverB: {
-        
         justifyContent: 'center', // Center vertically
         alignItems: 'center', // Center horizontally
         padding: 'auto', // Add some padding
-        
+        backgroundColor: 'gray',
     },
-
+    filtrosB: {
+        justifyContent: 'center', // Center vertically
+        alignItems: 'center', // Center horizontally
+        padding: 'auto', // Add some padding
+        backgroundColor: 'gray',
+    },
     userButtonContainer: {
         //position: 'absolute',
         //top: 10,

@@ -1,27 +1,40 @@
 import React from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { Button } from 'react-native-material-ui';
-//import {Stack} from "expo-router";
-import { BurgerButton, UserButton, VolverButton } from '../../components/UI/uiButtons';
+import { BurgerButton, UserButton, VolverButton, FiltrosButton } from '../../components/UI/uiButtons';
 import BarraBusqueda from '../../components/UI/searchbar';
-import { VStack, HStack, Stack, Spacer } from "@react-native-material/core";
+import { HStack, Text, Stack, Spacer } from "@react-native-material/core";
 
 const ListadoEntradasAdmin = () => {
   return (
     <>
-      <Stack options={{title: "Listado Entradas Administrador"}}/>
-        <Stack direction='row' justify='center' m={4} flex={1}>
+      <Stack options={{title: "Listado Entradas Administrador"}} flex={1}>
+        <HStack direction='row' justify='center' m={4}>
             <BurgerButton/>
             <BarraBusqueda/>
             <UserButton />
+        </HStack>
+
+            {/*Boton de aplicar Filtros a lista de entradas */}
+        <Stack direction='row' justify='end' m={5}>
+            <FiltrosButton />
         </Stack>
 
-        <Stack direction='row' justify='center' items='flex-end'>
+            {/*Las entradas apareceran aqui */}
+        <Stack direction='row' justify='center' flex={1}>
+            <Text variant="body1">
+                Aqui va la lista de entradas...
+            </Text>
+        </Stack>
+
+        <Stack direction='row' justify='center'>
           <VolverButton />
         </Stack>
-      
-      <Spacer/>
 
+            {/*Tamanio de Spacer se reducira cuando se agregue la lista de entradas.*/}
+            {/*Remover en caso contrario */}
+      <Spacer/>
+    </Stack>
     </>
   );
 };
