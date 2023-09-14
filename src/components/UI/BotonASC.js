@@ -30,6 +30,7 @@ const styles = StyleSheet.create({
     marginTop: 650,
     padding: 10,
     margin: 80,
+
   },
 });
 
