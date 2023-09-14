@@ -8,7 +8,10 @@ const Home = () => {
     return ( 
     <SafeAreaProvider> 
         <View> 
-            <BotonASC/>{/* Borrar esto solo prueba */}
+            <BotonASC 
+                textoBoton1="siguiente" 
+                textoBoton2="cancelar" 
+            />
         </View> 
     </SafeAreaProvider> ) }
 
