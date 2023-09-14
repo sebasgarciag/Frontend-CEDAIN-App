@@ -23,7 +23,7 @@ const ListadoEntradasAlm = () => {
             {/*Las entradas apareceran aqui */}
             <Stack direction='row' justify='center' flex={1}>
                 <Text variant="body1">
-                    Aqui va la lista de entradas...
+                    Aqui va la lista de entradas para almacenista...
                 </Text>
             </Stack>
 

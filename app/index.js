@@ -16,7 +16,7 @@ const Home = () => {
   return (
     <>
         <View flex={1}>
-           <ListadoSalidasAlm/>
+           <ListadoEntradasAlm/>
         </View>
     </>
   );
