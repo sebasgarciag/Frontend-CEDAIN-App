@@ -1,9 +1,10 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Button } from 'react-native-material-ui';
-import { HStack, Text, Stack, Spacer } from "@react-native-material/core";
+import { HStack, Text, Stack, Spacer,Divider } from "@react-native-material/core";
 import { BurgerButton, UserButton, VolverButton, FiltrosButton } from '../../components/UI/uiButtons';
 import BarraBusqueda from '../../components/UI/searchbar';
+import ListadoSalidas from '../../components/UI/listadoSalidas';
 
 
 const ListadoSalidasAdmin = () => {
@@ -17,24 +18,21 @@ const ListadoSalidasAdmin = () => {
         </HStack>
 
             {/*Boton de aplicar Filtros a lista de salidas */}
-        <Stack direction='row' justify='end' m={5}>
+        <Stack direction='row' justify='end' m={5} marginBottom={15}>
+            <Text>Salidas Administrador</Text>
             <FiltrosButton />
         </Stack>
 
             {/*Las salidas apareceran aqui */}
-        <Stack direction='row' justify='center' flex={1}>
-            <Text variant="body1">
-                Aqui va la lista de salidas...
-            </Text>
-        </Stack>
+        <Divider/>
+        <ListadoSalidas/>
+        <Divider/>
 
-        <Stack direction='row' justify='center'>
+        <Stack direction='row' justify='center' margin={10}>
             <VolverButton />
         </Stack>
 
-            {/*Tamanio de Spacer se reducira cuando se agregue la lista de salidas.*/}
-            {/*Remover en caso contrario */}
-        <Spacer/>
+            
     </Stack>
     </>
   );
