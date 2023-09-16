@@ -9,7 +9,7 @@ function CuadroSalida({ salida }) {
     const textSize = 20;
 
     return (
-        <Box style={{ backgroundColor: backgroundColor }}>
+        <Box style={{ backgroundColor: backgroundColor, borderRadius: 10}}>
             <VStack spacing={20} style={{ margin: 10 }}>
                 <HStack spacing={10}>
                     <Text style={{ color: textColor, width: "50%", fontSize: textSize }}>Receptor: {salida.receptor}</Text>
