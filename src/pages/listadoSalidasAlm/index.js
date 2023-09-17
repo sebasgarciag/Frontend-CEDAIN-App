@@ -4,10 +4,14 @@ import { Button } from 'react-native-material-ui';
 import BarraBusqueda from '../../components/UI/searchbar';
 import { HStack, Text, Stack, Spacer, Divider } from "@react-native-material/core";
 import { BurgerButton, UserButton, VolverButton, FiltrosButton } from '../../components/UI/uiButtons';
-import ListadoSalidas from '../../components/UI/listadoSalidas';
+import ListaSalidasAlm from '../../components/UI/listaSalidasAlm';
+import useListadoSalidasAlm from './useListadoSalidasAlm';
 
 
 const ListadoSalidasAlm = () => {
+
+    const {salidas} = useListadoSalidasAlm();
+
   return (
     <>
     <Stack options={{title: "Listado Salidas Almacenista"}} flex={1}>
@@ -25,7 +29,7 @@ const ListadoSalidasAlm = () => {
 
             {/*Las salidas apareceran aqui */}
         <Divider/>
-        <ListadoSalidas/>
+        <ListaSalidasAlm listadoSalidas={salidas} />
         <Divider/>
 
         <Stack direction='row' justify='center' margin={10}>

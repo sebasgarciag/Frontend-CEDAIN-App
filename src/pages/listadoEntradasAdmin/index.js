@@ -4,9 +4,12 @@ import { Button } from 'react-native-material-ui';
 import { BurgerButton, UserButton, VolverButton, FiltrosButton } from '../../components/UI/uiButtons';
 import BarraBusqueda from '../../components/UI/searchbar';
 import { HStack, Text, Stack, Spacer, Divider } from "@react-native-material/core";
-import ListadoEntradas from '../../components/UI/listadoEntradas';
+import ListaEntradasAdmin from '../../components/UI/listaEntradasAdmin';
+import useListadoEntradasAdmin from './useListadoEntradasAdmin';
 
 const ListadoEntradasAdmin = () => {
+
+  const {entradas} = useListadoEntradasAdmin();
   return (
     <>
       <Stack options={{title: "Listado Entradas Administrador"}} flex={1}>
@@ -24,7 +27,7 @@ const ListadoEntradasAdmin = () => {
 
             {/*Las entradas apareceran aqui */}
         <Divider/>
-        <ListadoEntradas/>
+        <ListaEntradasAdmin listadoEntradas={entradas} />
         <Divider/>
 
 
