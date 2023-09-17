@@ -1,13 +1,16 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import { Button } from 'react-native-material-ui';
 import BarraBusqueda from '../../components/UI/searchbar';
-import { HStack, Text, Stack, Spacer, Divider } from "@react-native-material/core";
+import { HStack, Text, Stack, Divider, VStack } from "@react-native-material/core";
 import { BurgerButton, UserButton, VolverButton, FiltrosButton } from '../../components/UI/uiButtons';
-import ListadoSalidas from '../../components/UI/listadoSalidas';
+import ListaSalidasAlm from '../../components/UI/listaSalidasAlm';
+import useListadoSalidasAlm from './useListadoSalidasAlm';
 
 
 const ListadoSalidasAlm = () => {
+
+    const {salidas} = useListadoSalidasAlm();
+
   return (
     <>
     <Stack options={{title: "Listado Salidas Almacenista"}} flex={1}>
@@ -18,14 +21,17 @@ const ListadoSalidasAlm = () => {
         </HStack>
 
             {/*Boton de aplicar Filtros a lista de salidas */}
-        <Stack direction='row' justify='end' m={5} marginBottom={15}>
-            <Text>Salidas Almacenista</Text>
+        <Stack direction='row' m={5} marginBottom={15} style={{justifyContent: 'space-between', paddingRight: 8, paddingLeft: 8}}>
+                <VStack style={{alignItems: 'center', flex: 1}}>
+                    <Text style={{fontWeight: 'bold', fontSize: 26}}>Salidas</Text>
+                    <Text>Nombre almacenista</Text>
+                </VStack>
             <FiltrosButton />
         </Stack>
 
             {/*Las salidas apareceran aqui */}
         <Divider/>
-        <ListadoSalidas/>
+        <ListaSalidasAlm listadoSalidas={salidas} />
         <Divider/>
 
         <Stack direction='row' justify='center' margin={10}>

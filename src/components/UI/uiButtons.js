@@ -47,5 +47,16 @@ const FiltrosButton = ({ onPress }) => {
     );
   };
 
-export {BurgerButton, VolverButton, UserButton, FiltrosButton};
+  const OpenRegistroButton = () => {
+    return (
+      <IconButton
+          icon='arrow-right-drop-circle'
+          size={35}
+          onPress={() => console.log('Pressed')}
+          style={{flex: 1}}
+      />
+    );
+  };
+
+export {BurgerButton, VolverButton, UserButton, FiltrosButton, OpenRegistroButton};
 
