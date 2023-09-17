@@ -1,26 +1,48 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import { HStack, Stack, Text, Spacer, Divider } from "@react-native-material/core";
+import {  Stack, Spacer, Divider, Text } from "@react-native-material/core";
 
-import { BurgerButton, FiltrosButton, UserButton, VolverButton } from '../../components/UI/uiButtons';
-import BarraBusqueda from '../../components/UI/searchbar';
+import { BurgerButton, ExportarButton, UserButton, VolverButton } from '../../components/UI/uiButtons';
+
 
 
 const EntradaAlm = () => {
+
+  
+
     return (
         <>
-            <Stack options={{ title: "Entrada alamcenista" }} flex={1}>
-            <View style={styles.container}>
-                <Text>Entrada almacenista</Text>
+            <Stack options={{ title: "Entrada alamcenista" }} style={{flex: 1}}>
+            <View>
+
+                <Text>Boton de menu y usuario</Text>
+
             </View>
+
+
+            <Stack direction='row' style={{justifyContent: 'space-between'}} >
+
+                <Text variant='h5' >Entrada</Text>
+                <Text variant='h6' >folio?</Text>
+                <ExportarButton />
+  
+            </Stack>        
+
+
+            {/* Aqui va componente con informacion de receptor, emisor, comunidad, etc. */}
+            
+
 
 
 
 
             {/*Boton de volver atras */}
-            <Stack direction='row' justify='center' marginBottom={0}>
-                <VolverButton />
+            <Stack style={{alignItems:'baseline', justifyContent: 'flex-end', flex: 1, alignSelf: 'center', marginBottom: 20}}>
+                <VolverButton  />
             </Stack>
+
+
+
 
             </Stack>
         </>

@@ -7,29 +7,28 @@ import BarraBusqueda from '../../components/UI/searchbar';
 
 const SalidaAlm = () => {
     return (
-    <>
-        <Stack flex={1}>
+        <>
+            <Stack flex={1}>
 
-            <Stack direction='row' justify='center' m={4}>
-                <BurgerButton />
-                <BarraBusqueda />
-                <UserButton />
+                <Stack direction='row' justify='center' m={4}>
+                    <BurgerButton />
+                    <BarraBusqueda />
+                    <UserButton />
+                </Stack>
+
+
+                <Stack direction='row' justify='center' flex={1}>
+                    <Text variant="body1">
+                        salida almacenista..
+                    </Text>
+                </Stack>
+
+                {/*Boton de volver atras */}
+                <Stack style={{ alignItems: 'baseline', justifyContent: 'flex-end', flex: 1, alignSelf: 'center', marginBottom: 20 }}>
+                    <VolverButton />
+                </Stack>
+
             </Stack>
-
-
-            <Stack direction='row' justify='center' flex={1}>
-                <Text variant="body1">
-                    salidas almacenista..
-                </Text>
-            </Stack>
-
-            <Stack direction='row' justify='center' items='flex-end'>
-                <VolverButton />
-            </Stack>
-
-            <Spacer />
-
-        </Stack>
         </>
     );
 };

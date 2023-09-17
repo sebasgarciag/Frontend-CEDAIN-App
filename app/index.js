@@ -17,7 +17,7 @@ const Home = () => {
     
     <SafeAreaProvider>
         <View flex={1}>
-           <EntradaAlm/>
+           <SalidaAlm/>
         </View>
     </SafeAreaProvider>
   

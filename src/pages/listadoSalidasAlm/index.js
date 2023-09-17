@@ -5,6 +5,7 @@ import { HStack, Text, Stack, Divider, VStack } from "@react-native-material/cor
 import { BurgerButton, UserButton, VolverButton, FiltrosButton } from '../../components/UI/uiButtons';
 import ListaSalidasAlm from '../../components/UI/listaSalidasAlm';
 import useListadoSalidasAlm from './useListadoSalidasAlm';
+import ListadoEntradasAlm from '../listadoEntradasAlm';
 
 
 const ListadoSalidasAlm = () => {
@@ -30,9 +31,9 @@ const ListadoSalidasAlm = () => {
         </Stack>
 
             {/*Las salidas apareceran aqui */}
-        <Divider/>
-        <ListaSalidasAlm listadoSalidas={salidas} />
-        <Divider/>
+            <Divider/>
+                <ListaSalidasAlm listadoSalidas={salidas}/>
+            <Divider/>
 
         <Stack direction='row' justify='center' margin={10}>
             <VolverButton />

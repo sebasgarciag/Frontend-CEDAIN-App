@@ -17,7 +17,7 @@ const BurgerButton = ({ onPress }) => {
 const VolverButton = ({ onPress }) => {
   return (
     <Button 
-    style={buttonStyles.volverB}
+    style={buttonStyles.volverB}    //*nota
     mode="contained" 
     onPress={() => console.log('Volver Pressed')}>
     Volver
@@ -25,12 +25,23 @@ const VolverButton = ({ onPress }) => {
   );
 };
 
+const ExportarButton = ({ onPress }) => {
+    return (
+      <Button 
+      style={buttonStyles.exportarB}    //*nota
+      mode="contained" 
+      onPress={() => console.log('Exportar Pressed')}>
+      Exportar
+    </Button>
+    );
+  };
+
 const UserButton = () => {
   return (
       <IconButton
         icon="account"
         size={30}
-        style={buttonStyles.userButton}
+        style={buttonStyles.userButton} //*nota
         onPress={() => console.log('Pressed')}
       />
   );
@@ -39,7 +50,7 @@ const UserButton = () => {
 const FiltrosButton = ({ onPress }) => {
     return (
       <Button 
-      style={buttonStyles.filtrosB}
+      style={buttonStyles.filtrosB} //*nota
       mode="contained" 
       onPress={() => console.log('Filtros Button')}>
       Filtros
@@ -58,5 +69,7 @@ const FiltrosButton = ({ onPress }) => {
     );
   };
 
-export {BurgerButton, VolverButton, UserButton, FiltrosButton, OpenRegistroButton};
+export {BurgerButton, VolverButton, UserButton, FiltrosButton, OpenRegistroButton, ExportarButton};
 
+
+//nota: Es posible que apliquemos un solo style para todos los botones. por lo pronto, cada uno tiene el suyo.

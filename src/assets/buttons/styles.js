@@ -20,7 +20,14 @@ const buttonStyles = {
         padding: 'auto', 
         backgroundColor: 'gray',
     },
-
+    
+    exportarB: {
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        padding: 'auto', 
+        backgroundColor: 'gray',
+    },
+    
     burgerButton: {
         width: 55, 
         height: 40,
@@ -35,6 +42,14 @@ const buttonStyles = {
         backgroundColor: 'lightgray',
     },
 
+    // This is the layout for buttons that appear at the bottom of the screen. pending aproval from team members
+    bottomButtons: {
+        alignItems:'baseline', 
+        justifyContent: 'flex-end', 
+        flex: 1, 
+        alignSelf: 'center', 
+        marginBottom: 20
+    },
 
 
 
