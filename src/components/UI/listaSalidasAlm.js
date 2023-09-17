@@ -8,7 +8,7 @@ function ListaSalidasAlm({listadoSalidas}){
             <ScrollView style={{ borderColor: "lightgray"}} flex={1} padding={5}>
                 {listadoSalidas.map((salida)=>
                     <VStack spacing={10} key={salida}>
-                        <HStack style={{margin: 5, borderRadius: 10, borderWidth: 1, padding: 10}} spacing={10}>
+                        <HStack style={{margin: 5, borderRadius: 10, borderWidth: 2, padding: 10}} spacing={10}>
                             <VStack>
                                 <Text style={{fontSize: 25}}>Salida: {salida.idSalida}</Text>
                                 <Text style={{fontSize: 20}}>Articulos: {salida.cantidadArticulos}</Text>
