@@ -2,6 +2,7 @@ import React from "react";
 import { Text, ScrollView, Image, Pressable } from "react-native";
 import { Spacer, HStack, VStack } from "@react-native-material/core";
 import { Surface } from "react-native-paper";
+import { OpenRegistroButton } from "./uiButtons";
 
 function ListaSalidasAdmin({listadoSalidas}){
         return(
@@ -17,6 +18,9 @@ function ListaSalidasAdmin({listadoSalidas}){
                                 <Text style={{fontSize: 19}}>{salida.fecha}</Text>
                                 <Text style={{fontSize: 19}}>Articulos: <Text style={{fontSize: 17}}>{salida.cantidadArticulos}</Text> </Text>
                             </VStack>
+                            <VStack style={{flex: 1, alignItems: 'center'}}>
+                                <OpenRegistroButton/>
+                            </VStack> 
                         </HStack>
                     </VStack>
                 )}

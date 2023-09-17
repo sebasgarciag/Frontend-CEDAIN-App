@@ -2,6 +2,7 @@ import React from "react";
 import { Text, ScrollView, Image, Pressable } from "react-native";
 import { Spacer, HStack, VStack } from "@react-native-material/core";
 import { Surface } from "react-native-paper";
+import { OpenRegistroButton } from "./uiButtons";
 
 function ListaEntradasAlm({listadoEntradas}){
         return(
@@ -15,6 +16,9 @@ function ListaEntradasAlm({listadoEntradas}){
                             </VStack>
                             <VStack>
                                 <Text style={{fontSize: 20}}>{entrada.fecha}</Text>
+                            </VStack>
+                            <VStack style={{flex: 1, alignItems: 'center'}}>
+                                <OpenRegistroButton/>
                             </VStack>
                         </HStack>
                     </VStack>
