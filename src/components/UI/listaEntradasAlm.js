@@ -11,7 +11,7 @@ function ListaEntradasAlm({listadoEntradas}){
                     <VStack spacing={10} key={entrada}>
                         <HStack style={{margin: 5, borderRadius: 10, borderWidth: 2, padding: 10}} spacing={10}>
                             <VStack>
-                                <Text style={{fontSize: 25}}>Entrada: {entrada.idEntrada}</Text>
+                                <Text style={{fontSize: 24}}>Entrada: {entrada.idEntrada}</Text>
                                 <Text style={{fontSize: 20}}>Articulos: {entrada.cantidadArticulos}</Text>
                             </VStack>
                             <VStack>
