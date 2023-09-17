@@ -28,11 +28,11 @@ const ListadoEntradasAlm = () => {
             <Divider/>
             
             {/*Boton de volver atras */}
-            <Stack direction='row' justify='center' margin = {10}>
+            <Stack direction='row' justify='center' marginBottom = {0}>
                 <VolverButton />
             </Stack>
 
-           
+          
 
         </Stack>
         </>

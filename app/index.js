@@ -14,11 +14,13 @@ import {Stack, Redirect} from "expo-router";
 
 const Home = () => {
   return (
-    <>
+    
+    <SafeAreaProvider>
         <View flex={1}>
-           <ListadoEntradasAlm/>
+           <EntradaAlm/>
         </View>
-    </>
+    </SafeAreaProvider>
+  
   );
 }
 
