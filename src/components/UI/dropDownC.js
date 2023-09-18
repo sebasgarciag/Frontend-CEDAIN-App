@@ -67,6 +67,7 @@ import React, { useState } from 'react';
     container: {
       backgroundColor: 'white',
       padding: 16,
+      marginTop:40,
     },
     dropdown: {
       height: 50,
