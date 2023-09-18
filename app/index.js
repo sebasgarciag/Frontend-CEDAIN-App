@@ -1,13 +1,14 @@
 import { View, Text } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import NavBar from "../src/components/UI/NavBar";
+import ArticulosCarrito from "../src/pages/carrito/index";
 
 
 const Home = () => { 
     return ( 
     <SafeAreaProvider> 
         <View> 
-            <NavBar/>{/* Borrar esto solo prueba */}
+            <ArticulosCarrito/>{/* Borrar esto solo prueba */}
         </View> 
     </SafeAreaProvider> ) }
 
