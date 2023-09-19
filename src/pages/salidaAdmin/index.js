@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import { Stack, Text, Spacer } from "@react-native-material/core";
+import { Stack, Text, Spacer, HStack } from "@react-native-material/core";
 import { BurgerButton, UserButton, VolverButton } from '../../components/UI/uiButtons';
 import BarraBusqueda from '../../components/UI/searchbar';
 
@@ -10,11 +10,9 @@ const SalidaAdmin = () => {
         <>
             <Stack flex={1}>
 
-                <Stack direction='row' justify='center' m={4}>
-                    <BurgerButton />
-                    <BarraBusqueda />
-                    <UserButton />
-                </Stack>
+                <HStack direction='row' justify='center' m={4} style={{justifyContent: 'space-between'}}>
+                    <BurgerButton/>
+                </HStack>
 
 
                 <Stack direction='row' justify='center' flex={1}>

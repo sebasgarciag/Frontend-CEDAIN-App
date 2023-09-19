@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import {  Stack, Spacer, Divider, Text } from "@react-native-material/core";
+import {  Stack, Spacer, Divider, Text, HStack } from "@react-native-material/core";
 
 import { BurgerButton, ExportarButton, UserButton, VolverButton } from '../../components/UI/uiButtons';
 
@@ -13,16 +13,14 @@ const EntradaAlm = () => {
     return (
         <>
             <Stack options={{ title: "Entrada alamcenista" }} style={{flex: 1}}>
-            <View>
-
-                <Text>Boton de menu y usuario</Text>
-
-            </View>
+                <HStack direction='row' justify='center' m={4} style={{justifyContent: 'space-between'}}>
+                    <BurgerButton/>
+                </HStack>
 
 
             <Stack direction='row' style={{justifyContent: 'space-between'}} >
 
-                <Text variant='h5' >Entrada</Text>
+                <Text variant='h5' >Entrada alm</Text>
                 <Text variant='h6' >folio?</Text>
                 <ExportarButton />
   
