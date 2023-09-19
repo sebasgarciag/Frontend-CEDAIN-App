@@ -12,6 +12,7 @@ const SalidaAdmin = () => {
 
                 <HStack direction='row' justify='center' m={4} style={{justifyContent: 'space-between'}}>
                     <BurgerButton/>
+                    <UserButton/>
                 </HStack>
 
 

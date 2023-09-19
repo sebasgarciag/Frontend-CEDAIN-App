@@ -15,6 +15,7 @@ const EntradaAlm = () => {
             <Stack options={{ title: "Entrada alamcenista" }} style={{flex: 1}}>
                 <HStack direction='row' justify='center' m={4} style={{justifyContent: 'space-between'}}>
                     <BurgerButton/>
+                    <UserButton/>
                 </HStack>
 
 

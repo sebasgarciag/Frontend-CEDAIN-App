@@ -10,6 +10,7 @@ const EntradaAdmin = () => {
         <Stack options={{ title: "Entrada administrador" }} style={{flex: 1}}>
           <HStack direction='row' justify='center' m={4} style={{justifyContent: 'space-between'}}>
               <BurgerButton/>
+              <UserButton/>
           </HStack>
 
 
