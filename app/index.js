@@ -8,7 +8,7 @@ const Home = () => {
     return ( 
     <SafeAreaProvider> 
         <View> 
-            <ArticulosCarrito/>{/* Borrar esto solo prueba */}
+            <ArticulosCarrito/>{/* Borrar esto solo prueba */}<Paginfo/>
         </View> 
     </SafeAreaProvider> ) }
 
