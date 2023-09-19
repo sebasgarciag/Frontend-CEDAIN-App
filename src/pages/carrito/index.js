@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Image} from 'react-native';
+import { View, Text} from 'react-native';
 import { Box, VStack } from "@react-native-material/core";
 import { ScrollView } from "react-native-gesture-handler";
 import ProductoCarrito from "../../components/entradasSalidas/productoCarrito";

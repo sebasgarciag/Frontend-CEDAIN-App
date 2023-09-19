@@ -13,18 +13,23 @@ const ProductoCarrito = ({ producto, aumentarCantidad, disminuirCantidad, handle
             source={imagen}
             style={{ width: "25%", aspectRatio: 1, borderRadius: 10 }}
           />
-          <View style={{ flex: 2, flexDirection: 'column',  flexWrap: 'wrap', marginLeft: 10, alignItems: 'center' }}>
+          <View style={{ flex: 1, flexDirection: 'column',  marginLeft: 10 }}>
           <View style={{ flex: 1, flexDirection: 'row', marginLeft: 10, alignItems: 'center', justifyContent: 'space-between'}}>
             <View> 
               <Text style={{ color: "black", fontSize: 13, fontWeight: "bold", marginLeft: 10 }}>{nombre}</Text>
             </View>
           
-            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+
+              <View >
               <IconButton
                 icon="minus"
                 size={20}
                 onPress={() =>disminuirCantidad(producto)}
               />
+              </View>
+
+              <View>
               <Box style={{}}>
                 <TextInput 
                     style={{ textAlign: "center", textAlignVertical: "bottom", fontSize: 20, fontWeight: "bold" }} 
@@ -34,29 +39,36 @@ const ProductoCarrito = ({ producto, aumentarCantidad, disminuirCantidad, handle
                     keyboardType="numeric"
                 />
               </Box>
+              </View>
+
+              <View>
               <IconButton
                 icon="plus"
                 size={20}
                 onPress={() => aumentarCantidad(producto)}
               />
+              </View>
+
             </View>
           </View>
-          <View style={{ alignItems: 'flex-start'}}>
-          <IconButton 
-              icon={expandirInfo ? "arrow-up" : "arrow-down"} // Cambia el icono en función del estado
-              size={20}
-              onPress={() => handleExpandirInfo(producto)} 
-            />
-
-        {expandirInfo && ( // Mostrar información adicional solo si expandirInfo es verdadero
           <View>
-            <Text>Tamaño: {tamaño}</Text>
-            <Text>Precio: {precio}</Text>
-            <Text>Categoría: {categoría}</Text>
-            <Text>Nombre Corto: {nombreCorto}</Text>
+            <View style={{ alignItems: 'center'}}>
+              <IconButton 
+                icon={expandirInfo ? "chevron-up" : "chevron-down"} // Cambia el icono en función del estado
+                size={20}
+                onPress={() => handleExpandirInfo(producto)} 
+                color='#8F8B36'
+              />
+            </View >
+            {expandirInfo && ( // Mostrar información adicional solo si expandirInfo es verdadero
+            <View style={{ marginLeft: 15}}>
+              <Text>Tamaño: {tamaño}</Text>
+              <Text>Precio: {precio}</Text>
+              <Text>Categoría: {categoría}</Text>
+              <Text>Nombre Corto: {nombreCorto}</Text>
+            </View>
+            )}
           </View>
-        )}
-        </View>
         </View>
         </View>
       </Card>
