@@ -1,11 +1,14 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import { Stack, Text, Spacer, HStack } from "@react-native-material/core";
-import { BurgerButton, UserButton, VolverButton } from '../../components/UI/uiButtons';
-import BarraBusqueda from '../../components/UI/searchbar';
+import { BurgerButton, UserButton, VolverButton,ExportarButton } from '../../components/UI/uiButtons';
+import useSalidaAdmin from './useSalidaAdmin';
 
 
 const SalidaAdmin = () => {
+
+    const {salida, datosSalida} = useSalidaAdmin();
+
     return (
         <>
             <Stack flex={1}>
@@ -16,10 +19,9 @@ const SalidaAdmin = () => {
                 </HStack>
 
 
-                <Stack direction='row' justify='center' flex={1}>
-                    <Text variant="body1">
-                        salida admin...
-                    </Text>
+                <Stack direction='row' m={5} marginBottom={15} style={{justifyContent: 'space-between', paddingLeft: 5, paddingRight: 5}}>
+                    <Text  style={{fontWeight: 'bold', fontSize: 26}}>Salida <Text style={{fontWeight: 'normal', fontSize: 20}}>{salida.folioSerie}</Text></Text>
+                    <ExportarButton/>
                 </Stack>
 
                 {/*Boton de volver atras */}

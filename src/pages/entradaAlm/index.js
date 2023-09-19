@@ -1,14 +1,14 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import {  Stack, Spacer, Divider, Text, HStack } from "@react-native-material/core";
-
 import { BurgerButton, ExportarButton, UserButton, VolverButton } from '../../components/UI/uiButtons';
+import useEntradaAdmin from '../entradaAdmin/useEntradaAdmin';
 
 
 
 const EntradaAlm = () => {
 
-  
+  const {entrada, datosEntrada} = useEntradaAdmin();
 
     return (
         <>
@@ -19,13 +19,10 @@ const EntradaAlm = () => {
                 </HStack>
 
 
-            <Stack direction='row' style={{justifyContent: 'space-between'}} >
-
-                <Text variant='h5' >Entrada alm</Text>
-                <Text variant='h6' >folio?</Text>
-                <ExportarButton />
-  
-            </Stack>        
+            <Stack direction='row' m={5} marginBottom={15} style={{justifyContent: 'space-between', paddingRight: 5, paddingLeft: 5}}>
+                <Text  style={{fontWeight: 'bold', fontSize: 26}}>Entrada {entrada.idEntrada}</Text>
+                <Text style={{fontWeight: 'normal', fontSize: 26}}>{entrada.folioSerie}</Text>
+            </Stack>      
 
 
             {/* Aqui va componente con informacion de receptor, emisor, comunidad, etc. */}
