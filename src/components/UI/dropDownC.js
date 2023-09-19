@@ -28,6 +28,7 @@ import React, { useState } from 'react';
     return (
       <View style={styles1.container}>
         {renderLabel()}
+        <Text>Comunidad</Text>
         <Dropdown
           style={[styles1.dropdown, isFocus && { borderColor: 'blue' }]}
           placeholderStyle={styles1.placeholderStyle}
