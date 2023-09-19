@@ -4,7 +4,7 @@ import { Button } from 'react-native-paper';
 
 const BotonASC = ({ textoBoton1, textoBoton2, accionBoton1, accionBoton2 }) => {
   return (
-    <View style={styles.buttonContainer}>
+    <View style={styles2.buttonContainer}>
       <Button 
         mode="contained" 
         onPress={accionBoton1}
@@ -23,11 +23,11 @@ const BotonASC = ({ textoBoton1, textoBoton2, accionBoton1, accionBoton2 }) => {
   );
 };
 
-const styles = StyleSheet.create({
+const styles2 = StyleSheet.create({
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    marginTop: 650,
+    marginTop: 275,
     padding: 10,
     margin: 80,
 
