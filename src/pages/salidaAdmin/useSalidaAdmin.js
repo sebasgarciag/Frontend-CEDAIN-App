@@ -9,6 +9,7 @@ const useSalidaAdmin = () => {
             receptor: 'Adrian Chavez',
             emisor: 'Nacho Soto',
             comunidad: 'Creel',
+            observaciones: 'Olia feo'
         });
 
     const [datosSalida, setDatosSalida] = useState([

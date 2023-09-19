@@ -9,6 +9,7 @@ const useEntradaAlm = () => {
             receptor: 'Adrian Chavez',
             emisor: 'Nacho Soto',
             comunidad: 'Creel',
+            observaciones: 'Olia feo'
         });
 
     const [datosEntrada, setDatosEntrada] = useState([

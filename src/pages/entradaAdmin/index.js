@@ -3,6 +3,7 @@ import { View, StyleSheet } from 'react-native';
 import {  Stack, Spacer, Divider, Text, HStack } from "@react-native-material/core";
 import { BurgerButton, ExportarButton, UserButton, VolverButton } from '../../components/UI/uiButtons';
 import useEntradaAdmin from './useEntradaAdmin';
+import InfoEntrada from '../../components/UI/infoEntrada';
 
 const EntradaAdmin = () => {
 
@@ -24,7 +25,7 @@ const EntradaAdmin = () => {
 
 
            {/* Aqui va componente con informacion de receptor, emisor, comunidad, etc. */}
-                
+          <InfoEntrada entrada={entrada}/>
 
 
 

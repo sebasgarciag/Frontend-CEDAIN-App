@@ -9,6 +9,8 @@ const useSalidaAlm = () => {
             receptor: 'Adrian Chavez',
             emisor: 'Nacho Soto',
             comunidad: 'Creel',
+            evento: 'Trueque Escolar',
+            observaciones: 'Olia feo'
         });
 
     const [datosSalida, setDatosSalida] = useState([

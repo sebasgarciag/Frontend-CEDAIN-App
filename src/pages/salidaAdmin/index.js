@@ -3,6 +3,7 @@ import { StyleSheet } from 'react-native';
 import { Stack, Text, Spacer, HStack } from "@react-native-material/core";
 import { BurgerButton, UserButton, VolverButton,ExportarButton } from '../../components/UI/uiButtons';
 import useSalidaAdmin from './useSalidaAdmin';
+import InfoSalida from '../../components/UI/infoSalida';
 
 
 const SalidaAdmin = () => {
@@ -23,6 +24,8 @@ const SalidaAdmin = () => {
                     <Text  style={{fontWeight: 'bold', fontSize: 26}}>Salida <Text style={{fontWeight: 'normal', fontSize: 20}}>{salida.folioSerie}</Text></Text>
                     <ExportarButton/>
                 </Stack>
+
+                <InfoSalida salida={salida}/>
 
                 {/*Boton de volver atras */}
                 <Stack style={{ alignItems: 'baseline', justifyContent: 'flex-end', flex: 1, alignSelf: 'center', marginBottom: 20 }}>
