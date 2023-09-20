@@ -51,9 +51,6 @@ const useSalidaAdmin = () => {
     
     ]);
 
-   
-
-
     return { salida, datosSalida }
 }
 

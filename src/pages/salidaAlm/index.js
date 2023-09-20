@@ -1,15 +1,17 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
-import { Stack, Text, Spacer, HStack } from "@react-native-material/core";
+import { StyleSheet, ScrollView, TextInput } from 'react-native';
+import { Stack, Text, Spacer, HStack, Box } from "@react-native-material/core";
 import { BurgerButton, UserButton, VolverButton } from '../../components/UI/uiButtons';
+import { Surface } from 'react-native-paper';
 import useSalidaAlm from './useSalidaAlm';
 import InfoSalida from '../../components/UI/infoSalida';
+import ProductosSalida from '../../components/UI/productosSalida';
 
 
 
 const SalidaAlm = () => {
 
-    const {salida, datosSalida} = useSalidaAlm();
+    const {salida, datosSalida, handleCantidad} = useSalidaAlm();
 
     return (
         <>
@@ -27,9 +29,14 @@ const SalidaAlm = () => {
                 </Stack>
 
                 <InfoSalida salida={salida}/>
+               
+                <ProductosSalida datos={datosSalida}/>
+                       
+       
+       
 
                 {/*Boton de volver atras */}
-                <Stack style={{ alignItems: 'baseline', justifyContent: 'flex-end', flex: 1, alignSelf: 'center', marginBottom: 20 }}>
+                <Stack direction='row' justify='center' margin={10}>
                     <VolverButton />
                 </Stack>
 

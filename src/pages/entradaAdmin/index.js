@@ -4,6 +4,7 @@ import {  Stack, Spacer, Divider, Text, HStack } from "@react-native-material/co
 import { BurgerButton, ExportarButton, UserButton, VolverButton } from '../../components/UI/uiButtons';
 import useEntradaAdmin from './useEntradaAdmin';
 import InfoEntrada from '../../components/UI/infoEntrada';
+import ProductosEntrada from '../../components/UI/productosEntrada';
 
 const EntradaAdmin = () => {
 
@@ -26,15 +27,12 @@ const EntradaAdmin = () => {
 
            {/* Aqui va componente con informacion de receptor, emisor, comunidad, etc. */}
           <InfoEntrada entrada={entrada}/>
+          <ProductosEntrada datos={datosEntrada}/>
 
-
-
-
-
-            {/*Boton de volver atras */}
-            <Stack style={{alignItems:'baseline', justifyContent: 'flex-end', flex: 1, alignSelf: 'center', marginBottom: 20}}>
-                <VolverButton  />
-            </Stack>
+          {/*Boton de volver atras */}
+          <Stack direction='row' justify='center' margin={10}>
+              <VolverButton />
+          </Stack>
 
 
         </Stack>
