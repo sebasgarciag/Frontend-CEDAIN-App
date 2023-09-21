@@ -30,3 +30,5 @@ const Home = () => {
     </SafeAreaProvider>
     )
 }
+
+export default Home;
