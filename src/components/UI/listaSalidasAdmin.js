@@ -1,26 +1,23 @@
 import React from "react";
-import { Text, ScrollView, Image, Pressable } from "react-native";
-import { Spacer, HStack, VStack } from "@react-native-material/core";
-import { Surface } from "react-native-paper";
-import { OpenRegistroButton } from "./uiButtons";
+import { Text, ScrollView} from "react-native";
+import { HStack, VStack } from "@react-native-material/core";
+import { ArrowButton } from "./uiButtons";
+import styles from "../../assets/styles";
 
 function ListaSalidasAdmin({listadoSalidas}){
         return(
-            <ScrollView style={{ borderColor: "lightgray"}} flex={1} padding={5}>
+            <ScrollView style={styles.listaMovs}>
                 {listadoSalidas.map((salida)=>
-                    <VStack spacing={10} key={salida}>
-                        <HStack style={{margin: 5, borderRadius: 10, borderWidth: 2, padding: 10}} spacing={10}>
+                    <VStack key={salida}>
+                        <HStack style={styles.movItem} spacing={10}>
                             <VStack>
-                                <Text style={{fontSize: 19}}>Salida: <Text style={{fontSize: 17}}>{salida.folioSerie}</Text></Text>
-                                <Text style={{fontSize: 19}}>Almacenista: <Text style={{fontSize: 17}} >{salida.almacenista}</Text></Text>
+                                <Text style={styles.movName}>Salida: {salida.folioSerie}</Text>
+                                <Text style={styles.movDato}>Fecha: {salida.fecha}</Text>
+                                <Text style={styles.movDato}>Almacenista: {salida.almacenista}</Text>
+                                <Text style={styles.movDato}>Articulos: {salida.cantidadArticulos}</Text>
                             </VStack>
-                            <VStack>
-                                <Text style={{fontSize: 19}}>{salida.fecha}</Text>
-                                <Text style={{fontSize: 19}}>Articulos: <Text style={{fontSize: 17}}>{salida.cantidadArticulos}</Text> </Text>
-                            </VStack>
-                            <VStack style={{flex: 1, alignItems: 'center'}}>
-                                <OpenRegistroButton/>
-                            </VStack> 
+                            <ArrowButton style={styles.arrowButton} onPress={() => { alert('Flecha presionada'); }} />
+                            
                         </HStack>
                     </VStack>
                 )}

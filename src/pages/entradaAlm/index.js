@@ -1,46 +1,42 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
-import {  Stack, Spacer, Divider, Text, HStack } from "@react-native-material/core";
-import { BurgerButton, ExportarButton, UserButton, VolverButton } from '../../components/UI/uiButtons';
-import useEntradaAdmin from '../entradaAdmin/useEntradaAdmin';
+import { Stack, Text, HStack } from "@react-native-material/core";
+import { MenuButton, ProfileButton, VolverButton } from '../../components/UI/uiButtons';
 import InfoEntrada from '../../components/UI/infoEntrada';
 import ProductosEntrada from '../../components/UI/productosEntrada';
-
-
+import styles from '../../assets/styles';
+import useEntradaAlm from './useEntradaAlm';
 
 const EntradaAlm = () => {
 
-  const {entrada, datosEntrada} = useEntradaAdmin();
+  const {entrada, datosEntrada} = useEntradaAlm();
 
     return (
         <>
-            <Stack options={{ title: "Entrada alamcenista" }} style={{flex: 1}}>
-                <HStack direction='row' justify='center' m={4} style={{justifyContent: 'space-between'}}>
-                    <BurgerButton/>
-                    <UserButton/>
+            <Stack style={styles.container}>
+                <HStack style={styles.headerContainer}>
+                    <MenuButton onPress={() => { alert('Menú presionado'); }} />
+                    <ProfileButton onPress={() => { alert('Perfil presionado'); }} />
                 </HStack>
 
 
-                <Stack direction='row' m={5} marginBottom={15} style={{justifyContent: 'space-between', paddingRight: 5, paddingLeft: 5}}>
-                    <Text  style={{fontWeight: 'bold', fontSize: 26}}>Entrada {entrada.idEntrada}</Text>
-                    <Text style={{fontWeight: 'normal', fontSize: 26}}>{entrada.folioSerie}</Text>
-                </Stack>      
+                <Stack style={styles.titulosContainer}>
+                    <Text  style={styles.headerText}>Entrada {entrada.idEntrada} </Text>
+                    <Text style={styles.headerText}>{entrada.folioSerie}</Text>
+                </Stack>        
+
 
                 {/* Aqui va componente con informacion de receptor, emisor, comunidad, etc. */}
                 <InfoEntrada entrada={entrada}/>
                 <ProductosEntrada datos={datosEntrada}/>
 
                 {/*Boton de volver atras */}
-                <Stack direction='row' justify='center' margin={10}>
+                <Stack style={styles.volverContainer}>
                     <VolverButton />
                 </Stack>
-
             </Stack>
         </>
 
     );
 };
-
-const styles = StyleSheet.create({});
 
 export default EntradaAlm;

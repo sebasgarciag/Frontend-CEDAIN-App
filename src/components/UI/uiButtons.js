@@ -1,75 +1,53 @@
 import React from 'react';
-import { View } from 'react-native';
-import { Button, IconButton } from 'react-native-paper'
+import { TouchableOpacity, Text } from 'react-native';
 import buttonStyles from '../../assets/buttons/styles';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import styles from '../../assets/styles';
 
-const BurgerButton = ({ onPress }) => {
-  return (
-    <IconButton
-      icon="dots-horizontal"
-      size={30}
-      style={buttonStyles.burgerButton}
-      onPress={() => console.log('Pressed')}
-    />
-  );
-};
+const MenuButton = ({ onPress, style }) => (
+  <TouchableOpacity style={style} onPress={onPress}>
+    <Icon name="menu" size={30} color="#333" />
+  </TouchableOpacity>
+);
 
 const VolverButton = ({ onPress }) => {
   return (
-    <Button 
-    style={buttonStyles.volverB}    //*nota
-    mode="contained" 
-    onPress={() => console.log('Volver Pressed')}>
-    Volver
-  </Button>
+    <TouchableOpacity style={[styles.volverButton, { backgroundColor: '#59CD90' }]}>
+      <Icon name="arrow-back" size={24} color="#F1EFE3" />
+      <Text style={styles.buttonText}>Volver</Text>
+    </TouchableOpacity>
   );
 };
 
 const ExportarButton = ({ onPress }) => {
     return (
-      <Button 
-      style={buttonStyles.exportarB}    //*nota
-      mode="contained" 
-      onPress={() => console.log('Exportar Pressed')}>
-      Exportar
-    </Button>
+      <TouchableOpacity style={[styles.volverButton, { backgroundColor: '#59CD90' }]}>
+      <Icon name="open-in-new" size={24} color="#F1EFE3" />
+      <Text style={styles.buttonText}>Exportar</Text>
+    </TouchableOpacity>
     );
   };
 
-const UserButton = () => {
-  return (
-      <IconButton
-        icon="account"
-        size={30}
-        style={buttonStyles.userButton} //*nota
-        onPress={() => console.log('Pressed')}
-      />
+const ProfileButton = ({ onPress, style }) => (
+    <TouchableOpacity style={style} onPress={onPress}>
+      <Icon name="person" size={30} color="#333" />
+    </TouchableOpacity>
   );
-};
 
-const FiltrosButton = ({ onPress }) => {
-    return (
-      <Button 
-      style={buttonStyles.filtrosB} //*nota
-      mode="contained" 
-      onPress={() => console.log('Filtros Button')}>
-      Filtros
-    </Button>
-    );
-  };
 
-  const OpenRegistroButton = () => {
-    return (
-      <IconButton
-          icon='arrow-right-drop-circle'
-          size={35}
-          onPress={() => console.log('Pressed')}
-          style={{flex: 1}}
-      />
-    );
-  };
+const FilterButton = ({ onPress, style }) => (
+    <TouchableOpacity style={style} onPress={onPress}>
+      <Icon name="filter-list" size={24} color="#5B4C40" />
+    </TouchableOpacity>
+  );
 
-export {BurgerButton, VolverButton, UserButton, FiltrosButton, OpenRegistroButton, ExportarButton};
+const ArrowButton = ({ onPress, style }) => (
+    <TouchableOpacity style={style} onPress={onPress}>
+      <Icon name="arrow-forward-ios" size={24} color="#333" />
+    </TouchableOpacity>
+  );
+
+export {MenuButton, VolverButton, ProfileButton, FilterButton, ArrowButton, ExportarButton};
 
 
 //nota: Es posible que apliquemos un solo style para todos los botones. por lo pronto, cada uno tiene el suyo.
