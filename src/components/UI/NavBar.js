@@ -1,14 +1,13 @@
 import React from 'react';
 import { View, Image } from 'react-native';
 import { Appbar, Searchbar } from 'react-native-paper';
-
-const NavBar = () => {
+const NavBar = ({ toggleDrawer }) => {
+  
   return (
     <Appbar.Header style={{ backgroundColor: '#fff' }}>
       <Appbar.Action
         icon="menu"
-        onPress={() => {
-        }}
+        onPress={toggleDrawer}
       />
       
       <Searchbar
