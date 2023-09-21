@@ -1,12 +1,13 @@
 import { View, Text } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
+import Paginfo from "./infoDestino";
 
 const Home = () => { 
     return ( 
 
     <SafeAreaProvider> 
         <View> 
-            <Text>Home</Text> 
+            <Paginfo/> 
         </View> 
     </SafeAreaProvider>    
 

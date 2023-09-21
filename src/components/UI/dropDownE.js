@@ -3,22 +3,15 @@ import { StyleSheet, Text, View } from 'react-native';
 import { Dropdown } from 'react-native-element-dropdown';
 import AntDesign from '@expo/vector-icons/AntDesign';
 
-const data = [
-	{ label: 'Item 1', value: '1' },
-	{ label: 'Item 2', value: '2' },
-	{ label: 'Item 3', value: '3' },
-
-];
-
-const DropdownE = () => {
-	const [value, setValue] = useState(null);
-	const [isFocus, setIsFocus] = useState(false);
+const DropdownE = ({ dataDropDownEvento,Titulo, setValueEvento, valueEvento}) => {
+	const data = dataDropDownEvento;
+	const [isFocusEvento, setIsFocusEvento] = useState(false);
 
 	return (
 		<View style={styles1.container}>
-			<Text>Evento</Text>
+			<Text>{Titulo}</Text>
 			<Dropdown
-				style={[styles1.dropdown, isFocus && { borderColor: 'blue' }]}
+				style={[styles1.dropdown, isFocusEvento && { borderColor: 'blue' }]}
 				placeholderStyle={styles1.placeholderStyle}
 				selectedTextStyle={styles1.selectedTextStyle}
 				inputSearchStyle={styles1.inputSearchStyle}
@@ -28,19 +21,19 @@ const DropdownE = () => {
 				maxHeight={300}
 				labelField="label"
 				valueField="value"
-				placeholder={!isFocus ? 'Select item' : '...'}
+				placeholder={!isFocusEvento ? 'Select item' : '...'}
 				searchPlaceholder="Search..."
-				value={value}
-				onFocus={() => setIsFocus(true)}
-				onBlur={() => setIsFocus(false)}
+				value={valueEvento}
+				onFocus={() => setIsFocusEvento(true)}
+				onBlur={() => setIsFocusEvento(false)}
 				onChange={item => {
-					setValue(item.value);
-					setIsFocus(false);
+					setValueEvento(item.value);
+					setIsFocusEvento(false);
 				}}
 				renderLeftIcon={() => (
 					<AntDesign
 						style={styles1.icon}
-						color={isFocus ? 'blue' : 'black'}
+						color={isFocusEvento ? 'blue' : 'black'}
 						name="Safety"
 						size={20}
 					/>
