@@ -3,23 +3,15 @@ import React, { useState } from 'react';
 	import { Dropdown } from 'react-native-element-dropdown';
 	import AntDesign from '@expo/vector-icons/AntDesign';
 
-	const data = [
-		{ label: 'Item 1', value: '1' },
-		{ label: 'Item 2', value: '2' },
-		{ label: 'Item 3', value: '3' },
-
-	];
-
-	const DropdownComentario = () => {
-		const [value, setValue] = useState(null);
-		const [isFocus, setIsFocus] = useState(false);
-
-
+	const DropdownC = ({ dataDropDownComunidad, setValueComunidad, valueComunidad}) => {
+		const data = dataDropDownComunidad;
+		const [isFocusComunidad, setIsFocusComunidad] = useState(false);
+	
 		return (
 			<View style={styles1.container}>
 				<Text>Comunidad</Text>
 				<Dropdown
-					style={[styles1.dropdown, isFocus && { borderColor: 'blue' }]}
+					style={[styles1.dropdown, isFocusComunidad && { borderColor: 'blue' }]}
 					placeholderStyle={styles1.placeholderStyle}
 					selectedTextStyle={styles1.selectedTextStyle}
 					inputSearchStyle={styles1.inputSearchStyle}
@@ -29,19 +21,19 @@ import React, { useState } from 'react';
 					maxHeight={300}
 					labelField="label"
 					valueField="value"
-					placeholder={!isFocus ? 'Select item' : '...'}
+					placeholder={!isFocusComunidad ? 'Select item' : '...'}
 					searchPlaceholder="Search..."
-					value={value}
-					onFocus={() => setIsFocus(true)}
-					onBlur={() => setIsFocus(false)}
+					value={valueComunidad}
+					onFocus={() => setIsFocusComunidad(true)}
+					onBlur={() => setIsFocusComunidad(false)}
 					onChange={item => {
-						setValue(item.value);
-						setIsFocus(false);
+						setValueComunidad(item.value);
+						setIsFocusComunidad(false);
 					}}
 					renderLeftIcon={() => (
 						<AntDesign
 							style={styles1.icon}
-							color={isFocus ? 'blue' : 'black'}
+							color={isFocusComunidad ? 'blue' : 'black'}
 							name="Safety"
 							size={20}
 						/>
@@ -50,8 +42,9 @@ import React, { useState } from 'react';
 			</View>
 		);
 	};
+	
 
-	export default DropdownComentario;
+	export default DropdownC;
 
 	const styles1 = StyleSheet.create({
 		container: {

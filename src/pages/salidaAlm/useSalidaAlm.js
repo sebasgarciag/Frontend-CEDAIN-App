@@ -8,45 +8,50 @@ const useSalidaAlm = () => {
             fecha: '15/08/2023',
             receptor: 'Adrian Chavez',
             emisor: 'Nacho Soto',
-            comunidad: 'Creel',
+            comunidad: '',
             evento: 'Trueque Escolar',
             observaciones: 'Olia feo'
         });
 
     const [datosSalida, setDatosSalida] = useState([
         {
-            producto: "producto1",
+            producto: "Nombre Producto",
             cantidad: 0,    
             precio: 1,
             tamano: "mediano",
+            importe: 50,
             foto: "C:/Users/Adrian/Desktop/CARRERA 5TO/SeguridadSistemasSoftware/Desarrollo/Frontend-CEDAIN-App/src/assets/imagenes/ware.jpg"
         },
         {
-            producto: "producto2",
+            producto: "Nombre Producto",
             cantidad: 0,
             precio: 2,
             tamano: "grande",
+            importe: 50,
             foto: "C:/Users/Adrian/Desktop/CARRERA 5TO/SeguridadSistemasSoftware/Desarrollo/Frontend-CEDAIN-App/src/assets/imagenes/ware.jpg"
         },
         {
-            producto: "producto3",
+            producto: "Nombre Producto",
             cantidad: 0,
             precio: 3,
             tamano: "chico",
+            importe: 50,
             foto: "C:/Users/Adrian/Desktop/CARRERA 5TO/SeguridadSistemasSoftware/Desarrollo/Frontend-CEDAIN-App/src/assets/imagenes/ware.jpg"
         },
         {
-            producto: "producto4",
+            producto: "Nombre Producto",
             cantidad: 0,
             precio: 4,
             tamano: "mediano",
+            importe: 50,
             foto: "C:/Users/Adrian/Desktop/CARRERA 5TO/SeguridadSistemasSoftware/Desarrollo/Frontend-CEDAIN-App/src/assets/imagenes/ware.jpg"
         },
         {
-            producto: "producto5",
+            producto: "Nombre Producto",
             cantidad: 0,
             precio: 5,
             tamano: "grande",
+            importe: 50,
             foto: "C:/Users/Adrian/Desktop/CARRERA 5TO/SeguridadSistemasSoftware/Desarrollo/Frontend-CEDAIN-App/src/assets/imagenes/ware.jpg"
         }
     

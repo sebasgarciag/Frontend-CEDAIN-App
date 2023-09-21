@@ -1,26 +1,36 @@
 import React from "react";
 import { Text } from "react-native";
 import { Box, HStack, VStack } from "@react-native-material/core";
+import styles from "../../assets/styles";
 
 function InfoSalida({ salida }) { 
 
-    const textColor = "white";
-    const backgroundColor = "black";
-    const textSize = 20;
-
     return (
-        <Box style={{ backgroundColor: backgroundColor, borderRadius: 10, margin: 3}}>
-            <VStack spacing={20} style={{ margin: 10 }}>
+        <Box style={styles.cuandroInfoRegistro}>
+            <VStack  style={{ margin: 5 }}>
                 <HStack spacing={10}>
-                    <Text style={{ color: textColor, width: "50%", fontSize: textSize }}>Receptor: {salida.receptor}</Text>
-                    <Text style={{ color: textColor, width: "50%", fontSize: textSize }}>Emisor: {salida.emisor}</Text>
+                    <VStack style={{width: '50%'}}>
+                        <Text style={styles.subtituloInfoRegistro}>Receptor:</Text>
+                        <Text style={styles.textoInfoRegistro}>{salida.receptor}</Text>
+                    </VStack>
+                    <VStack style={{width: '50%'}}>
+                        <Text style={styles.subtituloInfoRegistro}>Emisor:</Text>
+                        <Text style={styles.textoInfoRegistro}>{salida.emisor}</Text>
+                    </VStack>
                 </HStack>
                 <HStack spacing={10}>
-                    <Text style={{ color: textColor, width: "50%", fontSize: textSize }}>Comunidad: {salida.comunidad}</Text>
-                    <Text style={{ color: textColor, width: "50%", fontSize: textSize }}>Evento: {salida.evento}</Text>
+                    <VStack style={{width: '50%'}}>
+                        <Text style={styles.subtituloInfoRegistro}>Comunidad:</Text>
+                        <Text style={styles.textoInfoRegistro}>{salida.comunidad}</Text>
+                    </VStack>
+                    <VStack style={{width: '50%'}}>
+                        <Text style={styles.subtituloInfoRegistro}>Evento:</Text>
+                        <Text style={styles.textoInfoRegistro}>{salida.evento}</Text>
+                    </VStack>
                 </HStack>
                 <Box>
-                    <Text style={{ color: textColor, fontSize: textSize }}>Observaciones: {salida.observaciones}</Text>
+                    <Text style={styles.subtituloInfoRegistro}>Observaciones: </Text>
+                    <Text style={styles.textoInfoRegistro}>{salida.observaciones}</Text>
                 </Box>
             </VStack>
         </Box>
