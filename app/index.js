@@ -1,16 +1,44 @@
-import { View, Text } from "react-native";
+import { View, Text, Pressable } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
+<<<<<<< HEAD
 import Paginfo from "./infoDestino";
+=======
+import { router } from "expo-router";
+import { Button, Stack } from "@react-native-material/core";
+>>>>>>> ced
 
 const Home = () => { 
     return ( 
-
     <SafeAreaProvider> 
+<<<<<<< HEAD
         <View> 
             <Paginfo/> 
         </View> 
     </SafeAreaProvider>    
+=======
+        <Stack fill center spacing={20}>
+>>>>>>> ced
 
+            {/* PARA QUE LOS REDIRIJA A SU PAGINA CAMBIEN EL "/" POR EL NOMBRE DEL ARCHIVO DE SU PAGINA PRINCIPAL */}
+            
+            <Button
+                title="chernobyl"
+                onPress={() => router.replace("/")}
+            />
+            <Button
+                title="eq2"
+                onPress={() => router.replace("/")}
+            />
+            <Button
+                title="adise"
+                onPress={() => router.replace("/")}
+            />
+            <Button
+                title="ced"
+                onPress={() => router.replace("/resumenSalida")}
+            />
+        </Stack> 
+    </SafeAreaProvider>
     )
 }
 
