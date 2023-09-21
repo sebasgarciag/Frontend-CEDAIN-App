@@ -1,41 +1,29 @@
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { StyleSheet, Text } from "react-native";
 import { Button } from "react-native-paper";
 import React, { useState } from "react";
-import { Stack, TextInput, Flex, HStack } from "@react-native-material/core";
-import { BurgerButton, UserButton } from "../src/components/UI/uiButtons";
+import {
+  Stack,
+  IconButton,
+  TextInput,
+  Flex,
+  HStack,
+} from "@react-native-material/core";
+import { BurgerButton, UserButton } from "../../components/UI/uiButtons";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
-import AntDesign from "@expo/vector-icons/AntDesign";
-import { Dropdown } from "react-native-element-dropdown";
-const data = [
-  { label: "Administrador", value: "Administrador" },
-  { label: "Almacenista", value: "Almacenista" },
-];
 
-export default function EditarUsuarioPage() {
+export default function CambiarContrasenaPage() {
   const [isEditable, setEditable] = useState(false);
-  const [nombre, setNombre] = useState("Paco");
-  const [apellidoPaterno, setApellidoPaterno] = useState("Martínez");
-  const [apellidoMaterno, setApellidoMaterno] = useState("Gonzales");
-  const [email, setEmail] = useState("paco.martinez@gmail.com");
-  const [editarText, setEditarText] = useState("Editar");
-  const [rol, setRol] = useState("Almacenista");
+  //   const [editarText, setEditarText] = useState('Editar')
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [isNewPasswordVisible, setIsNewPasswordVisible] = useState(false);
+  const [arePasswordEqual, setarePasswordEqual] = useState(false);
 
-  const renderItem = (item) => {
-    return (
-      <View style={styles.item}>
-        <Text style={styles.textItem}>{item.label}</Text>
-        {item.value === rol && (
-          <AntDesign
-            style={styles.icon}
-            color="black"
-            name="Safety"
-            size={20}
-          />
-        )}
-      </View>
-    );
+  const toggleNewPasswordVisibility = () => {
+    setIsNewPasswordVisible(!isNewPasswordVisible);
   };
 
+  // poner lo de los sets en los inputs
   const handleSumbit = () => {
     //request a backend
     alert("Enlace clickeado");
@@ -58,12 +46,8 @@ export default function EditarUsuarioPage() {
     // togglear valor del botón editar-cancelar edición
     // prender submit
     // si se cancela edición
-        // volver los valores a los que estaban inicialmente
-        // apagar submit
-  };
-
-  const handleLinkClick = () => {
-    alert("Enlace clickeado");
+    // volver los valores a los que estaban inicialmente
+    // apagar submit
   };
 
   return (
@@ -81,75 +65,50 @@ export default function EditarUsuarioPage() {
         <Text
           style={[
             styles.subtitle,
-            { margin: 20, alignSelf: "center", marginBottom: 10, marginTop: 0 },
+            {
+              margin: 20,
+              alignSelf: "center",
+              marginBottom: 10,
+              marginTop: 0,
+              fontSize: 30,
+            },
           ]}
         >
-          Datos del usuario
+          Cambiar contraseña
         </Text>
         <TextInput
-          label="Nombre"
-          leading={(props) => <Icon name="account" {...props} />}
-          editable={isEditable}
-          value={nombre}
-          inputStyle={isEditable ? styles.editable : styles.view_only}
-          onChangeText={(text) => setNombre(text)}
-        />
-        <TextInput
-          label="Apellido paterno"
-          leading={(props) => <Icon name="account" {...props} />}
-          editable={isEditable}
-          value={apellidoPaterno}
-          inputStyle={isEditable ? styles.editable : styles.view_only}
-          onChangeText={(text) => setApellidoPaterno(text)}
-        />
-        <TextInput
-          label="Apellido materno"
-          leading={(props) => <Icon name="account" {...props} />}
-          editable={isEditable}
-          value={apellidoMaterno}
-          inputStyle={isEditable ? styles.editable : styles.view_only}
-          onChangeText={(text) => setApellidoMaterno(text)}
-        />
-        <TextInput
-          label="email"
+          label="Nueva contraseña"
           variant="outlined"
-          editable={isEditable}
-          value={email}
-          inputStyle={isEditable ? styles.editable : styles.view_only}
-          onChangeText={(text) => setEmail(text)}
-        />
-        <Text marginTop={10}>Rol</Text>
-        <Dropdown
-          style={styles.dropdown}
-          placeholderStyle={styles.placeholderStyle}
-          selectedTextStyle={isEditable ? styles.editable : styles.view_only}
-          inputSearchStyle={styles.inputSearchStyle}
-          iconStyle={styles.iconStyle}
-          data={data}
-          disable={!isEditable}
-          maxHeight={300}
-          labelField="label"
-          valueField="value"
-          placeholder="Select item"
-          value={rol}
-          onChange={(item) => {
-            setRol(item.value);
-          }}
-          renderLeftIcon={() => (
-            <AntDesign
-              style={styles.icon}
-              color="black"
-              name="Safety"
-              size={20}
+          value={newPassword}
+          onChangeText={(text) => setNewPassword(text)}
+          secureTextEntry={!isNewPasswordVisible}
+          style={{ marginTop: 100 }}
+          trailing={
+            <IconButton
+              icon={(props) => (
+                <Icon
+                  name={isNewPasswordVisible ? "eye" : "eye-off"}
+                  {...props}
+                  onPress={toggleNewPasswordVisibility}
+                />
+              )}
             />
-          )}
-          renderItem={renderItem}
+          }
         />
+        <TextInput
+          label="Confirmar contraseña"
+          variant="outlined"
+          value={confirmPassword}
+          onChangeText={(text) => setConfirmPassword(text)}
+          secureTextEntry={true}
+          style={{ marginTop: 20 }}
+        />
+        {/* <TextInput label="Label" variant="standard" marginBottom={}/> */}
         <Flex direction="row" justify="around" marginTop={80}>
           <GenericButton
             onPress={handleEditable}
             style={buttonStyles.volverB}
-            text={editarText}
+            text="Cancelar"
             mode="contained"
             disabled={false}
           />
@@ -159,21 +118,17 @@ export default function EditarUsuarioPage() {
             text="Aceptar cambios"
             style={buttonStyles.volverB}
             labelStyle={
-              isEditable
+              arePasswordEqual
                 ? buttonStyles.editable_button
                 : buttonStyles.view_only_button
             }
+            // Cambiar color a gray con isEditable
             width={500}
-            disabled={!isEditable}
+            disabled={!arePasswordEqual}
+            // disabled={true}
             mode="contained"
           />
         </Flex>
-        <TouchableOpacity
-          onPress={handleLinkClick}
-          style={{ marginTop: 10, alignSelf: "center", width: "50%" }}
-        >
-          <Text style={styles.link}>Cambiar contraseña</Text>
-        </TouchableOpacity>
       </Stack>
     </>
   );

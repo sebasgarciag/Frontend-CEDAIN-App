@@ -1,5 +1,4 @@
 import React from 'react';
-import { View } from 'react-native';
 import { Button, IconButton } from 'react-native-paper'
 import buttonStyles from '../../assets/buttons/styles';
 
