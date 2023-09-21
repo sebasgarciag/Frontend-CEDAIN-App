@@ -3,10 +3,14 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 
 const Home = () => { 
     return ( 
+
     <SafeAreaProvider> 
         <View> 
             <Text>Home</Text> 
         </View> 
-    </SafeAreaProvider> ) }
+    </SafeAreaProvider>    
+
+    )
+}
 
 export default Home;
