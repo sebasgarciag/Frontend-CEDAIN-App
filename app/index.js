@@ -16,7 +16,7 @@ const Home = () => {
             />
             <Button
                 title="eq2"
-                onPress={() => router.replace("/")}
+                onPress={() => router.replace("/inventario")}
             />
             <Button
                 title="adise"
