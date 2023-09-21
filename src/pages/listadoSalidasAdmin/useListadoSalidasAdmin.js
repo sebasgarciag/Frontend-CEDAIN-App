@@ -47,9 +47,6 @@ const useListadoSalidasAdmin = () => {
 
     ]);
 
-   
-
-
     return { salidas }
 }
 

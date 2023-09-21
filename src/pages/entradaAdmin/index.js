@@ -1,10 +1,10 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
-import {  Stack, Spacer, Divider, Text, HStack } from "@react-native-material/core";
-import { BurgerButton, ExportarButton, UserButton, VolverButton } from '../../components/UI/uiButtons';
+import { Stack, Text, HStack } from "@react-native-material/core";
+import { ExportarButton, VolverButton, MenuButton, ProfileButton } from '../../components/UI/uiButtons';
 import useEntradaAdmin from './useEntradaAdmin';
 import InfoEntrada from '../../components/UI/infoEntrada';
 import ProductosEntrada from '../../components/UI/productosEntrada';
+import styles from '../../assets/styles';
 
 const EntradaAdmin = () => {
 
@@ -12,15 +12,15 @@ const EntradaAdmin = () => {
   
   return (
     <>
-        <Stack options={{ title: "Entrada administrador" }} style={{flex: 1}}>
-          <HStack direction='row' justify='center' m={4} style={{justifyContent: 'space-between'}}>
-              <BurgerButton/>
-              <UserButton/>
+        <Stack style={styles.container}>
+          <HStack style={styles.headerContainer}>
+            <MenuButton onPress={() => { alert('Menú presionado'); }} />
+            <ProfileButton onPress={() => { alert('Perfil presionado'); }} />
           </HStack>
 
 
-          <Stack direction='row' m={5} marginBottom={15} style={{justifyContent: 'space-between', paddingLeft: 5, paddingRight: 5}}>
-              <Text  style={{fontWeight: 'bold', fontSize: 26}}>Entrada <Text style={{fontWeight: 'normal', fontSize: 20}}>{entrada.folioSerie}</Text></Text>
+          <Stack style={styles.titulosContainer}>
+              <Text  style={styles.headerText}>Entrada <Text style={styles.movFolioSerie}>{entrada.folioSerie}</Text></Text>
               <ExportarButton/>
           </Stack>        
 
@@ -30,7 +30,7 @@ const EntradaAdmin = () => {
           <ProductosEntrada datos={datosEntrada}/>
 
           {/*Boton de volver atras */}
-          <Stack direction='row' justify='center' margin={10}>
+          <Stack style={styles.volverContainer}>
               <VolverButton />
           </Stack>
 
@@ -40,7 +40,5 @@ const EntradaAdmin = () => {
    
   );
 };
-
-const styles = StyleSheet.create({});
 
 export default EntradaAdmin;
