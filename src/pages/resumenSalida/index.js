@@ -7,7 +7,7 @@ import ListaSalida from "../../components/entradasSalidas/listaResumen";
 import { Surface } from "react-native-paper";
 import { ScrollView } from "react-native-gesture-handler";
 
-const ResumenSalida = () => { 
+const Resumen = () => { 
 
     const { salida, datosSalida, handleCantidad } = useResumen();
 
@@ -46,4 +46,4 @@ const ResumenSalida = () => {
     );
 };
 
-export default ResumenSalida;
+export default Resumen;
