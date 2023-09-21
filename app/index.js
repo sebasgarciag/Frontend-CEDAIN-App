@@ -24,7 +24,7 @@ const Home = () => {
             />
             <Button
                 title="ced"
-                onPress={() => router.replace("/resumenSalida")}
+                onPress={() => router.replace("/infoDestino")}
             />
         </Stack> 
     </SafeAreaProvider>

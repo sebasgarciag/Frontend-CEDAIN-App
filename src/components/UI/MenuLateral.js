@@ -1,23 +1,50 @@
+// Menulateral.js
 import * as React from 'react';
+import { Text } from 'react-native';
 import { Drawer } from 'react-native-paper';
+import { router } from 'expo-router'; // Asegúrese de que la importación sea correcta
 
-const MyComponent = () => {
+
+const Menulateral = ({ isDrawerOpen }) => {
   const [active, setActive] = React.useState('');
 
+  if (!isDrawerOpen) {
+    return null;
+  }
+
   return (
-    <Drawer.Section title="Some title">
+    <Drawer.Section>
       <Drawer.Item
-        label="First Item"
+        label="Entrada Nueva"
         active={active === 'first'}
-        onPress={() => setActive('first')}
+        onPress={() => {
+          setActive('first');
+          router.replace("/resumenSalida");
+        }}
       />
       <Drawer.Item
-        label="Second Item"
+        label=" Ver Entradas"
+        active={active === 'second'}
+        onPress={() => setActive('second')}
+      />
+      <Drawer.Item
+        label=" Salida Nueva"
+        active={active === 'second'}
+        onPress={() => setActive('second')}
+      />
+      <Drawer.Item
+        label="Ver Salidas"
+        active={active === 'second'}
+        onPress={() => setActive('second')}
+      />
+      <Drawer.Item
+        label="Inventario"
         active={active === 'second'}
         onPress={() => setActive('second')}
       />
     </Drawer.Section>
+    
   );
 };
 
-export default MyComponent;
+export default Menulateral;
