@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { Button } from "react-native-paper";
 import React, { useState } from "react";
 import { Stack, TextInput, Flex, HStack } from "@react-native-material/core";
-import { BurgerButton, UserButton } from "../src/components/UI/uiButtons";
+import { BurgerButton, UserButton } from "../../components/UI/uiButtons";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import { Dropdown } from "react-native-element-dropdown";
