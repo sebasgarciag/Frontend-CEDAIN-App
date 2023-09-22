@@ -171,6 +171,17 @@ const styles = StyleSheet.create({
   textoProdMov:{
     paddingLeft: 10
   },
+  textoProd:{
+    paddingLeft: 10,
+    width: "75%"
+  },
+  textoCantidad: {
+    textAlign: "center",
+    fontSize: 20, 
+    fontWeight: "bold" , 
+    width: "25%",
+    verticalAlign: "middle",
+  },
   titulosContainer:{
     flexDirection: 'row',
     m: 5,
