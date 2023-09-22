@@ -26,6 +26,31 @@ const useListadoSalidasAlm = () => {
             idSalida: 5,
             cantidadArticulos: 140,
             fecha: '29/07/2023'
+        },
+        {
+            idSalida: 6,
+            cantidadArticulos: 120,
+            fecha: '15/08/2023'
+        }, 
+        {
+            idSalida: 7,
+            cantidadArticulos: 100,
+            fecha: '29/12/2023'
+        }, 
+        {
+            idSalida: 8,
+            cantidadArticulos: 210,
+            fecha: '26/08/2023'
+        }, 
+        {
+            idSalida: 9,
+            cantidadArticulos: 60,
+            fecha: '28/08/2023'
+        },
+        {
+            idSalida: 10,
+            cantidadArticulos: 140,
+            fecha: '29/07/2023'
         }
     ]);
 
