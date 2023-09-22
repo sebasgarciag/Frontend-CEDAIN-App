@@ -65,7 +65,7 @@ const Home = () => {
 
             <Button
                 title="ced"
-                onPress={() => router.replace("/infoDestino")}
+                onPress={() => router.replace("/crearSalida")}
             />
         </Stack> 
     </SafeAreaProvider>

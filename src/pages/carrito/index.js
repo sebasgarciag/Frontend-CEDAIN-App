@@ -4,12 +4,16 @@ import { Box, VStack } from "@react-native-material/core";
 import { ScrollView } from "react-native-gesture-handler";
 import ProductoCarrito from "../../components/entradasSalidas/productoCarrito";
 import useCarrito from "./hookProductoCarrito";
+import { VolverButton } from '../../components/UI/uiButtons';
+import buttonStyles from "../../assets/buttons/styles";
+import styles from '../../assets/styles';
 
 const ArticulosCarrito = () => {  
 
     const {carrito, handleCantidad, aumentarCantidad, disminuirCantidad, handleExpandirInfo} = useCarrito();
 
 return (
+    <View style={styles.container}>
     <ScrollView>
     <VStack style={{ padding: 10 }} spacing={20}>
 
@@ -31,6 +35,11 @@ return (
         </View>
     </VStack>
     </ScrollView>
+    <View style={ buttonStyles.containerNavegacion }>
+        <VolverButton path={"crearSalida"} />
+        <VolverButton path={"infoDestino"} />
+    </View>
+    </View>
 );
 
 };
