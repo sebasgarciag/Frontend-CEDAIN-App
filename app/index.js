@@ -6,6 +6,7 @@ import { Button, Stack } from "@react-native-material/core";
 
 const Home = () => { 
     const [showAdiseButtons, setShowAdiseButtons] = useState(false);
+    const [showEq2Buttons, setShowEq2Buttons] = useState(false);
 
     return ( 
     <SafeAreaProvider> 
@@ -17,15 +18,28 @@ const Home = () => {
                 title="chernobyl"
                 onPress={() => router.replace("/")}
             />
-            <Button
-                title="eq2"
-                onPress={() => router.replace("/inventario")}
-            />
+
             <Button
                 title="adise"
                 onPress={() => setShowAdiseButtons(!showAdiseButtons)}
             />
+            <Button
+                title="Eq2"
+                onPress={() => setShowEq2Buttons(!showEq2Buttons)}
+            />
             
+            {showEq2Buttons && (
+                <>
+                    <Button
+                        title="Eq2 Inventario"
+                        onPress={() => router.replace("/inventario")}
+                    />
+                    <Button
+                        title="eq2 editar inventario"
+                        onPress={() => router.replace("/editarInventario")}
+                    />
+                </>
+            )}
             {showAdiseButtons && (
                 <>
                     <Button
