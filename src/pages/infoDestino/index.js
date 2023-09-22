@@ -10,6 +10,7 @@ import TextboxReceptor from "../../components/UI/textBoxReceptor";
 import NavBar from "../../components/UI/NavBar"
 import { ScrollView } from "react-native-gesture-handler";
 import useInfoDestinoEvento from "./hookInfoDestinoEvento";
+import styles from '../../assets/styles';
 
 
 
@@ -23,8 +24,9 @@ const Paginfo = () => {
     return ( 
     
     <ScrollView>
-        <NavBar toggleDrawer={toggleDrawer}/>
-        <Menulateral isDrawerOpen={isDrawerOpen} />
+        <HStack style={styles.headerContainerOnlyText}>
+            <Text  style={styles.headerText}>Informacion de Destino</Text>
+        </HStack>
         <VStack spacing={20} style={{padding: 10}}> 
             <DropdownE 
                 setValueEvento={setValueEvento} 

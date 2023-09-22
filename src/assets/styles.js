@@ -189,7 +189,45 @@ const styles = StyleSheet.create({
   movFolioSerie: {
     fontWeight: 'normal',
     fontSize: 20
-  }
+  },
+  containerDropDown: {
+		padding: 16
+	},
+	dropdown: {
+		padding: 10,
+		borderColor: 'gray',
+		borderWidth: 0.5,
+		borderRadius: 8
+	},
+	iconDropDown: {
+		marginRight: "2%"
+	},
+	labelDropDown: {
+		backgroundColor: 'white',
+		paddingHorizontal: 8,
+		fontSize: 14
+	},
+	placeholderStyleDropDown: {
+		fontSize: 16
+	},
+	selectedTextStyleDropDown: {
+		fontSize: 16
+	},
+	iconStyleDropDown: {
+		width: 20,
+		height: 20
+	},
+	inputSearchStyleDropDown: {
+		height: 40,
+		fontSize: 16
+	},
+  headerContainerOnlyText: {
+    flexDirection: 'row',
+    justifyContent: 'center', 
+    paddingHorizontal: 10,
+    paddingVertical: 15,
+    marginBottom: 10,
+  },
 
 
 });
