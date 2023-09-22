@@ -3,7 +3,9 @@ import { View, Text} from 'react-native';
 import { Box, VStack } from "@react-native-material/core";
 import { ScrollView } from "react-native-gesture-handler";
 import ProductoCarrito from "../../components/entradasSalidas/productoCarrito";
+import TotalProductos from '../../components/entradasSalidas/totalProductos';
 import useCarrito from "./hookProductoCarrito";
+import { Surface } from 'react-native-paper';
 
 const ArticulosCarrito = () => {  
 
@@ -29,6 +31,14 @@ return (
             />
             ))}
         </View>
+        <Surface style={{
+            width: '35%',
+            padding: 16,
+            borderRadius: 10,
+            alignItems: "center"
+        }}>
+            <TotalProductos carrito={carrito}/>
+        </Surface>
     </VStack>
     </ScrollView>
 );

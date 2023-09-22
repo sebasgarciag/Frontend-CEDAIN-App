@@ -6,7 +6,7 @@ const Home = () => {
 
     <SafeAreaProvider> 
         <View> 
-            <Text>Home</Text> 
+            <Text>Home</Text>
         </View> 
     </SafeAreaProvider>    
 
