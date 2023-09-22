@@ -4,6 +4,7 @@ import { Button, IconButton } from 'react-native-paper'
 import buttonStyles from '../../assets/buttons/styles';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import styles from '../../assets/styles';
+import { router } from 'expo-router';
 
 const MenuButton = ({ onPress, style }) => (
   <TouchableOpacity style={style} onPress={onPress}>
@@ -11,9 +12,9 @@ const MenuButton = ({ onPress, style }) => (
   </TouchableOpacity>
 );
 
-const VolverButton = ({ onPress }) => {
+const VolverButton = ({ path }) => {
   return (
-    <TouchableOpacity style={[styles.volverButton, { backgroundColor: '#59CD90' }]}>
+    <TouchableOpacity style={[styles.volverButton, { backgroundColor: '#59CD90' }]} onPress={() => router.replace(`/${path}`)}>
       <Icon name="arrow-back" size={24} color="#F1EFE3" />
       <Text style={styles.buttonText}>Volver</Text>
     </TouchableOpacity>

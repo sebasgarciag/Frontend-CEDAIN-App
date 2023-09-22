@@ -1,14 +1,16 @@
-import { Box, HStack, Spacer, Stack, VStack } from "@react-native-material/core";
+import { Spacer, VStack } from "@react-native-material/core";
 import { React, useState } from 'react';
 import Menulateral from "../../components/UI/MenuLateral";
 import DropdownE from "../../components/UI/dropDownE";
-import BotonASC from "../../components/UI/BotonASC";
 import TextboxComentario from "../../components/UI/textBoxComentario";
 import TextboxReceptor from "../../components/UI/textBoxReceptor";
 import NavBar from "../../components/UI/NavBar"
 import { ScrollView } from "react-native-gesture-handler";
 import useInfoDestinoEvento from "./hookInfoDestinoEvento";
-
+import { VolverButton } from "../../components/UI/uiButtons";
+import { View } from "react-native";
+import buttonStyles from "../../assets/buttons/styles";
+import styles from "../../assets/styles";
 
 const Paginfo = () => { 
     const{ setValueEvento, dataDropDownEvento, valueEvento } = useInfoDestinoEvento();
@@ -17,7 +19,7 @@ const Paginfo = () => {
       setIsDrawerOpen(!isDrawerOpen);};
     
     return ( 
-    
+    <View style={styles.container}>
     <ScrollView>
         <NavBar toggleDrawer={toggleDrawer}/>
         <Menulateral isDrawerOpen={isDrawerOpen} />
@@ -39,8 +41,13 @@ const Paginfo = () => {
             <TextboxReceptor/>
         </VStack>
 
-        <BotonASC textoBoton1={"Anterior"} textoBoton2={"Siguiente"} direccion1={"carrito"} direccion2={"resumenSalida"}/>
+        <View style={ buttonStyles.containerNavegacion }>
+                <VolverButton path={"carrito"} />
+                <VolverButton path={"resumenSalida"} />
+        </View>
+
     </ScrollView> 
+    </View>
 )}
 
 export default Paginfo;
