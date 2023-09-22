@@ -9,6 +9,7 @@ import { VolverButton } from "../../components/UI/uiButtons";
 import { View, Text } from "react-native";
 import buttonStyles from "../../assets/buttons/styles";
 import styles from "../../assets/styles";
+import MenuHamburguesa from '../../components/UI/MenuHambuguesa';
 
 const Paginfo = () => { 
     const{ setValueEvento, dataDropDownEvento, valueEvento } = useInfoDestinoEvento();
@@ -16,6 +17,8 @@ const Paginfo = () => {
     return ( 
     <View style={styles.container}>
     <ScrollView>
+        <MenuHamburguesa toggleDrawer={toggleDrawer}/>
+        <Menulateral isDrawerOpen={isDrawerOpen} />
         <HStack style={styles.headerContainerOnlyText}>
             <Text  style={styles.headerText}>Informacion de Destino</Text>
         </HStack>
