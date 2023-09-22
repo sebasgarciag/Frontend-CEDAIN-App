@@ -6,13 +6,14 @@ import CuadroSalida from "../../components/entradasSalidas/cuadroResumen";
 import ListaSalida from "../../components/entradasSalidas/listaResumen";
 import { Surface } from "react-native-paper";
 import { ScrollView } from "react-native-gesture-handler";
+import BotonASC from "../../components/UI/BotonASC";
 
 const Resumen = () => { 
 
     const { salida, datosSalida, handleCantidad } = useResumen();
 
     return (
-
+        <>
         <ScrollView>
         <VStack style={{ padding: 10 }} spacing={20}>
             <Box style={{ backgroundColor: "black", padding: 10, borderRadius: 10 }}>
@@ -43,6 +44,8 @@ const Resumen = () => {
 
         </VStack>
         </ScrollView>
+        <BotonASC textoBoton1={"Anterior"} textoBoton2={"Terminar"} direccion1={"infoDestino"} direccion2={""}/>
+        </>
     );
 };
 

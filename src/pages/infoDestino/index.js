@@ -1,7 +1,5 @@
-import { View, Text } from "react-native";
-import { SafeAreaProvider } from "react-native-safe-area-context";
 import { Box, HStack, Spacer, Stack, VStack } from "@react-native-material/core";
-import React, { useState } from 'react';
+import { React, useState } from 'react';
 import Menulateral from "../../components/UI/MenuLateral";
 import DropdownE from "../../components/UI/dropDownE";
 import BotonASC from "../../components/UI/BotonASC";
@@ -12,14 +10,12 @@ import { ScrollView } from "react-native-gesture-handler";
 import useInfoDestinoEvento from "./hookInfoDestinoEvento";
 
 
-
-
-
 const Paginfo = () => { 
     const{ setValueEvento, dataDropDownEvento, valueEvento } = useInfoDestinoEvento();
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const toggleDrawer = () => {
       setIsDrawerOpen(!isDrawerOpen);};
+    
     return ( 
     
     <ScrollView>
@@ -42,7 +38,8 @@ const Paginfo = () => {
             <Spacer/>
             <TextboxReceptor/>
         </VStack>
-        <BotonASC textoBoton1={"Cancelar"}textoBoton2={"Siguiente"}/>
+
+        <BotonASC textoBoton1={"Anterior"} textoBoton2={"Siguiente"} direccion1={"carrito"} direccion2={"resumenSalida"}/>
     </ScrollView> 
 )}
 
