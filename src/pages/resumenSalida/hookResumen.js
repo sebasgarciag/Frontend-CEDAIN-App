@@ -2,6 +2,8 @@ import { useState } from "react";
 
 const useResumen = () => {
     const [salida, setSalida] = useState({
+        idSalida: 1,
+        folioSerie: "folio1",
         receptor: "receptor1",
         emisor: "emisor1",
         comunidad: "comunidad1",

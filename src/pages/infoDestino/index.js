@@ -5,13 +5,10 @@ import TextboxComentario from "../../components/UI/textBoxComentario";
 import TextboxReceptor from "../../components/UI/textBoxReceptor";
 import { ScrollView } from "react-native-gesture-handler";
 import useInfoDestinoEvento from "./hookInfoDestinoEvento";
-import { VolverButton } from "../../components/UI/uiButtons";
+import { VolverButtonN } from "../../components/UI/uiButtons";
 import { View, Text } from "react-native";
 import buttonStyles from "../../assets/buttons/styles";
 import styles from "../../assets/styles";
-import MenuHamburguesa from '../../components/UI/MenuHambuguesa';
-import { VolverButtonN } from "../../components/UI/uiButtons";
-import { SiguienteButtonN } from "../../components/UI/uiButtons";
 import { useNavigation } from '@react-navigation/native';
 import useCurrentScreen from "../../components/UI/useCurrentScreen";
 
@@ -31,7 +28,7 @@ const Paginfo = () => {
  
     <ScrollView>
     
-        <HStack style={styles.headerContainerOnlyText}>
+        <HStack style={styles.titulosContainer}>
             <Text  style={styles.headerText}>Informacion de Destino</Text>
         </HStack>
         <VStack spacing={20} style={{padding: 10}}> 
