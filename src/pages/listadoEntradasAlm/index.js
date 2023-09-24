@@ -5,6 +5,7 @@ import { MenuButton, FilterButton, ProfileButton, VolverButton } from '../../com
 import ListaEntradasAlm from '../../components/UI/listaEntradasAlm';
 import useListadoEntradasAlm from './useListadoEntradasAlm';
 import styles from '../../assets/styles';
+import { router } from "expo-router";
 
 
 const ListadoEntradasAlm = () => {
@@ -35,7 +36,9 @@ const ListadoEntradasAlm = () => {
             <Divider/>
             
             <Stack style={{justifyContent: 'center', alignItems: 'center', margin: 10}}>
-              <VolverButton />
+              <VolverButton onPress={() => { router.replace("/inventario"); }} />
+
+              
             </Stack>
 
           </Stack>
