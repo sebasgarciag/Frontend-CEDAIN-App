@@ -67,8 +67,8 @@ const Paginfo = () => {
             </VStack>
             </ScrollView> 
             <View style={ buttonStyles.containerNavegacion }>
-                    <VolverButtonN navigation={navigation} path={"Carrito"} setScreen={setScreen} screen={"Carrito"}/>
-                    <SiguienteButtonN navigation={navigation} path={"ResumenSalida"} setScreen={setScreen} screen={"ResumenSalida"}/>
+                    <VolverButtonN navigation={navigation} path={"Carrito"} />
+                    <SiguienteButtonN navigation={navigation} path={"ResumenSalida"} />
             </View>
     
 

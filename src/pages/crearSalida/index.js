@@ -1,10 +1,12 @@
 import React from "react";
 import useSeleccion from "./hookSeleccionProducto";
 import ListaProductos from "../../components/entradasSalidas/listaProductos";
-import { View } from "react-native";
+import { View, Text } from "react-native";
+import { HStack } from "@react-native-material/core";
 import buttonStyles from "../../assets/buttons/styles";
 import styles from "../../assets/styles";
 import { useNavigation } from '@react-navigation/native';
+import { VolverButtonN, SiguienteButtonN } from "../../components/UI/uiButtons";
 
 const SeleccionProductos = () => { 
     const navigation = useNavigation();
