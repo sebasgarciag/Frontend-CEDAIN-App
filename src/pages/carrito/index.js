@@ -12,6 +12,7 @@ import styles from '../../assets/styles';
 import { VolverButtonN } from "../../components/UI/uiButtons";
 import { SiguienteButtonN } from "../../components/UI/uiButtons";
 import { useNavigation } from '@react-navigation/native';
+import useCurrentScreen from "../../components/UI/useCurrentScreen";
 
 const ArticulosCarrito = () => {  
     const navigation = useNavigation();

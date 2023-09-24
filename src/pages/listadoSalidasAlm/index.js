@@ -12,7 +12,7 @@ import useCurrentScreen from '../../components/UI/useCurrentScreen';
 const ListadoSalidasAlm = () => {
     const navigation = useNavigation();
     const {salidas} = useListadoSalidasAlm();
-    const {currentScreen,setScreen} = useCurrentScreen(); 
+    const { currentScreen, setScreen } = useCurrentScreen(); 
 
   return (
     <>
@@ -20,7 +20,7 @@ const ListadoSalidasAlm = () => {
           <HStack style={styles.headerContainer}>
             <VStack>
                 <Text style={styles.headerText}>Salidas</Text>
-                <Text style={{font: 16}}>Nombre Almacenista</Text>
+                <Text>Nombre Almacenista</Text>
             </VStack>
           </HStack>
   
