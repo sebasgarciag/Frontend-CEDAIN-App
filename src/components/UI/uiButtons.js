@@ -26,7 +26,7 @@ const VolverButton = ({ path }) => {
 const VolverButtonN = ({navigation, path, setScreen, screen}) => {
 
   return (
-    <TouchableOpacity style={[styles.volverButton, { backgroundColor: '#59CD90' }]} 
+    <TouchableOpacity style={[styles.volverButton, { backgroundColor: '#8F8B36' }]} 
       onPress={() => {
       navigation.navigate(`${path}`);
       setScreen(screen)
@@ -40,7 +40,7 @@ const VolverButtonN = ({navigation, path, setScreen, screen}) => {
 const SiguienteButtonN = ({navigation, path, setScreen, screen}) => {
 
   return (
-    <TouchableOpacity style={[styles.volverButton, { backgroundColor: '#59CD90' }]} 
+    <TouchableOpacity style={[styles.volverButton, { backgroundColor: '#8F8B36' }]} 
       onPress={() => {
       navigation.navigate(`${path}`);
       setScreen(screen)

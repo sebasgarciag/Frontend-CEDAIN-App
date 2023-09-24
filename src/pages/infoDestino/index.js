@@ -51,13 +51,13 @@ const Paginfo = () => {
             <Spacer/>
             <TextboxReceptor/>
         </VStack>
-
+        </ScrollView> 
         <View style={ buttonStyles.containerNavegacion }>
                 <VolverButtonN navigation={navigation} path={"Carrito"} setScreen={setScreen} screen={"Carrito"}/>
                 <SiguienteButtonN navigation={navigation} path={"ResumenSalida"} setScreen={setScreen} screen={"ResumenSalida"}/>
         </View>
   
-    </ScrollView> 
+
     
     </View>
 

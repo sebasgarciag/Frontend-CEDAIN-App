@@ -9,11 +9,16 @@ import { ScrollView } from "react-native-gesture-handler";
 import { VolverButton } from "../../components/UI/uiButtons";
 import buttonStyles from "../../assets/buttons/styles";
 import styles from "../../assets/styles";
+import { VolverButtonN } from "../../components/UI/uiButtons";
+import { SiguienteButtonN } from "../../components/UI/uiButtons";
+import { useNavigation } from "expo-router";
+import useCurrentScreen from "../../components/UI/useCurrentScreen";
 
 const Resumen = () => { 
 
     const { salida, datosSalida, handleCantidad } = useResumen();
-
+    const navigation = useNavigation();
+    const {currentScreen,setScreen} = useCurrentScreen(); 
     return (
         <>
         <ScrollView>
@@ -49,19 +54,15 @@ const Resumen = () => {
 
                     </HStack> */}
 
-                </Surface>
-
-                
-
-                
+                </Surface> 
             )}
 
         </VStack>
         </ScrollView>
         {/* <BotonASC textoBoton1={"Anterior"} textoBoton2={"Terminar"} direccion1={"infoDestino"} direccion2={""}/> */}
         <View style={ buttonStyles.containerNavegacion }>
-            <VolverButton path={"infoDestino"} />
-            <VolverButton path={""} />
+                <VolverButtonN navigation={navigation} path={"InfoDestinoN"} setScreen={setScreen} screen={"InfoDestino"}/>
+                <SiguienteButtonN navigation={navigation} path={"Home"} setScreen={setScreen} screen={""}/>
         </View>
         </>
     );

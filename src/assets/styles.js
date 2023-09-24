@@ -115,6 +115,8 @@ const styles = StyleSheet.create({
     color: '#F1EFE3',
     fontSize: 16,
     marginLeft: 10,
+    marginRight: 10,
+    fontWeight: 'bold',
   },
 
   entradaContainer: {
@@ -135,8 +137,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 20,
-    height: 40,
-    width: 120
+    width: '37%',
+    padding: 10,
   },
 
   cuandroInfoRegistro: {

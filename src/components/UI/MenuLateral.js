@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     color: '#F74A3E',
-    marginBottom: '20',
+    marginBottom: '30',
     textAlign: 'center'
   },
   image: {

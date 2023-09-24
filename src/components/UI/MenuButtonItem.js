@@ -21,7 +21,7 @@ const MenuButtonItem = ({ text, currentScreen, onPress }) => {
       backgroundColor,
       padding: 12,
       borderRadius: 35,
-      marginBottom: 15,
+      marginTop: 15,
     },
     textButton: {
       color: textColor,
