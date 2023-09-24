@@ -1,13 +1,21 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { TextInput } from 'react-native';
 import { HStack, Stack, Text, Divider, VStack } from "@react-native-material/core";
 import { MenuButton, FilterButton, ProfileButton, VolverButton } from '../../components/UI/uiButtons';
 import ListaEntradasAlm from '../../components/UI/listaEntradasAlm';
 import useListadoEntradasAlm from './useListadoEntradasAlm';
+import Menulateral from '../../components/UI/MenuLateral';
+import UserMenu from '../../components/UI/userMenu';
 import styles from '../../assets/styles';
 
 
 const ListadoEntradasAlm = () => {
+    const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+    const toggleDrawer = () => {setIsDrawerOpen(!isDrawerOpen);};
+    const [isUserDrawerOpen, setIsUserDrawerOpen] = useState(false);
+    const toggleUserDrawer = () => {setIsUserDrawerOpen(!isUserDrawerOpen);};
+    const [isModalVisible, setIsModalVisible] = useState(false);
+    const toggleModal = () => {setIsModalVisible(!isModalVisible);};
 
     const {entradas} = useListadoEntradasAlm();
 
@@ -15,13 +23,16 @@ const ListadoEntradasAlm = () => {
         <>
           <Stack style={styles.container}>
             <HStack style={styles.headerContainer}>
-              <MenuButton  onPress={() => { alert('Menú presionado'); }} />
+              <MenuButton  onPress={toggleDrawer} />
               <VStack style={{alignItems: 'center'}}>
                   <Text style={styles.headerText}>Entradas</Text>
                   <Text style={{font: 16}}>Nombre Almacenista</Text>
               </VStack>
-              <ProfileButton  onPress={() => { alert('Perfil presionado'); }} />
+              <ProfileButton  onPress={toggleUserDrawer} />
             </HStack>
+
+            <Menulateral isDrawerOpen={isDrawerOpen}/>
+            <UserMenu isDrawerOpen={isUserDrawerOpen}/>
 
                 {/*Boton de aplicar Filtros a lista de entradas */}
             <Stack style={styles.searchFilterContainer}>
