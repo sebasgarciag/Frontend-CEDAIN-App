@@ -1,23 +1,20 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Button } from 'react-native-paper';
-import { router } from 'expo-router';
 
-const BotonASC = ({ textoBoton1, textoBoton2, direccion1, direccion2 }) => {
+const BotonASC = ({ textoBoton1, textoBoton2, accionBoton1, accionBoton2 }) => {
 	return (
 		<View style={styles2.buttonContainer}>
-			
 			<Button 
 				mode="contained" 
-				// onPress={accionBoton1}
-				onPress={() => router.replace(`/${direccion1}`)}
+				onPress={accionBoton1}
 				style={{ backgroundColor: '#D2B48C' }}  // Color tierra clara para el fondo
 			>
 				{textoBoton1}
 			</Button>
 			<Button 
 				mode="contained" 
-				onPress={() => router.replace(`/${direccion2}`)} 
+				onPress={accionBoton2} 
 				style={{ backgroundColor: '#D2B48C' }}  // Color tierra clara para el fondo
 			>
 				{textoBoton2}

@@ -1,42 +1,23 @@
 import React from "react";
-import { Text, Image, TextInput } from "react-native";
-import { Flex, HStack, VStack } from "@react-native-material/core";
-import styles from "../../assets/styles";
+import { Text, Image } from "react-native";
+import { HStack, VStack } from "@react-native-material/core";
 
-function ListaSalida({ datos, handleCantidad }) { 
+function ListaSalida({ datos }) { 
 
     return (
                 
-                    <HStack spacing={10}>
-                        <VStack style={{justifyContent: "center"}} >
-                            <Image 
-                                source={require('../../assets/imagenes/ware.jpg')} // TODO: cambiar por imagen del producto
-                                style={ styles.productImage }
-                            />
-                        </VStack>
-                        
-                        <HStack fill>
-                        <VStack spacing={3} style={styles.textoProd}>
-                            <Text style={styles.productName}>{datos.producto}</Text>
-                            <HStack spacing={20}>
-                                <VStack>
-                                    <Text style={styles.productDato}>Tamano: {datos.tamano}</Text>
-                                    <Text style={styles.productDato}>Precio: {datos.precio}</Text>
-                                </VStack>
-                            </HStack>
-                        </VStack>
-                        
-                        {/* <Text style={styles.textoCantidad}>{datos.cantidad}</Text>  */}
-
-                        <TextInput 
-                                style={styles.textoCantidad} 
-                                defaultValue="0"
-                                onChangeText={ newCantidad => handleCantidad(datos.producto, newCantidad) } // TODO: agregar verificacion de inventario
-                                value={( datos.cantidad.toString() )}
-                                keyboardType="numeric"
+                    <HStack>
+                        <Image 
+                            source={require('../../assets/imagenes/ware.jpg')} // TODO: cambiar por imagen del producto
+                            style={{width: "25%", aspectRatio: 1, borderRadius: 10}}
                         />
-
-                        </HStack>
+                        
+                        <VStack style={{width: "50%", paddingLeft: 10 }}>
+                            <Text style={{ color: "black", fontSize: 20, fontWeight: "bold" }}>{datos.producto}</Text>
+                            <Text style={{ color: "black", fontSize: 15 }}>{datos.tamano}</Text>
+                        </VStack>
+                        
+                        
                     </HStack>
        
     );
