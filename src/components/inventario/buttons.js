@@ -1,0 +1,34 @@
+
+import React from 'react';
+import { TouchableOpacity } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+
+export const ProfileButton = ({ onPress, style }) => (
+  <TouchableOpacity style={style} onPress={onPress}>
+    <Icon name="person" size={30} color="#333" />
+  </TouchableOpacity>
+);
+
+export const MenuButton = ({ onPress, style }) => (
+  <TouchableOpacity style={style} onPress={onPress}>
+    <Icon name="menu" size={30} color="#333" />
+  </TouchableOpacity>
+);
+
+export const FilterButton = ({ onPress, style }) => (
+  <TouchableOpacity style={style} onPress={onPress}>
+    <Icon name="filter-list" size={24} color="#5B4C40" />
+  </TouchableOpacity>
+);
+
+export const ArrowButton = ({ onPress, style }) => (
+  <TouchableOpacity style={style} onPress={onPress}>
+    <Icon name="arrow-forward-ios" size={24} color="#333" />
+  </TouchableOpacity>
+);
+
+export const ImportInventoryButton = ({ onPress, style }) => (
+  <TouchableOpacity style={style} onPress={onPress}>
+    <Icon name="upload-file" size={30} color="#333" />
+  </TouchableOpacity>
+);

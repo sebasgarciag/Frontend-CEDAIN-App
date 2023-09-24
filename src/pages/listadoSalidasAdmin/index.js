@@ -1,10 +1,11 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
-import { HStack, Text, Stack, Divider, VStack } from "@react-native-material/core";
-import { BurgerButton, UserButton, VolverButton, FiltrosButton } from '../../components/UI/uiButtons';
-import BarraBusqueda from '../../components/UI/searchbar';
+import { TextInput } from 'react-native';
+import { HStack, Text, Stack, Divider} from "@react-native-material/core";
+import { MenuButton, ProfileButton, VolverButton, FilterButton } from '../../components/UI/uiButtons';
 import ListaSalidasAdmin from '../../components/UI/listaSalidasAdmin';
 import useListadoSalidasAdmin from './useListadoSalidasAdmin';
+import styles from '../../assets/styles';
+
 
 
 const ListadoSalidasAdmin = () => {
@@ -13,36 +14,31 @@ const ListadoSalidasAdmin = () => {
 
   return (
     <>
-    <Stack options={{title: "Listado Salidas Administrador"}} flex={1}>
-        <HStack direction='row' justify='center' m={4}>
-            <BurgerButton/>
-            <BarraBusqueda/>
-            <UserButton />
-        </HStack>
+        <Stack style={styles.container}>
+            <HStack style={styles.headerContainer}>
+                <MenuButton  onPress={() => { alert('Menú presionado'); }} />
+                <Text style={styles.headerText}>Salidas</Text>
+                <ProfileButton  onPress={() => { alert('Perfil presionado'); }} />
+            </HStack>
 
-            {/*Boton de aplicar Filtros a lista de salidas */}
-        <Stack direction='row' m={5} marginBottom={15} style={{justifyContent: 'space-between', paddingRight: 8, paddingLeft: 8}}>
-            <VStack style={{alignItems: 'center', flex: 1}}>
-                <Text style={{fontWeight: 'bold', fontSize: 30}}>Salidas</Text>
-            </VStack>
-            <FiltrosButton />
-        </Stack>
+                {/*Boton de aplicar Filtros a lista de entradas */}
+            <Stack direction='row' style={styles.searchFilterContainer}>
+                <TextInput style={styles.searchInput} placeholder="Buscar..." placeholderTextColor="#8E8D8A" />
+                <FilterButton style={styles.filterButton} onPress={() => { alert('Filtro presionado'); }} />
+            </Stack>
 
-            {/*Las salidas apareceran aqui */}
-        <Divider/>
-        <ListaSalidasAdmin listadoSalidas={salidas}/>
-        <Divider/>
-
-        <Stack direction='row' justify='center' margin={10}>
-            <VolverButton />
-        </Stack>
-
+                {/*Las entradas apareceran aqui */}
+            <Divider/>
+            <ListaSalidasAdmin listadoSalidas={salidas} />
+            <Divider/>
             
-    </Stack>
+            <Stack style={{justifyContent: 'center', alignItems: 'center', margin: 10}}>
+                <VolverButton />
+            </Stack>
+
+        </Stack>
     </>
   );
 };
-
-const styles = StyleSheet.create({});
 
 export default ListadoSalidasAdmin;
