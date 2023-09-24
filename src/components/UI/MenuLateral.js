@@ -1,20 +1,16 @@
 import * as React from 'react';
-import { Button, View, Text, Image } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
+import { Text } from 'react-native';
 import { DrawerContentScrollView, createDrawerNavigator} from '@react-navigation/drawer';
 import CrearSalida from '../../../app/crearSalida';
 import Carrito from '../../../app/carrito';
 import InfoDestino from '../../../app/infoDestino';
 import { StyleSheet } from 'react-native';
 import MenuButtonItem from './MenuButtonItem';
-import { ColorSpace } from 'react-native-reanimated';
-import { ImageBackground } from 'react-native-web';
-import { useState } from 'react';
-import useCurrentScreen from './useCurrentScreen';
 import PagInicio from './pagInicio';
 import Adise from '../../../app/botonesAdise';
 import Eq2 from '../../../app/botonesEq2';
 import ResumenSalida from '../../../app/resumenSalida';
+import useCurrentScreen from './useCurrentScreen';
 
 
 const Drawer = createDrawerNavigator();

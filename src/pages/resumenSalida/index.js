@@ -16,7 +16,7 @@ const Resumen = () => {
 
     const { salida, datosSalida, handleCantidad } = useResumen();
     const navigation = useNavigation();
-    const {currentScreen, setScreen} = useCurrentScreen(); 
+
     return (
         <Stack style={styles.container}>
         {/* <HStack style={styles.headerContainer}>
