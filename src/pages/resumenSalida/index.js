@@ -6,15 +6,23 @@ import CuadroSalida from "../../components/entradasSalidas/cuadroResumen";
 import ListaSalida from "../../components/entradasSalidas/listaResumen";
 import { Surface } from "react-native-paper";
 import { ScrollView } from "react-native-gesture-handler";
+import { VolverButton } from "../../components/UI/uiButtons";
+import buttonStyles from "../../assets/buttons/styles";
+import styles from "../../assets/styles";
+import { VolverButtonN } from "../../components/UI/uiButtons";
+import { SiguienteButtonN } from "../../components/UI/uiButtons";
+import { useNavigation } from "expo-router";
+import useCurrentScreen from "../../components/UI/useCurrentScreen";
 
 const Resumen = () => { 
 
     const { salida, datosSalida, handleCantidad } = useResumen();
-
+    const navigation = useNavigation();
+    const {currentScreen,setScreen} = useCurrentScreen(); 
     return (
-
+        <>
         <ScrollView>
-        <VStack style={{ padding: 10 }} spacing={20}>
+        <VStack>
             <Box style={{ backgroundColor: "black", padding: 10, borderRadius: 10 }}>
                 <Text style={{ color: "white", fontSize: 20 }}>Resumen de salida</Text>
             </Box>
@@ -24,9 +32,13 @@ const Resumen = () => {
             
             {datosSalida.map((datosSalida) => 
             
-                <Surface elevation={5} key={datosSalida.producto} style={{borderRadius: 10, padding: 4, backgroundColor: "lightgray"}}> 
-                    <HStack>
-                    <ListaSalida datos={datosSalida}/>
+                <Surface elevation={5} key={datosSalida.producto} style={styles.productItem}> 
+                    
+                    <ListaSalida datos={datosSalida} handleCantidad={handleCantidad}/>
+                
+                    {/* <HStack>
+
+                        <ListaSalida datos={datosSalida}/>
 
                     <Box style={{width: "25%", justifyContent: "center"}}>
                             <TextInput 
@@ -37,12 +49,22 @@ const Resumen = () => {
                                 keyboardType="numeric"
                             />
                         </Box>
-                    </HStack>
-                </Surface>
+
+
+
+                    </HStack> */}
+
+                </Surface> 
             )}
 
         </VStack>
         </ScrollView>
+        {/* <BotonASC textoBoton1={"Anterior"} textoBoton2={"Terminar"} direccion1={"infoDestino"} direccion2={""}/> */}
+        <View style={ buttonStyles.containerNavegacion }>
+                <VolverButtonN navigation={navigation} path={"InfoDestinoN"} setScreen={setScreen} screen={"InfoDestino"}/>
+                <SiguienteButtonN navigation={navigation} path={"Home"} setScreen={setScreen} screen={""}/>
+        </View>
+        </>
     );
 };
 
