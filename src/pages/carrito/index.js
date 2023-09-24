@@ -9,10 +9,15 @@ import { Surface } from 'react-native-paper';
 import { VolverButton } from '../../components/UI/uiButtons';
 import buttonStyles from "../../assets/buttons/styles";
 import styles from '../../assets/styles';
+import { VolverButtonN } from "../../components/UI/uiButtons";
+import { SiguienteButtonN } from "../../components/UI/uiButtons";
+import { useNavigation } from '@react-navigation/native';
+import useCurrentScreen from '../../components/UI/useCurrentScreen';
 
 const ArticulosCarrito = () => {  
-
+    const navigation = useNavigation();
     const {carrito, handleCantidad, aumentarCantidad, disminuirCantidad, handleExpandirInfo} = useCarrito();
+    const {currentScreen,setScreen} = useCurrentScreen(); 
 
 return (
     <View style={styles.container}>
@@ -46,8 +51,8 @@ return (
     </VStack>
     </ScrollView>
     <View style={ buttonStyles.containerNavegacion }>
-        <VolverButton path={"crearSalida"} />
-        <VolverButton path={"infoDestino"} />
+        <VolverButtonN navigation={navigation} path={"CrearSalida"} setScreen={setScreen} screen={"CED"}/>
+        <SiguienteButtonN navigation={navigation} path={"InfoDestinoN"} setScreen={setScreen} screen={"InfoDestino"}/>
     </View>
     </View>
 );

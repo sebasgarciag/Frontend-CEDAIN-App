@@ -1,89 +1,15 @@
-import React, { useState } from 'react';
-import { View, Text, Pressable } from "react-native";
-import { SafeAreaProvider } from "react-native-safe-area-context";
-import { router } from "expo-router";
-import { Button, Stack } from "@react-native-material/core";
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native'
+import Menulateral from '../src/components/UI/MenuLateral'
+
 
 const Home = () => { 
-    const [showAdiseButtons, setShowAdiseButtons] = useState(false);
-    const [showEq2Buttons, setShowEq2Buttons] = useState(false);
-
-    return ( 
-    <SafeAreaProvider> 
-        <Stack fill center spacing={20}>
-
-            {/* PARA QUE LOS REDIRIJA A SU PAGINA CAMBIEN EL "/" POR EL NOMBRE DEL ARCHIVO DE SU PAGINA PRINCIPAL */}
-            
-            <Button
-                title="chernobyl"
-                onPress={() => router.replace("/")}
-            />
-
-            <Button
-                title="adise"
-                onPress={() => setShowAdiseButtons(!showAdiseButtons)}
-            />
-            <Button
-                title="Eq2"
-                onPress={() => setShowEq2Buttons(!showEq2Buttons)}
-            />
-            
-            {showEq2Buttons && (
-                <>
-                    <Button
-                        title="Eq2 Inventario"
-                        onPress={() => router.replace("/inventario")}
-                    />
-                    <Button
-                        title="eq2 editar inventario"
-                        onPress={() => router.replace("/editarInventario")}
-                    />
-                </>
-            )}
-            {showAdiseButtons && (
-                <>
-                    <Button
-                        title="adise - entradaAlm"
-                        onPress={() => router.replace("/entradaAlm")}
-                    />
-                    <Button
-                        title="adise - entradaAdmin"
-                        onPress={() => router.replace("/entradaAdmin")}
-                    />
-                    <Button
-                        title="adise - listadoEntradasAdmin"
-                        onPress={() => router.replace("/listadoEntradasAdmin")}
-                    />
-                    <Button
-                        title="adise - listadoEntradasAlm"
-                        onPress={() => router.replace("/listadoEntradasAlm")}
-                    />
-                    <Button
-                        title="adise - listadoSalidasAdmin"
-                        onPress={() => router.replace("/listadoSalidasAdmin")}
-                    />
-                    <Button
-                        title="adise - listadoSalidasAlm"
-                        onPress={() => router.replace("/listadoSalidasAlm")}
-                    />
-                    <Button
-                        title="adise - salidaAdmin"
-                        onPress={() => router.replace("/salidaAdmin")}
-                    />
-                    <Button
-                        title="adise - salidaAlm"
-                        onPress={() => router.replace("/salidaAlm")}
-                    />
-                </>
-            )}
-
-            <Button
-                title="ced"
-                onPress={() => router.replace("/crearSalida")}
-            />
-        </Stack> 
-    </SafeAreaProvider>
-    )
-}
+    return (
+        <NavigationContainer independent={true}>
+            <Menulateral/>
+        </NavigationContainer>
+    
+      )
+    }
 
 export default Home;

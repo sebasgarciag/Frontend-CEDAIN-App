@@ -1,50 +1,111 @@
-// Menulateral.js
 import * as React from 'react';
-import { Text } from 'react-native';
-import { Drawer } from 'react-native-paper';
-import { router } from 'expo-router'; // Asegúrese de que la importación sea correcta
+import { Button, View, Text, Image } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { DrawerContentScrollView, createDrawerNavigator} from '@react-navigation/drawer';
+import CrearSalida from '../../../app/crearSalida';
+import Carrito from '../../../app/carrito';
+import InfoDestino from '../../../app/infoDestino';
+import { StyleSheet } from 'react-native';
+import MenuButtonItem from './MenuButtonItem';
+import { ColorSpace } from 'react-native-reanimated';
+import { ImageBackground } from 'react-native-web';
+import { useState } from 'react';
+import useCurrentScreen from './useCurrentScreen';
+import PagInicio from './pagInicio';
+import Adise from '../../../app/botonesAdise';
+import Eq2 from '../../../app/botonesEq2';
+import ResumenSalida from '../../../app/resumenSalida';
 
 
-const Menulateral = ({ isDrawerOpen }) => {
-  const [active, setActive] = React.useState('');
+const Drawer = createDrawerNavigator();
 
-  if (!isDrawerOpen) {
-    return null;
-  }
+function Menulateral() {
+  return (
+    <Drawer.Navigator screenOptions={{
+      headerStyle: {
+        backgroundColor: "#F1EFE3",
+        elevation: 0,
+        shadowOpacity: 0,
+      },
+      headerTitle: '',
+    }}
+    drawerContent = { (props) => <MenuItems {...props} /> } >
+      <Drawer.Screen name="Home" component={PagInicio} options={{ }} />
+       {/* Pantallas que si tendrán botón en el menú */}
+      <Drawer.Screen name="Chernobyl" component={PagInicio} options={{ }} />
+      <Drawer.Screen name="Eq2" component={Eq2} options={{ }} />
+      <Drawer.Screen name="Adise" component={Adise} options={{ }} />
+      <Drawer.Screen name="CrearSalida" component={CrearSalida} options={{ }} />
+      {/* Pantallas adicionales de Salidas */} 
+      <Drawer.Screen name="Carrito" component={Carrito} options={{headerShown: false}}/>
+      <Drawer.Screen name="InfoDestinoN" component={InfoDestino} />
+      <Drawer.Screen name="ResumenSalida" component={ResumenSalida}  options={{headerShown: false}}/>
+      {/* Agregar pantallas de los demás equipos */} 
+
+    </Drawer.Navigator>
+  );
+}
+export default Menulateral
+
+const MenuItems = ({ navigation }) => {
+  const {currentScreen, setScreen} = useCurrentScreen();
 
   return (
-    <Drawer.Section>
-      <Drawer.Item
-        label="Entrada Nueva"
-        active={active === 'first'}
-        onPress={() => {
-          setActive('first');
-          router.replace("/resumenSalida");
-        }}
-      />
-      <Drawer.Item
-        label=" Ver Entradas"
-        active={active === 'second'}
-        onPress={() => setActive('second')}
-      />
-      <Drawer.Item
-        label=" Salida Nueva"
-        active={active === 'second'}
-        onPress={() => setActive('second')}
-      />
-      <Drawer.Item
-        label="Ver Salidas"
-        active={active === 'second'}
-        onPress={() => setActive('second')}
-      />
-      <Drawer.Item
-        label="Inventario"
-        active={active === 'second'}
-        onPress={() => setActive('second')}
-      />
-    </Drawer.Section>
-    
+      <DrawerContentScrollView  style={styles.container}>
+        <Text style={styles.title}>CEDAIN</Text>
+        <MenuButtonItem 
+          text= "Chernobyl" 
+          currentScreen = {currentScreen}
+          onPress = {() => {
+            navigation.navigate('Chernobyl'); 
+            setScreen("Chernobyl")
+          }}
+        />
+        <MenuButtonItem 
+          text= "Eq2" 
+          currentScreen = {currentScreen}
+          onPress = {() => {
+            navigation.navigate('Eq2'); 
+            setScreen("Eq2")
+          }}
+        />
+        <MenuButtonItem 
+          text= "Adise" 
+          currentScreen = {currentScreen}
+          onPress = {() => {
+            navigation.navigate('Adise'); 
+            setScreen("Adise")
+          }}
+        />
+        <MenuButtonItem 
+          text= "CED" 
+          currentScreen = {currentScreen}
+          onPress = {() => {
+            navigation.navigate('CrearSalida'); 
+            setScreen("CED")
+          }}
+        /> 
+      </DrawerContentScrollView> 
   );
-};
+}
 
-export default Menulateral;
+const styles = StyleSheet.create({
+
+  container: {
+    padding: 15,
+    backgroundColor: '#FBB03B',
+  },
+  title:{
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#F74A3E',
+    marginBottom: '20',
+    textAlign: 'center'
+  },
+  image: {
+    alignSelf: 'flex-start',
+    borderRadius: 40,
+    width: '30',
+    height: '30',
+  }
+})

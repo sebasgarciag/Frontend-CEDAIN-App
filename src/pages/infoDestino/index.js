@@ -12,18 +12,27 @@ import { View, Text } from "react-native";
 import buttonStyles from "../../assets/buttons/styles";
 import styles from "../../assets/styles";
 import MenuHamburguesa from '../../components/UI/MenuHambuguesa';
+import { VolverButtonN } from "../../components/UI/uiButtons";
+import { SiguienteButtonN } from "../../components/UI/uiButtons";
+import { useNavigation } from '@react-navigation/native';
+import useCurrentScreen from "../../components/UI/useCurrentScreen";
 
 const Paginfo = () => { 
     const{ setValueEvento, dataDropDownEvento, valueEvento } = useInfoDestinoEvento();
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+    const navigation = useNavigation();
+    const {currentScreen,setScreen} = useCurrentScreen(); 
     const toggleDrawer = () => {
       setIsDrawerOpen(!isDrawerOpen);};
     
     return ( 
+    
     <View style={styles.container}>
+  
+    
+ 
     <ScrollView>
-        <MenuHamburguesa toggleDrawer={toggleDrawer}/>
-        <Menulateral isDrawerOpen={isDrawerOpen} />
+    
         <HStack style={styles.headerContainerOnlyText}>
             <Text  style={styles.headerText}>Informacion de Destino</Text>
         </HStack>
@@ -46,12 +55,14 @@ const Paginfo = () => {
         </VStack>
 
         <View style={ buttonStyles.containerNavegacion }>
-                <VolverButton path={"carrito"} />
-                <VolverButton path={"resumenSalida"} />
+                <VolverButtonN navigation={navigation} path={"Carrito"} setScreen={setScreen} screen={"Carrito"}/>
+                <SiguienteButtonN navigation={navigation} path={"ResumenSalida"} setScreen={setScreen} screen={"ResumenSalida"}/>
         </View>
-
+  
     </ScrollView> 
+    
     </View>
+
 )}
 
 export default Paginfo;
