@@ -12,7 +12,6 @@ import styles from '../../assets/styles';
 import { VolverButtonN } from "../../components/UI/uiButtons";
 import { SiguienteButtonN } from "../../components/UI/uiButtons";
 import { useNavigation } from '@react-navigation/native';
-import useCurrentScreen from '../../components/UI/useCurrentScreen';
 
 const ArticulosCarrito = () => {  
     const navigation = useNavigation();
@@ -51,8 +50,8 @@ return (
     </VStack>
     </ScrollView>
     <View style={ buttonStyles.containerNavegacion }>
-        <VolverButtonN navigation={navigation} path={"CrearSalida"} setScreen={setScreen} screen={"CED"}/>
-        <SiguienteButtonN navigation={navigation} path={"InfoDestinoN"} setScreen={setScreen} screen={"InfoDestino"}/>
+        <VolverButtonN navigation={navigation} path={"CrearSalida"}/>
+        <SiguienteButtonN navigation={navigation} path={"InfoDestinoN"}/>
     </View>
     </View>
 );

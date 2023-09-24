@@ -4,12 +4,12 @@ import Dropdowns from "../../components/UI/dropDownE";
 import Textbox from "../../components/UI/textBox";
 import { ScrollView } from "react-native-gesture-handler";
 import useInfoDestinoEvento from "./hookInfoDestinoEvento";
-import { VolverButtonN , SiguienteButtonN} from "../../components/UI/uiButtons";
 import { View, Text } from "react-native";
 import buttonStyles from "../../assets/buttons/styles";
 import styles from "../../assets/styles";
+import { VolverButtonN } from "../../components/UI/uiButtons";
+import { SiguienteButtonN } from "../../components/UI/uiButtons";
 import { useNavigation } from '@react-navigation/native';
-import useCurrentScreen from "../../components/UI/useCurrentScreen";
 
 const Paginfo = () => { 
     const { comunidades, eventos, comunidad, evento, 
@@ -17,9 +17,9 @@ const Paginfo = () => {
         receptor, setReceptor } = useInfoDestinoEvento();
 
     const navigation = useNavigation();
-    const { currentScreen, setScreen } = useCurrentScreen(); 
-
-
+    const toggleDrawer = () => {
+      setIsDrawerOpen(!isDrawerOpen);};
+    
     return ( 
     
         <View style={styles.container}>
@@ -67,8 +67,8 @@ const Paginfo = () => {
             </VStack>
             </ScrollView> 
             <View style={ buttonStyles.containerNavegacion }>
-                    <VolverButtonN navigation={navigation} path={"Carrito"} setScreen={setScreen} screen={"Carrito"}/>
-                    <SiguienteButtonN navigation={navigation} path={"ResumenSalida"} setScreen={setScreen} screen={"ResumenSalida"}/>
+                    <VolverButtonN navigation={navigation} path={"Carrito"} />
+                    <SiguienteButtonN navigation={navigation} path={"ResumenSalida"} />
             </View>
     
 

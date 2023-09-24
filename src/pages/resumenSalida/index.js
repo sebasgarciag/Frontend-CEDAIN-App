@@ -9,14 +9,13 @@ import buttonStyles from "../../assets/buttons/styles";
 import styles from "../../assets/styles";
 import { VolverButtonN, SiguienteButtonN } from "../../components/UI/uiButtons";
 import { useNavigation } from "expo-router";
-import useCurrentScreen from "../../components/UI/useCurrentScreen";
 import InfoSalida from "../../components/UI/infoSalida";
 
 const Resumen = () => { 
 
     const { salida, datosSalida, handleCantidad } = useResumen();
     const navigation = useNavigation();
-    const {currentScreen, setScreen} = useCurrentScreen(); 
+
     return (
         <Stack style={styles.container}>
         {/* <HStack style={styles.headerContainer}>
@@ -43,8 +42,8 @@ const Resumen = () => {
                 </VStack>
             </ScrollView>
             <View style={ buttonStyles.containerNavegacion }>
-                    <VolverButtonN navigation={navigation} path={"InfoDestinoN"} setScreen={setScreen} screen={"InfoDestino"}/>
-                    <SiguienteButtonN navigation={navigation} path={"Home"} setScreen={setScreen} screen={""}/>
+                    <VolverButtonN navigation={navigation} path={"InfoDestinoN"} />
+                    <SiguienteButtonN navigation={navigation} path={"Home"} />
             </View>
         </Stack>
     );

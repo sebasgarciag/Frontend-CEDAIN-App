@@ -1,18 +1,16 @@
 import React from "react";
 import useSeleccion from "./hookSeleccionProducto";
 import ListaProductos from "../../components/entradasSalidas/listaProductos";
-import { SiguienteButtonN, VolverButtonN } from "../../components/UI/uiButtons";
 import { View, Text } from "react-native";
+import { HStack } from "@react-native-material/core";
 import buttonStyles from "../../assets/buttons/styles";
 import styles from "../../assets/styles";
 import { useNavigation } from '@react-navigation/native';
-import useCurrentScreen from "../../components/UI/useCurrentScreen";
-import { HStack } from "@react-native-material/core";
+import { VolverButtonN, SiguienteButtonN } from "../../components/UI/uiButtons";
 
 const SeleccionProductos = () => { 
     const navigation = useNavigation();
     const { productos, categorias } = useSeleccion();
-    const { currentScreen, setScreen } = useCurrentScreen(); 
 
     return (
         <View style={styles.container}>
