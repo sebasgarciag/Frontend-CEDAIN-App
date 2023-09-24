@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 import { Dropdown } from 'react-native-element-dropdown';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import styles from "../../assets/styles"
 
-const DropdownE = ({ dataDropDownEvento,Titulo, setValueEvento, valueEvento}) => {
+const Dropdowns = ({ dataDropDownEvento, Titulo, setValueEvento, valueEvento }) => {
 	const data = dataDropDownEvento;
 	const [isFocusEvento, setIsFocusEvento] = useState(false);
 
@@ -15,20 +15,20 @@ const DropdownE = ({ dataDropDownEvento,Titulo, setValueEvento, valueEvento}) =>
 				style={[styles.dropdown, isFocusEvento && { borderColor: 'blue' }]}
 				placeholderStyle={styles.placeholderStyleDropDown}
 				selectedTextStyle={styles.selectedTextStyleDropDown}
-				inputSearchStyle={styles.inputSearchStyleDropDown}
+				// inputSearchStyle={styles.inputSearchStyleDropDown}
 				iconStyle={styles.iconStyleDropDown}
 				data={data}
-				search
+				// search
 				maxHeight={300}
-				labelField="label"
-				valueField="value"
-				placeholder={!isFocusEvento ? 'Select item' : '...'}
+				labelField="nombre"
+				valueField="id"
+				placeholder={!isFocusEvento ? `Selecciona` : '...'}
 				searchPlaceholder="Search..."
 				value={valueEvento}
 				onFocus={() => setIsFocusEvento(true)}
 				onBlur={() => setIsFocusEvento(false)}
 				onChange={item => {
-					setValueEvento(item.value);
+					setValueEvento(item.id);
 					setIsFocusEvento(false);
 				}}
 				renderLeftIcon={() => (
@@ -44,6 +44,4 @@ const DropdownE = ({ dataDropDownEvento,Titulo, setValueEvento, valueEvento}) =>
 	);
 };
 
-export default DropdownE;
-
-
+export default Dropdowns;
