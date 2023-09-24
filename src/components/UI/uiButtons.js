@@ -13,12 +13,13 @@ const MenuButton = ({ onPress, style }) => (
 
 const VolverButton = ({ onPress }) => {
   return (
-    <TouchableOpacity style={[styles.volverButton, { backgroundColor: '#59CD90' }]}>
+    <TouchableOpacity onPress={onPress} style={[styles.volverButton, { backgroundColor: '#59CD90' }]}>
       <Icon name="arrow-back" size={24} color="#F1EFE3" />
       <Text style={styles.buttonText}>Volver</Text>
     </TouchableOpacity>
   );
 };
+
 
 const ExportarButton = ({ onPress }) => {
     return (
