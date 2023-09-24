@@ -30,7 +30,7 @@ const SalidaAdmin = () => {
 
                 {/*Boton de volver atras */}
                 <Stack style={styles.volverContainer}>
-                    <VolverButton />
+                    <VolverButton ruta="/listadoSalidasAdmin" />
                 </Stack>
             </Stack>
         </>

@@ -35,7 +35,7 @@ const ListadoEntradasAlm = () => {
             <Divider/>
             
             <Stack style={{justifyContent: 'center', alignItems: 'center', margin: 10}}>
-              <VolverButton />
+              <VolverButton ruta="/inventario"/>
             </Stack>
 
           </Stack>

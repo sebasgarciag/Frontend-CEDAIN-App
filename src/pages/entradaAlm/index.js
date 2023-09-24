@@ -31,7 +31,7 @@ const EntradaAlm = () => {
 
                 {/*Boton de volver atras */}
                 <Stack style={styles.volverContainer}>
-                    <VolverButton />
+                    <VolverButton ruta="/listadoEntradasAlm"/>
                 </Stack>
             </Stack>
         </>

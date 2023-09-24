@@ -3,6 +3,7 @@ import { Text, ScrollView} from "react-native";
 import { HStack, VStack } from "@react-native-material/core";
 import { ArrowButton } from "./uiButtons";
 import styles from "../../assets/styles";
+import { router } from "expo-router";
 
 function ListaSalidasAdmin({listadoSalidas}){
         return(
@@ -16,7 +17,8 @@ function ListaSalidasAdmin({listadoSalidas}){
                                 <Text style={styles.movDato}>Almacenista: {salida.almacenista}</Text>
                                 <Text style={styles.movDato}>Articulos: {salida.cantidadArticulos}</Text>
                             </VStack>
-                            <ArrowButton style={styles.arrowButton} onPress={() => { alert('Flecha presionada'); }} />
+                            <ArrowButton style={styles.arrowButton} onPress={() => { router.replace("/salidaAdmin"); }} />
+
                             
                         </HStack>
                     </VStack>
