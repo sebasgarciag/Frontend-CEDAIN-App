@@ -9,7 +9,7 @@ function ListaSalidasAdmin({listadoSalidas}){
         return(
             <ScrollView style={styles.listaMovs}>
                 {listadoSalidas.map((salida)=>
-                    <VStack key={salida}>
+                    <VStack spacing={10}>
                         <HStack style={styles.movItem} spacing={10}>
                             <VStack>
                                 <Text style={styles.movName}>Salida: {salida.folioSerie}</Text>

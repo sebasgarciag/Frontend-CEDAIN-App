@@ -189,7 +189,14 @@ const styles = StyleSheet.create({
   movFolioSerie: {
     fontWeight: 'normal',
     fontSize: 20
-  }
+  }, 
+  modalContainer: {
+    backgroundColor: 'white', 
+    borderRadius: 20,
+    justifyContent: 'center',
+    alignItems: 'center', 
+    margin: 10
+  },
 
 
 });
