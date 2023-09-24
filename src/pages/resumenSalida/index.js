@@ -8,6 +8,7 @@ import { Surface } from "react-native-paper";
 import { ScrollView } from "react-native-gesture-handler";
 import { VolverButton } from "../../components/UI/uiButtons";
 import buttonStyles from "../../assets/buttons/styles";
+import styles from "../../assets/styles";
 
 const Resumen = () => { 
 
@@ -16,7 +17,7 @@ const Resumen = () => {
     return (
         <>
         <ScrollView>
-        <VStack style={{ padding: 10 }} spacing={20}>
+        <VStack>
             <Box style={{ backgroundColor: "black", padding: 10, borderRadius: 10 }}>
                 <Text style={{ color: "white", fontSize: 20 }}>Resumen de salida</Text>
             </Box>
@@ -26,9 +27,13 @@ const Resumen = () => {
             
             {datosSalida.map((datosSalida) => 
             
-                <Surface elevation={5} key={datosSalida.producto} style={{borderRadius: 10, padding: 4, backgroundColor: "lightgray"}}> 
-                    <HStack>
-                    <ListaSalida datos={datosSalida}/>
+                <Surface elevation={5} key={datosSalida.producto} style={styles.productItem}> 
+                    
+                    <ListaSalida datos={datosSalida} handleCantidad={handleCantidad}/>
+                
+                    {/* <HStack>
+
+                        <ListaSalida datos={datosSalida}/>
 
                     <Box style={{width: "25%", justifyContent: "center"}}>
                             <TextInput 
@@ -39,8 +44,16 @@ const Resumen = () => {
                                 keyboardType="numeric"
                             />
                         </Box>
-                    </HStack>
+
+
+
+                    </HStack> */}
+
                 </Surface>
+
+                
+
+                
             )}
 
         </VStack>

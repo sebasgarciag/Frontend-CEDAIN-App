@@ -1,10 +1,8 @@
-import { Spacer, VStack,HStack } from "@react-native-material/core";
+import { Spacer, VStack, HStack } from "@react-native-material/core";
 import { React, useState } from 'react';
-import Menulateral from "../../components/UI/MenuLateral";
 import DropdownE from "../../components/UI/dropDownE";
 import TextboxComentario from "../../components/UI/textBoxComentario";
 import TextboxReceptor from "../../components/UI/textBoxReceptor";
-import NavBar from "../../components/UI/NavBar"
 import { ScrollView } from "react-native-gesture-handler";
 import useInfoDestinoEvento from "./hookInfoDestinoEvento";
 import { VolverButton } from "../../components/UI/uiButtons";
