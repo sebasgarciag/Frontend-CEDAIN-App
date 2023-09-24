@@ -8,7 +8,7 @@ function ListaSalidasAlm({listadoSalidas}){
         return(
             <ScrollView style={styles.listaMovs}>
                 {listadoSalidas.map((salida)=>
-                    <VStack spacing={10} key={salida}>
+                    <VStack spacing={10} key={salida.idSalida}>
                         <HStack style={styles.movItem} spacing={10}>
                             <VStack>
                                 <Text style={styles.movName}>Salida: {salida.idSalida}</Text>

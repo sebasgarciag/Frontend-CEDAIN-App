@@ -15,7 +15,7 @@ import PagInicio from './pagInicio';
 import Adise from '../../../app/botonesAdise';
 import Eq2 from '../../../app/botonesEq2';
 import ResumenSalida from '../../../app/resumenSalida';
-
+import ListadoSalidasAlm from '../../pages/listadoSalidasAlm';
 
 const Drawer = createDrawerNavigator();
 
@@ -35,10 +35,11 @@ function Menulateral() {
       <Drawer.Screen name="Chernobyl" component={PagInicio} options={{ }} />
       <Drawer.Screen name="Eq2" component={Eq2} options={{ }} />
       <Drawer.Screen name="Adise" component={Adise} options={{ }} />
-      <Drawer.Screen name="CrearSalida" component={CrearSalida} options={{ }} />
+      <Drawer.Screen name="Salidas" component={ListadoSalidasAlm} options={{ }} />
       {/* Pantallas adicionales de Salidas */} 
+      <Drawer.Screen name="CrearSalida" component={CrearSalida} options={{ headerShown: false }} />
       <Drawer.Screen name="Carrito" component={Carrito} options={{headerShown: false}}/>
-      <Drawer.Screen name="InfoDestinoN" component={InfoDestino} />
+      <Drawer.Screen name="InfoDestinoN" component={InfoDestino} options={{headerShown: false}}/>
       <Drawer.Screen name="ResumenSalida" component={ResumenSalida}  options={{headerShown: false}}/>
       {/* Agregar pantallas de los demás equipos */} 
 
@@ -78,10 +79,10 @@ const MenuItems = ({ navigation }) => {
           }}
         />
         <MenuButtonItem 
-          text= "CED" 
+          text= "Salidas" 
           currentScreen = {currentScreen}
           onPress = {() => {
-            navigation.navigate('CrearSalida'); 
+            navigation.navigate('Salidas'); 
             setScreen("CED")
           }}
         /> 

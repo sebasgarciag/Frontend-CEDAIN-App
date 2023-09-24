@@ -18,12 +18,12 @@ const SeleccionProductos = () => {
         <View style={styles.container}>
 
             <HStack style={styles.titulosContainer}>
-                <Text style={styles.headerText}>Salida</Text>
+                <Text style={styles.headerText}>Seleccionar Productos</Text>
             </HStack>
 
             <ListaProductos productos={productos} categorias={categorias} />
             <View style={ buttonStyles.containerNavegacion }>
-                <VolverButtonN navigation={navigation} path={"Home"} setScreen={setScreen} screen={""}/>
+                <VolverButtonN navigation={navigation} path={"Salidas"} setScreen={setScreen} screen={""}/>
                 <SiguienteButtonN navigation={navigation} path={"Carrito"} setScreen={setScreen} screen={"Carrito"}/>
             </View>
         </View>

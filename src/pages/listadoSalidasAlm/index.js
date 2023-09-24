@@ -1,26 +1,27 @@
 import React from 'react';
-import { TextInput } from 'react-native';
+import { TextInput, View } from 'react-native';
 import { HStack, Text, Stack, Divider, VStack } from "@react-native-material/core";
-import { MenuButton, ProfileButton, VolverButton, FilterButton } from '../../components/UI/uiButtons';
+import { MenuButton, ProfileButton, VolverButtonN, SiguienteButtonN, FilterButton } from '../../components/UI/uiButtons';
 import ListaSalidasAlm from '../../components/UI/listaSalidasAlm';
 import useListadoSalidasAlm from './useListadoSalidasAlm';
 import styles from '../../assets/styles';
-
+import buttonStyles from '../../assets/buttons/styles';
+import { useNavigation } from '@react-navigation/native';
+import useCurrentScreen from '../../components/UI/useCurrentScreen';
 
 const ListadoSalidasAlm = () => {
-
+    const navigation = useNavigation();
     const {salidas} = useListadoSalidasAlm();
+    const {currentScreen,setScreen} = useCurrentScreen(); 
 
   return (
     <>
         <Stack style={styles.container}>
           <HStack style={styles.headerContainer}>
-            <MenuButton onPress={() => { alert('Menú presionado'); }} />
-            <VStack style={{alignItems: 'center'}}>
+            <VStack>
                 <Text style={styles.headerText}>Salidas</Text>
                 <Text style={{font: 16}}>Nombre Almacenista</Text>
             </VStack>
-            <ProfileButton onPress={() => { alert('Perfil presionado'); }} />
           </HStack>
   
               {/*Boton de aplicar Filtros a lista de entradas */}
@@ -34,10 +35,15 @@ const ListadoSalidasAlm = () => {
             <ListaSalidasAlm listadoSalidas={salidas} />
           <Divider/>
           
-          <Stack style={{justifyContent: 'center', alignItems: 'center', margin: 10}}>
+          {/* <Stack style={{justifyContent: 'center', alignItems: 'center', margin: 10}}>
             <VolverButton />
-          </Stack>
+          </Stack> */}
   
+          <View style={ buttonStyles.containerNavegacion }>
+                <VolverButtonN navigation={navigation} path={"Home"} setScreen={setScreen} screen={""}/>
+                <SiguienteButtonN navigation={navigation} path={"CrearSalida"} setScreen={setScreen} screen={"crearSalida"}/>
+          </View>
+
         </Stack>
       </>
   );
