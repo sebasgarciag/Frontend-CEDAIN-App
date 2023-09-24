@@ -8,13 +8,6 @@ const buttonStyles = {
         
     },
 
-    containerNavegacion: {
-      backgroundColor: '#F1EFE3',
-      flexDirection: 'row', 
-      justifyContent: 'space-around', 
-      padding: 10
-    },
-
     volverB: {
         justifyContent: 'center', 
         alignItems: 'center', 
