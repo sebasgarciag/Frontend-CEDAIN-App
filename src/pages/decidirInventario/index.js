@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import styles from '../../assets/buttons/styles';
+import { router } from 'expo-router';
 
 const ChooseStoreScreen = () => {
   const handleChooseChihuahua = () => {
@@ -21,7 +22,7 @@ const ChooseStoreScreen = () => {
 
       <TouchableOpacity 
         style={[styles.button, { backgroundColor: 'transparent', marginBottom: 60, borderColor: '#4A90E2', borderWidth: 2.5, paddingVertical: 25, paddingHorizontal: 50, borderRadius: 35 }]}
-        onPress={handleChooseChihuahua}
+        onPress={() => router.replace("/inventario")}
       >
         <Icon name="store-mall-directory" size={38} color="#4A90E2" style={{ marginRight: 25 }} />
         <Text style={[styles.buttonText, { fontWeight: 'bold', fontSize: 22, color: '#4A90E2' }]}>Chihuahua</Text>
@@ -29,7 +30,8 @@ const ChooseStoreScreen = () => {
 
       <TouchableOpacity 
         style={[styles.button, { backgroundColor: 'transparent', borderColor: '#8BC34A', borderWidth: 2.5, paddingVertical: 25, paddingHorizontal: 50, borderRadius: 35 }]}
-        onPress={handleChooseCreel}
+        //onPress={handleChooseCreel}
+        onPress={() => router.replace("/inventario")}
       >
         <Icon name="store" size={38} color="#8BC34A" style={{ marginRight: 25 }} />
         <Text style={[styles.buttonText, { fontWeight: 'bold', fontSize: 22, color: '#8BC34A' }]}>Creel</Text>

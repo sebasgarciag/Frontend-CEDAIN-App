@@ -35,14 +35,14 @@ const Inventario2 = () => {
       <ScrollView>
         {productos.map((producto) => 
           <Surface elevation={5} key={producto.producto} style={styles.productItem}> 
-            <HStack spacing={10}>
+            <HStack spacing={10} style={{ flex: 1 }}>
               <VStack style={{justifyContent: 'center'}}>
                 <Image 
                   source={require('../../assets/imagenes/ware.jpg')} // TODO: cambiar por imagen del producto
                   style={styles.productImage}
                 />
               </VStack>
-              <VStack spacing={3} style={styles.textoProdMov}>
+              <VStack spacing={3} style={[styles.textoProdMov, { flex: 1 }]}>
                 <Text style={styles.productName}>{producto.producto}</Text>
                 <HStack spacing={20}>
                   <VStack>
@@ -51,6 +51,7 @@ const Inventario2 = () => {
                   </VStack>
                 </HStack>
               </VStack>
+              <ArrowButton onPress={() => { router.replace("/editarInventario"); }} />
             </HStack>
           </Surface>
         )}

@@ -3,6 +3,8 @@ import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 import { ArrowButton } from '../../components/inventario/buttons';
 import styles from '../../assets/buttons/styles';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import { router } from 'expo-router';
+
 
 const EditProductScreen = () => {
   const [name, setName] = useState('');
@@ -27,7 +29,7 @@ const EditProductScreen = () => {
     <View style={[styles.container, { padding: 20, backgroundColor: '#F1EFE3' }]}>
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 30 }}>
         <Text style={{ fontSize: 26 }}>Editar Producto</Text>
-        <ArrowButton onPress={handleSave} />
+        <ArrowButton onPress={() => router.replace("/inventario")} />
       </View>
 
       <View style={{ marginBottom: 30 }}>
