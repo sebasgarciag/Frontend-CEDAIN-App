@@ -38,6 +38,11 @@ const Home = () => {
                         title="eq2 editar inventario"
                         onPress={() => router.replace("/editarInventario")}
                     />
+
+                    <Button
+                        title="eq2 decidir inventario"
+                        onPress={() => router.replace("/decidirInventario")}
+                    />
                 </>
             )}
             {showAdiseButtons && (
