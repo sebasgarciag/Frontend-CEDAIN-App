@@ -1,12 +1,12 @@
 import React from 'react';
 import { View, Text, Image, TextInput, FlatList, TouchableOpacity, ScrollView } from 'react-native';
-import { ProfileButton, MenuButton, FilterButton, ArrowButton, ImportInventoryButton, EntradaNuevaButton, SalidaNuevaButton } from '../../components/inventario/buttons';
+import { ProfileButton, MenuButton, FilterButton, ArrowButton, ImportInventoryButton } from '../../components/inventario/buttons';
 import styles from '../../assets/buttons/styles';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { HStack, VStack } from "@react-native-material/core";
 import { Surface } from "react-native-paper";
 import useInventario from './useInventario';
-import { router } from 'expo-router';  // Asegúrate de tener esta línea si vas a usar expo-router
+import { router } from 'expo-router';
 
 const Inventario2 = () => {
   const products = Array.from({ length: 20 }, (_, index) => ({
@@ -32,17 +32,17 @@ const Inventario2 = () => {
         <FilterButton style={styles.filterButton} onPress={() => { alert('Filtro presionado'); }} />
       </View>
 
-      <ScrollView >
+      <ScrollView>
         {productos.map((producto) => 
           <Surface elevation={5} key={producto.producto} style={styles.productItem}> 
-            <HStack spacing={10}>
+            <HStack spacing={10} style={{ flex: 1 }}>
               <VStack style={{justifyContent: 'center'}}>
                 <Image 
-                  source={require('../../assets/imagenes/ware.jpg')} 
+                  source={require('../../assets/imagenes/ware.jpg')} // TODO: cambiar por imagen del producto
                   style={styles.productImage}
                 />
               </VStack>
-              <VStack spacing={3} style={styles.textoProdMov}>
+              <VStack spacing={3} style={[styles.textoProdMov, { flex: 1 }]}>
                 <Text style={styles.productName}>{producto.producto}</Text>
                 <HStack spacing={20}>
                   <VStack>
@@ -51,24 +51,27 @@ const Inventario2 = () => {
                   </VStack>
                 </HStack>
               </VStack>
+              <ArrowButton onPress={() => { router.replace("/editarInventario"); }} />
             </HStack>
           </Surface>
         )}
       </ScrollView>
 
       <View style={styles.buttonsContainer}>
-        <EntradaNuevaButton 
-          style={styles.button}
-          onPress={() => { 
-            router.replace("/ruta"); // Ruta de Entrada nueva
-          }}
-        />
-        <SalidaNuevaButton 
-          style={styles.button}
-          onPress={() => { 
-            router.replace("/ruta"); // Ruta de salida nueva
-          }}
-        />
+        <TouchableOpacity 
+          style={[styles.button, { backgroundColor: '#59CD90' }]}
+          onPress={() => {router.replace("/listadoEntradasAlm")}}
+        >
+          <Icon name="add-circle-outline" size={24} color="#F1EFE3" />
+          <Text>Entrada Nueva</Text>
+        </TouchableOpacity>
+        <TouchableOpacity 
+          style={[styles.button, { backgroundColor: '#E87461' }]}
+          onPress={() => {router.replace("/listadoSalidasAlm")}}
+        >
+          <Icon name="remove-circle-outline" size={24} color="#F1EFE3" />
+          <Text style={styles.buttonText}>Salida Nueva</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );

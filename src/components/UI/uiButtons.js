@@ -30,6 +30,7 @@ const VolverButton = ({ ruta }) => {
   );
 };
 
+
 const ExportarButton = ({ onPress }) => {
     return (
       <TouchableOpacity style={[styles.volverButton, { backgroundColor: '#59CD90' }]}>
