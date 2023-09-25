@@ -1,12 +1,15 @@
 import React from 'react';
 import { View, Image } from 'react-native';
 import { Appbar, Searchbar } from 'react-native-paper';
-import MenuHamburguesa from './MenuHambuguesa';
-const NavBar = ({  }) => {
+const NavBar = ({ toggleDrawer }) => {
   
   return (
     <Appbar.Header style={{ backgroundColor: '#fff' }}>
-      <MenuHamburguesa/>
+      <Appbar.Action
+        icon="menu"
+        onPress={toggleDrawer}
+      />
+      
       <Searchbar
         style={{
           flex: 1,

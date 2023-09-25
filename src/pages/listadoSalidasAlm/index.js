@@ -5,9 +5,14 @@ import { MenuButton, ProfileButton, VolverButtonN, SiguienteButtonN, FilterButto
 import ListaSalidasAlm from '../../components/UI/listaSalidasAlm';
 import useListadoSalidasAlm from './useListadoSalidasAlm';
 import styles from '../../assets/styles';
+<<<<<<< HEAD
 import buttonStyles from '../../assets/buttons/styles';
 import { useNavigation } from '@react-navigation/native';
 import useCurrentScreen from '../../components/UI/useCurrentScreen';
+=======
+import { router } from "expo-router";
+
+>>>>>>> main
 
 const ListadoSalidasAlm = () => {
     const navigation = useNavigation();
@@ -35,9 +40,15 @@ const ListadoSalidasAlm = () => {
             <ListaSalidasAlm listadoSalidas={salidas} />
           <Divider/>
           
+<<<<<<< HEAD
           {/* <Stack style={{justifyContent: 'center', alignItems: 'center', margin: 10}}>
             <VolverButton />
           </Stack> */}
+=======
+          <Stack style={{justifyContent: 'center', alignItems: 'center', margin: 10}}>
+            <VolverButton onPress={() => { router.replace("/inventario"); }} />
+          </Stack>
+>>>>>>> main
   
           <View style={ buttonStyles.containerNavegacion }>
                 <VolverButtonN navigation={navigation} path={"Home"} setScreen={setScreen} screen={""}/>
