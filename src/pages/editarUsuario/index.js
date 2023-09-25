@@ -91,7 +91,7 @@ const EditarUsuarioPage = () => {
         />
         <Text marginTop={10}>Rol</Text>
         <Dropdown
-          style={styles.dropdown}
+          style={styles.dropdownRol}
           placeholderStyle={styles.placeholderStyle}
           selectedTextStyle={isEditable ? styles.editable : styles.view_only}
           inputSearchStyle={styles.inputSearchStyle}
