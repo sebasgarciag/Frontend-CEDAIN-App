@@ -9,7 +9,7 @@ function ProductosSalida({ datos }) {
     return (
         <ScrollView >
             {datos.map((datosSalida) => 
-                <Surface elevation={5} key={datosSalida.producto} style={styles.productItem}> 
+                <Surface elevation={5} style={styles.productItem}> 
                     <HStack spacing={10}>
                         <VStack style={{justifyContent: 'center'}}>
                             <Image 

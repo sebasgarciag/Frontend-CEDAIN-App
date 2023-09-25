@@ -3,12 +3,13 @@ import { Text, ScrollView } from "react-native";
 import { HStack, VStack } from "@react-native-material/core";
 import { ArrowButton } from "./uiButtons";
 import styles from "../../assets/styles";
+import { router } from "expo-router";
 
 function ListaSalidasAlm({listadoSalidas}){
         return(
             <ScrollView style={styles.listaMovs}>
                 {listadoSalidas.map((salida)=>
-                    <VStack spacing={10} key={salida}>
+                    <VStack spacing={10} key={salida.idSalida}>
                         <HStack style={styles.movItem} spacing={10}>
                             <VStack>
                                 <Text style={styles.movName}>Salida: {salida.idSalida}</Text>
@@ -16,7 +17,7 @@ function ListaSalidasAlm({listadoSalidas}){
                                 <Text style={styles.movDato}>Articulos: {salida.cantidadArticulos}</Text>
                             </VStack>
                             
-                            <ArrowButton style={styles.arrowButton} onPress={() => { alert('Flecha presionada'); }} />
+                            <ArrowButton style={styles.arrowButton} onPress={() => { router.replace("/salidaAlm"); }} />
                             
                         </HStack>
                     </VStack>

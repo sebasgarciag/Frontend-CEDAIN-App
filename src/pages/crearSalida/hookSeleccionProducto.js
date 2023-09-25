@@ -13,6 +13,26 @@ const useSeleccion = () => {
             categoria: 'Categoria 2'
         }, 
         {
+            idProducto: 23,
+            nombreProducto: 'Producto 23',
+            categoria: 'Categoria 2'
+        }, 
+        {
+            idProducto: 24,
+            nombreProducto: 'Producto 24',
+            categoria: 'Categoria 2'
+        },
+        {
+            idProducto: 25,
+            nombreProducto: 'Producto 25',
+            categoria: 'Categoria 2'
+        },
+        {
+            idProducto: 26,
+            nombreProducto: 'Producto 26',
+            categoria: 'Categoria 2'
+        },
+        {
             idProducto: 3,
             nombreProducto: 'Producto 3',
             categoria: 'Categoria 3'
@@ -21,6 +41,11 @@ const useSeleccion = () => {
             idProducto: 4,
             nombreProducto: 'Producto 4',
             categoria: 'Categoria 4'
+        }, 
+        {
+            idProducto: 5,
+            nombreProducto: 'Producto 5',
+            categoria: 'Categoria 5'
         }
     ]);
 
