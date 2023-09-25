@@ -218,6 +218,13 @@ const styles = StyleSheet.create({
   movFolioSerie: {
     fontWeight: 'normal',
     fontSize: 20
+  }, 
+  modalContainer: {
+    backgroundColor: 'white', 
+    borderRadius: 20,
+    justifyContent: 'center',
+    alignItems: 'center', 
+    margin: 10
   },
   containerDropDown: {
 		padding: 16
@@ -256,7 +263,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 15,
     marginBottom: 10,
-  },
+  }
 
 
 });

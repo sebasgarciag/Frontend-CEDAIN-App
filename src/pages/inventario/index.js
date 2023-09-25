@@ -60,7 +60,7 @@ const Inventario2 = () => {
       <View style={styles.buttonsContainer}>
         <TouchableOpacity 
           style={[styles.button, { backgroundColor: '#59CD90' }]}
-          onPress={() => {router.replace("/listadoEntradasAlm")}}
+          onPress={() => {router.replace("/crearEntrada")}}
         >
           <Icon name="add-circle-outline" size={24} color="#F1EFE3" />
           <Text>Entrada Nueva</Text>
