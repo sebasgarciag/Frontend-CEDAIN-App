@@ -16,6 +16,7 @@ import CrearEntrada from '../../../app/crearEntrada';
 import InfoDestinoEntrada from '../../../app/infoDestinoEntrada';
 import ResumenEntrada from '../../../app/resumenEntrada';
 import ListadoEntradasAlmacenista from '../../../app/listadoEntradasAlm';
+import CarritoEntrada from '../../../app/carritoEntrada';
 
 const Drawer = createDrawerNavigator();
 
@@ -44,6 +45,7 @@ function Menulateral() {
       {/* Pantallas de Entradas */}
       <Drawer.Screen name="Entradas" component={ListadoEntradasAlmacenista} options={{ headerShown: false }} />
       <Drawer.Screen name="CrearEntrada" component={CrearEntrada} options={{ headerShown: false }} />
+      <Drawer.Screen name="CarritoEntrada" component={CarritoEntrada} options={{headerShown: false}}/>
       <Drawer.Screen name="InfoDestinoE" component={InfoDestinoEntrada} options={{headerShown: false}}/>
       <Drawer.Screen name="ResumenEntrada" component={ResumenEntrada}  options={{headerShown: false}}/>
       {/* Agregar pantallas de los demás equipos */} 
@@ -79,7 +81,7 @@ const MenuItems = ({ navigation }) => {
           text= "Adise" 
           currentScreen = {currentScreen}
           onPress = {() => {
-            navigation.navigate('Adise'); 
+            navigation.navigate('Entradas'); 
             setScreen("Adise")
           }}
         />
