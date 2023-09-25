@@ -7,6 +7,8 @@ import { ArrowButton } from "../../components/inventario/buttons";
 import DropdownE from "../../components/UI/dropDownE";
 import useAltaProducto from "./useAlta.js";
 import * as ImagePicker from 'expo-image-picker';
+import { VolverButton } from '../../components/UI/uiButtons';
+import { router } from "expo-router";
 
 
 
@@ -104,6 +106,8 @@ const DaraltaProducto = () => {
                     <Text style={{ fontSize: 20, color: '#F1EFE3', textAlign: 'center' }}>Guardar</Text>
                 </TouchableOpacity>
             </View>
+
+            <VolverButton onPress={() => { router.replace("/"); }} />
 
 
 

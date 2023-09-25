@@ -3,6 +3,8 @@ import { ScrollView, Alert, StyleSheet } from "react-native";
 import { Text, TextInput, Title } from "react-native-paper";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import { VolverButton } from '../../components/UI/uiButtons';
+import { router } from "expo-router";
 
 const SignUpPage = () => {
     const [email, setEmail] = useState("");
@@ -56,7 +58,7 @@ const SignUpPage = () => {
                 <Text style={{ fontSize: 18, color: '#F1EFE3', textAlign: 'center' }}>Registrar</Text>
             </TouchableOpacity>
 
-
+            <VolverButton onPress={() => { router.replace("/"); }} />
         </ScrollView>
     )
 }

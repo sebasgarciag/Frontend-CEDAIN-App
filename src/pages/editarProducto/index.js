@@ -7,6 +7,8 @@ import { ArrowButton } from "../../components/inventario/buttons";
 import DropdownE from "../../components/UI/dropDownE";
 import useEditarProducto from "./useEditarProducto";
 import * as ImagePicker from 'expo-image-picker';
+import { VolverButton } from '../../components/UI/uiButtons';
+import { router } from "expo-router";
 
 
 
@@ -105,7 +107,7 @@ const EditarProducto = () => {
                 </TouchableOpacity>
             </View>
 
-            
+            <VolverButton onPress={() => { router.replace("/"); }} />
             
 
 
