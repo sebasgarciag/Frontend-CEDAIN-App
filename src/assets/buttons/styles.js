@@ -158,6 +158,18 @@ const buttonStyles = {
         right: 10,
         top: 15,
       },
+      editarButton: {
+        justifyContent: "center",
+        alignItems: "center",
+        padding: "auto",
+        backgroundColor: "gray",
+      },
+      view_only_button: {
+        color: "#CCCCCC",
+      },
+      editable_button: {
+        color: "white",
+      },
     buttonsContainer: {
       flexDirection: 'row',
       justifyContent: 'space-around',

@@ -1,24 +1,25 @@
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
-import { Button } from "react-native-paper";
-import React, { useState } from "react";
+import { Text, View, TouchableOpacity } from "react-native";
 import { Stack, TextInput, Flex, HStack } from "@react-native-material/core";
-import { BurgerButton, UserButton } from "../../components/UI/uiButtons";
+import { router } from "expo-router";
+import { MenuButton, ProfileButton, GenericButton, VolverButton } from "../../components/UI/uiButtons";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import { Dropdown } from "react-native-element-dropdown";
-const data = [
-  { label: "Administrador", value: "Administrador" },
-  { label: "Almacenista", value: "Almacenista" },
-];
+import styles from "../../assets/styles";
+import buttonStyles from "../../assets/buttons/styles";
+import useEditarEntrada from "./useEditarEntrada";
 
-export default function EditarUsuarioPage() {
-  const [isEditable, setEditable] = useState(false);
-  const [nombre, setNombre] = useState("Paco");
-  const [apellidoPaterno, setApellidoPaterno] = useState("Martínez");
-  const [apellidoMaterno, setApellidoMaterno] = useState("Gonzales");
-  const [email, setEmail] = useState("paco.martinez@gmail.com");
-  const [editarText, setEditarText] = useState("Editar");
-  const [rol, setRol] = useState("Almacenista");
+const EditarUsuarioPage = () => {
+  const {isEditable, nombre, setNombre, apellidoPaterno, setApellidoPaterno, apellidoMaterno, setApellidoMaterno, email, setEmail, editarText, rol, setRol, handleSumbit, handleEditable } = useEditarEntrada()
+
+  const roles = [
+    { label: "Administrador", value: "Administrador" },
+    { label: "Almacenista", value: "Almacenista" },
+  ];
+  
+  const handleLinkClick = () => {
+    router.replace("/cambiarContrasena")
+  };
 
   const renderItem = (item) => {
     return (
@@ -36,36 +37,6 @@ export default function EditarUsuarioPage() {
     );
   };
 
-  const handleSumbit = () => {
-    //request a backend
-    alert("Enlace clickeado");
-    setEditarText("Editar");
-    setEditable(!isEditable);
-  };
-
-  const handleEditable = () => {
-    // !isEditable
-    if (isEditable) {
-      // Qué pasar cuando cancelas
-      setEditarText("Editar");
-      // volvera tomar los valores de la BDD
-    } else {
-      // Qué pasar cuando cambias de modo no editar a modo editar
-      setEditarText("Cancelar");
-    }
-
-    setEditable(!isEditable);
-    // togglear valor del botón editar-cancelar edición
-    // prender submit
-    // si se cancela edición
-        // volver los valores a los que estaban inicialmente
-        // apagar submit
-  };
-
-  const handleLinkClick = () => {
-    alert("Enlace clickeado");
-  };
-
   return (
     <>
       <Stack spacing={2} style={{ margin: 16 }}>
@@ -75,8 +46,8 @@ export default function EditarUsuarioPage() {
           m={4}
           style={{ justifyContent: "space-between" }}
         >
-          <BurgerButton />
-          <UserButton />
+          <MenuButton onPress={() => { alert('Menú presionado'); }} />
+          <ProfileButton onPress={() => { alert('Perfil presionado'); }} />
         </HStack>
         <Text
           style={[
@@ -120,12 +91,12 @@ export default function EditarUsuarioPage() {
         />
         <Text marginTop={10}>Rol</Text>
         <Dropdown
-          style={styles.dropdown}
+          style={styles.dropdownRol}
           placeholderStyle={styles.placeholderStyle}
           selectedTextStyle={isEditable ? styles.editable : styles.view_only}
           inputSearchStyle={styles.inputSearchStyle}
           iconStyle={styles.iconStyle}
-          data={data}
+          data={roles}
           disable={!isEditable}
           maxHeight={300}
           labelField="label"
@@ -145,10 +116,10 @@ export default function EditarUsuarioPage() {
           )}
           renderItem={renderItem}
         />
-        <Flex direction="row" justify="around" marginTop={80}>
+        <Flex direction="row" justify="around" marginTop={40}>
           <GenericButton
             onPress={handleEditable}
-            style={buttonStyles.volverB}
+            style={buttonStyles.editarButton}
             text={editarText}
             mode="contained"
             disabled={false}
@@ -157,7 +128,7 @@ export default function EditarUsuarioPage() {
           <GenericButton
             onPress={handleSumbit}
             text="Aceptar cambios"
-            style={buttonStyles.volverB}
+            style={buttonStyles.editarButton}
             labelStyle={
               isEditable
                 ? buttonStyles.editable_button
@@ -168,125 +139,19 @@ export default function EditarUsuarioPage() {
             mode="contained"
           />
         </Flex>
+        <Flex direction="row" justify="around" marginTop={30}>
+        {/* <VolverButton onPress={() => router.replace("/botonesChernobyl")}/> */}
+        <VolverButton ruta="/botonesChernobyl" />
         <TouchableOpacity
           onPress={handleLinkClick}
           style={{ marginTop: 10, alignSelf: "center", width: "50%" }}
-        >
+          >
           <Text style={styles.link}>Cambiar contraseña</Text>
         </TouchableOpacity>
+          </Flex>
       </Stack>
     </>
   );
-}
-
-const GenericButton = ({ text, onPress, style, labelStyle, disabled }) => {
-  return (
-    <Button
-      style={style}
-      labelStyle={labelStyle}
-      mode="contained"
-      onPress={onPress}
-      disabled={disabled}
-    >
-      {text}
-    </Button>
-  );
-};
-const buttonStyles = {
-  volverB: {
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "auto",
-    backgroundColor: "gray",
-  },
-  view_only_button: {
-    color: "#CCCCCC",
-  },
-  editable_button: {
-    color: "white",
-  },
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    padding: 24,
-  },
-  main: {
-    flex: 1,
-    justifyContent: "center",
-    maxWidth: 960,
-    marginHorizontal: "auto",
-  },
-  title: {
-    fontSize: 64,
-    fontWeight: "bold",
-  },
-  subtitle: {
-    fontSize: 36,
-    color: "#38434D",
-  },
-  view_only: {
-    // fontSize: 36,
-    // color: "#00FFA6",
-    color: "gray",
-  },
-  editable: {
-    // fontSize: 100,
-    color: "black",
-  },
-  dropdown: {
-    margin: 16,
-    marginTop: 0,
-    height: 50,
-    backgroundColor: "white",
-    borderRadius: 12,
-    padding: 12,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.2,
-    shadowRadius: 1.41,
-
-    elevation: 2,
-  },
-  icon: {
-    marginRight: 5,
-  },
-  item: {
-    padding: 17,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-  textItem: {
-    flex: 1,
-    fontSize: 16,
-  },
-  placeholderStyle: {
-    fontSize: 16,
-  },
-  viewOnlySelectedTextStyle: {
-    fontSize: 16,
-    color: "gray",
-  },
-  editableSelectedTextStyle: {
-    fontSize: 16,
-  },
-  iconStyle: {
-    width: 20,
-    height: 20,
-  },
-  inputSearchStyle: {
-    height: 40,
-    fontSize: 16,
-  },
-  link: {
-    fontSize: 18,
-    textDecorationLine: "underline",
-    color: "blue",
-  },
-});
+export default EditarUsuarioPage;
