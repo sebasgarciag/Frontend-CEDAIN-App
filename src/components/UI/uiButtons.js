@@ -32,6 +32,32 @@ const VolverButton = ({ ruta }) => {
   );
 };
 
+const EntradaNueva = ({navigation}) => {
+
+  return (
+    <TouchableOpacity 
+    style={[styles.button, { backgroundColor: '#59CD90' }]}
+    onPress={() => { navigation.navigate('CrearEntrada') }}
+  >
+    <Icon name="add-circle-outline" size={24} color="#F1EFE3" />
+    <Text style={styles.buttonText}>Entrada Nueva</Text>
+  </TouchableOpacity>
+  );
+}
+
+const SalidaNueva = ({navigation}) => {
+
+  return (
+    <TouchableOpacity 
+    style={[styles.button, { backgroundColor: '#E87461' }]}
+    onPress={() => { navigation.navigate('CrearSalida') }}
+  >
+    <Icon name="remove-circle-outline" size={24} color="#F1EFE3" />
+    <Text style={styles.buttonText}>Salida Nueva</Text>
+  </TouchableOpacity>
+  );
+}
+
 const VolverButtonN = ({navigation, path}) => {
 
   return (
@@ -86,7 +112,7 @@ const ArrowButton = ({ onPress, style }) => (
     </TouchableOpacity>
   );
 
-export {MenuButton, VolverButton, ProfileButton, FilterButton, ArrowButton, ExportarButton, VolverButtonN, SiguienteButtonN};
+export {MenuButton, VolverButton, ProfileButton, FilterButton, ArrowButton, ExportarButton, VolverButtonN, SiguienteButtonN, EntradaNueva, SalidaNueva};
 
 
 //nota: Es posible que apliquemos un solo style para todos los botones. por lo pronto, cada uno tiene el suyo.

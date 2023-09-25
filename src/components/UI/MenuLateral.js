@@ -82,6 +82,14 @@ const MenuItems = ({ navigation }) => {
             setScreen("Eq2")
           }}
         />
+        <MenuButtonItem 
+          text= "Inventario" 
+          currentScreen = {currentScreen}
+          onPress = {() => {
+            navigation.navigate('Inventario'); 
+            setScreen("Inventario")
+          }}
+        />
         <Text style={styles.text}>Entradas</Text>
         <MenuButtonItem 
           text= "Ver entradas" 
@@ -142,7 +150,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: 'black',
+    color: '#fff',
     marginTop: 15,
   },
 })
