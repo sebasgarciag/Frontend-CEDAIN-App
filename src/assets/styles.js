@@ -176,6 +176,23 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     width: "75%"
   },
+  textoProdCarrito:{
+    paddingLeft: 10,
+    width: "60%"
+  },
+  textoCantidadCarrito: {
+    textAlign: "center",
+    fontSize: 20, 
+    fontWeight: "bold" , 
+    width: "40%",
+    verticalAlign: "middle",
+  },
+  containerCantidadCarrito: {
+    flex: 1, 
+    flexDirection: 'row', 
+    alignItems: 'center', 
+    justifyContent: 'space-between',
+  },
   textoCantidad: {
     textAlign: "center",
     fontSize: 20, 
