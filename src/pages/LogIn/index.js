@@ -1,52 +1,116 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity } from 'react-native';
+
+import { ScrollView, Alert, StyleSheet } from "react-native";
+import { Text, TextInput, Title } from "react-native-paper";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import Icon from 'react-native-vector-icons/MaterialIcons';
 // import styles from './styles';
 
 const LoginPage = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
-  const handleLogin = () => {
-    // Aquí puedes agregar la lógica de autenticación, como una solicitud a un servidor
-    // Comparar el username y la contraseña con datos válidos, etc.
-    // Por ahora, simplemente mostraremos un mensaje con los datos ingresados.
-    alert(`Inicio de sesión:\nUsuario: ${username}\nContraseña: ${password}`);
-  };
+  const validateEmail = (email) => {
+      const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      return regex.test(email);
+  }
+
+  const handleRegister = () => {
+    if (!email || !password) {
+      Alert.alert("Error", "Por favor, ingresa el correo y la contraseña");
+      return;
+    }
+  
+    if (!validateEmail(email)) {
+      Alert.alert("Error", "Por favor, ingresa un correo electrónico válido");
+      return;
+    }
+  
+    // Aquí puedes realizar la verificación con tu lógica de autenticación
+    if (esCorreoYContrasenaValidos(email, password)) {
+      // La autenticación es exitosa
+      console.log("Inicio de sesión exitoso");
+    } else {
+      // La autenticación falla
+      Alert.alert("Error", "Correo o contraseña incorrectos");
+    }
+  }
+  
 
   return (
-    <View style={styles.container}>
-      <View style={styles.headerContainer}>
-        <Text style={styles.headerText}>Inicio de Sesión</Text>
-      </View>
+      <ScrollView style={styles.Container}>
+          <Title style={styles.Title}>Iniciar sesión</Title>
+          <TextInput
+              label="Email"
+              value={email}
+              onChangeText={text => setEmail(text)}
+              style={styles.Input}
+          />
+          <TextInput
+              secureTextEntry={true}
+              label="Password"
+              value={password}
+              onChangeText={text => setPassword(text)}
+              style={styles.Input}
+          />
+          <TextInput
+              secureTextEntry={true}
+              label="Confirm Password"
+              value={confirmPassword}
+              onChangeText={text => setConfirmPassword(text)}
+              style={styles.Input}
+          />
 
-      <View style={styles.inputContainer}>
-        <Text style={styles.inputLabel}>Usuario:</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Ingresa tu usuario"
-          placeholderTextColor="#8E8D8A"
-          value={username}
-          onChangeText={(text) => setUsername(text)}
-        />
-      </View>
+          <TouchableOpacity onPress={handleRegister} style={styles.Button}>
+              <Icon name="check-circle" size={24} color="#F1EFE3" style={{ marginRight: 10 }}></Icon>
+              <Text style={{ fontSize: 18, color: '#F1EFE3', textAlign: 'center' }}>Iniciar Sesion</Text>
+          </TouchableOpacity>
 
-      <View style={styles.inputContainer}>
-        <Text style={styles.inputLabel}>Contraseña:</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Ingresa tu contraseña"
-          placeholderTextColor="#8E8D8A"
-          secureTextEntry
-          value={password}
-          onChangeText={(text) => setPassword(text)}
-        />
-      </View>
 
-      <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
-        <Text style={styles.loginButtonText}>Iniciar Sesión</Text>
-      </TouchableOpacity>
-    </View>
-  );
-};
+      </ScrollView>
+  )
+}
+
+const styles = StyleSheet.create({
+  Container: {
+      display: 'flex',
+      backgroundColor: '#F1EFE3',
+      paddingTop: '30%',
+      
+  },
+  Title: {
+      fontSize: 36,
+      fontWeight: 'bold',
+      color: '#333',
+      textAlign: 'center',
+      marginBottom: 20,
+      paddingTop:20,
+
+  },
+  Input: {
+      backgroundColor: '#fff',
+      borderRadius: 10,
+      marginVertical: 10,
+      maxWidth: '90%',
+      marginLeft: '5%',
+  },
+  Button: {
+      marginTop:20,
+      justifyContent: 'center',
+      textAlign: 'center',
+      backgroundColor: '#59CD90',
+      paddingVertical: 15,
+      paddingHorizontal: 40,
+      borderRadius: 30,
+      flexDirection: 'row',
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.23,
+      shadowRadius: 2.62,
+      elevation: 4,
+      alignSelf: 'center',
+  },
+});
 
 export default LoginPage;
