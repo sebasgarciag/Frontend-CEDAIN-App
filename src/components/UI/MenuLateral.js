@@ -10,9 +10,12 @@ import PagInicio from './pagInicio';
 import Adise from '../../../app/botonesAdise';
 import Eq2 from '../../../app/botonesEq2';
 import ResumenSalida from '../../../app/resumenSalida';
-import ListadoSalidasAlm from '../../pages/listadoSalidasAlm';
+import ListadoSalidasAlmacenista from '../../../app/listadoSalidasAlm';
 import useCurrentScreen from './useCurrentScreen';
-
+import CrearEntrada from '../../../app/crearEntrada';
+import InfoDestinoEntrada from '../../../app/infoDestinoEntrada';
+import ResumenEntrada from '../../../app/resumenEntrada';
+import ListadoEntradasAlmacenista from '../../../app/listadoEntradasAlm';
 
 const Drawer = createDrawerNavigator();
 
@@ -32,12 +35,17 @@ function Menulateral() {
       <Drawer.Screen name="Chernobyl" component={PagInicio} options={{ }} />
       <Drawer.Screen name="Eq2" component={Eq2} options={{ }} />
       <Drawer.Screen name="Adise" component={Adise} options={{ }} />
-      <Drawer.Screen name="Salidas" component={ListadoSalidasAlm} options={{ }} />
+      <Drawer.Screen name="Salidas" component={ListadoSalidasAlmacenista} options={{ }} />
       {/* Pantallas adicionales de Salidas */} 
       <Drawer.Screen name="CrearSalida" component={CrearSalida} options={{ headerShown: false }} />
       <Drawer.Screen name="Carrito" component={Carrito} options={{headerShown: false}}/>
       <Drawer.Screen name="InfoDestinoN" component={InfoDestino} options={{headerShown: false}}/>
       <Drawer.Screen name="ResumenSalida" component={ResumenSalida}  options={{headerShown: false}}/>
+      {/* Pantallas de Entradas */}
+      <Drawer.Screen name="Entradas" component={ListadoEntradasAlmacenista} options={{ headerShown: false }} />
+      <Drawer.Screen name="CrearEntrada" component={CrearEntrada} options={{ headerShown: false }} />
+      <Drawer.Screen name="InfoDestinoE" component={InfoDestinoEntrada} options={{headerShown: false}}/>
+      <Drawer.Screen name="ResumenEntrada" component={ResumenEntrada}  options={{headerShown: false}}/>
       {/* Agregar pantallas de los demás equipos */} 
 
     </Drawer.Navigator>
