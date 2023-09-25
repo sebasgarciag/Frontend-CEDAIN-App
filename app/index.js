@@ -35,6 +35,10 @@ const Home = () => {
                             onPress={() => router.replace("/")}
                         />
                         <Button
+                            title="Chernobyl - Listado Usuarios"
+                            onPress={() => router.replace("/listadoUsuarios")}
+                        />
+                        <Button
                             title="Chernobyl - Editar Usuario"
                             onPress={() => router.replace("/editarUsuario")}
                         />
