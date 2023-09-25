@@ -34,14 +34,20 @@ const Home = () => {
                             title="Chernobyl - Productos"
                             onPress={() => router.replace("/")}
                         />
+
                         <Button
-                            title="Chernobyl - Editar Usuario"
-                            onPress={() => router.replace("/editarUsuario")}
+                            title="Chernobyl - Dar de Alta Producto"
+                            onPress={() => router.replace("/altaProducto")}
                         />
                         <Button
                             title="Chernobyl - Editar Producto"
                             onPress={() => router.replace("/editarProducto")}
                         />
+                        <Button
+                            title="Chernobyl - Editar Usuario"
+                            onPress={() => router.replace("/editarUsuario")}
+                        />
+                        
                     </>
                 )}
 
