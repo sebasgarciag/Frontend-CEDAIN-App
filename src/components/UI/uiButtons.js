@@ -93,24 +93,24 @@ const ExportarButton = ({ onPress }) => {
     );
   };
 
-const ProfileButton = ({ onPress, style }) => (
+const ProfileButton = ({ onPress, style }) => {
     <TouchableOpacity style={style} onPress={onPress}>
       <Icon name="person" size={30} color="#333" />
     </TouchableOpacity>
-  );
+ };
 
 
-const FilterButton = ({ onPress, style }) => (
+const FilterButton = ({ onPress, style }) => {
     <TouchableOpacity style={style} onPress={onPress}>
       <Icon name="filter-list" size={24} color="#5B4C40" />
     </TouchableOpacity>
-  );
+ };
 
-const ArrowButton = ({ onPress, style }) => (
+const ArrowButton = ({ onPress, style }) => {
     <TouchableOpacity style={style} onPress={onPress}>
       <Icon name="arrow-forward-ios" size={24} color="#333" />
     </TouchableOpacity>
-  );
+};
 
 const GenericButton = ({ text, onPress, style, labelStyle, disabled }) => {
     return (
@@ -125,7 +125,7 @@ const GenericButton = ({ text, onPress, style, labelStyle, disabled }) => {
       </Button>
     );
   };
-export {MenuButton, VolverButton, ProfileButton, FilterButton, ArrowButton, ExportarButton, VolverButtonN, SiguienteButtonN, GenericButton};
+export {MenuButton, VolverButton, ProfileButton, FilterButton, ArrowButton, ExportarButton, VolverButtonN, SiguienteButtonN, GenericButton, EntradaNueva, SalidaNueva};
 
 
 //nota: Es posible que apliquemos un solo style para todos los botones. por lo pronto, cada uno tiene el suyo.

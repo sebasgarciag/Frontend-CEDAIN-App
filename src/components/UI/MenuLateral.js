@@ -29,6 +29,7 @@ function Menulateral() {
         backgroundColor: "#E8D7A8",
         elevation: 0,
         shadowOpacity: 0,
+        height: 0,
       },
       headerTitle: '',
     }}

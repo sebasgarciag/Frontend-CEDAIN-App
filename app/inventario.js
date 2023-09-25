@@ -1,4 +1,4 @@
-import Inventario2 from "../src/pages/inventario/index";
+import Inventario2 from "../src/pages/inventario";
 
 const InventarioHome = () => {
     return (

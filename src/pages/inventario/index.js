@@ -7,8 +7,9 @@ import { HStack, VStack } from "@react-native-material/core";
 import { Surface } from "react-native-paper";
 import useInventario from './useInventario';
 import { router } from 'expo-router';
-import { EntradaNueva, SalidaNueva } from '../../components/UI/uiButtons';
 import { useNavigation } from 'expo-router';
+import { EntradaNueva, SalidaNueva } from '../../components/UI/uiButtons';
+
 
 const Inventario2 = () => {
   const navigation = useNavigation();
@@ -22,7 +23,7 @@ const Inventario2 = () => {
   const {productos} = useInventario();
 
   return (
-    <View style={styles.containerWithHeader}>
+    <View style={styles.container}>
       <View style={styles.headerContainer}>
         <Text style={styles.headerText}>Inventario</Text>
         <ProfileButton style={{ position: 'absolute', right: 10 }} onPress={() => { alert('Perfil presionado'); }} />
