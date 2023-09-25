@@ -169,9 +169,18 @@ const buttonStyles = {
         fontSize: 16,
         marginLeft: 10,
       },
-
-
-
+      editarButton: {
+        justifyContent: "center",
+        alignItems: "center",
+        padding: "auto",
+        backgroundColor: "gray",
+      },
+      view_only_button: {
+        color: "#CCCCCC",
+      },
+      editable_button: {
+        color: "white",
+      },
 
 }
 export default buttonStyles;

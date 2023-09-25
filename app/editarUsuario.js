@@ -1,9 +1,9 @@
-import EditarUsuarioPage from "../src/pages/editarUsuario";
+import EditarUsuarioPage from '../src/pages/editarUsuario/index';
 
-const EditarUsuario = () => {
+const editarUsuario = () => {
     return (
         <EditarUsuarioPage />
     );
 };
 
-export default EditarUsuario;
+export default editarUsuario;

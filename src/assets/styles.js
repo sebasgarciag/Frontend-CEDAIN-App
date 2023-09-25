@@ -1,4 +1,3 @@
-
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
@@ -189,8 +188,83 @@ const styles = StyleSheet.create({
   movFolioSerie: {
     fontWeight: 'normal',
     fontSize: 20
-  }
+  },
+  main: {
+    flex: 1,
+    justifyContent: "center",
+    maxWidth: 960,
+    marginHorizontal: "auto",
+  },
+  title: {
+    fontSize: 64,
+    fontWeight: "bold",
+  },
+  subtitle: {
+    fontSize: 36,
+    color: "#38434D",
+  },
+  view_only: {
+    // fontSize: 36,
+    // color: "#00FFA6",
+    color: "gray",
+  },
+  editable: {
+    // fontSize: 100,
+    color: "black",
+  },
+  dropdown: {
+    margin: 16,
+    marginTop: 0,
+    height: 50,
+    backgroundColor: "white",
+    borderRadius: 12,
+    padding: 12,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 1.41,
 
+    elevation: 2,
+  },
+  icon: {
+    marginRight: 5,
+  },
+  item: {
+    padding: 17,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  textItem: {
+    flex: 1,
+    fontSize: 16,
+  },
+  placeholderStyle: {
+    fontSize: 16,
+  },
+  viewOnlySelectedTextStyle: {
+    fontSize: 16,
+    color: "gray",
+  },
+  editableSelectedTextStyle: {
+    fontSize: 16,
+  },
+  iconStyle: {
+    width: 20,
+    height: 20,
+  },
+  inputSearchStyle: {
+    height: 40,
+    fontSize: 16,
+  },
+  link: {
+    fontSize: 18,
+    textDecorationLine: "underline",
+    color: "blue",
+  },
 
 });
 
