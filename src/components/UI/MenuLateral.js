@@ -25,7 +25,7 @@ function Menulateral() {
   return (
     <Drawer.Navigator screenOptions={{
       headerStyle: {
-        backgroundColor: "#F1EFE3",
+        backgroundColor: "#E8D7A8",
         elevation: 0,
         shadowOpacity: 0,
       },
@@ -90,7 +90,6 @@ const MenuItems = ({ navigation }) => {
             setScreen("Inventario")
           }}
         />
-        <Text style={styles.text}>Entradas</Text>
         <MenuButtonItem 
           text= "Ver entradas" 
           currentScreen = {currentScreen}
@@ -107,7 +106,6 @@ const MenuItems = ({ navigation }) => {
             setScreen("Registrar Entrada")
           }}
         />
-        <Text style={styles.text}>Salidas</Text>
         <MenuButtonItem 
           text= "Ver Salidas" 
           currentScreen = {currentScreen}
@@ -121,7 +119,7 @@ const MenuItems = ({ navigation }) => {
           currentScreen = {currentScreen}
           onPress = {() => {
             navigation.navigate('CrearSalida'); 
-            setScreen("Registrar Salidas")
+            setScreen("Registrar Salida")
           }}
         /> 
       </DrawerContentScrollView> 
@@ -132,7 +130,7 @@ const styles = StyleSheet.create({
 
   container: {
     padding: 15,
-    backgroundColor: '#FBB03B',
+    backgroundColor: '#F5E1B9',
   },
   title:{
     fontSize: 20,
@@ -149,8 +147,8 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 18,
-    fontWeight: 'bold',
     color: '#fff',
     marginTop: 15,
+    marginLeft: 20,
   },
 })
