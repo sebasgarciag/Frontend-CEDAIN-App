@@ -1,15 +1,16 @@
-
-import { Box } from '@react-native-material/core';
 import React from 'react';
-import { View, TextInput, Text, StyleSheet } from 'react-native';
+import { View, TextInput, StyleSheet } from 'react-native';
 
-const TextboxComentario = () => {
+const Textbox = ({ text, setText, placeholder }) => {
 	return (
 		<View style={styles.container}>
+		
 		<TextInput
 			multiline
 			numberOfLines={4}
-			placeholder="comentarios"
+			placeholder={placeholder}
+			value={text}
+			onChangeText={(t) => setText(t)}
 		/>
 		</View>
 	);
@@ -26,4 +27,4 @@ const styles = StyleSheet.create({
 	}
 });
 
-export default TextboxComentario;
+export default Textbox;
