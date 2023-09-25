@@ -19,6 +19,12 @@ import ResumenEntrada from '../../../app/resumenEntrada';
 import ListadoEntradasAlmacenista from '../../../app/listadoEntradasAlm';
 import CarritoEntrada from '../../../app/carritoEntrada';
 import InventarioHome from '../../../app/inventario';
+import EntradaAlma from '../../../app/entradaAlm';
+import SalidaAlma from '../../../app/salidaAlm';
+import EntradaAdministrador from '../../../app/entradaAdmin';
+import SalidaAdministrador from '../../../app/salidaAdmin';
+import ListadoEntradasAdministrador from '../../../app/listadoEntradasAdmin'
+import ListadoSalidasAdministrador from '../../pages/listadoSalidasAdmin';
 
 const Drawer = createDrawerNavigator();
 
@@ -45,12 +51,18 @@ function Menulateral() {
       <Drawer.Screen name="Carrito" component={Carrito} options={{headerShown: false}}/>
       <Drawer.Screen name="InfoDestinoN" component={InfoDestino} options={{headerShown: false}}/>
       <Drawer.Screen name="ResumenSalida" component={ResumenSalida}  options={{headerShown: false}}/>
+      <Drawer.Screen name="SalidaAlm" component={SalidaAlma}  options={{headerShown: false}}/>
+      <Drawer.Screen name="SalidasAdmin" component={ListadoSalidasAdministrador} options={{ headerTransparent: true }} />
+      <Drawer.Screen name="SalidaAdmin" component={SalidaAdministrador}  options={{headerShown: false}}/>
       {/* Pantallas de Entradas */}
       <Drawer.Screen name="Entradas" component={ListadoEntradasAlmacenista} options={{ headerTransparent: true }} />
+      <Drawer.Screen name="EntradasAdmin" component={ListadoEntradasAdministrador} options={{ headerTransparent: true }} />
       <Drawer.Screen name="CrearEntrada" component={CrearEntrada} options={{ headerShown: false }} />
       <Drawer.Screen name="CarritoEntrada" component={CarritoEntrada} options={{headerShown: false}}/>
       <Drawer.Screen name="InfoDestinoE" component={InfoDestinoEntrada} options={{headerShown: false}}/>
       <Drawer.Screen name="ResumenEntrada" component={ResumenEntrada}  options={{headerShown: false}}/>
+      <Drawer.Screen name="EntradaAlm" component={EntradaAlma}  options={{headerShown: false}}/>
+      <Drawer.Screen name="EntradaAdmin" component={EntradaAdministrador}  options={{headerShown: false}}/>
       {/* Inventario */}
 
 

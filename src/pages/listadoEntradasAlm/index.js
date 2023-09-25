@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { TextInput, View } from 'react-native';
 import { HStack, Stack, Text, Divider, VStack } from "@react-native-material/core";
 import { Modal } from 'react-native-paper';
@@ -16,12 +16,13 @@ import buttonStyles from '../../assets/buttons/styles';
 
 const ListadoEntradasAlm = () => {
   const navigation = useNavigation();  
-  const { toggleDrawer, toggleUserDrawer, toggleModal, handlePress, filteredEntradas, setBusqueda, setComValue, isDrawerOpen, isUserDrawerOpen, isModalVisible, comValue} = useListadoEntradasAlm();
+  const {toggleUserDrawer, toggleModal, handlePress, filteredEntradas, setBusqueda, setComValue, isUserDrawerOpen, isModalVisible, comValue} = useListadoEntradasAlm();
 
     return (
         <>
           <Stack style={styles.container}>
             <HStack style={styles.headerContainer}>
+              <MenuButton />
               <VStack style={{alignItems: 'center'}}>
                   <Text style={styles.headerText}>Entradas</Text>
                   <Text style={{font: 16}}>Nombre Almacenista</Text>
@@ -33,7 +34,7 @@ const ListadoEntradasAlm = () => {
                 {/*Boton de aplicar Filtros a lista de entradas */}
             <Stack style={styles.searchFilterContainer}>
               <TextInput style={styles.searchInput} placeholder="Buscar..." placeholderTextColor="#8E8D8A" onChangeText={(text) => setBusqueda(text)}/>
-              <FilterButton style={styles.filterButton} onPress={toggleModal} />
+              <FilterButton onPress={toggleModal} />
             </Stack>
 
                 {/*Las entradas apareceran aqui */}
