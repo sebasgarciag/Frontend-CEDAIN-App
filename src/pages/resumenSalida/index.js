@@ -39,7 +39,7 @@ const Resumen = () => {
             </ScrollView>
             <View style={ buttonStyles.containerNavegacion }>
                     <VolverButtonN navigation={navigation} path={"InfoDestinoN"} />
-                    <SiguienteButtonN navigation={navigation} path={"Home"} />
+                    <SiguienteButtonN navigation={navigation} path={"Salidas"} />
             </View>
         </Stack>
     );

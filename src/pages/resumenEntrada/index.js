@@ -20,10 +20,10 @@ const Resumen = () => {
         <Stack style={styles.container}>
 
             <HStack style={styles.titulosContainer}>
-                <Text style={styles.headerText}>Resumen de salida</Text>
+                <Text style={styles.headerText}>Resumen de entrada</Text>
             </HStack>
 
-            <InfoSalida salida={salida} />
+            <InfoSalida salida={entrada} />
             
             <ScrollView>
                 <VStack>

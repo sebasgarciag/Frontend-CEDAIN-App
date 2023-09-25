@@ -62,6 +62,12 @@ const buttonStyles = {
       flex: 1,
       backgroundColor: '#F1EFE3',
     },
+
+    containerWithHeader: {
+      flex: 1,
+      backgroundColor: '#F1EFE3',
+
+    },
   
     importInventoryButton: {
       position: 'absolute',

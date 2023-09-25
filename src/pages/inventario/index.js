@@ -19,9 +19,8 @@ const Inventario2 = () => {
   const {productos} = useInventario();
 
   return (
-    <View style={styles.container}>
+    <View style={styles.containerWithHeader}>
       <View style={styles.headerContainer}>
-        <MenuButton style={{ position: 'absolute', left: 10 }} onPress={() => { alert('Menú presionado'); }} />
         <Text style={styles.headerText}>Inventario</Text>
         <ProfileButton style={{ position: 'absolute', right: 10 }} onPress={() => { alert('Perfil presionado'); }} />
         <ImportInventoryButton style={styles.importInventoryButton} onPress={() => { alert('Importar Inventario presionado'); }} />

@@ -23,15 +23,12 @@ const ListadoSalidasAlm = () => {
     <>
         <Stack style={styles.container}>
           <HStack style={styles.headerContainer}>
-            <MenuButton onPress={toggleDrawer} />
-            <VStack>
+            <VStack style={{alignItems: 'center'}}>
                 <Text style={styles.headerText}>Salidas</Text>
                 <Text>Nombre Almacenista</Text>
             </VStack>
             <ProfileButton onPress={toggleUserDrawer} />
           </HStack>
-
-          <Menulateral isDrawerOpen={isDrawerOpen}/>
           <UserMenu isDrawerOpen={isUserDrawerOpen}/>
   
               {/*Boton de aplicar Filtros a lista de entradas */}
@@ -47,8 +44,7 @@ const ListadoSalidasAlm = () => {
           
 
           <View style={ buttonStyles.containerNavegacion }>
-                <VolverButtonN navigation={navigation} path={"Home"} setScreen={setScreen} screen={""}/>
-                <SiguienteButtonN navigation={navigation} path={"CrearSalida"} setScreen={setScreen} screen={"crearSalida"}/>
+                <VolverButtonN navigation={navigation} path={"Inventario"}/>
           </View>
 
           <Modal visible={isModalVisible} onDismiss={toggleModal}>
