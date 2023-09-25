@@ -19,68 +19,6 @@ const Home = () => {
                     title="chernobyl"
                     onPress={() => setShowChernobylButtons(!showChernobylButtons)}
                 />
-            <Button
-                title="adise"
-                onPress={() => setShowAdiseButtons(!showAdiseButtons)}
-            />
-            <Button
-                title="Eq2"
-                onPress={() => setShowEq2Buttons(!showEq2Buttons)}
-            />
-            
-            {showEq2Buttons && (
-                <>
-                    <Button
-                        title="Eq2 Inventario"
-                        onPress={() => router.replace("/inventario")}
-                    />
-                    <Button
-                        title="eq2 editar inventario"
-                        onPress={() => router.replace("/editarInventario")}
-                    />
-
-                    <Button
-                        title="eq2 decidir inventario"
-                        onPress={() => router.replace("/decidirInventario")}
-                    />
-                </>
-            )}
-            {showAdiseButtons && (
-                <>
-                    <Button
-                        title="adise - entradaAlm"
-                        onPress={() => router.replace("/entradaAlm")}
-                    />
-                    <Button
-                        title="adise - entradaAdmin"
-                        onPress={() => router.replace("/entradaAdmin")}
-                    />
-                    <Button
-                        title="adise - listadoEntradasAdmin"
-                        onPress={() => router.replace("/listadoEntradasAdmin")}
-                    />
-                    <Button
-                        title="adise - listadoEntradasAlm"
-                        onPress={() => router.replace("/listadoEntradasAlm")}
-                    />
-                    <Button
-                        title="adise - listadoSalidasAdmin"
-                        onPress={() => router.replace("/listadoSalidasAdmin")}
-                    />
-                    <Button
-                        title="adise - listadoSalidasAlm"
-                        onPress={() => router.replace("/listadoSalidasAlm")}
-                    />
-                    <Button
-                        title="adise - salidaAdmin"
-                        onPress={() => router.replace("/salidaAdmin")}
-                    />
-                    <Button
-                        title="adise - salidaAlm"
-                        onPress={() => router.replace("/salidaAlm")}
-                    />
-                </>
-            )}
 
                 {showChernobylButtons && (
                     <>
@@ -116,8 +54,6 @@ const Home = () => {
                     onPress={() => setShowEq2Buttons(!showEq2Buttons)}
                 />
 
-
-
                 {showEq2Buttons && (
                     <>
                         <Button
@@ -127,6 +63,11 @@ const Home = () => {
                         <Button
                             title="eq2 editar inventario"
                             onPress={() => router.replace("/editarInventario")}
+                        />
+
+                        <Button
+                            title="eq2 decidir inventario"
+                            onPress={() => router.replace("/decidirInventario")}
                         />
                     </>
                 )}
@@ -166,6 +107,10 @@ const Home = () => {
                         />
                     </>
                 )}
+
+
+
+
 
                 <Button
                     title="ced"
