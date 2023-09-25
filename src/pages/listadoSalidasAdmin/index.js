@@ -5,6 +5,8 @@ import { MenuButton, ProfileButton, VolverButton, FilterButton } from '../../com
 import ListaSalidasAdmin from '../../components/UI/listaSalidasAdmin';
 import useListadoSalidasAdmin from './useListadoSalidasAdmin';
 import styles from '../../assets/styles';
+import { router } from "expo-router";
+
 
 
 
@@ -33,7 +35,7 @@ const ListadoSalidasAdmin = () => {
             <Divider/>
             
             <Stack style={{justifyContent: 'center', alignItems: 'center', margin: 10}}>
-                <VolverButton />
+                <VolverButton onPress={() => { router.replace("/inventario"); }} />
             </Stack>
 
         </Stack>
