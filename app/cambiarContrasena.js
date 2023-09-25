@@ -1,4 +1,4 @@
-import CambiarContrasenaPage from "../src/pages/cambiarContrasena";
+import CambiarContrasenaPage from "../src/pages/cambiarContrasena/index";
 
 const CambiarContrasena = () => {
     return (

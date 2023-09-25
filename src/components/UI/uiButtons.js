@@ -112,7 +112,20 @@ const ArrowButton = ({ onPress, style }) => (
     </TouchableOpacity>
   );
 
-export {MenuButton, VolverButton, ProfileButton, FilterButton, ArrowButton, ExportarButton, VolverButtonN, SiguienteButtonN, EntradaNueva, SalidaNueva};
+const GenericButton = ({ text, onPress, style, labelStyle, disabled }) => {
+    return (
+      <Button
+        style={style}
+        labelStyle={labelStyle}
+        mode="contained"
+        onPress={onPress}
+        disabled={disabled}
+      >
+        {text}
+      </Button>
+    );
+  };
+export {MenuButton, VolverButton, ProfileButton, FilterButton, ArrowButton, ExportarButton, VolverButtonN, SiguienteButtonN, GenericButton};
 
 
 //nota: Es posible que apliquemos un solo style para todos los botones. por lo pronto, cada uno tiene el suyo.
