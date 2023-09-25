@@ -8,10 +8,10 @@ import styles from "../../assets/styles";
 import { VolverButtonN, SiguienteButtonN } from "../../components/UI/uiButtons";
 import { useNavigation } from "expo-router";
 import ProductoCarrito from "../../components/entradasSalidas/productoCarrito";
-import useCarrito from "./hookProductoCarrito";
+import useCarrito from "../carrito/hookProductoCarrito";
 import TotalProductos from "../../components/entradasSalidas/totalProductos";
 
-const ArticulosCarrito = () => {  
+const ArticulosCarritoEntrada = () => {  
     const {carrito, handleCantidad, aumentarCantidad, disminuirCantidad} = useCarrito();
     const navigation = useNavigation();
 
@@ -43,11 +43,11 @@ const ArticulosCarrito = () => {
             	</Surface>
             </ScrollView>
             <View style={ buttonStyles.containerNavegacion }>
-                    <VolverButtonN navigation={navigation} path={"CrearSalida"} />
-                    <SiguienteButtonN navigation={navigation} path={"InfoDestinoN"} />
+                    <VolverButtonN navigation={navigation} path={"CrearEntrada"} />
+                    <SiguienteButtonN navigation={navigation} path={"InfoDestinoE"} />
             </View>
         </Stack>
     );
 };
 
-export default ArticulosCarrito;
+export default ArticulosCarritoEntrada;

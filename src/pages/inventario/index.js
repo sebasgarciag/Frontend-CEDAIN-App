@@ -7,8 +7,11 @@ import { HStack, VStack } from "@react-native-material/core";
 import { Surface } from "react-native-paper";
 import useInventario from './useInventario';
 import { router } from 'expo-router';
+import { EntradaNueva, SalidaNueva } from '../../components/UI/uiButtons';
+import { useNavigation } from 'expo-router';
 
 const Inventario2 = () => {
+  const navigation = useNavigation();
   const products = Array.from({ length: 20 }, (_, index) => ({
     id: index + 1,
     name: `Producto ${index + 1}`,
@@ -19,9 +22,8 @@ const Inventario2 = () => {
   const {productos} = useInventario();
 
   return (
-    <View style={styles.container}>
+    <View style={styles.containerWithHeader}>
       <View style={styles.headerContainer}>
-        <MenuButton style={{ position: 'absolute', left: 10 }} onPress={() => { alert('Menú presionado'); }} />
         <Text style={styles.headerText}>Inventario</Text>
         <ProfileButton style={{ position: 'absolute', right: 10 }} onPress={() => { alert('Perfil presionado'); }} />
         <ImportInventoryButton style={styles.importInventoryButton} onPress={() => { alert('Importar Inventario presionado'); }} />
@@ -58,20 +60,8 @@ const Inventario2 = () => {
       </ScrollView>
 
       <View style={styles.buttonsContainer}>
-        <TouchableOpacity 
-          style={[styles.button, { backgroundColor: '#59CD90' }]}
-          onPress={() => {router.replace("/listadoEntradasAlm")}}
-        >
-          <Icon name="add-circle-outline" size={24} color="#F1EFE3" />
-          <Text>Entrada Nueva</Text>
-        </TouchableOpacity>
-        <TouchableOpacity 
-          style={[styles.button, { backgroundColor: '#E87461' }]}
-          onPress={() => {router.replace("/listadoSalidasAlm")}}
-        >
-          <Icon name="remove-circle-outline" size={24} color="#F1EFE3" />
-          <Text style={styles.buttonText}>Salida Nueva</Text>
-        </TouchableOpacity>
+        <EntradaNueva navigation={navigation}/>
+        <SalidaNueva navigation={navigation}/>
       </View>
     </View>
   );

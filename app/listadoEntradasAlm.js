@@ -1,9 +1,9 @@
 import ListadoEntradasAlm from "../src/pages/listadoEntradasAlm/index";
 
-const listadoEntradasAlm = () => {
+const ListadoEntradasAlmacenista = () => {
     return (
         <ListadoEntradasAlm />
     );
 };
 
-export default listadoEntradasAlm;
+export default ListadoEntradasAlmacenista;
