@@ -9,6 +9,7 @@ import MenuButtonItem from './MenuButtonItem';
 import PagInicio from './pagInicio';
 import Adise from '../../../app/botonesAdise';
 import Eq2 from '../../../app/botonesEq2';
+import Chernobyl from '../../../app/botonesChernobyl';
 import ResumenSalida from '../../../app/resumenSalida';
 import ListadoSalidasAlm from '../../pages/listadoSalidasAlm';
 import useCurrentScreen from './useCurrentScreen';
@@ -29,7 +30,7 @@ function Menulateral() {
     drawerContent = { (props) => <MenuItems {...props} /> } >
       <Drawer.Screen name="Home" component={PagInicio} options={{ }} />
        {/* Pantallas que si tendrán botón en el menú */}
-      <Drawer.Screen name="Chernobyl" component={PagInicio} options={{ }} />
+      <Drawer.Screen name="Chernobyl" component={Chernobyl} options={{ }} />
       <Drawer.Screen name="Eq2" component={Eq2} options={{ }} />
       <Drawer.Screen name="Adise" component={Adise} options={{ }} />
       <Drawer.Screen name="Salidas" component={ListadoSalidasAlm} options={{ }} />

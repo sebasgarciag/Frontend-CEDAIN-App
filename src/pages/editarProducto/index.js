@@ -107,7 +107,9 @@ const EditarProducto = () => {
                 </TouchableOpacity>
             </View>
 
-            <VolverButton onPress={() => { router.replace("/"); }} />
+            {/* <VolverButton onPress={() => { router.replace("/botonesChernobyl"); }} /> */}
+            <VolverButton ruta="/botonesChernobyl" />
+
             
 
 

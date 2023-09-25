@@ -140,7 +140,8 @@ const EditarUsuarioPage = () => {
           />
         </Flex>
         <Flex direction="row" justify="around" marginTop={30}>
-        <VolverButton onPress={() => router.replace("/")}/>
+        {/* <VolverButton onPress={() => router.replace("/botonesChernobyl")}/> */}
+        <VolverButton ruta="/botonesChernobyl" />
         <TouchableOpacity
           onPress={handleLinkClick}
           style={{ marginTop: 10, alignSelf: "center", width: "50%" }}

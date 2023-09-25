@@ -58,7 +58,9 @@ const SignUpPage = () => {
                 <Text style={{ fontSize: 18, color: '#F1EFE3', textAlign: 'center' }}>Registrar</Text>
             </TouchableOpacity>
 
-            <VolverButton onPress={() => { router.replace("/"); }} />
+            {/* <VolverButton onPress={() => { router.replace("/botonesChernobyl"); }} /> */}
+            <VolverButton ruta="/botonesChernobyl" />
+
         </ScrollView>
     )
 }

@@ -35,9 +35,8 @@ const ListadoUsuarios = () => {
             <Divider/>
             
             <Stack style={{justifyContent: 'center', alignItems: 'center', margin: 10}}>
-              <VolverButton onPress={() => { router.replace("/"); }} />
-
-              
+              {/* <VolverButton onPress={() => { router.replace("/botonesChernobyl"); }} /> */}
+              <VolverButton ruta="/botonesChernobyl" />
             </Stack>
 
           </Stack>

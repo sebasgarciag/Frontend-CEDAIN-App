@@ -72,7 +72,8 @@ export default function CambiarContrasenaPage() {
         />
         {/* <TextInput label="Label" variant="standard" marginBottom={}/> */}
         <Flex direction="row" justify="around" marginTop={80}>
-          <VolverButton onPress={() => router.replace("/editarUsuario")}/>
+          {/* <VolverButton onPress={() => router.replace("/editarUsuario")}/> */}
+          <VolverButton ruta="/editarUsuario" />
           <GenericButton
             onPress={handleSumbit}
             text="Aceptar cambios"
