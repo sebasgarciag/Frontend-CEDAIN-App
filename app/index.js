@@ -32,7 +32,7 @@ const Home = () => {
                         />
                         <Button
                             title="Chernobyl - Productos"
-                            onPress={() => router.replace("/")}
+                            onPress={() => router.replace("/listadoProductos")}
                         />
                         <Button
                             title="Chernobyl - Dar de Alta Producto"
@@ -43,11 +43,6 @@ const Home = () => {
                             onPress={() => router.replace("/editarProducto")}
                         />
                         <Button
-<<<<<<< HEAD
-                            title="Chernobyl - Listado productos"
-                            onPress={() => router.replace("/listadoProductos")}
-                        />
-=======
                             title="Chernobyl - Listado Usuarios"
                             onPress={() => router.replace("/listadoUsuarios")}
                         />
@@ -56,7 +51,6 @@ const Home = () => {
                             onPress={() => router.replace("/editarUsuario")}
                         />
                         
->>>>>>> 7c81b989bf2b4b603b5db565d573a6c2b8d44fcf
                     </>
                 )}
 
