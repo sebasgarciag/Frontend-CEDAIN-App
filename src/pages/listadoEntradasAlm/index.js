@@ -1,23 +1,19 @@
 import React, {useState} from 'react';
 import { TextInput } from 'react-native';
 import { HStack, Stack, Text, Divider, VStack } from "@react-native-material/core";
+import { Modal } from 'react-native-paper';
 import { MenuButton, FilterButton, ProfileButton, VolverButton } from '../../components/UI/uiButtons';
 import ListaEntradasAlm from '../../components/UI/listaEntradasAlm';
 import useListadoEntradasAlm from './useListadoEntradasAlm';
 import Menulateral from '../../components/UI/MenuLateral';
 import UserMenu from '../../components/UI/userMenu';
 import styles from '../../assets/styles';
+import FiltrosEntradasAlm from '../../components/UI/filtrosEntradasAlm';
 
 
 const ListadoEntradasAlm = () => {
-    const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-    const toggleDrawer = () => {setIsDrawerOpen(!isDrawerOpen);};
-    const [isUserDrawerOpen, setIsUserDrawerOpen] = useState(false);
-    const toggleUserDrawer = () => {setIsUserDrawerOpen(!isUserDrawerOpen);};
-    const [isModalVisible, setIsModalVisible] = useState(false);
-    const toggleModal = () => {setIsModalVisible(!isModalVisible);};
-
-    const {entradas} = useListadoEntradasAlm();
+    
+  const { toggleDrawer, toggleUserDrawer, toggleModal, handlePress, filteredEntradas, setBusqueda, setComValue, isDrawerOpen, isUserDrawerOpen, isModalVisible, comValue} = useListadoEntradasAlm();
 
     return (
         <>
@@ -36,18 +32,22 @@ const ListadoEntradasAlm = () => {
 
                 {/*Boton de aplicar Filtros a lista de entradas */}
             <Stack style={styles.searchFilterContainer}>
-              <TextInput style={styles.searchInput} placeholder="Buscar..." placeholderTextColor="#8E8D8A" />
-              <FilterButton style={styles.filterButton} onPress={() => { alert('Filtro presionado'); }} />
+              <TextInput style={styles.searchInput} placeholder="Buscar..." placeholderTextColor="#8E8D8A" onChangeText={(text) => setBusqueda(text)}/>
+              <FilterButton style={styles.filterButton} onPress={toggleModal} />
             </Stack>
 
                 {/*Las entradas apareceran aqui */}
             <Divider/>
-            <ListaEntradasAlm listadoEntradas={entradas} />
+            <ListaEntradasAlm listadoEntradas={filteredEntradas} />
             <Divider/>
             
             <Stack style={{justifyContent: 'center', alignItems: 'center', margin: 10}}>
               <VolverButton ruta="/inventario"/>
             </Stack>
+
+            <Modal visible={isModalVisible} onDismiss={toggleModal}>
+              <FiltrosEntradasAlm onPress={handlePress}  setComValue={setComValue} comValue={comValue}/>
+            </Modal>
 
           </Stack>
         </>
