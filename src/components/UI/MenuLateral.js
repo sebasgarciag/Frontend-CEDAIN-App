@@ -1,7 +1,5 @@
-// Menulateral.js
 import * as React from 'react';
 import { Text } from 'react-native';
-<<<<<<< HEAD
 import { DrawerContentScrollView, createDrawerNavigator} from '@react-navigation/drawer';
 import CrearSalida from '../../../app/crearSalida';
 import Carrito from '../../../app/carrito';
@@ -14,16 +12,10 @@ import Eq2 from '../../../app/botonesEq2';
 import ResumenSalida from '../../../app/resumenSalida';
 import ListadoSalidasAlm from '../../pages/listadoSalidasAlm';
 import useCurrentScreen from './useCurrentScreen';
-=======
-import { Drawer } from 'react-native-paper';
-import { router } from 'expo-router'; // Asegúrese de que la importación sea correcta
->>>>>>> main
 
 
-const Menulateral = ({ isDrawerOpen }) => {
-  const [active, setActive] = React.useState('');
+const Drawer = createDrawerNavigator();
 
-<<<<<<< HEAD
 function Menulateral() {
   return (
     <Drawer.Navigator screenOptions={{
@@ -113,45 +105,5 @@ const styles = StyleSheet.create({
     borderRadius: 40,
     width: '30',
     height: '30',
-=======
-  if (!isDrawerOpen) {
-    return null;
->>>>>>> main
   }
-
-  return (
-    <Drawer.Section>
-      <Drawer.Item
-        label="Entrada Nueva"
-        active={active === 'first'}
-        onPress={() => {
-          setActive('first');
-          router.replace("/resumenSalida");
-        }}
-      />
-      <Drawer.Item
-        label=" Ver Entradas"
-        active={active === 'second'}
-        onPress={() => setActive('second')}
-      />
-      <Drawer.Item
-        label=" Salida Nueva"
-        active={active === 'second'}
-        onPress={() => setActive('second')}
-      />
-      <Drawer.Item
-        label="Ver Salidas"
-        active={active === 'second'}
-        onPress={() => setActive('second')}
-      />
-      <Drawer.Item
-        label="Inventario"
-        active={active === 'second'}
-        onPress={() => setActive('second')}
-      />
-    </Drawer.Section>
-    
-  );
-};
-
-export default Menulateral;
+})
