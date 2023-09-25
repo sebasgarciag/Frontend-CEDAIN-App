@@ -38,8 +38,8 @@ const Resumen = () => {
                 </VStack>
             </ScrollView>
             <View style={ buttonStyles.containerNavegacion }>
-                    <VolverButtonN navigation={navigation} path={"InfoDestinoN"} />
-                    <SiguienteButtonN navigation={navigation} path={"Home"} />
+                    <VolverButtonN navigation={navigation} path={"InfoDestinoE"} />
+                    <SiguienteButtonN navigation={navigation} path={"Entradas"} />
             </View>
         </Stack>
     );
