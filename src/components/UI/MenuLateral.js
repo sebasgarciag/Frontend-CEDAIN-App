@@ -19,6 +19,7 @@ import ResumenEntrada from '../../../app/resumenEntrada';
 import ListadoEntradasAlmacenista from '../../../app/listadoEntradasAlm';
 import CarritoEntrada from '../../../app/carritoEntrada';
 import InventarioHome from '../../../app/inventario';
+import DecidirInventario from '../../../app/decidirInventario';
 
 const Drawer = createDrawerNavigator();
 
@@ -52,6 +53,7 @@ function Menulateral() {
       <Drawer.Screen name="InfoDestinoE" component={InfoDestinoEntrada} options={{headerShown: false}}/>
       <Drawer.Screen name="ResumenEntrada" component={ResumenEntrada}  options={{headerShown: false}}/>
       {/* Inventario */}
+      <Drawer.Screen name="DecidirInventario" component={DecidirInventario} options={{ headerTransparent: true }} />
 
 
 
@@ -74,14 +76,6 @@ const MenuItems = ({ navigation }) => {
           onPress = {() => {
             navigation.navigate('Chernobyl'); 
             setScreen("Chernobyl")
-          }}
-        />
-        <MenuButtonItem 
-          text= "Eq2" 
-          currentScreen = {currentScreen}
-          onPress = {() => {
-            navigation.navigate('Eq2'); 
-            setScreen("Eq2")
           }}
         />
         <MenuButtonItem 
