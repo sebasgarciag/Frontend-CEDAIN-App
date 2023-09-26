@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
   headerContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between', 
+    alignItems: 'center',
     paddingHorizontal: 10,
     paddingVertical: 15,
     marginBottom: 10,
@@ -125,6 +126,7 @@ const styles = StyleSheet.create({
   },
   movItem: {
     flexDirection: 'row',
+    justifyContent: 'space-between',
     alignItems: 'center',
     padding: 5,
     borderBottomWidth: 1,

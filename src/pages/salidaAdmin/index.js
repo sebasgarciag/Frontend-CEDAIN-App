@@ -1,38 +1,28 @@
-import React, {useState} from 'react';
-import { Stack, Text, HStack } from "@react-native-material/core";
-import { MenuButton, ProfileButton, VolverButton,ExportarButton } from '../../components/UI/uiButtons';
+import React from 'react';
+import { Stack, Text} from "@react-native-material/core";
+import { ExportarButton } from '../../components/UI/uiButtons';
 import useSalidaAdmin from './useSalidaAdmin';
 import InfoSalida from '../../components/UI/infoSalida';
 import ProductosSalida from '../../components/UI/productosSalida';
 import styles from '../../assets/styles';
-import Menulateral from '../../components/UI/MenuLateral';
-import UserMenu from '../../components/UI/userMenu';
+import { useNavigation } from '@react-navigation/native';
 
 
 
 const SalidaAdmin = () => {
-    const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-    const toggleDrawer = () => {setIsDrawerOpen(!isDrawerOpen);};
-    const [isUserDrawerOpen, setIsUserDrawerOpen] = useState(false);
-    const toggleUserDrawer = () => {setIsUserDrawerOpen(!isUserDrawerOpen);};
+
+    const navigation = useNavigation();
 
     const {salida, datosSalida} = useSalidaAdmin();
 
     return (
         <>
             <Stack style={styles.container}>
-                <HStack style={styles.headerContainer}>
-                    <MenuButton onPress={toggleDrawer} />
-                    <ProfileButton onPress={toggleUserDrawer} />
-                </HStack>
 
                 <Stack style={styles.titulosContainer}>
                     <Text  style={styles.headerText}>Salida <Text style={styles.movFolioSerie}>{salida.folioSerie}</Text></Text>
                     <ExportarButton/>
-                </Stack> 
-
-                <Menulateral isDrawerOpen={isDrawerOpen}/>
-                <UserMenu isDrawerOpen={isUserDrawerOpen}/>          
+                </Stack>         
 
                 {/* Aqui va componente con informacion de receptor, emisor, comunidad, etc. */}
                 <InfoSalida salida={salida}/>
@@ -40,7 +30,7 @@ const SalidaAdmin = () => {
 
                 {/*Boton de volver atras */}
                 <Stack style={styles.volverContainer}>
-                    <VolverButton ruta="/listadoSalidasAdmin" />
+                    <VolverButtonN navigation={navigation} path={"SalidasAdmin"}/>
                 </Stack>
             </Stack>
         </>

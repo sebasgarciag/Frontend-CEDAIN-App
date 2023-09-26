@@ -1,10 +1,10 @@
 
 import EntradaAdmin from "../src/pages/entradaAdmin/index";
 
-const entradaAdmin = () => {
+const EntradaAdministrador = () => {
     return (
         <EntradaAdmin />
     );
 };
 
-export default entradaAdmin;
+export default EntradaAdministrador;
