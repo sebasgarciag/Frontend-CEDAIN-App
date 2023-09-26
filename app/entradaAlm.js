@@ -1,10 +1,10 @@
 
 import EntradaAlm from "../src/pages/entradaAlm/index";
 
-const entradaAlm = () => {
+const EntradaAlma = () => {
     return (
         <EntradaAlm />
     );
 };
 
-export default entradaAlm;
+export default EntradaAlma;

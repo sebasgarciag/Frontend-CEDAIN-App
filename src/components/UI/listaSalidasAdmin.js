@@ -4,8 +4,13 @@ import { HStack, VStack } from "@react-native-material/core";
 import { ArrowButton } from "./uiButtons";
 import styles from "../../assets/styles";
 import { router } from "expo-router";
+import { useNavigation } from '@react-navigation/native';
+
 
 function ListaSalidasAdmin({listadoSalidas}){
+
+        const navigation = useNavigation();
+        
         return(
             <ScrollView style={styles.listaMovs}>
                 {listadoSalidas.map((salida)=>
@@ -17,7 +22,7 @@ function ListaSalidasAdmin({listadoSalidas}){
                                 <Text style={styles.movDato}>Almacenista: {salida.almacenista}</Text>
                                 <Text style={styles.movDato}>Articulos: {salida.cantidadArticulos}</Text>
                             </VStack>
-                            <ArrowButton style={styles.arrowButton} onPress={() => { router.replace("/salidaAdmin"); }} />
+                            <ArrowButton navigation={navigation} path={"SalidaAdmin"} />
 
                             
                         </HStack>

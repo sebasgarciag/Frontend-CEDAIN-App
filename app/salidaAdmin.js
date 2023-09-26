@@ -1,9 +1,9 @@
 import SalidaAdmin from "../src/pages/salidaAdmin/index";
 
-const salidaAdmin = () => {
+const SalidaAdministrador = () => {
     return (
         <SalidaAdmin />
     );
 };
 
-export default salidaAdmin;
+export default SalidaAdministrador;
