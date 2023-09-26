@@ -6,8 +6,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import { HStack, VStack } from "@react-native-material/core";
 import { Surface } from "react-native-paper";
 import useInventario from './useInventario';
-import { router } from 'expo-router';
-import { useNavigation } from 'expo-router';
+import { router, useNavigation } from 'expo-router';
 import { EntradaNueva, SalidaNueva } from '../../components/UI/uiButtons';
 
 
