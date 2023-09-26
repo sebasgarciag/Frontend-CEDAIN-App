@@ -6,8 +6,9 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import { HStack, VStack } from "@react-native-material/core";
 import { Surface } from "react-native-paper";
 import useInventario from './useInventario';
-import { router, useNavigation } from 'expo-router';
+import { useNavigation } from '@react-navigation/native';
 import { EntradaNueva, SalidaNueva } from '../../components/UI/uiButtons';
+
 
 
 const Inventario2 = () => {
@@ -53,7 +54,7 @@ const Inventario2 = () => {
                   </VStack>
                 </HStack>
               </VStack>
-              <ArrowButton onPress={() => { router.replace("/editarInventario"); }} />
+              <ArrowButton navigation={navigation} path={"EditarProducto"} />
             </HStack>
           </Surface>
         )}

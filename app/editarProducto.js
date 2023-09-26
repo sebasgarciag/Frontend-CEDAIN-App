@@ -1,9 +1,9 @@
 import EditarProducto from "../src/pages/editarProducto";
 
-const editarProductoPage = () => {
+const EditarProductoPage = () => {
     return (
         <EditarProducto />
     );
 };
 
-export default editarProductoPage;
+export default EditarProductoPage;
