@@ -1,7 +1,7 @@
 import React from 'react';
 import { TextInput, View } from 'react-native';
 import { HStack, Stack, Text, Divider, VStack } from "@react-native-material/core";
-import { Modal } from 'react-native-paper';
+import { Button, Modal } from 'react-native-paper';
 import { MenuButton, FilterButton, ProfileButton, VolverButton } from '../../components/UI/uiButtons';
 import ListaEntradasAlm from '../../components/UI/listaEntradasAlm';
 import useListadoEntradasAlm from './useListadoEntradasAlm';
@@ -16,7 +16,7 @@ import buttonStyles from '../../assets/buttons/styles';
 
 const ListadoEntradasAlm = () => {
   const navigation = useNavigation();  
-  const {toggleUserDrawer, toggleModal, handlePress, filteredEntradas, setBusqueda, setComValue, isUserDrawerOpen, isModalVisible, comValue} = useListadoEntradasAlm();
+  const {toggleUserDrawer, toggleModal, handlePress, filteredEntradas, setBusqueda, setComValue, isUserDrawerOpen, isModalVisible, comValue, getEntradas} = useListadoEntradasAlm();
 
     return (
         <>
@@ -44,6 +44,7 @@ const ListadoEntradasAlm = () => {
             
             <View style={ buttonStyles.containerNavegacion }>
                 <VolverButtonN navigation={navigation} path={"Inventario"}/>
+                <Button onPress={() => getEntradas()}/>
             </View>
 
             <Modal visible={isModalVisible} onDismiss={toggleModal}>
