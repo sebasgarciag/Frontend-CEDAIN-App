@@ -13,33 +13,33 @@ import InfoSalida from "../../components/UI/infoSalida";
 
 const Resumen = () => { 
 
-    const { salida, datosSalida, handleCantidad } = useResumen();
+    const { entrada, datosEntrada, handleCantidad } = useResumen();
     const navigation = useNavigation();
 
     return (
         <Stack style={styles.container}>
 
             <HStack style={styles.titulosContainer}>
-                <Text style={styles.headerText}>Resumen de salida</Text>
+                <Text style={styles.headerText}>Resumen de entrada</Text>
             </HStack>
 
-            <InfoSalida salida={salida} />
+            <InfoSalida salida={entrada} />
             
             <ScrollView>
                 <VStack>
                     <Spacer/>
                     
-                    {datosSalida.map((datosSalida) => 
-                        <Surface elevation={5} key={datosSalida.producto} style={styles.productItem}> 
-                            <ListaSalida datos={datosSalida} handleCantidad={handleCantidad}/>
+                    {datosEntrada.map((datosEntrada) => 
+                        <Surface elevation={5} key={datosEntrada.producto} style={styles.productItem}> 
+                            <ListaSalida datos={datosEntrada} handleCantidad={handleCantidad}/>
                         </Surface> 
                     )}
 
                 </VStack>
             </ScrollView>
             <View style={ buttonStyles.containerNavegacion }>
-                    <VolverButtonN navigation={navigation} path={"InfoDestinoN"} />
-                    <SiguienteButtonN navigation={navigation} path={"Salidas"} />
+                    <VolverButtonN navigation={navigation} path={"InfoDestinoE"} />
+                    <SiguienteButtonN navigation={navigation} path={"Entradas"} />
             </View>
         </Stack>
     );

@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
   headerContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between', 
+    alignItems: 'center',
     paddingHorizontal: 10,
     paddingVertical: 15,
     marginBottom: 10,
@@ -16,6 +17,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     color: '#333',
+    marginTop: 15,
   },
   searchFilterContainer: {
     flexDirection: 'row',
@@ -124,6 +126,7 @@ const styles = StyleSheet.create({
   },
   movItem: {
     flexDirection: 'row',
+    justifyContent: 'space-between',
     alignItems: 'center',
     padding: 5,
     borderBottomWidth: 1,
@@ -175,6 +178,23 @@ const styles = StyleSheet.create({
   textoProd:{
     paddingLeft: 10,
     width: "75%"
+  },
+  textoProdCarrito:{
+    paddingLeft: 10,
+    width: "60%"
+  },
+  textoCantidadCarrito: {
+    textAlign: "center",
+    fontSize: 20, 
+    fontWeight: "bold" , 
+    width: "40%",
+    verticalAlign: "middle",
+  },
+  containerCantidadCarrito: {
+    flex: 1, 
+    flexDirection: 'row', 
+    alignItems: 'center', 
+    justifyContent: 'space-between',
   },
   textoCantidad: {
     textAlign: "center",

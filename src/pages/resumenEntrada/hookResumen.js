@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const useResumen = () => {
-    const [salida, setSalida] = useState({
+    const [entrada, setEntrada] = useState({
         idSalida: 1,
         folioSerie: "folio1",
         receptor: "receptor1",
@@ -11,7 +11,7 @@ const useResumen = () => {
         observaciones: "observaciones1"
     });
 
-    const [datosSalida, setDatosSalida] = useState([
+    const [datosEntrada, setDatosEntrada] = useState([
         {
             producto: "producto1",
             cantidad: 0,    
@@ -51,20 +51,20 @@ const useResumen = () => {
     ]);
 
     function handleCantidad(producto, newCantidad) {
-        const newDatosSalida = datosSalida.map((datosSalida) => {
-            if (datosSalida.producto === producto) {
+        const newDatos = datosEntrada.map((datosEntrada) => {
+            if (datosEntrada.producto === producto) {
                 if (isNaN(parseInt(newCantidad))) {
                     newCantidad = 0;
                 }
-                return { ...datosSalida, cantidad: parseInt(newCantidad) };
+                return { ...datosEntrada, cantidad: parseInt(newCantidad) };
             } else {
-                return datosSalida;
+                return datosEntrada;
             }
         });
-        setDatosSalida(newDatosSalida);
+        setDatosEntrada(newDatos);
     }
 
-    return { salida, datosSalida, handleCantidad };
+    return { entrada, datosEntrada, handleCantidad };
 }
 
 export default useResumen;

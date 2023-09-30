@@ -1,9 +1,9 @@
-import Inventario2 from "../src/pages/inventario/index";
+import Inventario2 from "../src/pages/inventario";
 
-const inventario2 = () => {
+const InventarioHome = () => {
     return (
         <Inventario2 />
     );
 };
 
-export default inventario2;
+export default InventarioHome;

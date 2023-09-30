@@ -1,9 +1,9 @@
 import ListadoSalidasAdmin from "../src/pages/listadoSalidasAdmin";
 
-const listadoSalidasAdmin = () => {
+const ListadoSalidasAdministrador = () => {
     return (
         <ListadoSalidasAdmin />
     );
 };
 
-export default listadoSalidasAdmin;
+export default ListadoSalidasAdministrador;

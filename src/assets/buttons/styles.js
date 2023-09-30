@@ -62,6 +62,13 @@ const buttonStyles = {
       flex: 1,
       backgroundColor: '#F1EFE3',
     },
+
+    containerWithHeader: {
+      flex: 1,
+      backgroundColor: '#F1EFE3',
+
+
+    },
   
     importInventoryButton: {
       position: 'absolute',
@@ -79,6 +86,7 @@ const buttonStyles = {
       fontSize: 24,
       fontWeight: 'bold',
       color: '#333',
+      marginTop: 15,
     },
     searchFilterContainer: {
       flexDirection: 'row',

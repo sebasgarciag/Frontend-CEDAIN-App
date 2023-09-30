@@ -1,9 +1,9 @@
 import SalidaAlm from "../src/pages/salidaAlm/index";
 
-const salidaAlm = () => {
+const SalidaAlma = () => {
     return (
         <SalidaAlm />
     );
 };
 
-export default salidaAlm;
+export default SalidaAlma;

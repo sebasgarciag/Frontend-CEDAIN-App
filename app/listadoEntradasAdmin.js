@@ -1,10 +1,10 @@
 
 import ListadoEntradasAdmin from "../src/pages/listadoEntradasAdmin/index";
 
-const listadoEntradasAdmin = () => {
+const ListadoEntradasAdministrador = () => {
     return (
         <ListadoEntradasAdmin />
     );
 };
 
-export default listadoEntradasAdmin;
+export default ListadoEntradasAdministrador;
