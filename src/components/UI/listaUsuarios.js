@@ -8,12 +8,12 @@ function ListaUsuarios({listadoUsuarios}){
         return(
             <ScrollView style={styles.listaMovs}>
                 {listadoUsuarios.map((usuario)=>
-                    <VStack spacing={10} key={usuario.nombreCompleto}>
+                    <VStack spacing={10} key={usuario.nombre}>
                         <HStack style={styles.movItem} spacing={10}>
                             <VStack>
-                                <Text style={styles.movName}>{usuario.nombreCompleto}</Text>
-                                <Text style={styles.movDato}>Email: {usuario.email}</Text>
-                                <Text style={styles.movDato}>Rol: {usuario.rol}</Text>
+                                <Text style={styles.movName}>{usuario.nombre}</Text>
+                                <Text style={styles.movDato}>Email: {usuario.tipo}</Text>
+                                <Text style={styles.movDato}>Rol: {usuario.id_almacen}</Text>
                             </VStack>
                             
                             <ArrowButton style={styles.arrowButton} onPress={() => { alert('Flecha presionada'); }} />

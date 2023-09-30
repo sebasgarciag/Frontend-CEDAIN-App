@@ -1,16 +1,18 @@
 import { Text, View, TouchableOpacity } from "react-native";
 import { Stack, TextInput, Flex, HStack } from "@react-native-material/core";
 import { router } from "expo-router";
-import { MenuButton, ProfileButton, GenericButton, VolverButton } from "../../components/UI/uiButtons";
+import { MenuButton, ProfileButton, GenericButton, VolverButtonN } from "../../components/UI/uiButtons";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import { Dropdown } from "react-native-element-dropdown";
 import styles from "../../assets/styles";
 import buttonStyles from "../../assets/buttons/styles";
 import useEditarEntrada from "./useEditarEntrada";
+import { useNavigation } from '@react-navigation/native';
 
 const EditarUsuarioPage = () => {
   const {isEditable, nombre, setNombre, apellidoPaterno, setApellidoPaterno, apellidoMaterno, setApellidoMaterno, email, setEmail, editarText, rol, setRol, handleSumbit, handleEditable } = useEditarEntrada()
+    const navigation = useNavigation();  
 
   const roles = [
     { label: "Administrador", value: "Administrador" },
@@ -141,7 +143,7 @@ const EditarUsuarioPage = () => {
         </Flex>
         <Flex direction="row" justify="around" marginTop={30}>
         {/* <VolverButton onPress={() => router.replace("/botonesChernobyl")}/> */}
-        <VolverButton ruta="/botonesChernobyl" />
+        <VolverButtonN navigation={navigation} path="/botonesChernobyl" />
         <TouchableOpacity
           onPress={handleLinkClick}
           style={{ marginTop: 10, alignSelf: "center", width: "50%" }}
