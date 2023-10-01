@@ -4,34 +4,36 @@ import axios from 'axios';
 const ip = '192.168.1.120';
 const baseURL = `http://${ip}:8080`;
 
-const entradasApi = () => {
+const salidasApi = () => {
 
-    async function getAllEntradas() {
+    async function getAllSalidas() {
 
         let response = null;
 
         try {
-            response = await axios.get(`${baseURL}/entradas`);
+            console.log(`${baseURL}/salidas`)
+            response = await axios.get(`${baseURL}/salidas`);
         } catch (error) {
             console.error('error' + error);
         }
         return response.data;
     }
 
-    async function getAllEntradasAlm(almacenista) {
+    async function getAllSalidasAlm(almacenista) {
 
         let response = null;
 
         try {
-            response = await axios.get(`${baseURL}/entradas/?userId=${almacenista}`);
+            console.log(`${baseURL}/salidas`)
+            response = await axios.get(`${baseURL}/salidas/?userId=${almacenista}`);
         } catch (error) {
             console.error('error' + error);
         }
         return response.data;
     }
 
-    return { getAllEntradas, getAllEntradasAlm }
+    return { getAllSalidas, getAllSalidasAlm }
 
 }
 
-export default entradasApi;
+export default salidasApi;
