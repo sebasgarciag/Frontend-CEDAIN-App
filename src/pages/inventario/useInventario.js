@@ -84,7 +84,13 @@ const useInventario = () => {
 
     ]);
 
-    
+    async function obtenerListarProductos() {
+        const response = await getTodosInventarios();
+
+        if (response !== null) {
+            setPersonas(response.data);
+        }
+    }
    
 
 

@@ -13,12 +13,12 @@ import { EntradaNueva, SalidaNueva } from '../../components/UI/uiButtons';
 
 const Inventario2 = () => {
   const navigation = useNavigation();
-  const products = Array.from({ length: 20 }, (_, index) => ({
-    id: index + 1,
-    name: `Producto ${index + 1}`,
-    quantity: `Cantidad ${index + 1}`,
-    imageUri: 'https://via.placeholder.com/50',
-  }));
+  // const products = Array.from({ length: 20 }, (_, index) => ({
+  //   id: index + 1,
+  //   name: `Producto ${index + 1}`,
+  //   quantity: `Cantidad ${index + 1}`,
+  //   imageUri: 'https://via.placeholder.com/50',
+  // }));
 
   const {productos} = useInventario();
 
