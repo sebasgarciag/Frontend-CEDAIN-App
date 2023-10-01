@@ -9,10 +9,13 @@ import useEditarProducto from "./useEditarProducto";
 import * as ImagePicker from 'expo-image-picker';
 import { VolverButton } from '../../components/UI/uiButtons';
 import { router } from "expo-router";
+import { VolverButtonN } from "../../components/UI/uiButtons";
+import { useNavigation } from '@react-navigation/native';
 
 
 
 const EditarProducto = () => {
+    const navigation = useNavigation();
     const { setValueEvento, dataDropDownEvento, valueEvento } = useEditarProducto();
     const [nombreProducto, setNombreProducto] = useState("");
     const [medida, setMedida] = useState("");
@@ -39,7 +42,7 @@ const EditarProducto = () => {
         <ScrollView style={styles.Container}>
             <View style={styles.View}>
                 <Text style={{ fontSize: 26 }}>Editar Producto</Text>
-                <ArrowButton onPress={() => router.replace("/inventario")} />
+                <ArrowButton navigation={navigation} path={"Inventario"} />
             </View>
             
             <View>
@@ -107,8 +110,7 @@ const EditarProducto = () => {
                 </TouchableOpacity>
             </View>
 
-            {/* <VolverButton onPress={() => { router.replace("/botonesChernobyl"); }} /> */}
-            <VolverButton ruta="/botonesChernobyl" />
+            <VolverButtonN navigation={navigation} path={"Inventario"} />
 
             
 

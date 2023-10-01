@@ -2,6 +2,7 @@ import React from 'react';
 import { TouchableOpacity, Text } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
+
 export const ProfileButton = ({ onPress, style }) => (
   <TouchableOpacity style={style} onPress={onPress}>
     <Icon name="person" size={30} color="#333" />
@@ -20,11 +21,16 @@ export const FilterButton = ({ onPress, style }) => (
   </TouchableOpacity>
 )
 
-export const ArrowButton = ({ onPress, style }) => (
-  <TouchableOpacity style={style} onPress={onPress}>
-    <Icon name="arrow-forward-ios" size={24} color="#333" />
+const ArrowButton = ({navigation, path}) => {
+  return(
+  <TouchableOpacity 
+      onPress={() => {
+      navigation.navigate(`${path}`);
+      }}>
+      <Icon name="arrow-forward-ios" size={24} color="#333" />
   </TouchableOpacity>
-)
+  );
+};
 
 export const ImportInventoryButton = ({ onPress, style }) => (
   <TouchableOpacity style={style} onPress={onPress}>
@@ -32,4 +38,5 @@ export const ImportInventoryButton = ({ onPress, style }) => (
   </TouchableOpacity>
 )
 
+export {ArrowButton};
 

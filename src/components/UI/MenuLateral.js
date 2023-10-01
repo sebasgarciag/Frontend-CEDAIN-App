@@ -26,6 +26,7 @@ import SalidaAdministrador from '../../../app/salidaAdmin';
 import ListadoEntradasAdministrador from '../../../app/listadoEntradasAdmin'
 import ListadoSalidasAdministrador from '../../pages/listadoSalidasAdmin';
 import DecidirInventario from '../../../app/decidirInventario';
+import EditarProductoPage from '../../../app/editarProducto';
 
 const Drawer = createDrawerNavigator();
 
@@ -66,6 +67,7 @@ function Menulateral() {
       <Drawer.Screen name="EntradaAdmin" component={EntradaAdministrador}  options={{headerShown: false}}/>
       {/* Inventario */}
       <Drawer.Screen name="DecidirInventario" component={DecidirInventario} options={{ headerTransparent: true }} />
+      <Drawer.Screen name="EditarProducto" component={EditarProductoPage} options={{ headerTransparent: true, headerShown: false }} />
 
 
 
@@ -128,6 +130,14 @@ const MenuItems = ({ navigation }) => {
           onPress = {() => {
             navigation.navigate('CrearSalida'); 
             setScreen("Registrar Salida")
+          }}
+        /> 
+        <MenuButtonItem 
+          text= "Cambiar almacén" 
+          currentScreen = {currentScreen}
+          onPress = {() => {
+            navigation.navigate('DecidirInventario'); 
+            setScreen("Cambiar almacén")
           }}
         /> 
       </DrawerContentScrollView> 
