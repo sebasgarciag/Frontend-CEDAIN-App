@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const ip = '10.34.3.73';
+// const ip = '10.34.3.73';
+const ip = '192.168.1.120';
 const baseURL = `http://${ip}:8080`;
 
 const entradasApi = () => {
@@ -17,7 +18,19 @@ const entradasApi = () => {
         return response.data;
     }
 
-    return { getAllEntradas }
+    async function getAllEntradasAlm(almacenista) {
+
+        let response = null;
+
+        try {
+            response = await axios.get(`${baseURL}/entradas/?userId=${almacenista}`);
+        } catch (error) {
+            console.error('error' + error);
+        }
+        return response.data;
+    }
+
+    return { getAllEntradas, getAllEntradasAlm }
 
 }
 

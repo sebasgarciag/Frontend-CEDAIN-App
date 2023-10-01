@@ -15,132 +15,35 @@ const useListadoEntradasAlm = () => {
     const [busqueda, setBusqueda]=useState('');
     const [comValue, setComValue] = useState('');
     
-    const { getAllEntradas } = entradasApi();
-
-    // const [entradas, setEntradas] = useState([
-    //     {
-    //         idEntrada: 1,
-    //         folioSerie: 'E2023-012',
-    //         almacenista: 'tomas',
-    //         cantidadArticulos: 120,
-    //         fecha: '15/08/2023',
-    //         comunidad: 'Creel'
-    //     }, 
-    //     {
-    //         idEntrada: 2,
-    //         folioSerie: 'E2023-011',
-    //         almacenista: 'tomas',
-    //         cantidadArticulos: 100,
-    //         fecha: '21/05/2023',
-    //         comunidad: 'Creel'
-    //     }, 
-    //     {
-    //         idEntrada: 3,
-    //         folioSerie: 'E2023-010',
-    //         almacenista: 'tomas',
-    //         cantidadArticulos: 210,
-    //         fecha: '26/08/2023',
-    //         comunidad: 'Batopilas'
-    //     }, 
-    //     {
-    //         idEntrada: 4,
-    //         folioSerie: 'E2023-009',
-    //         almacenista: 'alexis',
-    //         cantidadArticulos: 120,
-    //         fecha: '27/09/2023',
-    //         comunidad: 'Batopilas'
-    //     },
-    //     {
-    //         idEntrada: 5,
-    //         folioSerie: 'E2023-008',
-    //         almacenista: 'alexis',
-    //         cantidadArticulos: 60,
-    //         fecha: '05/08/2023',
-    //         comunidad: 'Batopilas'
-    //     },
-    //     {
-    //         idEntrada: 6,
-    //         folioSerie: 'E2023-007',
-    //         almacenista: 'tomas',
-    //         cantidadArticulos: 40,
-    //         fecha: '05/09/2023',
-    //         comunidad: 'Batopilas',
-    //     },
-    //     {
-    //         idEntrada: 7,
-    //         folioSerie: 'E2023-012',
-    //         almacenista: 'alexis',
-    //         cantidadArticulos: 120,
-    //         fecha: '15/08/2023',
-    //         comunidad: 'Batopilas',
-    //     }, 
-    //     {
-    //         idEntrada: 8,
-    //         folioSerie: 'E2023-011',
-    //         almacenista: 'tomas',
-    //         cantidadArticulos: 100,
-    //         fecha: '21/05/2023',
-    //         comunidad: 'Batopilas'
-    //     }, 
-    //     {
-    //         idEntrada: 9,
-    //         folioSerie: 'E2023-010',
-    //         almacenista: 'tomas',
-    //         cantidadArticulos: 210,
-    //         fecha: '26/08/2023',
-    //         comunidad: 'Batopilas'
-    //     }, 
-    //     {
-    //         idEntrada: 10,
-    //         folioSerie: 'E2023-009',
-    //         almacenista: 'alexis',
-    //         cantidadArticulos: 120,
-    //         fecha: '27/09/2023',
-    //         comunidad: 'Creel'
-    //     },
-    //     {
-    //         idEntrada: 11,
-    //         folioSerie: 'E2023-008',
-    //         almacenista: 'tomas',
-    //         cantidadArticulos: 60,
-    //         fecha: '05/08/2023',
-    //         comunidad: 'Creel'
-    //     },
-    //     {
-    //         idEntrada: 12,
-    //         folioSerie: 'E2023-007',
-    //         almacenista: 'alexis',
-    //         cantidadArticulos: 40,
-    //         fecha: '05/09/2023',
-    //         comunidad: 'Creel'
-    //     },
-
-    // ]);
+    const { getAllEntradasAlm } = entradasApi();
 
     const [entradas, setEntradas] = useState([
         {
-            idEntrada: 1,
-            folioSerie: 'E2023-012',
-            almacenista: 'tomas',
-            cantidadArticulos: 120,
+            id_entrada: 1,
+            folio: 'E2023-012',
+            serie: 'aaa',
+            id_usuario: 3,
+            cantidad: 120,
             fecha: '15/08/2023',
-            comunidad: 'Creel'
+            id_comunidad: 1
         },
     ]);
 
  
     const filteredEntradas = entradas.filter((entrada) =>{
-        // const almacenistaMatch = entrada.folioSerie.toLowerCase().includes(busqueda.toLowerCase());
-        // const folioSerieMatch = entrada.folioSerie.toLowerCase().includes(busqueda.toLowerCase());
-        // const comunidadMatch = entrada.comunidad.toLowerCase().includes(busqueda.toLowerCase());
+        // const almacenistaMatch = entrada.id_usuario.includes(busqueda.toLowerCase());
+        const folioSerie = entrada.folio + entrada.serie;
+        const folioSerieMatch = folioSerie.toLowerCase().includes(busqueda.toLowerCase());
+        // const comunidadMatch = entrada.id_comunidad.includes(busqueda.toLowerCase());
     
         // return almacenistaMatch || folioSerieMatch || comunidadMatch;
-        return entradas;
+        return folioSerieMatch;
     });
 
     async function getEntradas() {
-        const aaa = await getAllEntradas();
-        setEntradas(aaa);
+        // TODO: pasar almacenista como parametro
+        const entradasApi = await getAllEntradasAlm(1);
+        setEntradas(entradasApi);
         return;
     };
 
