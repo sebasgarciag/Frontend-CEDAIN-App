@@ -20,7 +20,7 @@ function ListaSalidasAlm({listadoSalidas}){
                                 <Text style={styles.movDato}>Articulos: {salida.cantidad}</Text>
                             </VStack>
                             
-                            <ArrowButton navigation={navigation} path={"SalidaAlm"} />
+                            <ArrowButton navigation={navigation} path={"SalidaAlm"} data={salida}/>
                             
                         </HStack>
                     </VStack>

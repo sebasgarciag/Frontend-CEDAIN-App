@@ -1,4 +1,3 @@
-
 import EntradaAlm from "../src/pages/entradaAlm/index";
 
 const EntradaAlma = ({route}) => {

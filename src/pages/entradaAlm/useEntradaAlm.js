@@ -1,6 +1,5 @@
 import {useState}  from 'react';
 import entradasApi from '../../apis/entradasApi';
-import salidasApi from '../../apis/salidasApi';
 
 const useEntradaAlm = () => {
 
