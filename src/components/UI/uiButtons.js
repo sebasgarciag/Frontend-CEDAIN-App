@@ -129,11 +129,11 @@ const FilterButton = ({ onPress }) => {
     
  };
 
-const ArrowButton = ({navigation, path, data}) => {
+const ArrowButton = ({navigation, path}) => {
   return (
     <TouchableOpacity style={[styles.arrowButtonButton, { backgroundColor: 'white' }]} 
       onPress={() =>
-          navigation.navigate(`${path}`, {data: data})}
+          navigation.navigate(`${path}`)}
       >
     <Icon name="arrow-forward-ios" size={24} color="black" />
   </TouchableOpacity>

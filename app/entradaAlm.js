@@ -2,7 +2,7 @@ import EntradaAlm from "../src/pages/entradaAlm/index";
 
 const EntradaAlma = ({route}) => {
     return (
-        <EntradaAlm entrada={route.params.data}/>
+        <EntradaAlm entrada={route.params.object}/>
     );
 };
 
