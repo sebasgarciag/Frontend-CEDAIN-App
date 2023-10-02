@@ -1,10 +1,12 @@
 import React from "react";
 import { Text, ScrollView} from "react-native";
 import { HStack, VStack } from "@react-native-material/core";
-import { ArrowButton } from "./uiButtons";
+import { ArrowButtonConObject } from "./uiButtons";
 import styles from "../../assets/styles";
+import { useNavigation } from '@react-navigation/native';
 
-function ListaUsuarios({listadoUsuarios}){
+function ListaUsuarios({listadoUsuarios}){  
+    const navigation = useNavigation();
         return(
             <ScrollView style={styles.listaMovs}>
                 {listadoUsuarios.map((usuario)=>
@@ -16,7 +18,7 @@ function ListaUsuarios({listadoUsuarios}){
                                 <Text style={styles.movDato}>Rol: {usuario.id_almacen}</Text>
                             </VStack>
                             
-                            <ArrowButton style={styles.arrowButton} onPress={() => { alert('Flecha presionada'); }} />
+                            <ArrowButtonConObject navigation={navigation} path={"editarUsuario"} object={usuario} />
                             
                         </HStack>
                     </VStack>

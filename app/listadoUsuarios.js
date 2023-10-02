@@ -1,9 +1,9 @@
 import ListadoUsuarios from "../src/pages/listadoUsuarios/index";
 
-const listadoUsuarios = () => {
+const ListadoUsuariosRef = () => {
     return (
         <ListadoUsuarios />
     );
 };
 
-export default listadoUsuarios;
+export default ListadoUsuariosRef;
