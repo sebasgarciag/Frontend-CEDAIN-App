@@ -7,6 +7,8 @@ import styles from '../../assets/styles';
 import useEntradaAlm from './useEntradaAlm';
 import { useNavigation } from '@react-navigation/native';
 import { ScrollView } from 'react-native';
+import ShareExcelButton from '../../components/UI/ShareExcelButton'; 
+
 
 const EntradaAlm = ( {entrada} ) => {
 
@@ -38,6 +40,12 @@ const EntradaAlm = ( {entrada} ) => {
                     )}
                 </ScrollView>
                 {/* <ProductosEntrada datos={datosEntrada}/> */}
+
+                <ShareExcelButton 
+                endpoint="http://192.168.1.211:8080/entradas/export" //Aqui primero va la direccion ip de la compu que prueba el servidor sql
+                entryId={entrada.idEntrada} 
+                buttonText="Descargar Entrada"
+                />
 
                 {/*Boton de volver atras */}
                 <Stack style={styles.volverContainer}>
