@@ -5,7 +5,7 @@ import { Text, TextInput, Title } from "react-native-paper";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { VolverButton } from '../../components/UI/uiButtons';
-import usuariosApi from '../../apis/usuariosApi';
+import UsuariosAPI from '../../apis/usuariosApi';
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -29,7 +29,7 @@ const LoginPage = () => {
     }
 
     // Llama al servicio de inicio de sesión
-    usuariosApi.login(email, password)
+    UsuariosAPI().login(email, password)
       .then(function (data) {
         // La autenticación es exitosa
         console.log("Inicio de sesión exitoso");
@@ -38,8 +38,15 @@ const LoginPage = () => {
       .catch(function (error) {
         // La autenticación falla
         console.error(error);
-        Alert.alert("Error", "Correo o contraseña incorrectos");
+        if (error.message === 'Network Error') {
+          console.log("No se pudo conectar a la base de datos");
+          Alert.alert("Error", "No se pudo conectar a la base de datos");
+        } else {
+          Alert.alert("Error", "Correo o contraseña incorrectos");
+        }
       });
+
+
   }
   
 

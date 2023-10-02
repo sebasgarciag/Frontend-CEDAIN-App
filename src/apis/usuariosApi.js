@@ -7,7 +7,7 @@ const UsuariosAPI = () => {
         let response = null;
 
         try {
-            response = await axios.get(`${baseUrl}/usuarios`);
+            response = await axios.get("http://localhost:8080/usuarios");
             console.log(response.data)
         } catch (error) {
             console.log("Error: " + error);
@@ -20,10 +20,15 @@ const UsuariosAPI = () => {
         let response = null;
 
         try {
-            response = await axios.post(`${baseUrl}/usuarios/login`, { correo, password });
+            response = await axios.post("http://localhost:8080/usuarios/login", { correo, password });
             console.log(response.data);
         } catch (error) {
             console.log("Error: " + error);
+            // Si el error es un error de red (lo que podría indicar un problema de conexión con la base de datos)
+            if (axios.isAxiosError(error) && !error.response) {
+                console.log("No se pudo conectar a la base de datos");
+                Alert.alert("Error", "No se pudo conectar a la base de datos");
+            }
         }
 
         return response;
@@ -33,23 +38,23 @@ const UsuariosAPI = () => {
 }
 
 export default UsuariosAPI;
- 
-    
 
-    // async function saveUsuario(usuario) {
-    //     let response = null;
 
-    //     try {
-    //         response = await axios.post(`${baseUrl}/usuarios`, usuario)
-    //     } catch (error) {
-    //         if (error.response) {
-    //             if (error.response.status === 400) {
-    //                 console.log("Invalid Parameter");
-    //             }
-    //         }
 
-    //         console.log("Error: " + error);
-    //     }
+// async function saveUsuario(usuario) {
+//     let response = null;
 
-    //     return response;
-    // }
+//     try {
+//         response = await axios.post(`${baseUrl}/usuarios`, usuario)
+//     } catch (error) {
+//         if (error.response) {
+//             if (error.response.status === 400) {
+//                 console.log("Invalid Parameter");
+//             }
+//         }
+
+//         console.log("Error: " + error);
+//     }
+
+//     return response;
+// }
