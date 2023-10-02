@@ -6,6 +6,8 @@ import InfoEntrada from '../../components/UI/infoEntrada';
 import ProductosEntrada from '../../components/UI/productosEntrada';
 import styles from '../../assets/styles';
 import { useNavigation } from '@react-navigation/native';
+import ShareExcelButton from '../../components/UI/ShareExcelButton'; 
+
 
 const EntradaAdmin = () => {
 
