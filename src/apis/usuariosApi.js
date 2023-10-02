@@ -20,7 +20,7 @@ const UsuariosAPI = () => {
         let response = null;
 
         try {
-            response = await axios.post("http://192.168.16.64:8080/usuarios/login", { correo, password });
+            response = await axios.post(`${baseUrl}/usuarios/login`, { correo, password });
             console.log(response.data);
         } catch (error) {
             console.log("Error: " + error);
