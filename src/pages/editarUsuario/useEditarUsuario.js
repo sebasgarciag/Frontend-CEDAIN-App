@@ -1,17 +1,36 @@
 import { useState } from "react";
+import UsuariosAPI from "../../apis/usuariosApi";
 
-const useEditarEntrada = () => {
+
+const useEditarUsuario = (usuario) => {
+    console.log(usuario);
     const [isEditable, setEditable] = useState(false);
-    const [nombre, setNombre] = useState("Paco");
-    const [apellidoPaterno, setApellidoPaterno] = useState("Martínez");
-    const [apellidoMaterno, setApellidoMaterno] = useState("Gonzales");
-    const [email, setEmail] = useState("paco.martinez@gmail.com");
+    const [nombre, setNombre] = useState(usuario.nombre);
+    const [apellidoPaterno, setApellidoPaterno] = useState(usuario.apellido_paterno);
+    const [apellidoMaterno, setApellidoMaterno] = useState(usuario.apellido_materno);
+    const [email, setEmail] = useState(usuario.email);
     const [editarText, setEditarText] = useState("Editar");
-    const [rol, setRol] = useState("Almacenista");
-  
-    const handleSumbit = () => {
+    const [rol, setRol] = useState(usuario.tipo);
+    const { updateUsuario } = UsuariosAPI();
+
+    const handleSumbit = async () => {
       //request a backend
+      let new_usuario_data = {
+        'nombre': nombre,
+        'apellido_paterno': apellidoPaterno,
+        'apellido_materno': apellidoMaterno,
+        'email': email,
+        'tipo': rol,
+      }
+
       alert("Enlace clickeado");
+      try{
+        const response = await updateUsuario(new_usuario_data, usuario.id);
+        alert(response.data)
+      }
+      catch{
+        //
+      }
       setEditarText("Editar");
       setEditable(!isEditable);
     };
@@ -38,4 +57,4 @@ const useEditarEntrada = () => {
     return {isEditable, nombre, setNombre, apellidoPaterno, setApellidoPaterno, apellidoMaterno, setApellidoMaterno, email, setEmail, editarText, rol, setRol, handleSumbit, handleEditable }
 }
 
-export default useEditarEntrada;
+export default useEditarUsuario;

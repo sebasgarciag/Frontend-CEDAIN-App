@@ -1,15 +1,13 @@
 import React from 'react';
-import { TextInput } from 'react-native';
 import { HStack, Stack, Text, Divider, VStack } from "@react-native-material/core";
-import { MenuButton, FilterButton, ProfileButton, VolverButton } from '../../components/UI/uiButtons';
+import { MenuButton, ProfileButton, VolverButtonN } from '../../components/UI/uiButtons';
 import ListaUsuarios from '../../components/UI/listaUsuarios';
 import useListadoUsuarios from './useListadoUsuarios';
 import styles from '../../assets/styles';
-import { router } from "expo-router";
-
+import { useNavigation } from '@react-navigation/native';
 
 const ListadoUsuarios = () => {
-
+    const navigation = useNavigation();  
     const { usuarios } = useListadoUsuarios();
 
     return (
@@ -22,21 +20,12 @@ const ListadoUsuarios = () => {
               </VStack>
               <ProfileButton  onPress={() => { alert('Perfil presionado'); }} />
             </HStack>
-
-                {/*Boton de aplicar Filtros a lista de entradas */}
-            {/* <Stack style={styles.searchFilterContainer}>
-              <TextInput style={styles.searchInput} placeholder="Buscar..." placeholderTextColor="#8E8D8A" />
-              <FilterButton style={styles.filterButton} onPress={() => { alert('Filtro presionado'); }} />
-            </Stack> */}
-
-                {/*Las entradas apareceran aqui */}
             <Divider/>
             <ListaUsuarios listadoUsuarios={usuarios} />
             <Divider/>
             
             <Stack style={{justifyContent: 'center', alignItems: 'center', margin: 10}}>
-              {/* <VolverButton onPress={() => { router.replace("/botonesChernobyl"); }} /> */}
-              <VolverButton ruta="/botonesChernobyl" />
+              <VolverButtonN navigation={navigation} path="botonesChernobyl" />
             </Stack>
 
           </Stack>
