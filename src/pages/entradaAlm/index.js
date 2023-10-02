@@ -6,6 +6,8 @@ import ProductosEntrada from '../../components/UI/productosEntrada';
 import styles from '../../assets/styles';
 import useEntradaAlm from './useEntradaAlm';
 import { useNavigation } from '@react-navigation/native';
+import ShareExcelButton from '../../components/UI/ShareExcelButton'; 
+
 
 const EntradaAlm = () => {
 
@@ -19,11 +21,18 @@ const EntradaAlm = () => {
                 <Stack style={styles.titulosContainer}>
                     <Text  style={styles.headerText}>Entrada {entrada.idEntrada} </Text>
                     <Text style={styles.headerText}>{entrada.folioSerie}</Text>
-                </Stack>      
+                </Stack>
+      
 
                 {/* Aqui va componente con informacion de receptor, emisor, comunidad, etc. */}
                 <InfoEntrada entrada={entrada}/>
                 <ProductosEntrada datos={datosEntrada}/>
+
+                <ShareExcelButton 
+                endpoint="http://192.168.1.211:8080/entradas/export" //Aqui primero va la direccion ip de la compu que prueba el servidor sql
+                entryId={entrada.idEntrada} 
+                buttonText="Descargar Entrada"
+                />
 
                 {/*Boton de volver atras */}
                 <Stack style={styles.volverContainer}>
