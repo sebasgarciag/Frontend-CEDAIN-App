@@ -1,8 +1,8 @@
 import SalidaAlm from "../src/pages/salidaAlm/index";
 
-const SalidaAlma = () => {
+const SalidaAlma = ({route}) => {
     return (
-        <SalidaAlm />
+        <SalidaAlm salida={route.params.object}/>
     );
 };
 
