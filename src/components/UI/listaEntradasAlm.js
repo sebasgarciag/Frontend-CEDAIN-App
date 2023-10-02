@@ -5,7 +5,7 @@ import { ArrowButton } from "./uiButtons";
 import styles from "../../assets/styles";
 import { useNavigation } from '@react-navigation/native';
 
-function ListaEntradasAlm({listadoEntradas}){
+function ListaEntradasAlm({ listadoEntradas }){
 
         const navigation = useNavigation();
 
@@ -20,7 +20,7 @@ function ListaEntradasAlm({listadoEntradas}){
                                 <Text style={styles.movDato}>Articulos: {entrada.cantidad}</Text>
                             </VStack>
                             
-                            <ArrowButton navigation={navigation} path={"EntradaAlm"} />
+                            <ArrowButton navigation={navigation} path={"EntradaAlm"} data={entrada}/>
                             
                         </HStack>
                     </VStack>

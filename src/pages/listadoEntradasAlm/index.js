@@ -1,26 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { TextInput, View } from 'react-native';
 import { HStack, Stack, Text, Divider, VStack } from "@react-native-material/core";
 import { Modal } from 'react-native-paper';
-import { MenuButton, FilterButton, ProfileButton } from '../../components/UI/uiButtons';
+import { MenuButton, FilterButton, ProfileButton, VolverButtonN } from '../../components/UI/uiButtons';
 import ListaEntradasAlm from '../../components/UI/listaEntradasAlm';
 import useListadoEntradasAlm from './useListadoEntradasAlm';
 import UserMenu from '../../components/UI/userMenu';
 import styles from '../../assets/styles';
 import FiltrosEntradasAlm from '../../components/UI/filtrosEntradasAlm';
-import { VolverButtonN } from '../../components/UI/uiButtons';
 import { useNavigation, useIsFocused } from '@react-navigation/native';
 import buttonStyles from '../../assets/buttons/styles';
-import { useEffect } from 'react';
 
 const ListadoEntradasAlm = () => {
 	const navigation = useNavigation();
-	const {toggleUserDrawer, toggleModal, handlePress, filteredEntradas, setBusqueda, setComValue, isUserDrawerOpen, isModalVisible, comValue, getEntradas} = useListadoEntradasAlm();
+	const {toggleUserDrawer, toggleModal, handlePress, filteredEntradas, setBusqueda, setComValue, isUserDrawerOpen, isModalVisible, comValue, getEntradas, getAllComunidades, getAllEventos} = useListadoEntradasAlm();
 
 	const isFocused = useIsFocused();
 	useEffect(() => {
 		if(isFocused) {
 			getEntradas();
+			getAllComunidades();
+			getAllEventos();
 		}
 	}, [isFocused]);
 

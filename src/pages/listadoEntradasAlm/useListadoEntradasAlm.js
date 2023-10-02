@@ -1,5 +1,6 @@
 import {useState}  from 'react';
 import entradasApi from '../../apis/entradasApi';
+import salidasApi from '../../apis/salidasApi';
 
 const useListadoEntradasAlm = () => {
 
@@ -16,6 +17,8 @@ const useListadoEntradasAlm = () => {
     const [comValue, setComValue] = useState('');
     
     const { getAllEntradasAlm } = entradasApi();
+
+    const { getComunidades, getEventos } = salidasApi();
 
     const [entradas, setEntradas] = useState([
         {
@@ -47,8 +50,31 @@ const useListadoEntradasAlm = () => {
         return;
     };
 
+    const [comunidades, setComunidades] = useState([
+        {
+            id_comunidad: 1,
+            nombre: 'Comunidad 1'
+        },
+    ]);
+    const [eventos, setEventos] = useState([
+        {
+            id_evento: 1,
+            nombre: 'Evento 1'
+        },
+    ]);
+
+    async function getAllComunidades() {
+        const comunidadesApi = await getComunidades();
+        setComunidades(comunidadesApi);
+    };
+
+    async function getAllEventos() {
+        const eventosApi = await getEventos();
+        setEventos(eventosApi);
+    };
+
    
-    return { entradas, toggleDrawer, toggleUserDrawer, toggleModal, handlePress, setBusqueda, filteredEntradas, isDrawerOpen, isUserDrawerOpen, isModalVisible, setComValue,comValue, getEntradas}
+    return { entradas, toggleDrawer, toggleUserDrawer, toggleModal, handlePress, setBusqueda, filteredEntradas, isDrawerOpen, isUserDrawerOpen, isModalVisible, setComValue,comValue, getEntradas, comunidades, eventos, getAllComunidades, getAllEventos}
 }
 
 export default useListadoEntradasAlm;
