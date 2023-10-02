@@ -1,26 +1,29 @@
 import { Text, View, TouchableOpacity } from "react-native";
 import { Stack, TextInput, Flex, HStack } from "@react-native-material/core";
-import { router } from "expo-router";
-import { MenuButton, ProfileButton, GenericButton, VolverButtonN } from "../../components/UI/uiButtons";
+import { MenuButton, ProfileButton, GenericButton, VolverButtonN, VolverButtonNDirect } from "../../components/UI/uiButtons";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import { Dropdown } from "react-native-element-dropdown";
 import styles from "../../assets/styles";
 import buttonStyles from "../../assets/buttons/styles";
-import useEditarEntrada from "./useEditarEntrada";
-import { useNavigation } from '@react-navigation/native';
+import useEditarUsuario from "./useEditarUsuario";
+import { useNavigation, useRoute  } from '@react-navigation/native';
 
 const EditarUsuarioPage = () => {
-  const {isEditable, nombre, setNombre, apellidoPaterno, setApellidoPaterno, apellidoMaterno, setApellidoMaterno, email, setEmail, editarText, rol, setRol, handleSumbit, handleEditable } = useEditarEntrada()
-    const navigation = useNavigation();  
+  const route = useRoute();
+  const usuario = route.params.object;
+  console.log(`aver ${usuario.id_usuario}`)
+  const {isEditable, nombre, setNombre, apellidoPaterno, setApellidoPaterno, apellidoMaterno, setApellidoMaterno, email, setEmail, editarText, rol, setRol, handleSumbit, handleEditable } = useEditarUsuario(usuario)
+  const navigation = useNavigation();
 
   const roles = [
     { label: "Administrador", value: "Administrador" },
     { label: "Almacenista", value: "Almacenista" },
   ];
   
+
   const handleLinkClick = () => {
-    router.replace("/cambiarContrasena")
+    navigation.navigate('cambiarContrasena', { object: usuario });
   };
 
   const renderItem = (item) => {
@@ -143,7 +146,8 @@ const EditarUsuarioPage = () => {
         </Flex>
         <Flex direction="row" justify="around" marginTop={30}>
         {/* <VolverButton onPress={() => router.replace("/botonesChernobyl")}/> */}
-        <VolverButtonN navigation={navigation} path="/botonesChernobyl" />
+        {/* <VolverButtonN navigation={navigation} path="botonesChernobyl" /> */}
+        <VolverButtonNDirect navigation={navigation} />
         <TouchableOpacity
           onPress={handleLinkClick}
           style={{ marginTop: 10, alignSelf: "center", width: "50%" }}

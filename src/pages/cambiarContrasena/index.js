@@ -1,16 +1,19 @@
 import { Text } from "react-native";
 import React from "react";
 import { Stack, IconButton, TextInput, Flex, HStack } from "@react-native-material/core";
-import { MenuButton, ProfileButton, GenericButton, VolverButtonN } from "../../components/UI/uiButtons";
+import { MenuButton, ProfileButton, GenericButton, VolverButtonNDirect } from "../../components/UI/uiButtons";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 import styles from "../../assets/styles";
 import buttonStyles from "../../assets/buttons/styles";
 import useCambiarContrasena from "./useCambiarContrasena";
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 
 export default function CambiarContrasenaPage() {
+  const route = useRoute();
+  const usuario = route.params.object;
+  console.log(usuario.id_usuario);
   const { newPassword, setNewPassword, confirmPassword, setConfirmPassword, isNewPasswordVisible, arePasswordEqual, setArePasswordEqual, toggleNewPasswordVisibility } = useCambiarContrasena()
-    const navigation = useNavigation();  
+  const navigation = useNavigation();  
   // poner lo de los sets en los inputs
   const handleSumbit = () => {
     //request a backend
@@ -73,7 +76,8 @@ export default function CambiarContrasenaPage() {
         {/* <TextInput label="Label" variant="standard" marginBottom={}/> */}
         <Flex direction="row" justify="around" marginTop={80}>
           {/* <VolverButton onPress={() => router.replace("/editarUsuario")}/> */}
-          <VolverButtonN navigation={navigation} path="/editarUsuario" />
+          {/* <VolverButtonN navigation={navigation} path="editarUsuario" object={usuario}/> */}
+          <VolverButtonNDirect navigation={navigation}/>
           <GenericButton
             onPress={handleSumbit}
             text="Aceptar cambios"
