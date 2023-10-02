@@ -7,16 +7,34 @@ const UsuariosAPI = () => {
         let response = null;
 
         try {
-            // response = await axios.get(`${baseUrl}/usuarios`);
-            response = await axios.get('http://localhost:8080/usuarios');
+            response = await axios.get(`${baseUrl}/usuarios`);
             console.log(response.data)
         } catch (error) {
-            // Handle errors
             console.log("Error: " + error);
         }
 
         return response;
     }
+
+    async function login(correo, password) {
+        let response = null;
+
+        try {
+            response = await axios.post(`${baseUrl}/usuarios/login`, { correo, password });
+            console.log(response.data);
+        } catch (error) {
+            console.log("Error: " + error);
+        }
+
+        return response;
+    }
+
+    return { getTodosUsuarios, login }
+}
+
+export default UsuariosAPI;
+ 
+    
 
     // async function saveUsuario(usuario) {
     //     let response = null;
@@ -35,8 +53,3 @@ const UsuariosAPI = () => {
 
     //     return response;
     // }
-
-    return { getTodosUsuarios }
-}
-
-export default UsuariosAPI;

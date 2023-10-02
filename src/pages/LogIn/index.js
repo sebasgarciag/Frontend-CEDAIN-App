@@ -5,12 +5,12 @@ import { Text, TextInput, Title } from "react-native-paper";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { VolverButton } from '../../components/UI/uiButtons';
-// import styles from './styles';
+import usuariosApi from '../../apis/usuariosApi';
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+ 
 
   const validateEmail = (email) => {
       const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -22,20 +22,24 @@ const LoginPage = () => {
       Alert.alert("Error", "Por favor, ingresa el correo y la contraseña");
       return;
     }
-  
+
     if (!validateEmail(email)) {
       Alert.alert("Error", "Por favor, ingresa un correo electrónico válido");
       return;
     }
-  
-    // Aquí puedes realizar la verificación con tu lógica de autenticación
-    if (esCorreoYContrasenaValidos(email, password)) {
-      // La autenticación es exitosa
-      console.log("Inicio de sesión exitoso");
-    } else {
-      // La autenticación falla
-      Alert.alert("Error", "Correo o contraseña incorrectos");
-    }
+
+    // Llama al servicio de inicio de sesión
+    usuariosApi.login(email, password)
+      .then(function (data) {
+        // La autenticación es exitosa
+        console.log("Inicio de sesión exitoso");
+        console.log(data);
+      })
+      .catch(function (error) {
+        // La autenticación falla
+        console.error(error);
+        Alert.alert("Error", "Correo o contraseña incorrectos");
+      });
   }
   
 
@@ -55,13 +59,7 @@ const LoginPage = () => {
               onChangeText={text => setPassword(text)}
               style={styles.Input}
           />
-          <TextInput
-              secureTextEntry={true}
-              label="Confirm Password"
-              value={confirmPassword}
-              onChangeText={text => setConfirmPassword(text)}
-              style={styles.Input}
-          />
+          
 
           <TouchableOpacity onPress={handleRegister} style={styles.Button}>
               <Icon name="check-circle" size={24} color="#F1EFE3" style={{ marginRight: 10 }}></Icon>
