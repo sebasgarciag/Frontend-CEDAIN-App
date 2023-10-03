@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { TextInput, View } from 'react-native';
 import { HStack, Text, Stack, Divider, VStack } from "@react-native-material/core";
-import { Modal, Button } from 'react-native-paper';
+import { Modal } from 'react-native-paper';
 import { MenuButton, ProfileButton, VolverButtonN, FilterButton } from '../../components/UI/uiButtons';
 import ListaSalidasAlm from '../../components/UI/listaSalidasAlm';
 import useListadoSalidasAlm from './useListadoSalidasAlm';

@@ -58,7 +58,7 @@ const useListadoEntradasAlm = () => {
     ]);
     const [eventos, setEventos] = useState([
         {
-           id_evento: 1,
+            id_evento: 1,
             nombre: 'Evento 1'
         },
     ]);

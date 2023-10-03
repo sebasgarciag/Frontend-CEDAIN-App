@@ -1,7 +1,6 @@
 import axios from 'axios';
 
 // const ip = '10.34.3.73';
-const ip = '192.168.1.120';
 const baseURL = `http://${ip}:8080`;
 
 const salidasApi = () => {
@@ -11,10 +10,8 @@ const salidasApi = () => {
         let response = null;
 
         try {
-<<<<<<< HEAD
             console.log(`${baseURL}/salidas`)
-=======
->>>>>>> main
+
             response = await axios.get(`${baseURL}/salidas`);
         } catch (error) {
             console.error('error' + error);
@@ -27,10 +24,8 @@ const salidasApi = () => {
         let response = null;
 
         try {
-<<<<<<< HEAD
             console.log(`${baseURL}/salidas`)
-=======
->>>>>>> main
+
             response = await axios.get(`${baseURL}/salidas/?userId=${almacenista}`);
         } catch (error) {
             console.error('error' + error);
@@ -38,9 +33,9 @@ const salidasApi = () => {
         return response.data;
     }
 
-<<<<<<< HEAD
+
     return { getAllSalidas, getAllSalidasAlm }
-=======
+
     async function getDetalles(id_salida) {
             
         let response = null;
@@ -77,7 +72,6 @@ const salidasApi = () => {
     }
 
     return { getAllSalidas, getAllSalidasAlm, getDetalles, getComunidades, getEventos }
->>>>>>> main
 
 }
 

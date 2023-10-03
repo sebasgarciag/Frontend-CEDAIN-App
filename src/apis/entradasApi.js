@@ -1,7 +1,6 @@
 import axios from 'axios';
 
 // const ip = '10.34.3.73';
-const ip = '192.168.1.120';
 const baseURL = `http://${ip}:8080`;
 
 const entradasApi = () => {
@@ -30,9 +29,6 @@ const entradasApi = () => {
         return response.data;
     }
 
-<<<<<<< HEAD
-    return { getAllEntradas, getAllEntradasAlm }
-=======
     async function getDetalles(id_entrada) {
             
         let response = null;
@@ -46,7 +42,8 @@ const entradasApi = () => {
     }
 
     return { getAllEntradas, getAllEntradasAlm , getDetalles }
->>>>>>> main
+
+
 
 }
 
