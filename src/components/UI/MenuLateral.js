@@ -27,6 +27,8 @@ import ListadoEntradasAdministrador from '../../../app/listadoEntradasAdmin'
 import ListadoSalidasAdministrador from '../../pages/listadoSalidasAdmin';
 import DecidirInventario from '../../../app/decidirInventario';
 import EditarProductoPage from '../../../app/editarProducto';
+import EditarUsuarioPage from '../../pages/editarUsuario';
+import ListadoUsuariosRef from '../../../app/listadoUsuarios';
 
 const Drawer = createDrawerNavigator();
 
@@ -72,6 +74,8 @@ function Menulateral() {
 
 
       {/* Agregar pantallas de los demás equipos */} 
+      <Drawer.Screen name="listadoUsuarios" component={ListadoUsuariosRef}  options={{headerShown: false}}/>
+      <Drawer.Screen name="editarUsuario" component={EditarUsuarioPage}  options={{headerShown: false}}/>
 
     </Drawer.Navigator>
   );

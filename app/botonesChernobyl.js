@@ -35,10 +35,6 @@ const Chernobyl = () => {
                 title="Chernobyl - Listado Usuarios"
                 onPress={() => router.replace("/listadoUsuarios")}
             />
-            <Button
-                title="Chernobyl - Editar Usuario"
-                onPress={() => router.replace("/editarUsuario")}
-                />
             <VolverButton ruta="/" />
         </Stack>
         </SafeAreaProvider> 
