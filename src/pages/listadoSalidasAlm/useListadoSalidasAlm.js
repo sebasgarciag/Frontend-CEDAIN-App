@@ -16,124 +16,51 @@ const useListadoSalidasAlm = () => {
     const [almValue, setAlmValue] = useState('');
     const [eveValue, setEveValue] = useState('');
     
-    const { getAllSalidas } = salidasApi();
+    const { getAllSalidasAlm, getComunidades, getEventos } = salidasApi();
 
     const [salidas, setSalidas] = useState([
-        // {
-        //     idSalida: 1,
-        //     folioSerie: 'S2023-012',
-        //     almacenista: 'tomas',
-        //     cantidadArticulos: 120,
-        //     fecha: '15/08/2023',
-        //     evento: 'wareton'
-        // }, 
-        // {
-        //     idSalida: 2,
-        //     folioSerie: 'S2023-011',
-        //     almacenista: 'tomas',
-        //     cantidadArticulos: 100,
-        //     fecha: '21/05/2023',
-        //     evento: 'escuela'
-        // }, 
-        // {
-        //     idSalida: 3,
-        //     folioSerie: 'S2023-010',
-        //     almacenista: 'tomas',
-        //     cantidadArticulos: 210,
-        //     fecha: '26/08/2023',
-        //     evento: 'escuela'
-        // }, 
-        // {
-        //     idSalida: 4,
-        //     folioSerie: 'S2023-009',
-        //     almacenista: 'alexis',
-        //     cantidadArticulos: 120,
-        //     fecha: '27/09/2023',
-        //     comunidad: 'wareton'
-        // },
-        // {
-        //     idSalida: 5,
-        //     folioSerie: 'S2023-012',
-        //     almacenista: 'tomas',
-        //     cantidadArticulos: 120,
-        //     fecha: '15/08/2023',
-        //     evento: 'wareton'
-        // }, 
-        // {
-        //     idSalida: 6,
-        //     folioSerie: 'S2023-011',
-        //     almacenista: 'tomas',
-        //     cantidadArticulos: 100,
-        //     fecha: '21/05/2023',
-        //     evento: 'escuela'
-        // }, 
-        // {
-        //     idSalida: 7,
-        //     folioSerie: 'S2023-010',
-        //     almacenista: 'tomas',
-        //     cantidadArticulos: 210,
-        //     fecha: '26/08/2023',
-        //     evento: 'escuela'
-        // }, 
-        // {
-        //     idSalida: 8,
-        //     folioSerie: 'S2023-009',
-        //     almacenista: 'alexis',
-        //     cantidadArticulos: 120,
-        //     fecha: '27/09/2023',
-        //     comunidad: 'wareton'
-        // },
-        // {
-        //     idSalida: 9,
-        //     folioSerie: 'S2023-012',
-        //     almacenista: 'tomas',
-        //     cantidadArticulos: 120,
-        //     fecha: '15/08/2023',
-        //     evento: 'wareton'
-        // }, 
-        // {
-        //     idSalida: 10,
-        //     folioSerie: 'S2023-011',
-        //     almacenista: 'tomas',
-        //     cantidadArticulos: 100,
-        //     fecha: '21/05/2023',
-        //     evento: 'escuela'
-        // }, 
-        // {
-        //     idSalida: 11,
-        //     folioSerie: 'S2023-010',
-        //     almacenista: 'tomas',
-        //     cantidadArticulos: 210,
-        //     fecha: '26/08/2023',
-        //     evento: 'escuela'
-        // }, 
-        // {
-        //     idSalida: 12,
-        //     folioSerie: 'S2023-009',
-        //     almacenista: 'alexis',
-        //     cantidadArticulos: 120,
-        //     fecha: '27/09/2023',
-        //     evento: 'wareton'
-        // },
+        {
+            id_salida: 1,
+            folio: 'a',
+            serie: 'b',
+            id_usuario: 1,
+            cantidad: 20,
+            fecha: '2020',
+            id_evento: '4'
+        }
     ]);
  
     const filteredSalidas = salidas.filter((salida) =>{
-        // const almacenistaMatch = (salida.almacenista || '').toLowerCase().includes(busqueda.toLowerCase());
-        // const folioSerieMatch = (salida.folioSerie || '').toLowerCase().includes(busqueda.toLowerCase());
-        // const eventoMatch = (salida.evento || '').toLowerCase().includes(busqueda.toLowerCase());
+        // const almacenistaMatch = (salida.id_usuario || '').includes(busqueda.toLowerCase());
+        const folioSerie = salida.folio + salida.serie;
+        const folioSerieMatch = (folioSerie || '').toLowerCase().includes(busqueda.toLowerCase());
+        // const eventoMatch = (salida.id_evento || '').includes(busqueda.toLowerCase());
     
         // return almacenistaMatch || folioSerieMatch || eventoMatch;
-        return salidas;
+        return folioSerieMatch;
     });
 
     async function getSalidas() {
-        const aaa = await getAllSalidas();
-        setSalidas(aaa);
+        // TODO: pasar id de almacenista
+        const salidasApi = await getAllSalidasAlm(1);
+        setSalidas(salidasApi);
         return;
     };
 
+    const [eventos, setEventos] = useState([
+        {
+            id_evento: 1,
+            nombre: 'Evento 1'
+        },
+    ]);
+
+    async function getAllEventos() {
+        const eventosApi = await getEventos();
+        setEventos(eventosApi);
+    };
+
    
-    return {toggleDrawer, toggleUserDrawer, toggleModal, handlePress, setBusqueda, filteredSalidas, isDrawerOpen, isUserDrawerOpen, isModalVisible, setAlmValue, setAlmValue, almValue, setEveValue, eveValue, getSalidas}
+    return {toggleDrawer, toggleUserDrawer, toggleModal, handlePress, setBusqueda, filteredSalidas, isDrawerOpen, isUserDrawerOpen, isModalVisible, setAlmValue, almValue, setEveValue, eveValue, getSalidas, getAllEventos, eventos }
 }
 
 export default useListadoSalidasAlm;

@@ -1,10 +1,9 @@
 import React from "react";
 import { Text, ScrollView } from "react-native";
 import { HStack, VStack } from "@react-native-material/core";
-import { ArrowButton } from "./uiButtons";
+import { ArrowButtonConObject } from "./uiButtons";
 import styles from "../../assets/styles";
 import { useNavigation } from '@react-navigation/native';
-import { router } from "expo-router";
 
 function ListaSalidasAlm({listadoSalidas}){
 
@@ -21,7 +20,7 @@ function ListaSalidasAlm({listadoSalidas}){
                                 <Text style={styles.movDato}>Articulos: {salida.cantidad}</Text>
                             </VStack>
                             
-                            <ArrowButton navigation={navigation} path={"SalidaAlm"} />
+                            <ArrowButtonConObject navigation={navigation} path={"SalidaAlm"} object={salida}/>
                             
                         </HStack>
                     </VStack>
