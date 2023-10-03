@@ -1,39 +1,42 @@
 import React from "react";
-import { Text, Image, ScrollView } from "react-native";
+import { Text, Image } from "react-native";
 import { HStack, VStack } from "@react-native-material/core";
 import { Surface } from "react-native-paper";
 import styles from "../../assets/styles";
+import useInventario from "../../pages/inventario/useInventario";
 
-function ProductosSalida({ datos }) { 
+function ProductosSalida( salidaDetalle ) { 
+
+    const { productos } = useInventario();
+
+    let producto = productos.find((producto) => producto.id_producto === salidaDetalle?.id_producto);
 
     return (
-        <ScrollView >
-            {datos.map((datosSalida) => 
-                <Surface elevation={5} style={styles.productItem}> 
-                    <HStack spacing={10}>
-                        <VStack style={{justifyContent: 'center'}}>
-                            <Image 
-                                source={require('../../assets/imagenes/ware.jpg')} // TODO: cambiar por imagen del producto
-                                style={styles.productImage}
-                            />
+
+        <Surface elevation={5} style={styles.productItem}> 
+            <HStack spacing={10}>
+                <VStack style={{justifyContent: 'center'}}>
+                    <Image 
+                        source={require('../../assets/imagenes/ware.jpg')} // TODO: cambiar por imagen del producto
+                        style={styles.productImage}
+                    />
+                </VStack>
+                <VStack spacing={3} style={styles.textoProdMov}>
+                    <Text style={styles.productName}>{producto.producto}</Text>
+                    <HStack spacing={20}>
+                        <VStack>
+                            <Text style={styles.productDato}>Tamaño: {producto.tamano}</Text>
+                            <Text style={styles.productDato}>Cantidad: {producto.cantidad}</Text>
                         </VStack>
-                        <VStack spacing={3} style={styles.textoProdMov}>
-                            <Text style={styles.productName}>{datosSalida.producto}</Text>
-                            <HStack spacing={20}>
-                                <VStack>
-                                    <Text style={styles.productDato}>Tamaño: {datosSalida.tamano}</Text>
-                                    <Text style={styles.productDato}>Cantidad: {datosSalida.cantidad}</Text>
-                                </VStack>
-                                <VStack>
-                                    <Text style={styles.productDato}>Precio: {datosSalida.precio}</Text>
-                                    <Text style={styles.productDato}>Importe: {datosSalida.importe}</Text>
-                                </VStack>
-                            </HStack>
+                        <VStack>
+                            <Text style={styles.productDato}>Precio: {producto.precio}</Text>
+                            <Text style={styles.productDato}>Importe: {producto.importe}</Text>
                         </VStack>
                     </HStack>
-                </Surface>
-            )}
-        </ScrollView>
+                </VStack>
+            </HStack>
+        </Surface>
+
     );
 };
 

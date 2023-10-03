@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useEffect } from 'react';
 import { TextInput, View } from 'react-native';
 import { HStack, Text, Stack, Divider, VStack } from "@react-native-material/core";
 import { Modal, Button } from 'react-native-paper';
@@ -10,7 +10,6 @@ import UserMenu from '../../components/UI/userMenu';
 import FiltrosSalidasAlm from '../../components/UI/filtrosSalidasAlm';
 import buttonStyles from '../../assets/buttons/styles';
 import { useNavigation, useIsFocused } from '@react-navigation/native';
-import { useEffect } from 'react';
 
 const ListadoSalidasAlm = () => {
 	const navigation = useNavigation();  
