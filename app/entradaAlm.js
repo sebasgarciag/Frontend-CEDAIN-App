@@ -1,9 +1,8 @@
-
 import EntradaAlm from "../src/pages/entradaAlm/index";
 
-const EntradaAlma = () => {
+const EntradaAlma = ({route}) => {
     return (
-        <EntradaAlm />
+        <EntradaAlm entrada={route.params.object}/>
     );
 };
 

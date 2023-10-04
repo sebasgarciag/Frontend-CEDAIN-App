@@ -5,30 +5,30 @@ const useInfoDestinoEvento=()=>{
 	const [comunidades, setComunidades] = useState([
 		{ 
 			nombre: 'comunidad 1', 
-			id: '1' 
+			id_comunidad: '1' 
 		},
 		{ 
 			nombre: 'comnuidad 2', 
-			id: '2' 
+			id_comunidad: '2' 
 		},
 		{ 
 			nombre: 'comunidad 3', 
-			id: '3' 
+			id_comunidad: '3' 
 		}
 	]);
 
 	const [eventos, setEventos] = useState([
 		{ 
 			nombre: 'evento 1', 
-			id: '1' 
+			id_evento: '1' 
 		},
 		{ 
 			nombre: 'evento 2', 
-			id: '2' 
+			id_evento: '2' 
 		},
 		{ 
 			nombre: 'evento 3', 
-			id: '3' 
+			id_evento: '3' 
 		}
 	]);
 
