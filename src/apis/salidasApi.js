@@ -32,7 +32,6 @@ const salidasApi = () => {
     async function getDetalles(id_salida) {
             
         let response = null;
-        console.log('id_salida', id_salida)
 
         try {
             response = await axios.get(`${baseURL}/salidas/salida-detalles/${id_salida}`);
@@ -43,14 +42,14 @@ const salidasApi = () => {
     }
 
     async function getComunidades() {
-            let response = null;
-    
-            try {
-                response = await axios.get(`${baseURL}/salidas/comunidades`);
-            } catch (error) {
-                console.error('error' + error);
-            }
-            return response.data;
+        let response = null;
+
+        try {
+            response = await axios.get(`${baseURL}/salidas/comunidades`);
+        } catch (error) {
+            console.error('error' + error);
+        }
+        return response.data;
     }
 
     async function getEventos() {

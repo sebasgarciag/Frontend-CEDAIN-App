@@ -16,7 +16,7 @@ const useListadoSalidasAlm = () => {
     const [almValue, setAlmValue] = useState('');
     const [eveValue, setEveValue] = useState('');
     
-    const { getAllSalidasAlm, getComunidades, getEventos } = salidasApi();
+    const { getAllSalidasAlm } = salidasApi();
 
     const [salidas, setSalidas] = useState([
         {
@@ -46,21 +46,8 @@ const useListadoSalidasAlm = () => {
         setSalidas(salidasApi);
         return;
     };
-
-    const [eventos, setEventos] = useState([
-        {
-            id_evento: 1,
-            nombre: 'Evento 1'
-        },
-    ]);
-
-    async function getAllEventos() {
-        const eventosApi = await getEventos();
-        setEventos(eventosApi);
-    };
-
    
-    return {toggleDrawer, toggleUserDrawer, toggleModal, handlePress, setBusqueda, filteredSalidas, isDrawerOpen, isUserDrawerOpen, isModalVisible, setAlmValue, almValue, setEveValue, eveValue, getSalidas, getAllEventos, eventos }
+    return {toggleDrawer, toggleUserDrawer, toggleModal, handlePress, setBusqueda, filteredSalidas, isDrawerOpen, isUserDrawerOpen, isModalVisible, setAlmValue, almValue, setEveValue, eveValue, getSalidas }
 }
 
 export default useListadoSalidasAlm;

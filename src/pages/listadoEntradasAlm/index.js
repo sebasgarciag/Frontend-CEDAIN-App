@@ -13,14 +13,12 @@ import buttonStyles from '../../assets/buttons/styles';
 
 const ListadoEntradasAlm = () => {
 	const navigation = useNavigation();
-	const {toggleUserDrawer, toggleModal, handlePress, filteredEntradas, setBusqueda, setComValue, isUserDrawerOpen, isModalVisible, comValue, getEntradas, getAllComunidades, getAllEventos} = useListadoEntradasAlm();
+	const {toggleUserDrawer, toggleModal, handlePress, filteredEntradas, setBusqueda, setComValue, isUserDrawerOpen, isModalVisible, comValue, getEntradas} = useListadoEntradasAlm();
 
 	const isFocused = useIsFocused();
 	useEffect(() => {
 		if(isFocused) {
 			getEntradas();
-			getAllComunidades();
-			getAllEventos();
 		}
 	}, [isFocused]);
 
