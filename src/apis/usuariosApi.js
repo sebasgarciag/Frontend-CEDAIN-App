@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const baseUrl = 'http://localhost:8080';
+const ip = '10.34.27.220';
+const baseUrl = `http://${ip}:8080`;
 
 const UsuariosAPI = () => {
     async function getTodosUsuarios() {
@@ -74,23 +75,3 @@ const UsuariosAPI = () => {
 }
 
 export default UsuariosAPI;
-
-
-
-// async function saveUsuario(usuario) {
-//     let response = null;
-
-//     try {
-//         response = await axios.post(`${baseUrl}/usuarios`, usuario)
-//     } catch (error) {
-//         if (error.response) {
-//             if (error.response.status === 400) {
-//                 console.log("Invalid Parameter");
-//             }
-//         }
-
-//         console.log("Error: " + error);
-//     }
-
-//     return response;
-// }
