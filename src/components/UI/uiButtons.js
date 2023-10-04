@@ -151,16 +151,7 @@ const ArrowButtonConObject = ({navigation, path, object}) => {
   );
 }
 
-const ArrowButtonConObject = ({navigation, path, object}) => {
-  return (
-    <TouchableOpacity style={[styles.arrowButtonButton, { backgroundColor: 'white' }]} 
-      onPress={() => {
-      navigation.navigate(`${path}`, { object });
-      }}>
-    <Icon name="arrow-forward-ios" size={24} color="black" />
-  </TouchableOpacity>
-  );
-}
+
 
 const GenericButton = ({ text, onPress, style, labelStyle, disabled }) => {
     return (
