@@ -1,7 +1,6 @@
 import axios from 'axios';
-import { ip } from './infoIP.js';
+import ip from './ipApi';
 
-// const ip = '10.34.3.73';
 const baseURL = `http://${ip}:8080`;
 
 const entradasApi = () => {
@@ -43,6 +42,8 @@ const entradasApi = () => {
     }
 
     return { getAllEntradas, getAllEntradasAlm , getDetalles }
+
+
 
 }
 

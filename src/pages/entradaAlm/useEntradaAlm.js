@@ -7,15 +7,12 @@ const useEntradaAlm = () => {
 
     const [datosEntrada, setDatosEntrada] = useState([]);
 
-    const [comunidad, setComunidad] = useState('');
-    const [evento, setEvento] = useState('');
-
 	async function getDetallesEntrada(id) {
 		const datosEntradaApi = await getDetalles(id);
 		setDatosEntrada(datosEntradaApi);
 	}
 
-    return { datosEntrada, setDatosEntrada, getDetallesEntrada, comunidad, setComunidad, evento, setEvento }
+    return { datosEntrada, setDatosEntrada, getDetallesEntrada }
 }
 
 export default useEntradaAlm;
