@@ -101,6 +101,19 @@ const SiguienteButtonN = ({navigation, path}) => {
   );
 }
 
+const SiguienteButtonNObject = ({navigation, path, object}) => {
+
+  return (
+    <TouchableOpacity style={[styles.volverButton, { backgroundColor: '#8F8B36' }]} 
+      onPress={() => {
+      navigation.navigate(`${path}`, { object });
+      }}>
+    <Text style={styles.buttonText}>Siguiente</Text>
+    <Icon2 name="right" size={24} color="#F1EFE3" />
+  </TouchableOpacity>
+  );
+}
+
 const ExportarButton = ({ onPress }) => {
     return (
       <TouchableOpacity style={[styles.volverButton, { backgroundColor: '#59CD90' }]}>
@@ -164,7 +177,7 @@ const GenericButton = ({ text, onPress, style, labelStyle, disabled }) => {
       </Button>
     );
   };
-export {MenuButton, VolverButton, ProfileButton, FilterButton, ArrowButton, ExportarButton, VolverButtonN, SiguienteButtonN, GenericButton, EntradaNueva, SalidaNueva, ArrowButtonConObject, VolverButtonNDirect};
+export {MenuButton, VolverButton, ProfileButton, FilterButton, ArrowButton, ExportarButton, VolverButtonN, SiguienteButtonN, SiguienteButtonNObject, GenericButton, EntradaNueva, SalidaNueva, ArrowButtonConObject, VolverButtonNDirect};
 
 
 //nota: Es posible que apliquemos un solo style para todos los botones. por lo pronto, cada uno tiene el suyo.

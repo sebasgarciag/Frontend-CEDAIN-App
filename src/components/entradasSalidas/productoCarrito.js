@@ -9,6 +9,8 @@ import styles from "../../assets/styles";
 const ProductoCarrito = ({ producto, aumentarCantidad, disminuirCantidad, handleCantidad }) => {
     const { nombre, imagen, cantidad, tamaño, precio, } = producto;
 
+    console.log(producto);
+
       return (
                 
         <HStack spacing={10}>

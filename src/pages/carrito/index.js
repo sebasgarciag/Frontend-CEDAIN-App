@@ -11,9 +11,11 @@ import ProductoCarrito from "../../components/entradasSalidas/productoCarrito";
 import useCarrito from "./hookProductoCarrito";
 import TotalProductos from "../../components/entradasSalidas/totalProductos";
 
-const ArticulosCarrito = () => {  
-    const {carrito, handleCantidad, aumentarCantidad, disminuirCantidad} = useCarrito();
+const ArticulosCarrito = ({carrito}) => {  
+    const {handleCantidad, aumentarCantidad, disminuirCantidad} = useCarrito();
     const navigation = useNavigation();
+    console.log("pantalla carrito: ",carrito);
+
 
     return (
         <Stack style={styles.container}>

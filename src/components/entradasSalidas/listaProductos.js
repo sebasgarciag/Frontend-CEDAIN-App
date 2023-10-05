@@ -2,9 +2,10 @@ import React from "react";
 import { Text, ScrollView, Image, Pressable } from "react-native";
 import { Spacer, HStack, VStack, Box } from "@react-native-material/core";
 import { Surface } from "react-native-paper";
+import useCarrito from "../../pages/carrito/hookProductoCarrito";
 
 
-function ListaProductos({ productos, categorias }) { 
+function ListaProductos({ productos, categorias, carrito, handleCarrito }) { 
 
     return (
         <ScrollView>
@@ -18,10 +19,10 @@ function ListaProductos({ productos, categorias }) {
                     <HStack spacing={10}>
 
                         {productos.filter(producto => producto.categoria === categoria).map((producto) => 
-                            <Box key={producto.idProducto} style={{margin: 8}}>
+                            <Box key={producto.id} style={{margin: 8}}>
 
                                 {/* TODO: funcion para anadir a carrito */}
-                                <Pressable onPress={() => console.log('pressed' + producto.idProducto)}>
+                                <Pressable onPress={() => {console.log('pressed' + producto.id), handleCarrito(producto), console.log("set carrito: ", producto), console.log("carrito: ", carrito) }}>
 
                                     {/* TODO: cambiar colores */}
                                     <Surface elevation={5} style={{borderRadius: 10, marginBottom: 8, padding: 4}}> 

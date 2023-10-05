@@ -1,43 +1,8 @@
 import { useState } from "react";
-
+import { useEffect } from "react";
 
 const useCarrito = () => {
-    const [carrito, setCarrito] = useState([
-    { 
-        id: 1, 
-        nombre: 'Aretes de chaquira', 
-        imagen: require('../../assets/imagenes/aretesChaquira.jpg'), 
-        cantidad: 0,
-        expandirInfo: false, // Agrega un estado para controlar la expansión de información
-        tamaño: 'Pequeño',
-        precio: 10,
-        categoría: 'Joyas',
-        nombreCorto: 'Aretes', 
-    },
-    { 
-        id: 2, 
-        nombre: 'Atrapasueños', 
-        imagen:  require('../../assets/imagenes/atrapasuenios.jpeg'), 
-        cantidad: 0,
-        expandirInfo: false, // Agrega un estado para controlar la expansión de información
-        tamaño: 'Mediano',
-        precio: 10,
-        categoría: 'Hilos',
-        nombreCorto: 'Atrapa', 
-    },
-      
-    { 
-        id: 3, 
-        nombre: 'Cuchara de madera', 
-        imagen:  require('../../assets/imagenes/cucharaMadera.jpg'), 
-        cantidad: 0,
-        expandirInfo: false, // Agrega un estado para controlar la expansión de información
-        tamaño: 'Grande',
-        precio: 10,
-        categoría: 'maderas',
-        nombreCorto: 'cuchara mp', 
-    },
-    ]);
+    const [carrito, setCarrito] = useState([]);
   
     const aumentarCantidad = (producto) => {
         const carritoActualizado = carrito.map((item) => {
@@ -86,8 +51,15 @@ const useCarrito = () => {
         });
         setCarrito(carritoActualizado);
       };
+
+      const handleCarrito = (producto) => {
+        const carritoActualizado = [...carrito, producto]
+
+        setCarrito(carritoActualizado);
+      };
+
     
-      return { carrito, handleCantidad, aumentarCantidad, disminuirCantidad, handleExpandirInfo };
+      return { carrito, handleCantidad, aumentarCantidad, disminuirCantidad, handleExpandirInfo, handleCarrito };
 
   };
   

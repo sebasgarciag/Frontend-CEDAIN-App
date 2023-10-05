@@ -3,48 +3,54 @@ import {useState}  from 'react';
 const useSeleccion = () => {
     const [productos, setProductos] = useState([
         {
-            idProducto: 1,
-            nombreProducto: 'Producto 1',
-            categoria: 'Categoria 1'
+            id: 1,
+            nombre: 'Producto 1',
+            categoria: 'Categoria 1',
+            imagen: require('../../assets/imagenes/aretesChaquira.jpg'), 
+            cantidad: 0,
+            expandirInfo: false, // Agrega un estado para controlar la expansión de información
+            tamaño: 'Pequeño',
+            precio: 10,
+            nombreCorto: 'Aretes', 
         }, 
         {
-            idProducto: 2,
-            nombreProducto: 'Producto 2',
+            id: 2,
+            nombre: 'Producto 2',
             categoria: 'Categoria 2'
         }, 
         {
-            idProducto: 23,
-            nombreProducto: 'Producto 23',
+            id: 23,
+            nombre: 'Producto 23',
             categoria: 'Categoria 2'
         }, 
         {
-            idProducto: 24,
-            nombreProducto: 'Producto 24',
+            id: 24,
+            nombre: 'Producto 24',
             categoria: 'Categoria 2'
         },
         {
-            idProducto: 25,
-            nombreProducto: 'Producto 25',
+            id: 25,
+            nombre: 'Producto 25',
             categoria: 'Categoria 2'
         },
         {
-            idProducto: 26,
-            nombreProducto: 'Producto 26',
+            id: 26,
+            nombre: 'Producto 26',
             categoria: 'Categoria 2'
         },
         {
-            idProducto: 3,
-            nombreProducto: 'Producto 3',
+            id: 3,
+            nombre: 'Producto 3',
             categoria: 'Categoria 3'
         }, 
         {
-            idProducto: 4,
-            nombreProducto: 'Producto 4',
+            id: 4,
+            nombre: 'Producto 4',
             categoria: 'Categoria 4'
         }, 
         {
-            idProducto: 5,
-            nombreProducto: 'Producto 5',
+            id: 5,
+            nombre: 'Producto 5',
             categoria: 'Categoria 5'
         }
     ]);
