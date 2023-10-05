@@ -11,14 +11,8 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 export default function CambiarContrasenaPage() {
   const route = useRoute();
   const usuario = route.params.object;
-  console.log(usuario.id_usuario);
-  const { newPassword, setNewPassword, confirmPassword, setConfirmPassword, isNewPasswordVisible, arePasswordEqual, setArePasswordEqual, toggleNewPasswordVisibility } = useCambiarContrasena()
+  const { newPassword, setNewPassword, confirmPassword, setConfirmPassword, isNewPasswordVisible, handleSumbit, toggleNewPasswordVisibility, arePasswordEqual } = useCambiarContrasena(usuario)
   const navigation = useNavigation();  
-  // poner lo de los sets en los inputs
-  const handleSumbit = () => {
-    //request a backend
-    alert("Enlace clickeado");
-  };
 
   return (
     <>
@@ -73,6 +67,7 @@ export default function CambiarContrasenaPage() {
           secureTextEntry={true}
           style={{ marginTop: 20 }}
         />
+         <Text style={{ color: 'red' }}>{ arePasswordEqual ? "" : 'Las contraseñas deben ser iguales' }</Text>
         {/* <TextInput label="Label" variant="standard" marginBottom={}/> */}
         <Flex direction="row" justify="around" marginTop={80}>
           {/* <VolverButton onPress={() => router.replace("/editarUsuario")}/> */}
@@ -82,14 +77,14 @@ export default function CambiarContrasenaPage() {
             onPress={handleSumbit}
             text="Aceptar cambios"
             style={buttonStyles.volverB}
-            labelStyle={
-              arePasswordEqual
-                ? buttonStyles.editable_button
-                : buttonStyles.view_only_button
-            }
+            // labelStyle={
+            //   arePasswordEqual
+            //     ? buttonStyles.editable_button
+            //     : buttonStyles.view_only_button
+            // }
             // Cambiar color a gray con isEditable
             width={500}
-            disabled={!arePasswordEqual}
+            // disabled={!arePasswordEqual}
             // disabled={true}
             mode="contained"
           />
