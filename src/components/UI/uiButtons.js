@@ -166,7 +166,19 @@ const GenericButton = ({ text, onPress, style, labelStyle, disabled }) => {
       </Button>
     );
   };
-export {MenuButton, VolverButton, ProfileButton, FilterButton, ArrowButton, ExportarButton, VolverButtonN, SiguienteButtonN, GenericButton, EntradaNueva, SalidaNueva, ArrowButtonConObject, VolverButtonNDirect};
+
+const ButtonTerminar = ({ terminarFunction }) => {
+  return (
+      <TouchableOpacity 
+          style={[styles.volverButton, { backgroundColor: '#59CD90' }]}
+          onPress={terminarFunction}
+      >
+          <Text style={styles.buttonText}>Terminar</Text>
+      </TouchableOpacity>
+  );
+};
+
+export {MenuButton, ButtonTerminar, VolverButton, ProfileButton, FilterButton, ArrowButton, ExportarButton, VolverButtonN, SiguienteButtonN, GenericButton, EntradaNueva, SalidaNueva, ArrowButtonConObject, VolverButtonNDirect};
 
 
 //nota: Es posible que apliquemos un solo style para todos los botones. por lo pronto, cada uno tiene el suyo.
