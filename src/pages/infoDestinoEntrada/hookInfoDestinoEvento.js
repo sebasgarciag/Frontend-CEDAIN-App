@@ -10,7 +10,7 @@ const useInfoDestinoEvento=()=>{
 	const [evento, setEvento] = useState(null);
 
 	const [comentarios, setComentarios] = useState('');
-	const [receptor, setReceptor] = useState('');
+	const [emisor, setEmisor] = useState('');
 
 	async function obtenerComunidades(){
 		const response= await getComunidades();
@@ -31,7 +31,7 @@ const useInfoDestinoEvento=()=>{
 		obtenerEventos();
 	},[]);
 
-	return { comunidades, eventos, comunidad, evento, setComunidad, setEvento, comentarios, setComentarios, receptor, setReceptor, obtenerComunidades, obtenerEventos }
+	return { comunidades, eventos, comunidad, evento, setComunidad, setEvento, comentarios, setComentarios, emisor, setEmisor, obtenerComunidades, obtenerEventos }
 }
 
 export default useInfoDestinoEvento;
