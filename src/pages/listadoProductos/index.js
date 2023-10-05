@@ -2,7 +2,7 @@ import React from 'react';
 import { TextInput } from 'react-native';
 import { HStack, Stack, Text, Divider, VStack } from "@react-native-material/core";
 import { MenuButton, FilterButton, ProfileButton, VolverButton } from '../../components/UI/uiButtons';
-import ListaEntradasAlm from '../../components/UI/listaEntradasAlm';
+import ListaProductos from '../../components/UI/listaProductos';
 import useListadoProductos from './useListadoProductos';
 import styles from '../../assets/styles';
 import { router } from "expo-router";
@@ -10,7 +10,7 @@ import { router } from "expo-router";
 
 const ListadoProductos = () => {
 
-    const {entradas} = useListadoProductos();
+    const {productos} = useListadoProductos();
 
     return (
         <>
@@ -32,7 +32,7 @@ const ListadoProductos = () => {
 
                 {/*Las entradas apareceran aqui */}
             <Divider/>
-            <ListaEntradasAlm listadoEntradas={entradas} />
+            <ListaProductos listadoProductos={productos} />
             <Divider/>
             
             <Stack style={{justifyContent: 'center', alignItems: 'center', margin: 10}}>
