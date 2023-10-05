@@ -15,7 +15,7 @@ import { useNavigation } from '@react-navigation/native';
 const Inventario2 = ( {almacen} ) => {
   console.log(almacen);
 
-  //const { inventario,getInventarioPorAlmacen } = useInventario();
+  
   
   const navigation = useNavigation()
 
