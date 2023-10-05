@@ -7,19 +7,27 @@ import useCarrito from "../../pages/carrito/hookProductoCarrito";
 
 function ListaProductos({ productos, categorias, carrito, handleCarrito }) { 
 
+    console.log('productos', productos);
+    console.log('categorias', categorias);
+
+
+    // {"cantidad": 10, "id_almacen": 1, "id_inventario": 1, "id_producto": 1, "producto": {"Tamanio": null, "id_categoria": null, "id_producto": 1, "id_tamanio": null, "medida": null, "nombre": null, "nombre_corto": null, "precio_trueque": null, "precio_venta": null}}
+
+
+
     return (
         <ScrollView>
         {categorias.map((categoria) =>
 
-            <VStack spacing={20} key={categoria}>
+            <VStack spacing={20} key={categoria.id_categoria}>
 
-                <Text style={{fontSize: 20}}>{categoria}</Text>
+                <Text style={{fontSize: 20}}>{categoria.nombre}</Text>
 
                 <ScrollView horizontal>
                     <HStack spacing={10}>
 
-                        {productos.filter(producto => producto.categoria === categoria).map((producto) => 
-                            <Box key={producto.id} style={{margin: 8}}>
+                        {productos.filter(producto => producto.producto.id_categoria === categoria.id_categoria).map((producto) => 
+                            <Box key={producto.id_producto} style={{margin: 8}}>
 
                                 {/* TODO: funcion para anadir a carrito */}
                                 <Pressable onPress={() => {console.log('pressed' + producto.id), handleCarrito(producto), console.log("set carrito: ", producto), console.log("carrito: ", carrito) }}>
@@ -33,7 +41,7 @@ function ListaProductos({ productos, categorias, carrito, handleCarrito }) {
                                     </Surface>
                                     
                                 </Pressable>
-                                <Text>{producto.nombreProducto}</Text>
+                                <Text>{producto.producto.nombre}</Text>
                             </Box>)
                         }
                     </HStack>

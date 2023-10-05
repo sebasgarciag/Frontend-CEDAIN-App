@@ -21,7 +21,8 @@ const ListadoUsuarios = () => {
               <ProfileButton  onPress={() => { alert('Perfil presionado'); }} />
             </HStack>
             <Divider/>
-            <ListaUsuarios listadoUsuarios={usuarios} />
+            {/* <ListaUsuarios listadoUsuarios={usuarios} /> */}
+            {usuarios.length > 0 ? <ListaUsuarios listadoUsuarios={usuarios} /> : <Text alignSelf='center'> No hay usuarios registrados </Text>}
             <Divider/>
             
             <Stack style={{justifyContent: 'center', alignItems: 'center', margin: 10}}>

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import ip from './ipApi';
+import ip from './infoIP';
 
 const baseUrl = `http://${ip}:8080`;
 
@@ -75,23 +75,3 @@ const UsuariosAPI = () => {
 }
 
 export default UsuariosAPI;
-
-
-
-// async function saveUsuario(usuario) {
-//     let response = null;
-
-//     try {
-//         response = await axios.post(`${baseUrl}/usuarios`, usuario)
-//     } catch (error) {
-//         if (error.response) {
-//             if (error.response.status === 400) {
-//                 console.log("Invalid Parameter");
-//             }
-//         }
-
-//         console.log("Error: " + error);
-//     }
-
-//     return response;
-// }

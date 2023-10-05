@@ -8,7 +8,14 @@ const useResumen = () => {
         emisor: "emisor1",
         comunidad: "comunidad1",
         evento: "evento1",
-        observaciones: "observaciones1"
+        observaciones: "observaciones1",
+        Usuario: {
+            nombre: 'hola',
+            apellido_paterno: 'adios'
+        },
+        Evento: {
+            descripcion: 'Random Description'
+        }
     });
 
     const [datosEntrada, setDatosEntrada] = useState([

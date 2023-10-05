@@ -164,6 +164,8 @@ const ArrowButtonConObject = ({navigation, path, object}) => {
   );
 }
 
+
+
 const GenericButton = ({ text, onPress, style, labelStyle, disabled }) => {
     return (
       <Button
