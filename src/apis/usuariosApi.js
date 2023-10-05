@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { ip } from './infoIP.js';
 
 const baseUrl = 'http://localhost:8080';
 
