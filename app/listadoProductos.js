@@ -1,9 +1,9 @@
 import ListadoProductos from "../src/pages/listadoProductos/index";
 
-const listadoProductos = () => {
+const ListadoProductosRef = () => {
     return (
         <ListadoProductos />
     );
 };
 
-export default listadoProductos;
+export default ListadoProductosRef;

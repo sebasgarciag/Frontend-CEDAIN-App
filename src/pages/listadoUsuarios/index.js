@@ -1,6 +1,6 @@
 import React from 'react';
 import { HStack, Stack, Text, Divider, VStack } from "@react-native-material/core";
-import { MenuButton, ProfileButton, VolverButtonN } from '../../components/UI/uiButtons';
+import { MenuButton, ProfileButton, VolverButtonN, VolverButtonNDirect } from '../../components/UI/uiButtons';
 import ListaUsuarios from '../../components/UI/listaUsuarios';
 import useListadoUsuarios from './useListadoUsuarios';
 import styles from '../../assets/styles';
@@ -26,7 +26,7 @@ const ListadoUsuarios = () => {
             <Divider/>
             
             <Stack style={{justifyContent: 'center', alignItems: 'center', margin: 10}}>
-              <VolverButtonN navigation={navigation} path="botonesChernobyl" />
+              <VolverButtonNDirect navigation={navigation} path="" />
             </Stack>
 
           </Stack>

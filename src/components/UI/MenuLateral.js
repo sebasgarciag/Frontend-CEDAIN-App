@@ -81,6 +81,7 @@ function Menulateral() {
       {/* Agregar pantallas de los demás equipos */} 
       <Drawer.Screen name="ListadoUsuariosRef" component={ListadoUsuariosRef}  options={{headerShown: false}}/>
       <Drawer.Screen name="editarUsuario" component={EditarUsuarioPage}  options={{headerShown: false}}/>
+      <Drawer.Screen name="editarProducto" component={EditarProductoPage}  options={{headerShown: false}}/>
 
     </Drawer.Navigator>
   );
