@@ -7,12 +7,10 @@ import buttonStyles from "../../assets/buttons/styles";
 import styles from "../../assets/styles";
 import { useNavigation } from '@react-navigation/native';
 import { VolverButtonN, SiguienteButtonN } from "../../components/UI/uiButtons";
-import useCurrentScreen from "../../components/UI/useCurrentScreen";
 
 const SeleccionProductos = () => { 
     const navigation = useNavigation();
     const { productos, categorias } = useSeleccion();
-    const {currentScreen,setScreen} = useCurrentScreen()
 
     return (
         <View style={styles.container}>
