@@ -21,7 +21,6 @@ const useInfoDestinoEvento=()=>{
 
 	async function obtenerEventos(){
 		const response= await getEventos();
-		console.log(response)
 		if (response !== null){
 			setEventos(response);
 		}
