@@ -1,29 +1,27 @@
-import {useState}  from 'react';
+import {useState, useEffect}  from 'react';
+import ProductosAPI from '../../apis/productosApi';
 
 const useListadoProductos = () => {
-    const [entradas, setEntradas] = useState([
-        {
-            idEntrada: 1,
-            cantidadArticulos: 10,
-            fecha: '15/08/2023'
-        }, 
-        {
-            idEntrada: 2,
-            cantidadArticulos: 100,
-            fecha: '29/12/2023'
-        }, 
-        {
-            idEntrada: 3,
-            cantidadArticulos: 210,
-            fecha: '26/08/2023'
-        }, 
-        
-    ]);
+    const [productos, setProductos] = useState([]);
+    const { getTodosProductos } = ProductosAPI();
+
+    async function getListadoProductos() {
+        const response = await getTodosProductos();
+        // console.log(response)
+
+        if (response !== null) {
+            setProductos(response.data);
+        }
+    }
+
+    useEffect(() => {
+        getListadoProductos();
+    }, []);
 
    
 
 
-    return { entradas }
+    return { productos }
 }
 
 export default useListadoProductos ;

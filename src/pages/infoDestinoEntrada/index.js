@@ -14,11 +14,10 @@ import { useNavigation } from '@react-navigation/native';
 const Paginfo = () => { 
     const { comunidades, eventos, comunidad, evento, 
         setComunidad, setEvento, comentarios, setComentarios, 
-        receptor, setReceptor } = useInfoDestinoEvento();
+        emisor, setEmisor } = useInfoDestinoEvento();
 
     const navigation = useNavigation();
-    const toggleDrawer = () => {
-      setIsDrawerOpen(!isDrawerOpen);};
+
     
     return ( 
     
@@ -57,8 +56,8 @@ const Paginfo = () => {
                 <Spacer/>
 
                 <Textbox
-                    text={receptor} 
-                    setText={setReceptor}
+                    text={emisor} 
+                    setText={setEmisor}
                     placeholder={'Receptor'}
                     title={'Receptor'}
                 />

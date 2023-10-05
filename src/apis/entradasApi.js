@@ -1,10 +1,8 @@
 import axios from 'axios';
+import ip from './ipApi';
 
-const ip = '10.34.21.253';
+const baseURL = `http://${ip}:8080`;
 
- //const ip = '192.168.1.69';
- 
-const baseURL = `http://${ip}:8080`
 const entradasApi = () => {
 
     async function getAllEntradas() {
@@ -44,6 +42,8 @@ const entradasApi = () => {
     }
 
     return { getAllEntradas, getAllEntradasAlm , getDetalles }
+
+
 
 }
 

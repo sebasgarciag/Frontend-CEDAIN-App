@@ -30,6 +30,7 @@ import DecidirInventario from '../../../app/decidirInventario';
 import EditarProductoPage from '../../../app/editarProducto';
 import EditarUsuarioPage from '../../pages/editarUsuario';
 import ListadoUsuariosRef from '../../../app/listadoUsuarios';
+import listadoProductos from '../../../app/listadoProductos';
 
 const Drawer = createDrawerNavigator();
 
@@ -71,13 +72,15 @@ function Menulateral() {
       <Drawer.Screen name="EntradaAdmin" component={EntradaAdministrador}  options={{headerShown: false}}/>
       {/* Inventario */}
       <Drawer.Screen name="DecidirInventario" component={DecidirInventario} options={{ headerTransparent: true }} />
-      <Drawer.Screen name="EditarInventario" component={EditarProductoPage} options={{ headerTransparent: true, headerShown: false }} />
+      <Drawer.Screen name="EditarProducto" component={EditarProductoPage} options={{ headerTransparent: true, headerShown: false }} />
+      <Drawer.Screen name="listadoProductos" component={listadoProductos} options={{ headerTransparent: true, headerShown: false }} />
 
 
 
       {/* Agregar pantallas de los demás equipos */} 
-      <Drawer.Screen name="listadoUsuarios" component={ListadoUsuariosRef}  options={{headerShown: false}}/>
+      <Drawer.Screen name="ListadoUsuariosRef" component={ListadoUsuariosRef}  options={{headerShown: false}}/>
       <Drawer.Screen name="editarUsuario" component={EditarUsuarioPage}  options={{headerShown: false}}/>
+      <Drawer.Screen name="editarProducto" component={EditarProductoPage}  options={{headerShown: false}}/>
 
     </Drawer.Navigator>
   );
@@ -91,13 +94,21 @@ const MenuItems = ({ navigation }) => {
       <DrawerContentScrollView  style={styles.container}>
         <Text style={styles.title}>CEDAIN</Text>
         <MenuButtonItem 
-          text= "Chernobyl" 
+          text= "Usuarios" 
           currentScreen = {currentScreen}
           onPress = {() => {
-            navigation.navigate('Chernobyl'); 
-            setScreen("Chernobyl")
+            navigation.navigate('ListadoUsuariosRef'); 
+            setScreen("Usuarios")
           }}
-        />
+      />
+      <MenuButtonItem
+        text="Productos"
+        currentScreen={currentScreen}
+        onPress={() => {
+          navigation.navigate('listadoProductos');
+          setScreen("Productos")
+        }}
+      />
         <MenuButtonItem 
           text= "Inventario" 
           currentScreen = {currentScreen}

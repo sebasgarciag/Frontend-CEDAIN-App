@@ -1,28 +1,33 @@
 import axios from 'axios';
-//const ip = '10.34.21.253';
+import ip from './ipApi';
 
-//const ip = '192.168.1.69';
-const ip = '10.34.21.253';
 const baseURL = `http://${ip}:8080`;
 
 const inventarioApi = () => {
 
-    async function getInventarioByIdAlmacen(id_almacen) {
-
-        console.log(id_almacen, "entroapiiiii")
+    async function getAllInventario(idAlmacen) {
         let response = null;
-
         try {
-            //response = await axios.get(`http://192.168.1.69:8080/inventario/${id_almacen}`);
+            response = await axios.get(`${baseURL}/inventario/${idAlmacen}`);
+            // console.log('response', response.data);
         } catch (error) {
             console.error('error' + error);
-            throw error;
         }
         return response.data;
     }
 
-    return { getInventarioByIdAlmacen }
+    async function getAllCategorias() {
+        let response = null;
+        try {
+            response = await axios.get(`${baseURL}/productos/categorias/todas`);
+            // console.log('response', response.data);
+        } catch (error) {
+            console.error('error' + error);
+        }
+        return response.data;
+    }
 
+    return { getAllInventario, getAllCategorias }
 }
 
 export default inventarioApi;

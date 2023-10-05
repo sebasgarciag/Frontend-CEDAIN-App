@@ -7,10 +7,8 @@ import useInventario from "../../pages/inventario/useInventario";
 
 function ProductosSalida( salidaDetalle ) { 
 
-    const { productos } = useInventario();
-
-    let producto = productos.find((producto) => producto.id_producto === salidaDetalle?.id_producto);
-
+    salidaDetalle = salidaDetalle.salidaDetalle;
+    
     return (
 
         <Surface elevation={5} style={styles.productItem}> 
@@ -22,15 +20,15 @@ function ProductosSalida( salidaDetalle ) {
                     />
                 </VStack>
                 <VStack spacing={3} style={styles.textoProdMov}>
-                    <Text style={styles.productName}>{producto.producto}</Text>
+                    <Text style={styles.productName}>{salidaDetalle.producto.nombre}</Text>
                     <HStack spacing={20}>
                         <VStack>
-                            <Text style={styles.productDato}>Tamaño: {producto.tamano}</Text>
-                            <Text style={styles.productDato}>Cantidad: {producto.cantidad}</Text>
+                            <Text style={styles.productDato}>Tamaño: {salidaDetalle.producto.Tamanio.descripcion}</Text>
+                            <Text style={styles.productDato}>Cantidad: {salidaDetalle.cantidad}</Text>
                         </VStack>
                         <VStack>
-                            <Text style={styles.productDato}>Precio: {producto.precio}</Text>
-                            <Text style={styles.productDato}>Importe: {producto.importe}</Text>
+                            <Text style={styles.productDato}>Precio: {salidaDetalle.precio_unitario}</Text>
+                            <Text style={styles.productDato}>Importe: {salidaDetalle.cantidad * salidaDetalle.precio_unitario}</Text>
                         </VStack>
                     </HStack>
                 </VStack>
