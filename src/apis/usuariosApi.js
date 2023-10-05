@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { ip } from './infoIP.js';
 
-const ip = '10.34.27.220';
+
 const baseUrl = `http://${ip}:8080`;
 
 const UsuariosAPI = () => {
