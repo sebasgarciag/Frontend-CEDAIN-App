@@ -1,5 +1,5 @@
 import axios from 'axios';
-import ip from './ipApi';
+import ip from './infoIP';
 
 const baseURL = `http://${ip}:8080`;
 
