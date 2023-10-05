@@ -1,24 +1,26 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, Image, TextInput, ScrollView } from 'react-native';
-import { ProfileButton,  MenuButton, FilterButton, ArrowButton,ImportInventoryButton } from '../../components/inventario/buttons';
+import React from 'react';
+import { View, Text, Image, TextInput, FlatList, TouchableOpacity, ScrollView } from 'react-native';
+import { ProfileButton, MenuButton, FilterButton, ArrowButton, ImportInventoryButton } from '../../components/inventario/buttons';
 import styles from '../../assets/buttons/styles';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import { HStack, VStack } from "@react-native-material/core";
 import { Surface } from "react-native-paper";
 import useInventario from './useInventario';
-import { useRoute } from '@react-navigation/native'; // Añadido
-import { EntradaNueva, SalidaNueva } from '../../components/UI/uiButtons';
 import { useNavigation } from '@react-navigation/native';
+import { EntradaNueva, SalidaNueva } from '../../components/UI/uiButtons';
 
 
 
-const Inventario2 = ( {almacen} ) => {
-  console.log(almacen);
+const Inventario3 = () => {
+  const navigation = useNavigation();
+  const products = Array.from({ length: 20 }, (_, index) => ({
+    id: index + 1,
+    name: `Producto ${index + 1}`,
+    quantity: `Cantidad ${index + 1}`,
+    imageUri: 'https://via.placeholder.com/50',
+  }));
 
-  //const { inventario,getInventarioPorAlmacen } = useInventario();
-  
-  const navigation = useNavigation()
-
-  const { productos } = useInventario(almacen);
+  const {productos} = useInventario();
 
   return (
     <View style={styles.container}>
@@ -34,8 +36,8 @@ const Inventario2 = ( {almacen} ) => {
       </View>
 
       <ScrollView>
-      {productos.map((producto) => 
-          <Surface elevation={5} key={producto.id_producto} style={styles.productItem}> 
+        {productos.map((producto) => 
+          <Surface elevation={5} key={producto.producto} style={styles.productItem}> 
             <HStack spacing={10} style={{ flex: 1 }}>
               <VStack style={{justifyContent: 'center'}}>
                 <Image 
@@ -44,15 +46,15 @@ const Inventario2 = ( {almacen} ) => {
                 />
               </VStack>
               <VStack spacing={3} style={[styles.textoProdMov, { flex: 1 }]}>
-              <Text style={styles.productName}>{producto.Producto.nombre}</Text>
+                <Text style={styles.productName}>{producto.producto}</Text>
                 <HStack spacing={20}>
                   <VStack>
-                     <Text style={styles.productQuantity}>Tamaño: {producto.medida}</Text>
-                     <Text style={styles.productQuantity}>Cantidad: {producto.cantidad}</Text>
+                    <Text style={styles.productQuantity}>Tamaño: {producto.tamano}</Text>
+                    <Text style={styles.productQuantity}>Cantidad: {producto.cantidad}</Text>
                   </VStack>
                 </HStack>
               </VStack>
-              <ArrowButton navigation={navigation} path={"EditarInventario"} />
+              <ArrowButton navigation={navigation} path={"EditarProducto"} />
             </HStack>
           </Surface>
         )}
@@ -66,4 +68,4 @@ const Inventario2 = ( {almacen} ) => {
   );
 };
 
-export default Inventario2;
+export default Inventario3;

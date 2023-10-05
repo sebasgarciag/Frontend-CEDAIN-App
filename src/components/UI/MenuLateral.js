@@ -19,6 +19,7 @@ import ResumenEntrada from '../../../app/resumenEntrada';
 import ListadoEntradasAlmacenista from '../../../app/listadoEntradasAlm';
 import CarritoEntrada from '../../../app/carritoEntrada';
 import InventarioHome from '../../../app/inventario';
+import InventarioAlm from '../../../app/inventarioAlm';
 import EntradaAlma from '../../../app/entradaAlm';
 import SalidaAlma from '../../../app/salidaAlm';
 import EntradaAdministrador from '../../../app/entradaAdmin';
@@ -45,6 +46,7 @@ function Menulateral() {
     }}
     drawerContent = { (props) => <MenuItems {...props} /> } >
       <Drawer.Screen name="Inventario" component={InventarioHome} options={{ headerTransparent: true }} />
+      <Drawer.Screen name="InventarioAlmace" component = {InventarioAlm}options={{ headerTransparent: true }} />
        {/* Pantallas que si tendrán botón en el menú */}
       <Drawer.Screen name="Chernobyl" component={Chernobyl} options={{ }} />
       <Drawer.Screen name="Eq2" component={Eq2} options={{ }} />
