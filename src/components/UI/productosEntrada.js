@@ -3,6 +3,7 @@ import { Text, Image } from "react-native";
 import { HStack, VStack } from "@react-native-material/core";
 import { Surface } from "react-native-paper";
 import styles from "../../assets/styles";
+import useInventario from "../../pages/inventario/useInventario";
 
 function ProductosEntrada( entradaDetalle ) { 
 

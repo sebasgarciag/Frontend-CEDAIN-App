@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Text } from "react-native";
 import { Box, HStack, VStack } from "@react-native-material/core";
 import styles from "../../assets/styles";
+import useSalidaAlm from "../../pages/salidaAlm/useSalidaAlm";
+import uselistadoSalidasAlm from "../../pages/listadoSalidasAlm/useListadoSalidasAlm";
 
 function InfoSalida({ salida }) { 
+
+    const { evento, setEvento } = useSalidaAlm();
+    const { eventos } = uselistadoSalidasAlm();
+
+    useEffect(() => {
+        setEvento(eventos.find((evento) => evento.id_evento === salida.id_evento));
+    }, [salida]);
 
     return (
         <Box style={styles.cuandroInfoRegistro}>
