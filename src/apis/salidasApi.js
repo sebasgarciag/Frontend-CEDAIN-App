@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { ip } from './infoIP.js';
 
 // const ip = '10.34.3.73';
 const baseURL = `http://${ip}:8080`;
