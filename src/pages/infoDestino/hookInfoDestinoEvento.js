@@ -1,36 +1,10 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
+import salidasApi from "../../apis/salidasApi";
 
 const useInfoDestinoEvento=()=>{
-
-	const [comunidades, setComunidades] = useState([
-		{ 
-			nombre: 'comunidad 1', 
-			id_comunidad: '1' 
-		},
-		{ 
-			nombre: 'comnuidad 2', 
-			id_comunidad: '2' 
-		},
-		{ 
-			nombre: 'comunidad 3', 
-			id_comunidad: '3' 
-		}
-	]);
-
-	const [eventos, setEventos] = useState([
-		{ 
-			nombre: 'evento 1', 
-			id_evento: '1' 
-		},
-		{ 
-			nombre: 'evento 2', 
-			id_evento: '2' 
-		},
-		{ 
-			nombre: 'evento 3', 
-			id_evento: '3' 
-		}
-	]);
+	const {getComunidades, getEventos}=salidasApi();
+	const [comunidades, setComunidades] = useState([]);
+	const [eventos, setEventos] = useState([]);
 
 	const [comunidad, setComunidad] = useState(null);
 	const [evento, setEvento] = useState(null);
@@ -38,8 +12,27 @@ const useInfoDestinoEvento=()=>{
 	const [comentarios, setComentarios] = useState('');
 	const [receptor, setReceptor] = useState('');
 
+	async function obtenerComunidades(){
+		const response= await getComunidades();
+		if (response !== null){
+			setComunidades(response);
+		}
+	}
 
-	return { comunidades, eventos, comunidad, evento, setComunidad, setEvento, comentarios, setComentarios, receptor, setReceptor }
+	async function obtenerEventos(){
+		const response= await getEventos();
+		console.log(response)
+		if (response !== null){
+			setEventos(response);
+		}
+	}
+
+	useEffect(()=>{
+		obtenerComunidades();
+		obtenerEventos();
+	},[]);
+
+	return { comunidades, eventos, comunidad, evento, setComunidad, setEvento, comentarios, setComentarios, receptor, setReceptor, obtenerComunidades, obtenerEventos }
 }
 
 export default useInfoDestinoEvento;
