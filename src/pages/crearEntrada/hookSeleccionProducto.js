@@ -1,8 +1,35 @@
-import {useState}  from 'react';
+import { useState, useEffect } from 'react';
 import inventarioApi from '../../apis/inventarioApi';
-import { useEffect } from 'react';
 
 const useSeleccion = () => {
+
+    const [entrada, setEntrada] = useState({
+        fecha: '',
+        folio: '',
+        serie : '',
+        observaciones: '',
+        id_usuario: 1, // TODO: cambiar por el usuario logeado
+        id_almacen: 1, // TODO: cambiar por el almacen seleccionado
+        emisor: '',
+        id_comunidad: 0,
+        id_evento: 0,
+        Comunidad: {
+            id_comunidad: 0,
+            nombre: ''
+        },
+        Evento: {
+            id_evento: 0,
+            nombre: ''
+        },
+        Almacen: {
+            id_almacen: 1,
+            nombre: 'Creel'
+        },
+        Usuario: {
+            nombre: 'hola', 
+            apellido_paterno: 'si'
+        },
+    });
 
     const { getAllInventario, getAllCategorias } = inventarioApi();
 
@@ -26,7 +53,7 @@ const useSeleccion = () => {
         getProductos();
     }, []);    
 
-    return { productos, categorias }
+    return { productos, categorias, entrada, setEntrada }
 }
 
 export default useSeleccion;
