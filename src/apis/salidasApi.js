@@ -33,9 +33,6 @@ const salidasApi = () => {
         return response.data;
     }
 
-
-    return { getAllSalidas, getAllSalidasAlm }
-
     async function getDetalles(id_salida) {
             
         let response = null;
