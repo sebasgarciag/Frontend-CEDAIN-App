@@ -21,7 +21,7 @@ function InfoEntrada({ entrada }) {
                 <HStack spacing={10}>
                     <VStack style={{width: '50%'}}>
                         <Text style={styles.subtituloInfoRegistro}>Receptor:</Text>
-                        <Text style={styles.textoInfoRegistro}>{entrada.id_usuario}</Text>
+                        <Text style={styles.textoInfoRegistro}>{entrada.Usuario.nombre + " " + entrada.Usuario.apellido_paterno}</Text>
                     </VStack>
                     <VStack style={{width: '50%'}}>
                         <Text style={styles.subtituloInfoRegistro}>Emisor:</Text>
@@ -31,11 +31,11 @@ function InfoEntrada({ entrada }) {
                 <HStack spacing={10}>
                     <VStack style={{width: '50%'}}>
                         <Text style={styles.subtituloInfoRegistro}>Comunidad:</Text>
-                        <Text style={styles.textoInfoRegistro}>{comunidad.nombre}</Text>
+                        <Text style={styles.textoInfoRegistro}>{entrada.Comunidad.nombre}</Text>
                     </VStack>
                     <VStack style={{width: '50%'}}>
                         <Text style={styles.subtituloInfoRegistro}>Evento:</Text>
-                        <Text style={styles.textoInfoRegistro}>{evento.nombre}</Text>
+                        <Text style={styles.textoInfoRegistro}>{entrada.Evento.descripcion}</Text>
                     </VStack>
                 </HStack>
                 <Box>
