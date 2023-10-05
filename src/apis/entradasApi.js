@@ -1,6 +1,9 @@
 import axios from 'axios';
 
- const ip = '10.34.21.253';
+const ip = '10.34.21.253';
+
+ //const ip = '192.168.1.69';
+ 
 const baseURL = `http://${ip}:8080`
 const entradasApi = () => {
 

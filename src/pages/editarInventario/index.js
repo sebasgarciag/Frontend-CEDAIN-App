@@ -36,10 +36,6 @@ const EditProductScreen = () => {
     <Text style={{ fontSize: 26, fontWeight: 'bold' }}>Nombre del producto:</Text>
     <Text style={{ fontSize: 24, fontWeight: 'bold', marginTop: 15, backgroundColor: '#fff', padding: 10, borderRadius: 10 }}>{name}</Text>
 </View>
-
-
-      
-
       <View style={{ marginBottom: 30 }}>
         <Text style={{ fontSize: 20, marginBottom: 10 }}>Cantidad:</Text>
         <View style={{ flexDirection: 'row', alignItems: 'center', backgroundColor: '#fff', borderRadius: 10, padding: 10, shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.23, shadowRadius: 2.62, elevation: 4 }}>

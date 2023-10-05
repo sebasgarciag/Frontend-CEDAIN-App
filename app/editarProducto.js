@@ -1,8 +1,8 @@
 import EditarProducto from "../src/pages/editarProducto";
 
-const EditarProductoPage = () => {
+const EditarProductoPage = ({route}) => {
     return (
-        <EditarProducto />
+        <EditarProducto idProducto={route.params} />
     );
 };
 

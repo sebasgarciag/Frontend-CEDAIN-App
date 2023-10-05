@@ -1,7 +1,9 @@
 import axios from 'axios';
+//const ip = '10.34.21.253';
 
-const baseUrl = 'http://10.34.21.253:8080';
-
+//const ip = '192.168.1.69';
+const ip = '10.34.21.253';
+const baseURL = `http://${ip}:8080`;
 const UsuariosAPI = () => {
     async function getTodosUsuarios() {
         let response = null;

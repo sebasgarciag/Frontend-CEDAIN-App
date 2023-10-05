@@ -11,6 +11,7 @@ import { useNavigation } from '@react-navigation/native';
 
 
 
+
 const Inventario2 = ( {almacen} ) => {
   console.log(almacen);
 
@@ -52,7 +53,9 @@ const Inventario2 = ( {almacen} ) => {
                   </VStack>
                 </HStack>
               </VStack>
-              <ArrowButton navigation={navigation} path={"EditarInventario"} />
+              
+              <ArrowButton navigation={navigation} path={"EditarInventario"} producto={producto.Producto.id_producto} />
+
             </HStack>
           </Surface>
         )}

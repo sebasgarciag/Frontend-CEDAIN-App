@@ -1,16 +1,20 @@
-import { useState } from "react";
+const useObtenerProducto = (id_almacen, id_producto) => {
+    const [producto, setProducto] = useState(null);
 
-const useEditarProducto=()=>{
-	const [dataDropDownEvento, setDataDropDownEvento] = useState( [
-		{ label: 'Item 1', value: '1' },
-		{ label: 'Item 2', value: '2' },
-		{ label: 'Item 3', value: '3' }
-	]);
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch(`http://localhost:8080/inventario/${id_almacen}/${id_producto}`);
+                setProducto(response.data);
+            } catch (error) {
+                console.error('Error al obtener el producto:', error);
+            }
+        };
 
-	const [valueEvento, setValueEvento] = useState(null);
+        if (id_producto) {
+            fetchData();
+        }
+    }, [id_almacen, id_producto]);
 
-
-	return { setValueEvento, dataDropDownEvento, valueEvento }
-}
-
-export default useEditarProducto;
+    return { producto };
+};

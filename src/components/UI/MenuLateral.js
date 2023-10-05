@@ -71,7 +71,7 @@ function Menulateral() {
       <Drawer.Screen name="EntradaAdmin" component={EntradaAdministrador}  options={{headerShown: false}}/>
       {/* Inventario */}
       <Drawer.Screen name="DecidirInventario" component={DecidirInventario} options={{ headerTransparent: true }} />
-      <Drawer.Screen name="EditarProducto" component={EditarProductoPage} options={{ headerTransparent: true, headerShown: false }} />
+      <Drawer.Screen name="EditarInventario" component={EditarProductoPage} options={{ headerTransparent: true, headerShown: false }} />
 
 
 

@@ -1,7 +1,6 @@
 import Inventario2 from "../src/pages/inventario";
 
 const InventarioHome = ({route}) => {
-    console.log(route.params);
     let almacen2 = 1;
     //console.log(almacen2);
 

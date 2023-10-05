@@ -7,7 +7,7 @@ const useInventario = (id_almacen) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`http://10.34.21.253:8080/inventario/${id_almacen}`);
+                const response = await fetch(`http://localhost:8080/inventario/${id_almacen}`);
                 const data = await response.json();
                 setProductos(data);
             } catch (error) {
