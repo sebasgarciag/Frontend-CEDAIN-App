@@ -1,6 +1,7 @@
 import axios from 'axios';
+import ip from './ipApi';
 
-const baseUrl = 'http://localhost:8080';
+const baseUrl = `http://${ip}:8080`;
 
 const UsuariosAPI = () => {
     async function getTodosUsuarios() {
