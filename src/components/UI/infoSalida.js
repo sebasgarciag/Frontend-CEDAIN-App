@@ -24,13 +24,13 @@ function InfoSalida({ salida }) {
                     </VStack>
                     <VStack style={{width: '50%'}}>
                         <Text style={styles.subtituloInfoRegistro}>Emisor:</Text>
-                        <Text style={styles.textoInfoRegistro}>{salida.id_usuario}</Text>
+                        <Text style={styles.textoInfoRegistro}>{salida.Usuario.nombre + " " + salida.Usuario.apellido_paterno}</Text>
                     </VStack>
                 </HStack>
                 <HStack spacing={10}>
                     <VStack style={{width: '50%'}}>
                         <Text style={styles.subtituloInfoRegistro}>Evento:</Text>
-                        <Text style={styles.textoInfoRegistro}>{evento.nombre}</Text>
+                        <Text style={styles.textoInfoRegistro}>{salida.Evento.descripcion}</Text>
                     </VStack>
                 </HStack>
                 <Box>

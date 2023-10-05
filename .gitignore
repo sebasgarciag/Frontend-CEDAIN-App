@@ -15,3 +15,6 @@ package-lock.json
 
 # macOS
 .DS_Store
+
+# archivo ip
+/src/apis/ipApi.js
