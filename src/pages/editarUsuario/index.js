@@ -12,7 +12,6 @@ import { useNavigation, useRoute  } from '@react-navigation/native';
 const EditarUsuarioPage = () => {
   const route = useRoute();
   const usuario = route.params.object;
-  console.log(`aver ${usuario.id_usuario}`)
   const {isEditable, nombre, setNombre, apellidoPaterno, setApellidoPaterno, apellidoMaterno, setApellidoMaterno, email, setEmail, editarText, rol, setRol, handleSumbit, handleEditable } = useEditarUsuario(usuario)
   const navigation = useNavigation();
 
