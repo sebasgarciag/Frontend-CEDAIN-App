@@ -15,12 +15,12 @@ const ListadoEntradasAlm = () => {
 	const navigation = useNavigation();
 	const {toggleUserDrawer, toggleModal, handlePress, filteredEntradas, setBusqueda, setComValue, isUserDrawerOpen, isModalVisible, comValue, getEntradas} = useListadoEntradasAlm();
 
-	const isFocused = useIsFocused();
-	useEffect(() => {
-		if(isFocused) {
-			getEntradas();
-		}
-	}, [isFocused]);
+	// const isFocused = useIsFocused();
+	// useEffect(() => {
+	// 	if(isFocused) {
+	// 		getEntradas();
+	// 	}
+	// }, [isFocused]);
 
 	return (
 			<>

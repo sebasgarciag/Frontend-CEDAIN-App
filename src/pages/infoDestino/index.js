@@ -17,8 +17,6 @@ const Paginfo = () => {
         receptor, setReceptor } = useInfoDestinoEvento();
 
     const navigation = useNavigation();
-    const toggleDrawer = () => {
-      setIsDrawerOpen(!isDrawerOpen);};
     
     return ( 
     

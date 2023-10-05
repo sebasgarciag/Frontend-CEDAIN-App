@@ -10,6 +10,8 @@ const salidasApi = () => {
         let response = null;
 
         try {
+            console.log(`${baseURL}/salidas`)
+
             response = await axios.get(`${baseURL}/salidas`);
         } catch (error) {
             console.error('error' + error);
@@ -22,6 +24,8 @@ const salidasApi = () => {
         let response = null;
 
         try {
+            console.log(`${baseURL}/salidas`)
+
             response = await axios.get(`${baseURL}/salidas/?userId=${almacenista}`);
         } catch (error) {
             console.error('error' + error);

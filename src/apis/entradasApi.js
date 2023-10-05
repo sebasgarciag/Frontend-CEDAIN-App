@@ -43,6 +43,8 @@ const entradasApi = () => {
 
     return { getAllEntradas, getAllEntradasAlm , getDetalles }
 
+
+
 }
 
 export default entradasApi;
