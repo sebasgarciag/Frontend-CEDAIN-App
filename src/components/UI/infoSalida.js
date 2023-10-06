@@ -21,7 +21,7 @@ function InfoSalida({ salida }) {
                 <HStack spacing={10}>
                     <VStack style={{width: '50%'}}>
                         <Text style={styles.subtituloInfoRegistro}>Evento:</Text>
-                        <Text style={styles.textoInfoRegistro}>{salida.Evento.descripcion}</Text>
+                        <Text style={styles.textoInfoRegistro}>{salida.Evento.nombre}</Text>
                     </VStack>
                 </HStack>
                 <Box>

@@ -31,7 +31,7 @@ import EditarInventario from '../../../app/editarInventario';
 import EditarProductoPage from '../../../app/editarProducto';
 import EditarUsuarioPage from '../../pages/editarUsuario';
 import ListadoUsuariosRef from '../../../app/listadoUsuarios';
-import listadoProductos from '../../../app/listadoProductos';
+import ListadoProductosRef from '../../../app/listadoProductos';
 
 const Drawer = createDrawerNavigator();
 
@@ -74,8 +74,8 @@ function Menulateral() {
       {/* Inventario */}
       <Drawer.Screen name="DecidirInventario" component={DecidirInventario} options={{ headerTransparent: true }} />
       <Drawer.Screen name="EditarProducto" component={EditarProductoPage} options={{ headerTransparent: true, headerShown: false }} />
+      <Drawer.Screen name="listadoProductos" component={ListadoProductosRef} options={{ headerTransparent: true, headerShown: false }} />
       <Drawer.Screen name="EditarInventario" component={EditarInventario} options={{ headerTransparent: true, headerShown: false }} />
-      <Drawer.Screen name="listadoProductos" component={listadoProductos} options={{ headerTransparent: true, headerShown: false }} />
 
 
 

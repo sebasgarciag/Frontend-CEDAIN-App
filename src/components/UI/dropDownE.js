@@ -29,15 +29,6 @@ const Dropdowns = ({ dataDropDownEvento, Titulo, setValueEvento, valueEvento }) 
 				onBlur={() => setIsFocusEvento(false)}
 				onChange={item => {
 					setValueEvento(item.id);
-					// setValueEvento({
-					// 	...valueEvento,
-					// 	id_comunidad: item.id,
-					// 	Comunidad: {
-					// 		...valueEvento.Comunidad,
-					// 		nombre: item.nombre,
-					// 		id_comunidad: item.id
-					// 	}
-					// });
 					setIsFocusEvento(false);
 				}}
 				renderLeftIcon={() => (

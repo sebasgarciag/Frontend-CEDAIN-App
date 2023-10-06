@@ -102,6 +102,19 @@ const SiguienteButtonN = ({navigation, path}) => {
   );
 }
 
+const SiguienteButtonNObject = ({navigation, path, object}) => {
+
+  return (
+    <TouchableOpacity style={[styles.volverButton, { backgroundColor: '#8F8B36' }]} 
+      onPress={() => {
+      navigation.navigate(`${path}`, { object });
+      }}>
+    <Text style={styles.buttonText}>Siguiente</Text>
+    <Icon2 name="right" size={24} color="#F1EFE3" />
+  </TouchableOpacity>
+  );
+}
+
 const ExportarButton = ({ onPress }) => {
     return (
       <TouchableOpacity style={[styles.volverButton, { backgroundColor: '#59CD90' }]}>
