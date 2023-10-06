@@ -12,7 +12,7 @@ import useCarritoEntradas from "../carritoEntradas/hookProductoCarritoEntradas";
 
 const SeleccionProductos = () => { 
     const navigation = useNavigation();
-    const { productos, categorias } = useSeleccion();
+    const { productos, categorias, entrada } = useSeleccion();
     const {carritoEntradas, handleCarrito} = useCarritoEntradas();
 
     return (
@@ -25,7 +25,7 @@ const SeleccionProductos = () => {
             <ListaProductos productos={productos} categorias={categorias} carrito={carritoEntradas} handleCarrito={handleCarrito}/>
             <View style={ buttonStyles.containerNavegacion }>
                 <VolverButtonN navigation={navigation} path={"Entradas"}/>
-                <SiguienteButtonNObject navigation={navigation} path={"CarritoEntrada"} object={carritoEntradas}/>
+                <SiguienteButtonNObject navigation={navigation} path={"CarritoEntrada"} object={{carritoEntradas, entrada}}/>
             </View>
         </View>
     );
