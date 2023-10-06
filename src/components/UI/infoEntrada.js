@@ -25,7 +25,7 @@ function InfoEntrada({ entrada }) {
                     </VStack>
                     <VStack style={{width: '50%'}}>
                         <Text style={styles.subtituloInfoRegistro}>Evento:</Text>
-                        <Text style={styles.textoInfoRegistro}>{entrada.Evento.descripcion}</Text>
+                        <Text style={styles.textoInfoRegistro}>{entrada.Evento.nombre}</Text>
                     </VStack>
                 </HStack>
                 <Box>
