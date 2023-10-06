@@ -7,13 +7,13 @@ import { Surface } from "react-native-paper";
 import { ScrollView } from "react-native-gesture-handler";
 import buttonStyles from "../../assets/buttons/styles";
 import styles from "../../assets/styles";
-import { VolverButtonN, SiguienteButtonN } from "../../components/UI/uiButtons";
+import { VolverButtonN, SiguienteButtonN, ButtonTerminar } from "../../components/UI/uiButtons";
 import { useNavigation } from "expo-router";
 import InfoSalida from "../../components/UI/infoSalida";
 
 const Resumen = () => { 
 
-    const { entrada, datosEntrada, handleCantidad } = useResumen();
+    const { entrada, datosEntrada, handleCantidad, terminar } = useResumen();
     const navigation = useNavigation();
 
     return (
@@ -39,7 +39,8 @@ const Resumen = () => {
             </ScrollView>
             <View style={ buttonStyles.containerNavegacion }>
                     <VolverButtonN navigation={navigation} path={"InfoDestinoE"} />
-                    <SiguienteButtonN navigation={navigation} path={"Entradas"} />
+                    {/* <SiguienteButtonN navigation={navigation} path={"Entradas"} /> */}
+                    <ButtonTerminar terminarFunction={() => terminar(entrada, datosEntrada)} />
             </View>
         </Stack>
     );
