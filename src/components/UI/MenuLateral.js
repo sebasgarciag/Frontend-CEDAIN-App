@@ -11,6 +11,7 @@ import PagInicio from './pagInicio';
 import Adise from '../../../app/botonesAdise';
 import Eq2 from '../../../app/botonesEq2';
 import Chernobyl from '../../../app/botonesChernobyl';
+import DaraltaProducto from '../../pages/altaProducto';
 import ResumenSalida from '../../../app/resumenSalida';
 import ListadoSalidasAlmacenista from '../../../app/listadoSalidasAlm';
 import useCurrentScreen from './useCurrentScreen';
@@ -84,7 +85,7 @@ function Menulateral() {
       <Drawer.Screen name="ListadoUsuariosRef" component={ListadoUsuariosRef}  options={{headerShown: false}}/>
       <Drawer.Screen name="editarUsuario" component={EditarUsuarioPage}  options={{headerShown: false}}/>
       <Drawer.Screen name="editarProducto" component={EditarProductoPage}  options={{headerShown: false}}/>
-      <Drawer.Screen name="altaProducto" component={AltaProductoPage}  options={{headerShown: true}}/>
+      <Drawer.Screen name="altaProducto" component={DaraltaProducto}  options={{headerShown: true}}/>
       <Drawer.Screen name="AltaUsuario" component={altaUsuarioPage} options={{ headerShown: false }} />
       
       {/* Login*/} 
@@ -101,24 +102,22 @@ const MenuItems = ({ navigation }) => {
   const {currentScreen, setScreen} = useCurrentScreen();
 
   return (
-      <DrawerContentScrollView  style={styles.container}>
-        <Text style={styles.title}>CEDAIN</Text>
-        <MenuButtonItem 
-          text= "Usuarios" 
-          currentScreen = {currentScreen}
-          onPress = {() => {
-            navigation.navigate('ListadoUsuariosRef'); 
-            setScreen("Usuarios")
-          }}
-      />
-        <MenuButtonItem 
-          text= "alta producto" 
-          currentScreen = {currentScreen}
-          onPress = {() => {
-            navigation.navigate('altaProducto'); 
-            setScreen("Alta productos")
-          }}
-      />
+      <><DrawerContentScrollView style={styles.container}>
+      <Text style={styles.title}>CEDAIN</Text>
+      <MenuButtonItem
+        text="Usuarios"
+        currentScreen={currentScreen}
+        onPress={() => {
+          navigation.navigate('ListadoUsuariosRef');
+          setScreen("Usuarios");
+        } } />
+      <MenuButtonItem
+        text="alta producto"
+        currentScreen={currentScreen}
+        onPress={() => {
+          navigation.navigate('altaProducto');
+          setScreen("Alta productos");
+        } } />
       <MenuButtonItem
         text="Productos"
         currentScreen={currentScreen}
@@ -170,7 +169,7 @@ const MenuItems = ({ navigation }) => {
         } } />
 
 
-    </DrawerContentScrollView><View style={{ backgroundColor:"#F5E1B9"}}>
+    </DrawerContentScrollView><View style={{ backgroundColor: "#F5E1B9" }}>
         <TouchableOpacity
           onPress={() => {
             console.log('Button pressed!');
@@ -185,10 +184,10 @@ const MenuItems = ({ navigation }) => {
             flex: 0,
             width: 120,
             bottom: 20,
-            left:10,
+            left: 10,
             zIndex: 100,
             backgroundColor: '#F5E1B9',
-            borderColor:"black",
+            borderColor: "black",
           }}
         >
           <AntDesign name="logout" size={24} color="black" style={{ paddingRight: "5%" }} />
