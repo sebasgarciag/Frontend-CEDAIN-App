@@ -38,7 +38,7 @@ const entradasApi = () => {
         } catch (error) {
             console.error('error' + error);
         }
-        return [response.data];
+        return response.data;
     }
 
 
