@@ -41,31 +41,7 @@ const entradasApi = () => {
         return [response.data];
     }
 
-
-    // A PROBAR POST DE ENTRADA
-    async function postEntrada(data) {
-        let response = null;
-        try {
-            response = await axios.post(`${baseURL}/entradas`, data);
-        } catch (error) {
-            console.error('Error posting entrada: ' + error);
-        }
-        return response.data;
-    }
-
-
-    // A PROBAR POST DETALLES DE LA ENTRADA
-    async function postDetallesEntrada(id, data) {
-        let response = null;
-        try {
-            response = await axios.post(`${baseURL}/entradas/entrada-detalles/${id}`, data);
-        } catch (error) {
-            console.error('Error posting detalles entrada: ' + error);
-        }
-        return response.data;
-    }
-
-    return { getAllEntradas, getAllEntradasAlm , getDetalles, postEntrada, postDetallesEntrada }
+    return { getAllEntradas, getAllEntradasAlm , getDetalles }
 
 
 

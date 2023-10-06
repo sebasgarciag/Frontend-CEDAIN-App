@@ -1,6 +1,4 @@
 import { useState } from "react";
-import entradasApi from '../../apis/entradasApi';
-const api = entradasApi();
 
 const useResumen = () => {
     const [entrada, setEntrada] = useState({
@@ -73,17 +71,7 @@ const useResumen = () => {
         setDatosEntrada(newDatos);
     }
 
-    async function terminar(entrada, detallesEntrada) {
-        try {
-            const response = await api.postEntrada(entrada);
-            const entradaId = response.data.id_entrada;
-            await api.postDetallesEntrada(entradaId, detallesEntrada);
-        } catch (error) {
-            console.error('Error in terminar function: ' + error);
-        }
-    }
-
-    return { entrada, datosEntrada, handleCantidad, terminar };
+    return { entrada, datosEntrada, handleCantidad };
 }
 
 export default useResumen;
