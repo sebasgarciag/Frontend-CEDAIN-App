@@ -14,7 +14,7 @@ import { useNavigation } from '@react-navigation/native';
 
 
 
-const EditarProducto = () => {
+const EditarProducto = (idproducto) => {
     const navigation = useNavigation();
     const { setValueEvento, dataDropDownEvento, valueEvento } = useEditarProducto();
     const [nombreProducto, setNombreProducto] = useState("");
@@ -23,7 +23,7 @@ const EditarProducto = () => {
     const [nombreCorto, setNombreCorto] = useState("");
     const [image, setImage] = useState(null);
 
-    const pickImage = async () => {
+    /*const pickImage = async () => {
         let result = await ImagePicker.launchImageLibraryAsync({
             mediaTypes: ImagePicker.MediaTypeOptions.All,
             allowsEditing: true,
@@ -36,7 +36,7 @@ const EditarProducto = () => {
         if (!result.cancelled) {
             setImage(result.uri);
         }
-    };
+    };*/
 
     return (
         <ScrollView style={styles.Container}>
@@ -47,6 +47,7 @@ const EditarProducto = () => {
             
             <View>
                 <TextInput
+
                     label="Nombre del Producto"
                     value={nombreProducto}
                     onChangeText={text => setNombreProducto(text)}

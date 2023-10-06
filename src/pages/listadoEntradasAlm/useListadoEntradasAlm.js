@@ -1,5 +1,6 @@
 import {useState}  from 'react';
 import entradasApi from '../../apis/entradasApi';
+import { useEffect } from 'react';
 
 const useListadoEntradasAlm = () => {
 
@@ -45,6 +46,10 @@ const useListadoEntradasAlm = () => {
         const entradasApi = await getAllEntradasAlm(1);
         setEntradas(entradasApi);
     };
+
+    useEffect(() => {
+        getEntradas();
+    }, []);
 
    
     return { entradas, toggleDrawer, toggleUserDrawer, toggleModal, handlePress, setBusqueda, filteredEntradas, isDrawerOpen, isUserDrawerOpen, isModalVisible, setComValue,comValue, getEntradas}

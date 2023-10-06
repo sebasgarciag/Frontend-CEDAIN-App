@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Text, View } from "react-native";
 import { Spacer, VStack, HStack, Stack } from "@react-native-material/core";
 import { Surface } from "react-native-paper";
@@ -8,12 +8,21 @@ import styles from "../../assets/styles";
 import { VolverButtonN, SiguienteButtonN } from "../../components/UI/uiButtons";
 import { useNavigation } from "expo-router";
 import ProductoCarrito from "../../components/entradasSalidas/productoCarrito";
-import useCarrito from "../carrito/hookProductoCarrito";
+import useCarritoEntradas from "./hookProductoCarritoEntradas";
 import TotalProductos from "../../components/entradasSalidas/totalProductos";
 
-const ArticulosCarritoEntrada = () => {  
-    const {carrito, handleCantidad, aumentarCantidad, disminuirCantidad} = useCarrito();
+const ArticulosCarritoEntrada = ({carrito}) => {  
+    const {handleCantidad, aumentarCantidad, disminuirCantidad, carrito2Entradas, setCarrito2Entradas} = useCarritoEntradas();
     const navigation = useNavigation();
+
+
+   // console.log("pantalla carrito: ",carrito);
+   // console.log("pantalla carrito2: ",carrito2);
+
+
+    useEffect(() => {
+        setCarrito2Entradas(carrito)
+    }, [carrito]);
 
     return (
         <Stack style={styles.container}>
@@ -26,25 +35,26 @@ const ArticulosCarritoEntrada = () => {
                 <VStack>
                     <Spacer/>
                     
-                    {carrito.map((producto) => 
-                        <Surface elevation={5} key={producto.id} style={styles.productItem}> 
+                    {carrito2Entradas.map((producto) => 
+                        <Surface elevation={5} key={producto.id_producto} style={styles.productItem}> 
                             <ProductoCarrito                 
                                 producto={producto}
                                 aumentarCantidad={aumentarCantidad}
                                 disminuirCantidad={disminuirCantidad}
                                 handleCantidad={handleCantidad}
+                                tipo = "salida"
                             />
                         </Surface> 
                     )}
 
                 </VStack>
                 <Surface style={styles.productItem}>
-           			<TotalProductos carrito={carrito}/>
+           			<TotalProductos carrito={carrito2Entradas}/>
             	</Surface>
             </ScrollView>
             <View style={ buttonStyles.containerNavegacion }>
-                    <VolverButtonN navigation={navigation} path={"CrearEntrada"} />
-                    <SiguienteButtonN navigation={navigation} path={"InfoDestinoE"} />
+                    <VolverButtonN navigation={navigation} path={"CrearSalida"} />
+                    <SiguienteButtonN navigation={navigation} path={"InfoDestinoN"} />
             </View>
         </Stack>
     );

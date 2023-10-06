@@ -19,6 +19,7 @@ import ResumenEntrada from '../../../app/resumenEntrada';
 import ListadoEntradasAlmacenista from '../../../app/listadoEntradasAlm';
 import CarritoEntrada from '../../../app/carritoEntrada';
 import InventarioHome from '../../../app/inventario';
+import InventarioAlm from '../../../app/inventarioAlm';
 import EntradaAlma from '../../../app/entradaAlm';
 import SalidaAlma from '../../../app/salidaAlm';
 import EntradaAdministrador from '../../../app/entradaAdmin';
@@ -26,10 +27,11 @@ import SalidaAdministrador from '../../../app/salidaAdmin';
 import ListadoEntradasAdministrador from '../../../app/listadoEntradasAdmin'
 import ListadoSalidasAdministrador from '../../pages/listadoSalidasAdmin';
 import DecidirInventario from '../../../app/decidirInventario';
+import EditarInventario from '../../../app/editarInventario';
 import EditarProductoPage from '../../../app/editarProducto';
 import EditarUsuarioPage from '../../pages/editarUsuario';
 import ListadoUsuariosRef from '../../../app/listadoUsuarios';
-import listadoProductos from '../../../app/listadoProductos';
+import ListadoProductosRef from '../../../app/listadoProductos';
 
 const Drawer = createDrawerNavigator();
 
@@ -46,6 +48,7 @@ function Menulateral() {
     }}
     drawerContent = { (props) => <MenuItems {...props} /> } >
       <Drawer.Screen name="Inventario" component={InventarioHome} options={{ headerTransparent: true }} />
+      <Drawer.Screen name="InventarioAlmace" component = {InventarioAlm}options={{ headerTransparent: true }} />
        {/* Pantallas que si tendrán botón en el menú */}
       <Drawer.Screen name="Chernobyl" component={Chernobyl} options={{ }} />
       <Drawer.Screen name="Eq2" component={Eq2} options={{ }} />
@@ -71,7 +74,8 @@ function Menulateral() {
       {/* Inventario */}
       <Drawer.Screen name="DecidirInventario" component={DecidirInventario} options={{ headerTransparent: true }} />
       <Drawer.Screen name="EditarProducto" component={EditarProductoPage} options={{ headerTransparent: true, headerShown: false }} />
-      <Drawer.Screen name="listadoProductos" component={listadoProductos} options={{ headerTransparent: true, headerShown: false }} />
+      <Drawer.Screen name="listadoProductos" component={ListadoProductosRef} options={{ headerTransparent: true, headerShown: false }} />
+      <Drawer.Screen name="EditarInventario" component={EditarInventario} options={{ headerTransparent: true, headerShown: false }} />
 
 
 
