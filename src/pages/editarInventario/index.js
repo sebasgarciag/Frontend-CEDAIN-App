@@ -4,15 +4,12 @@ import { ArrowButton } from '../../components/inventario/buttons';
 import styles from '../../assets/buttons/styles';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { router } from 'expo-router';
-import { useRoute } from '@react-navigation/native'; 
-import { useNavigation } from '@react-navigation/native';
 
 
-const EditProductScreen = ({object}) => {
-
-  const route = useRoute();
-  const inventario = route.params.object;
-  const navigation = useNavigation()
+const EditProductScreen = ({producto, nombre, cantidad}) => {
+  console.log(producto);
+  console.log(nombre);
+  console.log(cantidad);
   const [name, setName] = useState('');
   const [quantity, setQuantity] = useState('1');
 
@@ -31,19 +28,16 @@ const EditProductScreen = ({object}) => {
     });
   };
 
-  console.log("objeectsholahoaljsda: " +object);
   return (
     <View style={[styles.container, { padding: 20, backgroundColor: '#F1EFE3' }]}>
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 30 }}>
         <Text style={{ fontSize: 26 }}>Editar Producto</Text>
-        <ArrowButton navigation={navigation} path={"Inventario"} />
+        <ArrowButton onPress={() => router.replace("/inventario")} />
       </View>
 
       <View style={{ marginBottom: 30 }}>
     <Text style={{ fontSize: 26, fontWeight: 'bold' }}>Nombre del producto:</Text>
-    <Text style={{ fontSize: 24, fontWeight: 'bold', marginTop: 15, backgroundColor: '#fff', padding: 10, borderRadius: 10 }}> {inventario.producto.nombre}</Text>
-    <Text style={{ fontSize: 26, fontWeight: 'bold' }}>Tamaño:</Text>
-    <Text style={{ fontSize: 24, fontWeight: 'bold', marginTop: 15, backgroundColor: '#fff', padding: 10, borderRadius: 10 }}> {inventario.producto.Tamanio.descripcion}</Text>
+    <Text style={{ fontSize: 24, fontWeight: 'bold', marginTop: 15, backgroundColor: '#fff', padding: 10, borderRadius: 10 }}>{name}</Text>
 </View>
       <View style={{ marginBottom: 30 }}>
         <Text style={{ fontSize: 20, marginBottom: 10 }}>Cantidad:</Text>
