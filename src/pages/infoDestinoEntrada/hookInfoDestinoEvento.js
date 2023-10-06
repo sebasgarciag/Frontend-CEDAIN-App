@@ -3,7 +3,7 @@ import entradasApi from "../../apis/entradasApi";
 import salidasApi from "../../apis/salidasApi";
 
 const useInfoDestinoEvento=()=>{
-	const {getComunidades, getEventos}=entradasApi();
+	const {getComunidades, getEventos}=salidasApi();
 	const [comunidades, setComunidades] = useState([]);
 	const [eventos, setEventos] = useState([]);
 
@@ -39,18 +39,18 @@ const useInfoDestinoEvento=()=>{
 	useEffect(()=>{
 		setEntrada({
 			...entrada,
-			id_comunidad: comunidad.id,
+			id_comunidad: comunidad.id_comunidad,
 			Comunidad: {
 				nombre: comunidad.nombre,
 				id_comunidad: comunidad.id_comunidad
 			},
-			id_evento: evento.id,
+			id_evento: evento.id_evento,
 			Evento: {
 				nombre: evento.nombre,
 				id_evento: evento.id_evento
 			}
 		});
-	},[comunidad, evento]);
+	}, [comunidad, evento]);
 
 	useEffect(()=>{
 		setEntrada({
@@ -60,12 +60,9 @@ const useInfoDestinoEvento=()=>{
 		});
 	}, [emisor, observaciones]);
 
-
 	useEffect(()=>{
-		console.log('comunidades', comunidades);
-		console.log('eventos', eventos);
-	} , [comunidades, eventos]);
-
+		console.log('entrada', entrada);
+	}, [entrada]);
 
 	return { comunidades, eventos, comunidad, evento, setComunidad, setEvento, observaciones, setObservaciones, emisor, setEmisor, obtenerComunidades, obtenerEventos, setEntrada, carrito, setCarrito, entrada }
 }

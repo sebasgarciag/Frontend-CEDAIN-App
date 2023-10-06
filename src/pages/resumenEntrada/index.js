@@ -14,11 +14,10 @@ import ListaTerminar from "../../components/entradasSalidas/listaTerminar";
 
 const Resumen = ({objeto}) => { 
 
-    const { entrada, setEntrada, datosEntrada, handleCantidad, carrito, setCarrito } = useResumen();
+    const { entrada, setEntrada, carrito, setCarrito, terminar } = useResumen();
     const navigation = useNavigation();
 
     useEffect (() => {
-        console.log('objeto', objeto);
         setEntrada(objeto.entrada);
         setCarrito(objeto.carrito);
     }, [objeto]);
@@ -47,7 +46,7 @@ const Resumen = ({objeto}) => {
             <View style={ buttonStyles.containerNavegacion }>
                     <VolverButtonN navigation={navigation} path={"InfoDestinoE"} />
                     {/* <SiguienteButtonN navigation={navigation} path={"Entradas"} /> */}
-                    <ButtonTerminar terminarFunction={() => terminar(entrada, datosEntrada)} />
+                    <ButtonTerminar terminarFunction={() => terminar(entrada, carrito)} />
             </View>
         </Stack>
     );
