@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ScrollView, StyleSheet, Alert, View, Image } from "react-native";
 import { Text, Title } from "react-native-paper";
-import { Flex, TextInput, HStack } from "@react-native-material/core";
+import { Flex, TextInput, HStack, Stack } from "@react-native-material/core";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import { ArrowButton } from "../../components/inventario/buttons";
@@ -12,9 +12,12 @@ import buttonStyles from "../../assets/buttons/styles";
 import { VolverButtonN, GenericButton, MenuButton, ProfileButton } from "../../components/UI/uiButtons";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import styles from "../../assets/styles";
+import { Switch } from '@rneui/themed';
 
 
 const EditarProducto = () => {
+  
+  
   const route = useRoute();
   const producto = route.params.object;
   const {
@@ -37,8 +40,13 @@ const EditarProducto = () => {
     handleSubmit,
     editarText,
     isEditable,
+    open,
+    setOpen
   } = useEditarProducto(producto);
   const navigation = useNavigation();
+
+  console.log(producto)
+  console.log(open)
 
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -69,7 +77,6 @@ const EditarProducto = () => {
         </HStack>
       <View style={styles.View}>
         <Text style={{ fontSize: 26 }}>Editar Producto</Text>
-        <ArrowButton navigation={navigation} path={"Inventario"} />
       </View>
 
       <View>
@@ -131,7 +138,8 @@ const EditarProducto = () => {
                     dataDropDownEvento={dataDropDownEvento}
                     valueEvento={valueEvento}
                     Titulo={"Categoría"} /> */}
-
+        
+        
         <TextInput
           label="Nombre Corto"
           value={nombreCorto}
@@ -182,6 +190,17 @@ const EditarProducto = () => {
       </Flex>
 
       <VolverButtonN navigation={navigation} path={"listadoProductos"} />
+      
+      <Stack row align="center" style={{ width: '50%', bottom: 280,right:120 }}>
+        <Text style={{left:148}}>Suspendido</Text>
+        <Switch
+          value={open}
+          onValueChange={setOpen}
+          color={open ? 'red' : 'gray'}
+          disabled={!isEditable}
+        />
+      </Stack>
+      
     </ScrollView>
   );
 };

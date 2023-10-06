@@ -5,7 +5,7 @@ import ListaUsuarios from '../../components/UI/listaUsuarios';
 import useListadoUsuarios from './useListadoUsuarios';
 import styles from '../../assets/styles';
 import { useNavigation } from '@react-navigation/native';
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 
@@ -17,13 +17,18 @@ const ListadoUsuarios = () => {
     return (
         <>
           <Stack style={styles.container}>
-            <HStack style={styles.headerContainer}>
+            <View style={styles.headerContainer} >
+              <Text style={[styles.headerText, {marginLeft: "50%"]}>Usuarios</Text>
+              <ProfileButton style={{ position: 'absolute', right: 10,  }} onPress={() => { alert('Perfil presionado'); }} />
+              {/* <ImportInventoryButton style={styles.importInventoryButton} onPress={() => { alert('Importar Inventario presionado'); }} /> */}
+            </View>
+            {/* <HStack style={styles.headerContainer}>
               <MenuButton  onPress={() => { alert('Menú presionado'); }} />
               <VStack style={{alignItems: 'center'}}>
                   <Text style={styles.headerText}>Usuarios</Text>
               </VStack>
               <ProfileButton  onPress={() => { alert('Perfil presionado'); }} />
-            </HStack>
+            </HStack> */}
             <Divider/>
             {/* <ListaUsuarios listadoUsuarios={usuarios} /> */}
             {usuarios.length > 0 ? <ListaUsuarios listadoUsuarios={usuarios} /> : <Text alignSelf='center'> No hay usuarios registrados </Text>}

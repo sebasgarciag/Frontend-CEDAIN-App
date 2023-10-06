@@ -1,8 +1,8 @@
-import DaraltaProducto from '../src/pages/altaProducto';
+import AltaProducto from '../src/pages/altaProducto';
 
 const AltaProductoPage = () => {
     return (
-        <DaraltaProducto />
+        <AltaProducto />
     );
 };
 

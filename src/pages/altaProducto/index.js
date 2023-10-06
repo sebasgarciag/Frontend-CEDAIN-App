@@ -1,20 +1,26 @@
 import React, { useState } from "react";
 import { ScrollView, StyleSheet, Alert, View, Image } from "react-native";
-import { Text, TextInput, Title } from "react-native-paper";
+import { Text, Title } from "react-native-paper";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { ArrowButton } from "../../components/inventario/buttons";
 import DropdownE from "../../components/UI/dropDownE";
-import useAltaProducto from "./useAlta.js";
+import useAltaProducto from "./useAltaProducto.js";
 import * as ImagePicker from 'expo-image-picker';
-import { VolverButton } from '../../components/UI/uiButtons';
+// import { VolverButton } from '../../components/UI/uiButtons';
 import { router } from "expo-router";
+import { useNavigation, useRoute } from '@react-navigation/native';
+import styles from "../../assets/styles";
+import { Flex, HStack, TextInput } from "@react-native-material/core";
+import { VolverButtonN, GenericButton, MenuButton, ProfileButton } from "../../components/UI/uiButtons";
+import buttonStyles from "../../assets/buttons/styles";
 
 
 
-const DaraltaProducto = () => {
-    const route = useRoute();
-    const producto = route.params.object;
+
+const AltaProducto = () => {
+    // const route = useRoute();
+    // const producto = route.params.object;
     const {
       // setValueEvento,
       // dataDropDownEvento,
@@ -35,7 +41,7 @@ const DaraltaProducto = () => {
       handleSubmit,
       editarText,
       isEditable,
-    } = useEditarProducto(producto);
+    } = useAltaProducto();
     const navigation = useNavigation();
   
     const pickImage = async () => {
@@ -66,8 +72,7 @@ const DaraltaProducto = () => {
             <ProfileButton onPress={() => { alert('Perfil presionado'); }} />
           </HStack>
         <View style={styles.View}>
-          <Text style={{ fontSize: 26 }}>Editar Producto</Text>
-          <ArrowButton navigation={navigation} path={"Inventario"} />
+          <Text style={{ fontSize: 26 }}>Crear Producto</Text>
         </View>
   
         <View>
@@ -76,8 +81,8 @@ const DaraltaProducto = () => {
             value={nombre}
             onChangeText={(text) => setNombre(text)}
           //   style={styles2.Input}
-            editable={isEditable}
-            inputStyle={isEditable ? styles.editable : styles.view_only}
+            // editable={isEditable}
+            // inputStyle={isEditable ? styles.editable : styles.view_only}
           />
   
           {/* <DropdownE
@@ -92,8 +97,8 @@ const DaraltaProducto = () => {
             value={medida}
             onChangeText={(text) => setMedida(text)}
             style={styles.Input}
-            editable={isEditable}
-            inputStyle={isEditable ? styles.editable : styles.view_only}
+            // editable={isEditable}
+            // inputStyle={isEditable ? styles.editable : styles.view_only}
           />
           <TextInput
             label="Precio Venta"
@@ -101,12 +106,12 @@ const DaraltaProducto = () => {
             onChangeText={(text) => {
               const newText = text.replace(/[^0-9.]/g, ""); // Solo permite números y puntos
               const validText = newText.replace(/(\..*)\./g, "$1"); // Solo permite un punto
-              setPrecio(parseFloat(validText));
+              setPrecioVenta(parseFloat(validText));
             }}
             keyboardType="numeric"
             style={styles.Input}
-            editable={isEditable}
-            inputStyle={isEditable ? styles.editable : styles.view_only}
+            // editable={isEditable}
+            // inputStyle={isEditable ? styles.editable : styles.view_only}
           />
           <TextInput
             label="Precio Trueque"
@@ -114,12 +119,12 @@ const DaraltaProducto = () => {
             onChangeText={(text) => {
               const newText = text.replace(/[^0-9.]/g, ""); // Solo permite números y puntos
               const validText = newText.replace(/(\..*)\./g, "$1"); // Solo permite un punto
-              setPrecio(parseFloat(validText));
+              setPrecioTrueque(parseFloat(validText));
             }}
             keyboardType="numeric"
             style={styles.Input}
-            editable={isEditable}
-            inputStyle={isEditable ? styles.editable : styles.view_only}
+            // editable={isEditable}
+            // inputStyle={isEditable ? styles.editable : styles.view_only}
   
           />
   
@@ -135,8 +140,8 @@ const DaraltaProducto = () => {
             value={nombreCorto}
             onChangeText={(text) => setNombreCorto(text)}
             style={styles.Input}
-            editable={isEditable}
-            inputStyle={isEditable ? styles.editable : styles.view_only}
+            // editable={isEditable}
+            // inputStyle={isEditable ? styles.editable : styles.view_only}
           />
   
           <TouchableOpacity
@@ -157,16 +162,9 @@ const DaraltaProducto = () => {
             </View>
           )}
         </View>
-  
+
         <Flex direction="row" justify="around" marginTop={40}>
-          <GenericButton
-            onPress={handleEditable}
-            style={buttonStyles.editarButton}
-            text={editarText}
-            mode="contained"
-            disabled={false}
-          />
-          <TouchableOpacity onPress={handleSubmit} style={styles2.Button} disabled={!isEditable} >
+          <TouchableOpacity onPress={handleSubmit} style={styles2.Button} >
             <Icon
               name="check-circle"
               size={24}
@@ -254,4 +252,4 @@ const DaraltaProducto = () => {
     },
   });
 
-export default DaraltaProducto;
+export default AltaProducto;

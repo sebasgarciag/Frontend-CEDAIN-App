@@ -11,7 +11,7 @@ import PagInicio from './pagInicio';
 import Adise from '../../../app/botonesAdise';
 import Eq2 from '../../../app/botonesEq2';
 import Chernobyl from '../../../app/botonesChernobyl';
-import DaraltaProducto from '../../pages/altaProducto';
+import AltaProductoPage from '../../../app/altaProducto';
 import ResumenSalida from '../../../app/resumenSalida';
 import ListadoSalidasAlmacenista from '../../../app/listadoSalidasAlm';
 import useCurrentScreen from './useCurrentScreen';
@@ -83,13 +83,13 @@ function Menulateral() {
 
 
       {/* Agregar pantallas de los demás equipos */} 
-      <Drawer.Screen name="ListadoUsuariosRef" component={ListadoUsuariosRef}  options={{headerShown: false}}/>
-      <Drawer.Screen name="editarUsuario" component={EditarUsuarioPage}  options={{headerShown: false}}/>
-      <Drawer.Screen name="editarProducto" component={EditarProductoPage}  options={{headerShown: false}}/>
-      <Drawer.Screen name="altaProducto" component={DaraltaProducto}  options={{headerShown: true}}/>
-      <Drawer.Screen name="AltaUsuario" component={altaUsuarioPage} options={{ headerShown: false }} />
-
-      {/* Login*/}
+      <Drawer.Screen name="ListadoUsuariosRef" component={ListadoUsuariosRef} />
+      <Drawer.Screen name="editarUsuario" component={EditarUsuarioPage}  />
+      <Drawer.Screen name="editarProducto" component={EditarProductoPage}  />
+      <Drawer.Screen name="altaProducto" component={AltaProductoPage}  />
+      <Drawer.Screen name="AltaUsuario" component={altaUsuarioPage}  />
+      
+      {/* Login*/} 
       <Drawer.Screen name="login" component={log} options={{ headerShown: false }} />
 
 

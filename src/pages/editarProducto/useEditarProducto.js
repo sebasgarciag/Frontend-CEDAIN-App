@@ -9,7 +9,10 @@ const useEditarProducto=(producto)=>{
     const [precioTrueque, setPrecioTrueque] = useState(producto.precio_trueque);
     const [nombreCorto, setNombreCorto] = useState(producto.nombre_corto);
     const [image, setImage] = useState(null);
-    const [editarText, setEditarText] = useState("Editar");
+	const [editarText, setEditarText] = useState("Editar");
+	const [open, setOpen] = useState(Boolean(producto.suspendido));
+
+
 
     const { updateProducto } = ProductosAPI();
 	// nombre
@@ -32,26 +35,32 @@ const useEditarProducto=(producto)=>{
 		  'medida': medida,
 		  'precio_venta': precioVenta,
 		  'precio_trueque': precioTrueque,
-		  'nombre_corto': nombreCorto,
+			'nombre_corto': nombreCorto,
+		  'suspendido':open
 		}
   
 		// alert("Enlace clickeado");
-		try{
-		  await updateProducto(new_producto_data, producto.id_producto);
-		  producto.nombre = nombre
-		  producto.medida = medida
-		  producto.precio_venta = precioVenta
-		  producto.precio_trueque = precioTrueque
-		  producto.nombre_corto = nombreCorto
-		  alert('producto actualizado')
+		try {
+			let valorSuspendido = open ? 1 : 0;
+			await updateProducto(new_producto_data, producto.id_producto);
+			producto.nombre = nombre
+			producto.medida = medida
+			producto.precio_venta = precioVenta
+			producto.precio_trueque = precioTrueque
+			producto.nombre_corto = nombreCorto
+			producto.suspendido = valorSuspendido
+			alert('producto actualizado')
+			console.log('Producto Actualizado')
 		}
+
 		catch{
 		  alert('No se pudo actualizar el producto')
 		  setNombre(producto.nombre)
 		  setMedida(producto.medida)
 		  setPrecioVenta(producto.precio_venta)
 		  setPrecioTrueque(producto.precio_trueque)
-		  setNombreCorto(producto.nombre_corto)
+			setNombreCorto(producto.nombre_corto)
+			setOpen(producto.suspendido)
 		}
 		setEditarText("Editar");
 		setEditable(!isEditable);
@@ -67,6 +76,7 @@ const useEditarProducto=(producto)=>{
 		setPrecioVenta(producto.precio_venta)
 		setPrecioTrueque(producto.precio_trueque)
 		setNombreCorto(producto.nombre_corto)
+		setOpen(Boolean(producto.suspendido))
 		// volvera tomar los valores de la BDD
 	} else {
 		// Qué pasar cuando cambias de modo no editar a modo editar
@@ -82,7 +92,7 @@ const useEditarProducto=(producto)=>{
 	};
 
 
-	return { isEditable, editarText, handleEditable, dataDropDownEvento, nombre, setNombre, medida, setMedida, precioVenta, setPrecioVenta, precioTrueque, setPrecioTrueque, nombreCorto, setNombreCorto, image, setImage, handleSubmit }
+	return { isEditable, editarText, handleEditable, dataDropDownEvento, nombre, setNombre, medida, setMedida, precioVenta, setPrecioVenta, precioTrueque, setPrecioTrueque, nombreCorto, setNombreCorto, image, setImage, handleSubmit,open,setOpen }
 }
 
 export default useEditarProducto;
