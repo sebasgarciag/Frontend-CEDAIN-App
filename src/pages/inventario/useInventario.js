@@ -2,22 +2,23 @@ import { useState, useEffect, } from 'react';
 import inventarioApi from '../../apis/inventarioApi';
 
 const useInventario = (id_almacen) => {
-    // console.log(almacen);
+    const [productos, setProductos] = useState([]);
 
-    const [listaInventario, setlistaInventario] = useState([]);
-    const { getAllInventario } = inventarioApi();
-
-
-    //console.log(id_almacen);
     useEffect(() => {
-        (async () => {
-            const listaInventarioResponse = await getAllInventario(id_almacen);
-            setlistaInventario(listaInventarioResponse);
-            
-        })();
+        const fetchData = async () => {
+            try {
+                const response = await fetch(`http://localhost:8080/inventario/${id_almacen}`);
+                const data = await response.json();
+                setProductos(data);
+            } catch (error) {
+                console.error('Error al obtener los productos:', error);
+            }
+        };
+
+        fetchData();
     }, [id_almacen]);
 
-    return { listaInventario };
+    return { productos };
 };
 
 export default useInventario;

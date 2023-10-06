@@ -1,8 +1,8 @@
 import EditProductScreen from "../src/pages/editarInventario/index";
 
-const editProductScreen = ({object}) => {
+const editProductScreen = ({producto,nombre, cantidad}) => {
     return (
-        <EditProductScreen  object = {object}/>
+        <EditProductScreen producto ={producto} nombre ={nombre} cantidad ={cantidad}/>
     );
 };
 
