@@ -1,7 +1,7 @@
 import axios from 'axios';
 import ip from './ipApi';
 
-const baseUrl = `http://${ip}:8080`;
+const baseUrl = `https://${ip}`;
 
 const ProductosAPI = () => {
     async function getTodosProductos() {
