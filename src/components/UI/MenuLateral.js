@@ -27,6 +27,7 @@ import SalidaAdministrador from '../../../app/salidaAdmin';
 import ListadoEntradasAdministrador from '../../../app/listadoEntradasAdmin'
 import ListadoSalidasAdministrador from '../../pages/listadoSalidasAdmin';
 import DecidirInventario from '../../../app/decidirInventario';
+import EditarInventario from '../../../app/editarInventario';
 import EditarProductoPage from '../../../app/editarProducto';
 import EditarUsuarioPage from '../../pages/editarUsuario';
 import ListadoUsuariosRef from '../../../app/listadoUsuarios';
@@ -73,6 +74,7 @@ function Menulateral() {
       {/* Inventario */}
       <Drawer.Screen name="DecidirInventario" component={DecidirInventario} options={{ headerTransparent: true }} />
       <Drawer.Screen name="EditarProducto" component={EditarProductoPage} options={{ headerTransparent: true, headerShown: false }} />
+      <Drawer.Screen name="EditarInventario" component={EditarInventario} options={{ headerTransparent: true, headerShown: false }} />
       <Drawer.Screen name="listadoProductos" component={listadoProductos} options={{ headerTransparent: true, headerShown: false }} />
 
 

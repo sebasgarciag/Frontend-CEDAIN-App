@@ -6,7 +6,10 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import { router } from 'expo-router';
 
 
-const EditProductScreen = () => {
+const EditProductScreen = ({producto, nombre, cantidad}) => {
+  console.log(producto);
+  console.log(nombre);
+  console.log(cantidad);
   const [name, setName] = useState('');
   const [quantity, setQuantity] = useState('1');
 

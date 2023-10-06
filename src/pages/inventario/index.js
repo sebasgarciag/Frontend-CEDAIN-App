@@ -45,7 +45,7 @@ const Inventario2 = ( {almacen} ) => {
                 />
               </VStack>
               <VStack spacing={3} style={[styles.textoProdMov, { flex: 1 }]}>
-              <Text style={styles.productName}>{producto.Producto.nombre}</Text>
+              <Text style={styles.productName}>{producto.producto.nombre}</Text>
                 <HStack spacing={20}>
                   <VStack>
                      <Text style={styles.productQuantity}>Tamaño: {producto.medida}</Text>
@@ -53,9 +53,7 @@ const Inventario2 = ( {almacen} ) => {
                   </VStack>
                 </HStack>
               </VStack>
-              
-              <ArrowButton navigation={navigation} path={"EditarInventario"} producto={producto.Producto.id_producto} />
-
+              <ArrowButton navigation={navigation} path={"EditarInventario"} nombre={producto.producto.nombre} cantidad = {producto.cantidad}/>
             </HStack>
           </Surface>
         )}
