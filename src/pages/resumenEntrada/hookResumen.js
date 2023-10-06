@@ -83,11 +83,17 @@ const useResumen = () => {
         setDatosEntrada(newDatos);
     }
 
-    useEffect(() => {
-        console.log('carrito', carrito);
-    }, [carrito]);
+    async function terminar(entrada, detallesEntrada) {
+        try {
+            const response = await api.postEntrada(entrada);
+            const entradaId = response.data.id_entrada;
+            await api.postDetallesEntrada(entradaId, detallesEntrada);
+        } catch (error) {
+            console.error('Error in terminar function: ' + error);
+        }
+    }
 
-    return { entrada, setEntrada, datosEntrada, handleCantidad, carrito, setCarrito };
+    return { entrada, setEntrada, datosEntrada, handleCantidad, carrito, setCarrito, terminar };
 }
 
 export default useResumen;

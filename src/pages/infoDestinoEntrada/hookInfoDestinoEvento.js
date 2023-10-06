@@ -3,7 +3,7 @@ import entradasApi from "../../apis/entradasApi";
 import salidasApi from "../../apis/salidasApi";
 
 const useInfoDestinoEvento=()=>{
-	const {getComunidades, getEventos}=salidasApi();
+	const {getComunidades, getEventos}=entradasApi();
 	const [comunidades, setComunidades] = useState([]);
 	const [eventos, setEventos] = useState([]);
 
