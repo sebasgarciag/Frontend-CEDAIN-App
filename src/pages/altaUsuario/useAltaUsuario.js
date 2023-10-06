@@ -2,7 +2,7 @@ import { useState } from "react";
 import UsuariosAPI from "../../apis/usuariosApi";
 
 
-const useAltaUsuario = () => {
+export const useAltaUsuario = () => {
 
   const [nombre, setNombre] = useState();
   const [apellidoPaterno, setApellidoPaterno] = useState();

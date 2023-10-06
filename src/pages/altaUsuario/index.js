@@ -6,26 +6,31 @@ import AntDesign from "@expo/vector-icons/AntDesign";
 import { Dropdown } from "react-native-element-dropdown";
 import styles from "../../assets/styles";
 import buttonStyles from "../../assets/buttons/styles";
-import useAltaUsuario from "./useAltaUsuario";
+import { useAltaUsuario } from './useAltaUsuario'; // reemplaza 'rutaDelArchivo' con la ruta al archivo que contiene tu hook
 import { useNavigation, useRoute  } from '@react-navigation/native';
 
 const AltaUsuarioPage = () => {
   
-  const {isEditable, nombre, setNombre, apellidoPaterno, setApellidoPaterno, apellidoMaterno, setApellidoMaterno, email, setEmail, editarText, rol, setRol, handleSumbit, handleEditable } = useAltaUsuario()
+  const { nombre, setNombre, apellidoPaterno, setApellidoPaterno, apellidoMaterno, setApellidoMaterno, email, setEmail, tipo, setTipo, almacen, setAlmacen, handleRegister } = useAltaUsuario();
   const navigation = useNavigation();
 
   const roles = [
     { label: "Administrador", value: "Administrador" },
     { label: "Almacenista", value: "Almacenista" },
   ];
+
+  const Almacenes = [
+    { label: "Almacén 1", value: "Almacén 1" },
+    { label: "Almacén 2", value: "Almacén 2" },
+  ];
   
 
  
-  const renderItem = (item) => {
+  const renderItem = () => {
     return (
       <View style={styles.item}>
         <Text style={styles.textItem}>{item.label}</Text>
-        {item.value === rol && (
+        {item.value === tipo && (
           <AntDesign
             style={styles.icon}
             color="black"
@@ -52,7 +57,7 @@ const AltaUsuarioPage = () => {
         <Text
           style={[
             styles.subtitle,
-            { margin: 20, alignSelf: "center", marginBottom: 10, marginTop: 0 },
+            { margin: 20, alignSelf: "center", marginBottom: 10, marginTop: 0, paddingBottom:30},
           ]}
         >
           Crear Nuevo Usuario
@@ -63,7 +68,7 @@ const AltaUsuarioPage = () => {
           variant="outlined"
           
           value={nombre}
-          inputStyle={isEditable ? styles.editable : styles.view_only}
+          
           onChangeText={(text) => setNombre(text)}
         />
         <TextInput
@@ -72,7 +77,7 @@ const AltaUsuarioPage = () => {
           variant="outlined"
           
           value={apellidoPaterno}
-          inputStyle={isEditable ? styles.editable : styles.view_only}
+          
           onChangeText={(text) => setApellidoPaterno(text)}
         />
         <TextInput
@@ -81,7 +86,7 @@ const AltaUsuarioPage = () => {
           variant="outlined"
           
           value={apellidoMaterno}
-          inputStyle={isEditable ? styles.editable : styles.view_only}
+          
           onChangeText={(text) => setApellidoMaterno(text)}
         />
         <TextInput
@@ -90,7 +95,7 @@ const AltaUsuarioPage = () => {
           variant="outlined"
           
           value={email}
-          inputStyle={isEditable ? styles.editable : styles.view_only}
+          
           onChangeText={(text) => setEmail(text)}
         />
         
@@ -98,19 +103,17 @@ const AltaUsuarioPage = () => {
         <Dropdown
           style={styles.dropdownRol}
           placeholderStyle={styles.placeholderStyle}
-          selectedTextStyle={isEditable ? styles.editable : styles.view_only}
+          
           inputSearchStyle={styles.inputSearchStyle}
           iconStyle={styles.iconStyle}
           data={roles}
-          disable={!isEditable}
+          
           maxHeight={300}
           labelField="label"
           valueField="value"
           placeholder="Seleccione Rol"
-          value={rol}
-          onChange={(item) => {
-            setRol(item.value);
-          }}
+          //value={tipo}
+          
           renderLeftIcon={() => (
             <AntDesign
               style={styles.icon}
@@ -126,19 +129,17 @@ const AltaUsuarioPage = () => {
         <Dropdown
           style={styles.dropdownRol}
           placeholderStyle={styles.placeholderStyle}
-          selectedTextStyle={isEditable ? styles.editable : styles.view_only}
+          
           inputSearchStyle={styles.inputSearchStyle}
           iconStyle={styles.iconStyle}
-          data={roles}
-          disable={!isEditable}
+          data={Almacenes}
+          
           maxHeight={300}
           labelField="label"
           valueField="value"
           placeholder="Seleccione Almacén"
-          value={rol}
-          onChange={(item) => {
-            setRol(item.value);
-          }}
+          //value={almacen}
+          
           renderLeftIcon={() => (
             <AntDesign
               style={styles.icon}
@@ -148,7 +149,7 @@ const AltaUsuarioPage = () => {
             />
           )}
           renderItem={renderItem}
-        />
+          />
         <Flex direction="row" justify="around" marginTop={40}>
           
 
