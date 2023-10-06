@@ -12,8 +12,7 @@ import useCarrito from "../carrito/hookProductoCarrito";
 
 const SeleccionProductos = () => { 
     const navigation = useNavigation();
-    const { productos, categorias } = useSeleccion();
-    const {currentScreen,setScreen} = useCurrentScreen()
+    const { productos, categorias, salida } = useSeleccion();
     const {carrito, handleCarrito } = useCarrito();
 
     return (
@@ -26,7 +25,7 @@ const SeleccionProductos = () => {
             <ListaProductos productos={productos} categorias={categorias} carrito={carrito} handleCarrito={handleCarrito}/>
             <View style={ buttonStyles.containerNavegacion }>
                 <VolverButtonN navigation={navigation} path={"Salidas"}/>
-                <SiguienteButtonNObject navigation={navigation} path={"Carrito"} object={carrito}/>
+                <SiguienteButtonNObject navigation={navigation} path={"Carrito"} object={{carrito, salida}}/>
             </View>
         </View>
     );
