@@ -22,10 +22,11 @@ export const FilterButton = ({ onPress, style }) => (
 )
 
 const ArrowButton = ({navigation, path, nombre, cantidad}) => {
+
   return(
   <TouchableOpacity 
       onPress={() => {
-      navigation.navigate(`${path}`, producto, nombre, cantidad);
+      navigation.navigate(`${path}`,  nombre, cantidad);
       }}>
       <Icon name="arrow-forward-ios" size={24} color="#333" />
   </TouchableOpacity>

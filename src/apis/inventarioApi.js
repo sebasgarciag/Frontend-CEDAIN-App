@@ -8,8 +8,7 @@ const inventarioApi = () => {
     async function getAllInventario(idAlmacen) {
         let response = null;
         try {
-            response = await axios.get(`${baseURL}/inventario/${idAlmacen}`);
-            // console.log('response', response.data);
+            response = await axios.get(`${baseURL}/inventario?idAlmacen=${idAlmacen}`);
         } catch (error) {
             console.error('error' + error);
         }

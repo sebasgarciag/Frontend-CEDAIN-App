@@ -5,21 +5,18 @@ import styles from '../../assets/buttons/styles';
 import { HStack, VStack } from "@react-native-material/core";
 import { Surface } from "react-native-paper";
 import useInventario from './useInventario';
-import { useRoute } from '@react-navigation/native'; // Añadido
-import { EntradaNueva, SalidaNueva } from '../../components/UI/uiButtons';
+import { useRoute } from '@react-navigation/native'; 
+import { ArrowButtonConObject, EntradaNueva, SalidaNueva } from '../../components/UI/uiButtons';
 import { useNavigation } from '@react-navigation/native';
 
 
 
 
 const Inventario2 = ( {almacen} ) => {
-  console.log(almacen);
-
-  
   
   const navigation = useNavigation()
 
-  const { productos } = useInventario(almacen);
+  const { listaInventario} = useInventario(almacen);
 
   return (
     <View style={styles.container}>
@@ -35,8 +32,8 @@ const Inventario2 = ( {almacen} ) => {
       </View>
 
       <ScrollView>
-      {productos.map((producto) => 
-          <Surface elevation={5} key={producto.id_producto} style={styles.productItem}> 
+      {listaInventario.map((inventario) => 
+          <Surface elevation={5} key={inventario.id_producto} style={styles.productItem}> 
             <HStack spacing={10} style={{ flex: 1 }}>
               <VStack style={{justifyContent: 'center'}}>
                 <Image 
@@ -45,15 +42,15 @@ const Inventario2 = ( {almacen} ) => {
                 />
               </VStack>
               <VStack spacing={3} style={[styles.textoProdMov, { flex: 1 }]}>
-              <Text style={styles.productName}>{producto.producto.nombre}</Text>
+              <Text style={styles.productName}>{inventario.producto.nombre}</Text>
                 <HStack spacing={20}>
                   <VStack>
-                     <Text style={styles.productQuantity}>Tamaño: {producto.medida}</Text>
-                     <Text style={styles.productQuantity}>Cantidad: {producto.cantidad}</Text>
+                     <Text style={styles.productQuantity}>Tamaño: {inventario.medida}</Text>
+                     <Text style={styles.productQuantity}>Cantidad: {inventario.cantidad}</Text>
                   </VStack>
                 </HStack>
               </VStack>
-              <ArrowButton navigation={navigation} path={"EditarInventario"} nombre={producto.producto.nombre} cantidad = {producto.cantidad}/>
+              <ArrowButtonConObject navigation={navigation} path={"EditarInventario"} object={inventario}/>
             </HStack>
           </Surface>
         )}
