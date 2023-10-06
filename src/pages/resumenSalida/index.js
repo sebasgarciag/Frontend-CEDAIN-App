@@ -2,7 +2,6 @@ import React from "react";
 import { Text, View } from "react-native";
 import { Spacer, VStack, HStack, Stack } from "@react-native-material/core";
 import useResumen from "./hookResumen";
-import ListaSalida from "../../components/entradasSalidas/listaResumen";
 import { Surface } from "react-native-paper";
 import { ScrollView } from "react-native-gesture-handler";
 import buttonStyles from "../../assets/buttons/styles";
@@ -11,6 +10,7 @@ import { VolverButtonN, SiguienteButtonN } from "../../components/UI/uiButtons";
 import { useNavigation } from "expo-router";
 import InfoSalida from "../../components/UI/infoSalida";
 import { useEffect } from "react";
+import ListaTerminar from "../../components/entradasSalidas/listaTerminar";
 
 const Resumen = ({objeto}) => { 
 
@@ -37,7 +37,7 @@ const Resumen = ({objeto}) => {
                     
                     {carrito.map((producto) => 
                         <Surface elevation={5} key={producto.id_producto} style={styles.productItem}> 
-                            <ListaSalida producto={producto}/>
+                            <ListaTerminar producto={producto}/>
                         </Surface> 
                     )}
 

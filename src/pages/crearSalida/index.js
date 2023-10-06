@@ -13,7 +13,6 @@ import useCarrito from "../carrito/hookProductoCarrito";
 const SeleccionProductos = () => { 
     const navigation = useNavigation();
     const { productos, categorias, salida } = useSeleccion();
-    const {currentScreen,setScreen} = useCurrentScreen()
     const {carrito, handleCarrito } = useCarrito();
 
     return (

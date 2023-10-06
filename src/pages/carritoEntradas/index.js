@@ -16,7 +16,7 @@ const ArticulosCarritoEntrada = ({objeto}) => {
     const navigation = useNavigation();
 
     useEffect(() => {
-        setCarrito2Entradas(objeto.carrito);
+        setCarrito2Entradas(objeto.carritoEntradas);
         setEntrada(objeto.entrada);
     }, [objeto]);
 
@@ -50,7 +50,7 @@ const ArticulosCarritoEntrada = ({objeto}) => {
             </ScrollView>
             <View style={ buttonStyles.containerNavegacion }>
                     <VolverButtonN navigation={navigation} path={"CrearSalida"} />
-                    <SiguienteButtonNObject navigation={navigation} path={"InfoDestinoN"} object={{ carrito2Entradas, entrada }} />
+                    <SiguienteButtonNObject navigation={navigation} path={"InfoDestinoE"} object={{ carrito2Entradas, entrada }} />
             </View>
         </Stack>
     );

@@ -20,7 +20,7 @@ const Paginfo = ( {objeto} ) => {
     const navigation = useNavigation();
 
     useEffect (() => {
-        setCarrito(objeto.carrito2);
+        setCarrito(objeto.carrito2Entradas);
         setEntrada(objeto.entrada);
     }, [objeto]);
 

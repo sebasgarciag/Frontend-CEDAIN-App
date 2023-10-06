@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const useResumen = () => {
     const [entrada, setEntrada] = useState({
@@ -28,7 +28,7 @@ const useResumen = () => {
         },
     });
 
-    const [carrito, setCarrito] = useState();
+    const [carrito, setCarrito] = useState([]);
 
     const [datosEntrada, setDatosEntrada] = useState([
         {
@@ -82,6 +82,10 @@ const useResumen = () => {
         });
         setDatosEntrada(newDatos);
     }
+
+    useEffect(() => {
+        console.log('carrito', carrito);
+    }, [carrito]);
 
     return { entrada, setEntrada, datosEntrada, handleCantidad, carrito, setCarrito };
 }
