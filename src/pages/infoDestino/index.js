@@ -11,14 +11,14 @@ import { VolverButtonN } from "../../components/UI/uiButtons";
 import { SiguienteButtonN } from "../../components/UI/uiButtons";
 import { useNavigation } from '@react-navigation/native';
 
-const Paginfo = () => { 
+const Paginfo = ( salida ) => { 
     const { comunidades, eventos, comunidad, evento, 
-        setComunidad, setEvento, comentarios, setComentarios, 
-        receptor, setReceptor } = useInfoDestinoEvento();
+        setComunidad, setEvento, observaciones, setObservaciones, 
+        receptor, setReceptor, setSalida } = useInfoDestinoEvento();
+
+    setSalida(salida);
 
     const navigation = useNavigation();
-    const toggleDrawer = () => {
-      setIsDrawerOpen(!isDrawerOpen);};
     
     return ( 
     
@@ -33,7 +33,7 @@ const Paginfo = () => {
 
 
                 <Dropdowns
-                    setValueEvento={setComunidad} 
+                    setValueEvento={setComunidad}
                     dataDropDownEvento={comunidades}
                     valueEvento={comunidad}
                     Titulo={"Comunidad"}/>
@@ -48,10 +48,10 @@ const Paginfo = () => {
                 
                 
                 <Textbox
-                    text={comentarios} 
-                    setText={setComentarios}
-                    placeholder={'Comentarios'}
-                    title={'Comentarios'}
+                    text={observaciones} 
+                    setText={setObservaciones}
+                    placeholder={'Observaciones'}
+                    title={'Observaciones'}
                 />
 
                 <Spacer/>

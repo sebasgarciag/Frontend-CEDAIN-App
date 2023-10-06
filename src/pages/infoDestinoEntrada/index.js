@@ -11,15 +11,14 @@ import { VolverButtonN } from "../../components/UI/uiButtons";
 import { SiguienteButtonN } from "../../components/UI/uiButtons";
 import { useNavigation } from '@react-navigation/native';
 
-const Paginfo = () => { 
+const Paginfo = (entrada) => { 
     const { comunidades, eventos, comunidad, evento, 
-        setComunidad, setEvento, comentarios, setComentarios, 
-        receptor, setReceptor } = useInfoDestinoEvento();
+        setComunidad, setEvento, observaciones, setObservaciones, 
+        emisor, setEmisor, setEntrada } = useInfoDestinoEvento();
 
     const navigation = useNavigation();
-    const toggleDrawer = () => {
-      setIsDrawerOpen(!isDrawerOpen);};
-    
+
+    // setEntrada(entrada);
     return ( 
     
         <View style={styles.container}>
@@ -48,19 +47,19 @@ const Paginfo = () => {
                 
                 
                 <Textbox
-                    text={comentarios} 
-                    setText={setComentarios}
-                    placeholder={'Comentarios'}
-                    title={'Comentarios'}
+                    text={observaciones} 
+                    setText={setObservaciones}
+                    placeholder={'Observaciones'}
+                    title={'observaciones'}
                 />
 
                 <Spacer/>
 
                 <Textbox
-                    text={receptor} 
-                    setText={setReceptor}
-                    placeholder={'Receptor'}
-                    title={'Receptor'}
+                    text={emisor} 
+                    setText={setEmisor}
+                    placeholder={'Emisor'}
+                    title={'Emisor'}
                 />
 
 

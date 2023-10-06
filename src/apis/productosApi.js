@@ -1,14 +1,14 @@
 import axios from 'axios';
 import ip from './ipApi';
-
 const baseUrl = `http://${ip}:8080`;
 
-const UsuariosAPI = () => {
-    async function getTodosUsuarios() {
+const ProductosAPI = () => {
+    async function getTodosProductos() {
         let response = null;
 
         try {
-            response = await axios.get(`${baseUrl}/usuarios`);
+            console.log(ip)
+            response = await axios.get(`${baseUrl}/productos`);
             // console.log(response.data)
         } catch (error) {
             console.log("Error: " + error);
@@ -17,11 +17,11 @@ const UsuariosAPI = () => {
         return response;
     }
 
-    async function login(correo, password) {
+    async function createProducto(producto) {
         let response = null;
 
         try {
-            response = await axios.post(`${baseUrl}/usuarios/login`, { correo, password });
+            response = await axios.post(`${baseUrl}/productos`, producto);
             console.log(response.data);
         } catch (error) {
             console.log("Error: " + error);
@@ -35,11 +35,11 @@ const UsuariosAPI = () => {
         return response;
     }
 
-    async function updateUsuario(usuario, id_usuario) {
+    async function updateProducto(producto, id_producto) {
         let response = null;
 
         try {
-            response = await axios.put(`${baseUrl}/usuarios/${id_usuario}`, usuario)
+            response = await axios.put(`${baseUrl}/productos/${id_producto}`, producto)
         } catch (error) {
             if (error.response) {
                 if (error.response.status === 400) {
@@ -53,11 +53,11 @@ const UsuariosAPI = () => {
         return response;
     }
     
-    async function getUsuario(id_usuario) {
+    async function getProducto(id_producto) {
         let response = null;
 
         try {
-            response = await axios.get(`${baseUrl}/usuarios/${id_usuario}`)
+            response = await axios.get(`${baseUrl}/productos/${id_producto}`)
         } catch (error) {
             if (error.response) {
                 if (error.response.status === 400) {
@@ -71,7 +71,7 @@ const UsuariosAPI = () => {
         return response;
     }
 
-    return { getTodosUsuarios, updateUsuario, getUsuario, login }
+    return { getTodosProductos, updateProducto, getProducto, createProducto }
 }
 
-export default UsuariosAPI;
+export default ProductosAPI;

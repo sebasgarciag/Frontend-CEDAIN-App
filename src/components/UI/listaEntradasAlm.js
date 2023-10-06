@@ -16,7 +16,8 @@ function ListaEntradasAlm({ listadoEntradas }){
                         <HStack style={styles.movItem} spacing={10}>
                             <VStack>
                                 <Text style={styles.movName}>Entrada: {entrada.id_entrada}</Text>
-                                <Text style={styles.movDato}>Fecha: {entrada.fecha}</Text>
+                                {/* <Text style={styles.movDato}>Fecha: {entrada.fecha}</Text> */}
+                                <Text style={styles.movDato}>Fecha: {entrada.fecha.slice(0, 16).replace('T', ' ')}</Text>
                                 <Text style={styles.movDato}>Articulos: {entrada.cantidad}</Text>
                             </VStack>
                             

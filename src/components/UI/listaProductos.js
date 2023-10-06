@@ -1,24 +1,52 @@
 import React from "react";
-import { Text, ScrollView} from "react-native";
+import { Text, ScrollView, Image } from "react-native";
 import { HStack, VStack } from "@react-native-material/core";
-import { ArrowButton } from "./uiButtons";
-import styles from "../../assets/styles";
+import { ArrowButtonConObject } from "./uiButtons";
+// import styles from "../../assets/styles";
+import styles from '../../assets/buttons/styles';
+// import styles from '../../assets/buttons/styles';
+import { Surface } from "react-native-paper";
+import { useNavigation } from '@react-navigation/native';
 
-function ListaProductos({listadoProductos}){
+function ListaProductos({listadoProductos}){    
+    const navigation = useNavigation();
         return(
             <ScrollView style={styles.listaMovs} >
-                {listadoProductos.map((entrada)=>
-                    <VStack key={entrada}>
+                {/* {listadoProductos.map((producto)=>
+                    <VStack key={producto.id_producto}>
                         <HStack style={styles.movItem} spacing={10}>
                             <VStack>
-                                <Text style={styles.movName}>Producto: {entrada.folioSerie}</Text>
-                                <Text style={styles.movDato}>Fecha: {entrada.fecha}</Text>
-                                <Text style={styles.movDato}>Almacenista: {entrada.almacenista}</Text>
-                                <Text style={styles.movDato}>Cantidad: {entrada.cantidadArticulos}</Text>
+                                <Text style={styles.movName}>Producto: {producto.folioSerie}</Text>
+                                <Text style={styles.movDato}>Fecha: {producto.fecha}</Text>
+                                <Text style={styles.movDato}>Almacenista: {producto.almacenista}</Text>
+                                <Text style={styles.movDato}>Cantidad: {producto.cantidadArticulos}</Text>
                             </VStack>
                             <ArrowButton style={styles.arrowButton} onPress={() => { alert('Flecha presionada'); }} />
                         </HStack>
                     </VStack>
+                )} */}
+                {listadoProductos.map((producto) => 
+                <Surface elevation={5} key={producto.id_producto} style={styles.productItem}> 
+                    <HStack spacing={10} style={{ flex: 1 }}>
+                    <VStack style={{justifyContent: 'center'}}>
+                        <Image 
+                        source={require('../../assets/imagenes/ware.jpg')} // TODO: cambiar por imagen del producto
+                        style={styles.productImage}
+                        />
+                    </VStack>
+                    <VStack spacing={3} style={[styles.textoProdMov, { flex: 1 }]}>
+                        <Text style={styles.productName}>{producto.nombre}</Text>
+                        <HStack spacing={20}>
+                        <VStack>
+                            <Text style={styles.productQuantity}>Tamaño: {producto.id_tamanio}</Text>
+                            <Text style={styles.productQuantity}>Cantidad: {producto.precio}</Text>
+                        </VStack>
+                        </HStack>
+                    </VStack>
+                    <ArrowButtonConObject navigation={navigation} path={"editarProducto"} object={producto} />
+                    {/* <ArrowButton navigation={navigation} path={"EditarProducto"} /> */}
+                    </HStack>
+                </Surface>
                 )}
             </ScrollView>
         );

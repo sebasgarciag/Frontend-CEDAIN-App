@@ -1,0 +1,5 @@
+// COPIEN ESTE ARCHIVO EN ESTA MISMA CARPETA, PONGAN SU IP Y LLAMEN AL ARCHIVO ipApi.js
+
+const ip = '10.34.23.65';
+
+export default ip;

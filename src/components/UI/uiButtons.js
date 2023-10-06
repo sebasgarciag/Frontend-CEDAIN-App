@@ -8,6 +8,7 @@ import styles from '../../assets/styles';
 import { router } from 'expo-router';
 import { useNavigation } from '@react-navigation/native';
 
+
 const MenuButton = ({ onPress, style }) => {
   return (
     <TouchableOpacity style={[styles.arrowButtonButton, { backgroundColor: '#F1EFE3' }]} 
@@ -101,6 +102,19 @@ const SiguienteButtonN = ({navigation, path}) => {
   );
 }
 
+const SiguienteButtonNObject = ({navigation, path, object}) => {
+
+  return (
+    <TouchableOpacity style={[styles.volverButton, { backgroundColor: '#8F8B36' }]} 
+      onPress={() => {
+      navigation.navigate(`${path}`, { object });
+      }}>
+    <Text style={styles.buttonText}>Siguiente</Text>
+    <Icon2 name="right" size={24} color="#F1EFE3" />
+  </TouchableOpacity>
+  );
+}
+
 const ExportarButton = ({ onPress }) => {
     return (
       <TouchableOpacity style={[styles.volverButton, { backgroundColor: '#59CD90' }]}>
@@ -151,6 +165,8 @@ const ArrowButtonConObject = ({navigation, path, object}) => {
   );
 }
 
+
+
 const GenericButton = ({ text, onPress, style, labelStyle, disabled }) => {
     return (
       <Button
@@ -164,7 +180,44 @@ const GenericButton = ({ text, onPress, style, labelStyle, disabled }) => {
       </Button>
     );
   };
-export {MenuButton, VolverButton, ProfileButton, FilterButton, ArrowButton, ExportarButton, VolverButtonN, SiguienteButtonN, GenericButton, EntradaNueva, SalidaNueva, ArrowButtonConObject, VolverButtonNDirect};
+
+const CambiarAlmacenCuu = ({navigation, path}) => {
+  return (
+    <TouchableOpacity style={[styles.button, { backgroundColor: 'transparent', marginBottom: 60, borderColor: '#4A90E2', borderWidth: 2.5, paddingVertical: 25, paddingHorizontal: 50, borderRadius: 35 }]}
+      onPress={() => {
+      navigation.navigate(`${path}`, 1 );
+      }}>
+     <Icon name="store-mall-directory" size={38} color="#4A90E2" style={{ marginRight: 25 }} />
+      <Text style={[styles.buttonText, { fontWeight: 'bold', fontSize: 22, color: '#4A90E2' }]}>Chihuahua</Text>
+    </TouchableOpacity>
+  );
+}
+const CambiarAlmacenCreel = ({navigation, path}) => {
+  return (
+    <TouchableOpacity style={[styles.button, { backgroundColor: 'transparent', marginBottom: 60, borderColor: '#4A90E2', borderWidth: 2.5, paddingVertical: 25, paddingHorizontal: 50, borderRadius: 35 }]}
+      onPress={() => {
+      navigation.navigate(`${path}`, 3);
+      }}>
+     <Icon name="store-mall-directory" size={38} color="#4A90E2" style={{ marginRight: 25 }} />
+      <Text style={[styles.buttonText, { fontWeight: 'bold', fontSize: 22, color: '#4A90E2' }]}>Creel</Text>
+    </TouchableOpacity>
+  );
+}
+ 
+
+const ButtonTerminar = ({ terminarFunction }) => {
+  return (
+      <TouchableOpacity 
+          style={[styles.volverButton, { backgroundColor: '#59CD90' }]}
+          onPress={terminarFunction}
+      >
+          <Text style={styles.buttonText}>Terminar</Text>
+      </TouchableOpacity>
+  );
+};
+
+export {MenuButton, CambiarAlmacenCreel, CambiarAlmacenCuu, ButtonTerminar, VolverButton, ProfileButton, FilterButton, ArrowButton, ExportarButton, VolverButtonN, SiguienteButtonN, GenericButton, EntradaNueva, SalidaNueva, ArrowButtonConObject, VolverButtonNDirect};
 
 
 //nota: Es posible que apliquemos un solo style para todos los botones. por lo pronto, cada uno tiene el suyo.
+

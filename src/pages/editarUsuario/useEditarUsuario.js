@@ -3,12 +3,12 @@ import UsuariosAPI from "../../apis/usuariosApi";
 
 
 const useEditarUsuario = (usuario) => {
-    console.log(usuario);
+    // console.log(usuario);
     const [isEditable, setEditable] = useState(false);
     const [nombre, setNombre] = useState(usuario.nombre);
     const [apellidoPaterno, setApellidoPaterno] = useState(usuario.apellido_paterno);
     const [apellidoMaterno, setApellidoMaterno] = useState(usuario.apellido_materno);
-    const [email, setEmail] = useState(usuario.email);
+    const [email, setEmail] = useState(usuario.correo);
     const [editarText, setEditarText] = useState("Editar");
     const [rol, setRol] = useState(usuario.tipo);
     const { updateUsuario } = UsuariosAPI();
@@ -19,17 +19,22 @@ const useEditarUsuario = (usuario) => {
         'nombre': nombre,
         'apellido_paterno': apellidoPaterno,
         'apellido_materno': apellidoMaterno,
-        'email': email,
+        'correo': email,
         'tipo': rol,
       }
 
-      alert("Enlace clickeado");
+      // alert("Enlace clickeado");
       try{
-        const response = await updateUsuario(new_usuario_data, usuario.id);
-        alert(response.data)
+        await updateUsuario(new_usuario_data, usuario.id_usuario);
+        alert('usuario actualizado')
       }
       catch{
-        //
+        alert('No se pudo actualizar el usuario')
+        setNombre(usuario.nombre)
+        setApellidoPaterno(usuario.apellido_paterno)
+        setApellidoMaterno(usuario.apellido_materno)
+        setEmail(usuario.correo)
+        setRol(usuario.tipo)
       }
       setEditarText("Editar");
       setEditable(!isEditable);
@@ -40,6 +45,11 @@ const useEditarUsuario = (usuario) => {
       if (isEditable) {
         // Qué pasar cuando cancelas
         setEditarText("Editar");
+        setNombre(usuario.nombre)
+        setApellidoPaterno(usuario.apellido_paterno)
+        setApellidoMaterno(usuario.apellido_materno)
+        setEmail(usuario.correo)
+        setRol(usuario.tipo)
         // volvera tomar los valores de la BDD
       } else {
         // Qué pasar cuando cambias de modo no editar a modo editar

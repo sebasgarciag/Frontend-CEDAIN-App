@@ -1,45 +1,65 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
+import salidasApi from "../../apis/salidasApi";
 
 const useInfoDestinoEvento=()=>{
+	const {getComunidades, getEventos}=salidasApi();
+	const [comunidades, setComunidades] = useState([]);
+	const [eventos, setEventos] = useState([]);
 
-	const [comunidades, setComunidades] = useState([
-		{ 
-			nombre: 'comunidad 1', 
-			id_comunidad: '1' 
-		},
-		{ 
-			nombre: 'comnuidad 2', 
-			id_comunidad: '2' 
-		},
-		{ 
-			nombre: 'comunidad 3', 
-			id_comunidad: '3' 
-		}
-	]);
-
-	const [eventos, setEventos] = useState([
-		{ 
-			nombre: 'evento 1', 
-			id_evento: '1' 
-		},
-		{ 
-			nombre: 'evento 2', 
-			id_evento: '2' 
-		},
-		{ 
-			nombre: 'evento 3', 
-			id_evento: '3' 
-		}
-	]);
+	const [salida, setSalida] = useState({});
 
 	const [comunidad, setComunidad] = useState(null);
 	const [evento, setEvento] = useState(null);
 
-	const [comentarios, setComentarios] = useState('');
+	const [observaciones, setObservaciones] = useState('');
 	const [receptor, setReceptor] = useState('');
 
+	async function obtenerComunidades(){
+		const response= await getComunidades();
+		if (response !== null){
+			setComunidades(response);
+		}
+	}
 
-	return { comunidades, eventos, comunidad, evento, setComunidad, setEvento, comentarios, setComentarios, receptor, setReceptor }
+	async function obtenerEventos(){
+		const response= await getEventos();
+		if (response !== null){
+			setEventos(response);
+		}
+	}
+
+	useEffect(()=>{
+		obtenerComunidades();
+		obtenerEventos();
+	},[]);
+
+
+	useEffect(()=>{
+		setSalida({
+			...salida,
+			id_comunidad: comunidad.id_comunidad,
+			Comunidad: {
+				nombre: comunidad.nombre,
+				id_comunidad: comunidad.id_comunidad
+			},
+			id_evento: evento.id_evento,
+			Evento: {
+				nombre: evento.nombre,
+				id_evento: evento.id_evento
+			}
+		});
+	},[comunidad, evento]);
+
+	useEffect(()=>{
+		setSalida({
+			...salida,
+			receptor: receptor,
+			observaciones: observaciones,
+		});
+	},[receptor, observaciones]);
+
+
+	return { comunidades, eventos, comunidad, evento, setComunidad, setEvento, observaciones, setObservaciones, receptor, setReceptor, obtenerComunidades, obtenerEventos, setSalida }
 }
 
 export default useInfoDestinoEvento;

@@ -1,58 +1,59 @@
-import {useState}  from 'react';
+import { useState, useEffect } from 'react';
+import inventarioApi from '../../apis/inventarioApi';
 
 const useSeleccion = () => {
-    const [productos, setProductos] = useState([
-        {
-            idProducto: 1,
-            nombreProducto: 'Producto 1',
-            categoria: 'Categoria 1'
-        }, 
-        {
-            idProducto: 2,
-            nombreProducto: 'Producto 2',
-            categoria: 'Categoria 2'
-        }, 
-        {
-            idProducto: 23,
-            nombreProducto: 'Producto 23',
-            categoria: 'Categoria 2'
-        }, 
-        {
-            idProducto: 24,
-            nombreProducto: 'Producto 24',
-            categoria: 'Categoria 2'
-        },
-        {
-            idProducto: 25,
-            nombreProducto: 'Producto 25',
-            categoria: 'Categoria 2'
-        },
-        {
-            idProducto: 26,
-            nombreProducto: 'Producto 26',
-            categoria: 'Categoria 2'
-        },
-        {
-            idProducto: 3,
-            nombreProducto: 'Producto 3',
-            categoria: 'Categoria 3'
-        }, 
-        {
-            idProducto: 4,
-            nombreProducto: 'Producto 4',
-            categoria: 'Categoria 4'
-        }, 
-        {
-            idProducto: 5,
-            nombreProducto: 'Producto 5',
-            categoria: 'Categoria 5'
-        }
-    ]);
 
-    const [categorias, setCategorias] = useState(['Categoria 1', 'Categoria 2', 'Categoria 3', 'Categoria 4', 'Categoria 5']);
+    const [entrada, setEntrada] = useState({
+        fecha: '',
+        folio: '',
+        serie : '',
+        observaciones: '',
+        id_usuario: 1, // TODO: cambiar por el usuario logeado
+        id_almacen: 1, // TODO: cambiar por el almacen seleccionado
+        emisor: '',
+        id_comunidad: 0,
+        id_evento: 0,
+        Comunidad: {
+            id_comunidad: 0,
+            nombre: ''
+        },
+        Evento: {
+            id_evento: 0,
+            nombre: ''
+        },
+        Almacen: {
+            id_almacen: 1,
+            nombre: 'Creel'
+        },
+        Usuario: {
+            nombre: 'hola', 
+            apellido_paterno: 'si'
+        },
+    });
 
+    const { getAllInventario, getAllCategorias } = inventarioApi();
 
-    return { productos, categorias }
+    const [productos, setProductos] = useState([]);
+
+    const [categorias, setCategorias] = useState([]);
+
+    async function getCategorias() {
+        console.log('hola')
+        const categoriasApi = await getAllCategorias();
+        setCategorias(categoriasApi);
+    };
+
+    async function getProductos() {
+        const productosApi = await getAllInventario(1);
+        setProductos(productosApi);
+    };
+
+    useEffect(() => {
+        getCategorias();
+        getProductos();
+    }, []);    
+
+    return { productos, categorias, entrada, setEntrada }
 }
 
 export default useSeleccion;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Text, View } from "react-native";
 import { Spacer, VStack, HStack, Stack } from "@react-native-material/core";
 import { Surface } from "react-native-paper";
@@ -11,9 +11,18 @@ import ProductoCarrito from "../../components/entradasSalidas/productoCarrito";
 import useCarrito from "./hookProductoCarrito";
 import TotalProductos from "../../components/entradasSalidas/totalProductos";
 
-const ArticulosCarrito = () => {  
-    const {carrito, handleCantidad, aumentarCantidad, disminuirCantidad} = useCarrito();
+const ArticulosCarrito = ({carrito}) => {  
+    const {handleCantidad, aumentarCantidad, disminuirCantidad, carrito2, setCarrito2} = useCarrito();
     const navigation = useNavigation();
+
+
+   // console.log("pantalla carrito: ",carrito);
+   // console.log("pantalla carrito2: ",carrito2);
+
+
+    useEffect(() => {
+        setCarrito2(carrito)
+    }, [carrito]);
 
     return (
         <Stack style={styles.container}>
@@ -26,20 +35,21 @@ const ArticulosCarrito = () => {
                 <VStack>
                     <Spacer/>
                     
-                    {carrito.map((producto) => 
-                        <Surface elevation={5} key={producto.id} style={styles.productItem}> 
+                    {carrito2.map((producto) => 
+                        <Surface elevation={5} key={producto.id_producto} style={styles.productItem}> 
                             <ProductoCarrito                 
                                 producto={producto}
                                 aumentarCantidad={aumentarCantidad}
                                 disminuirCantidad={disminuirCantidad}
                                 handleCantidad={handleCantidad}
+                                tipo = "salida"
                             />
                         </Surface> 
                     )}
 
                 </VStack>
                 <Surface style={styles.productItem}>
-           			<TotalProductos carrito={carrito}/>
+           			<TotalProductos carrito={carrito2}/>
             	</Surface>
             </ScrollView>
             <View style={ buttonStyles.containerNavegacion }>
