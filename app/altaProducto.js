@@ -1,9 +1,9 @@
 import DaraltaProducto from '../src/pages/altaProducto';
 
-const altaProductoPage = () => {
+const AltaProductoPage = () => {
     return (
         <DaraltaProducto />
     );
 };
 
-export default altaProductoPage;
+export default AltaProductoPage;

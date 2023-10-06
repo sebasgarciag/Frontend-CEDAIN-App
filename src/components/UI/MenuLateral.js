@@ -30,6 +30,7 @@ import EditarProductoPage from '../../../app/editarProducto';
 import EditarUsuarioPage from '../../pages/editarUsuario';
 import ListadoUsuariosRef from '../../../app/listadoUsuarios';
 import listadoProductos from '../../../app/listadoProductos';
+import AltaProductoPage from '../../../app/altaProducto';
 
 const Drawer = createDrawerNavigator();
 
@@ -79,6 +80,7 @@ function Menulateral() {
       <Drawer.Screen name="ListadoUsuariosRef" component={ListadoUsuariosRef}  options={{headerShown: false}}/>
       <Drawer.Screen name="editarUsuario" component={EditarUsuarioPage}  options={{headerShown: false}}/>
       <Drawer.Screen name="editarProducto" component={EditarProductoPage}  options={{headerShown: false}}/>
+      <Drawer.Screen name="altaProducto" component={AltaProductoPage}  options={{headerShown: true}}/>
 
     </Drawer.Navigator>
   );
@@ -97,6 +99,14 @@ const MenuItems = ({ navigation }) => {
           onPress = {() => {
             navigation.navigate('ListadoUsuariosRef'); 
             setScreen("Usuarios")
+          }}
+      />
+        <MenuButtonItem 
+          text= "alta producto" 
+          currentScreen = {currentScreen}
+          onPress = {() => {
+            navigation.navigate('altaProducto'); 
+            setScreen("Alta productos")
           }}
       />
       <MenuButtonItem

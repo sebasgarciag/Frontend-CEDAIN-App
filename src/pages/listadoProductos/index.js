@@ -1,15 +1,17 @@
 import React from 'react';
 import { TextInput } from 'react-native';
 import { HStack, Stack, Text, Divider, VStack } from "@react-native-material/core";
-import { MenuButton, FilterButton, ProfileButton, VolverButton } from '../../components/UI/uiButtons';
+import { MenuButton, FilterButton, ProfileButton, VolverButtonNDirect } from '../../components/UI/uiButtons';
 import ListaProductos from '../../components/UI/listaProductos';
 import useListadoProductos from './useListadoProductos';
 import styles from '../../assets/styles';
 import { router } from "expo-router";
+import { useNavigation } from '@react-navigation/native';
+
 
 
 const ListadoProductos = () => {
-
+    const navigation = useNavigation();
     const {productos} = useListadoProductos();
 
     return (
@@ -37,7 +39,7 @@ const ListadoProductos = () => {
             
             <Stack style={{justifyContent: 'center', alignItems: 'center', margin: 10}}>
               {/* <VolverButton onPress={() => { router.replace("/botonesChernobyl"); }} /> */}
-              <VolverButton ruta="/botonesChernobyl" />
+              <VolverButtonNDirect navigation={navigation} path="" />
 
 
               
