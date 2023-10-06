@@ -6,7 +6,13 @@ const TotalProductos = ({ carrito }) => {
   // Utiliza useEffect para calcular el total inicial y actualizarlo cuando cambien las cantidades
   useEffect(() => {
     const calcularTotalProductos = () => {
-      return carrito.reduce((total, producto) => total + producto.cantidad, 0);
+      return carrito.reduce((total, producto) => {
+        // Verificamos si el producto tiene detallesSalida y cantidad
+        if (producto.detallesSalida && producto.detallesSalida.cantidad) {
+          return total + producto.detallesSalida.cantidad;
+        }
+        return total;
+      }, 0);
     };
 
     setTotal(calcularTotalProductos());
