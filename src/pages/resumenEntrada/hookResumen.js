@@ -87,6 +87,7 @@ const useResumen = () => {
         setDatosEntrada(newDatos);
     }
 
+
     async function terminar(entrada, detallesEntrada) {
         const date = new Date();
         const fechaActual = date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate();

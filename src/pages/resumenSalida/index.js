@@ -46,6 +46,7 @@ const Resumen = ({objeto}) => {
             <View style={ buttonStyles.containerNavegacion }>
                     <VolverButtonN navigation={navigation} path={"InfoDestinoN"} />
                     <SiguienteButtonN navigation={navigation} path={"Salidas"} />
+                    <ButtonTerminar terminarFunction={() => terminar(salida, datosSalida)} />
             </View>
         </Stack>
     );
