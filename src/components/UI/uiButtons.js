@@ -205,7 +205,7 @@ const CambiarAlmacenCreel = ({navigation, path}) => {
 }
  
 
-export {MenuButton, VolverButton, ProfileButton, FilterButton, ArrowButton, ExportarButton, VolverButtonN, SiguienteButtonN, GenericButton, EntradaNueva, SalidaNueva, ArrowButtonConObject, VolverButtonNDirect, CambiarAlmacenCreel, CambiarAlmacenCuu};
+export {MenuButton, VolverButton, ProfileButton, FilterButton, ArrowButton, ExportarButton, VolverButtonN, SiguienteButtonN, SiguienteButtonNObject, GenericButton, EntradaNueva, SalidaNueva, ArrowButtonConObject, VolverButtonNDirect, CambiarAlmacenCreel, CambiarAlmacenCuu};
 
 
 //nota: Es posible que apliquemos un solo style para todos los botones. por lo pronto, cada uno tiene el suyo.

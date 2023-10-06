@@ -28,7 +28,7 @@ const Dropdowns = ({ dataDropDownEvento, Titulo, setValueEvento, valueEvento }) 
 				onFocus={() => setIsFocusEvento(true)}
 				onBlur={() => setIsFocusEvento(false)}
 				onChange={item => {
-					setValueEvento(item.id);
+					setValueEvento(item);
 					setIsFocusEvento(false);
 				}}
 				renderLeftIcon={() => (

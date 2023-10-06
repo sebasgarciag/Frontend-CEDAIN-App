@@ -6,10 +6,11 @@ const useInfoDestinoEvento=()=>{
 	const [comunidades, setComunidades] = useState([]);
 	const [eventos, setEventos] = useState([]);
 
-	const [entrada, setEntrada] = useState({});
+	const [entrada, setEntrada] = useState();
+	const [carrito, setCarrito] = useState();
 
-	const [comunidad, setComunidad] = useState(null);
-	const [evento, setEvento] = useState(null);
+	const [comunidad, setComunidad] = useState({});
+	const [evento, setEvento] = useState({});
 
 	const [observaciones, setObservaciones] = useState('');
 	const [emisor, setEmisor] = useState('');
@@ -37,12 +38,12 @@ const useInfoDestinoEvento=()=>{
 	useEffect(()=>{
 		setEntrada({
 			...entrada,
-			id_comunidad: comunidad.id_comunidad,
+			id_comunidad: comunidad.id,
 			Comunidad: {
 				nombre: comunidad.nombre,
 				id_comunidad: comunidad.id_comunidad
 			},
-			id_evento: evento.id_evento,
+			id_evento: evento.id,
 			Evento: {
 				nombre: evento.nombre,
 				id_evento: evento.id_evento
@@ -59,7 +60,7 @@ const useInfoDestinoEvento=()=>{
 	}, [emisor, observaciones]);
 
 
-	return { comunidades, eventos, comunidad, evento, setComunidad, setEvento, observaciones, setObservaciones, emisor, setEmisor, obtenerComunidades, obtenerEventos, setEntrada }
+	return { comunidades, eventos, comunidad, evento, setComunidad, setEvento, observaciones, setObservaciones, emisor, setEmisor, obtenerComunidades, obtenerEventos, setEntrada, carrito, setCarrito, entrada }
 }
 
 export default useInfoDestinoEvento;

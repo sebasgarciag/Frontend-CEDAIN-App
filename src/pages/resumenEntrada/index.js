@@ -10,11 +10,17 @@ import styles from "../../assets/styles";
 import { VolverButtonN, SiguienteButtonN } from "../../components/UI/uiButtons";
 import { useNavigation } from "expo-router";
 import InfoSalida from "../../components/UI/infoSalida";
+import { useEffect } from "react";
 
-const Resumen = () => { 
+const Resumen = ({objeto}) => { 
 
-    const { entrada, datosEntrada, handleCantidad } = useResumen();
+    const { entrada, setEntrada, datosEntrada, handleCantidad, carrito, setCarrito } = useResumen();
     const navigation = useNavigation();
+
+    useEffect (() => {
+        setEntrada(objeto.entrada);
+        setCarrito(objeto.carrito);
+    }, [objeto]);
 
     return (
         <Stack style={styles.container}>
@@ -29,9 +35,9 @@ const Resumen = () => {
                 <VStack>
                     <Spacer/>
                     
-                    {datosEntrada.map((datosEntrada) => 
-                        <Surface elevation={5} key={datosEntrada.producto} style={styles.productItem}> 
-                            <ListaSalida datos={datosEntrada} handleCantidad={handleCantidad}/>
+                    {carrito.map((producto) => 
+                        <Surface elevation={5} key={producto.id_producto} style={styles.productItem}> 
+                            <ListaEntrada producto={producto}/>
                         </Surface> 
                     )}
 

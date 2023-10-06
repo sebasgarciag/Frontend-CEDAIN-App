@@ -2,14 +2,47 @@ import { useState } from "react";
 
 const useResumen = () => {
     const [salida, setSalida] = useState({
-        idSalida: 1,
-        folioSerie: "folio1",
-        receptor: "receptor1",
-        emisor: "emisor1",
-        comunidad: "comunidad1",
-        evento: "evento1",
-        observaciones: "observaciones1"
+        fecha: '',
+        folio: '',
+        facturar: 0,
+        serie : '',
+        observaciones: '',
+        id_usuario: 1, // TODO: cambiar por el usuario logeado
+        id_almacen: 1, // TODO: cambiar por el almacen seleccionado
+        receptor: '',
+        id_evento: 0,
+        id_tipo_pago: 1,
+        Comunidad: {
+            id_comunidad: 1,
+            nombre: 'HOLA'
+        },
+        Evento: {
+            id_evento: 0,
+            nombre: ''
+        },
+        Almacen: {
+            id_almacen: 1,
+            nombre: 'Creel'
+        },
+        Usuario: {
+            nombre: 'hola', 
+            apellido_paterno: 'si'
+        },
     });
+
+    // const [carrito, setCarrito] = useState([
+    //     {
+    //         Tamanio: {
+    //             nombre: "mediano"
+    //         },
+    //         cantidad: 1,
+    //         id_producto: 1,
+    //         nombre: "producto1",
+    //         precio_venta: 1
+    //     }
+    // ]);
+
+    const [carrito, setCarrito] = useState([]);
 
     const [datosSalida, setDatosSalida] = useState([
         {
@@ -64,7 +97,7 @@ const useResumen = () => {
         setDatosSalida(newDatosSalida);
     }
 
-    return { salida, datosSalida, handleCantidad };
+    return { salida, setSalida, datosSalida, handleCantidad, carrito, setCarrito };
 }
 
 export default useResumen;
