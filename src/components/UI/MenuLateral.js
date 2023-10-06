@@ -31,6 +31,8 @@ import EditarProductoPage from '../../../app/editarProducto';
 import EditarUsuarioPage from '../../pages/editarUsuario';
 import ListadoUsuariosRef from '../../../app/listadoUsuarios';
 import listadoProductos from '../../../app/listadoProductos';
+import altaUsuarioPage from '../../../app/altaUsuario';
+import log from '../../../app/logInn';
 
 
 
@@ -79,10 +81,15 @@ function Menulateral() {
 
 
       {/* Agregar pantallas de los demás equipos */} 
-      <Drawer.Screen name="ListadoUsuariosRef" component={ListadoUsuariosRef}  options={{headerShown: false}}/>
-      <Drawer.Screen name="editarUsuario" component={EditarUsuarioPage}  options={{headerShown: false}}/>
-      <Drawer.Screen name="editarProducto" component={EditarProductoPage}  options={{headerShown: false}}/>
+      <Drawer.Screen name="ListadoUsuariosRef" component={ListadoUsuariosRef} options={{ headerShown: false }} />
+      <Drawer.Screen name="AltaUsuario" component={altaUsuarioPage} options={{ headerShown: false }} />
+      <Drawer.Screen name="editarUsuario" component={EditarUsuarioPage} options={{ headerShown: false }} />
+      
+      {/* Login*/} 
+      <Drawer.Screen name="login" component={log} options={{ headerShown: false }} />
 
+
+     
     </Drawer.Navigator>
   );
 }

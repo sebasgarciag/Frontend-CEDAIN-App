@@ -18,3 +18,4 @@ package-lock.json
 
 # archivo ip
 /src/apis/ipApi.js
+/src/apis/infoIP.js

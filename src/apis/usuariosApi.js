@@ -98,7 +98,7 @@ const UsuariosAPI = () => {
         return response;
     }
 
-    return { getTodosUsuarios, updateUsuario, getUsuario, login }
+    return { getTodosUsuarios, updateUsuario, getUsuario, login,register }
 }
 
 export default UsuariosAPI;
