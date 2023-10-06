@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState, React } from 'react';
 import { View, Text, TextInput, Image} from 'react-native';
 import { Card, IconButton } from 'react-native-paper';
 import { Box} from "@react-native-material/core";
@@ -6,10 +6,22 @@ import { Flex, HStack, VStack } from "@react-native-material/core";
 import styles from "../../assets/styles";
 
 
-const ProductoCarrito = ({ producto, aumentarCantidad, disminuirCantidad, handleCantidad }) => {
-    const { nombre, imagen, cantidad, tamaño, precio, } = producto;
+const ProductoCarrito = ({ producto, aumentarCantidad, disminuirCantidad, handleCantidad, tipo }) => {
+    const { nombre, imagen, medida, precio_trueque, precio_venta } = producto;
 
-    console.log(producto);
+    precio = 0;
+    tipoPrecio = "";
+
+    if(tipo == "salida") {
+        precio = precio_venta;
+        tipoPrecio = "Precio Venta: ";
+    }
+    else {
+        precio = precio_trueque;
+        tipoPrecio = "Precio Trueque: ";
+    }
+
+    // console.log("Producto: ", producto);
 
       return (
                 
@@ -26,8 +38,8 @@ const ProductoCarrito = ({ producto, aumentarCantidad, disminuirCantidad, handle
                 <Text style={styles.productName}>{nombre}</Text>
                 <HStack spacing={20}>
                     <VStack>
-                        <Text style={styles.productDato}>Tamano: {tamaño}</Text>
-                        <Text style={styles.productDato}>Precio: {precio}</Text>
+                        <Text style={styles.productDato}>Medida: {medida}</Text>
+                        <Text style={styles.productDato}>{tipoPrecio} {precio}</Text>
                     </VStack>
                 </HStack>
             </VStack>
@@ -42,7 +54,7 @@ const ProductoCarrito = ({ producto, aumentarCantidad, disminuirCantidad, handle
                     style={styles.textoCantidadCarrito} 
                     defaultValue="0"
                     onChangeText={ newCantidad => handleCantidad(producto, newCantidad) } // TODO: agregar verificacion de inventario
-                    value={( cantidad.toString() )}
+                    value={( producto.detallesSalida.cantidad.toString() )}
                     keyboardType="numeric"
             />
             <IconButton
