@@ -1,5 +1,6 @@
 import {useState}  from 'react';
 import salidasApi from '../../apis/salidasApi';
+import { useEffect } from 'react';
 
 const useListadoSalidasAlm = () => {
 
@@ -46,6 +47,10 @@ const useListadoSalidasAlm = () => {
         setSalidas(salidasApi);
         return;
     };
+
+    useEffect(() => {
+        getSalidas();
+    }, []);
    
     return {toggleDrawer, toggleUserDrawer, toggleModal, handlePress, setBusqueda, filteredSalidas, isDrawerOpen, isUserDrawerOpen, isModalVisible, setAlmValue, almValue, setEveValue, eveValue, getSalidas }
 }

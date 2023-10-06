@@ -15,12 +15,12 @@ const ListadoSalidasAlm = () => {
 	const navigation = useNavigation();  
 	const { toggleUserDrawer, toggleModal, handlePress, filteredSalidas, setBusqueda, setEveValue,  isUserDrawerOpen, isModalVisible, eveValue, getSalidas} = useListadoSalidasAlm();
 
-	const isFocused = useIsFocused();
-	useEffect(() => {
-		if(isFocused) {
-			getSalidas();
-		}
-	}, [isFocused]);
+	// const isFocused = useIsFocused();
+	// useEffect(() => {
+	// 	if(isFocused) {
+	// 		getSalidas();
+	// 	}
+	// }, [isFocused]);
 
 	return (
 		<>
