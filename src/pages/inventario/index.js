@@ -45,7 +45,7 @@ const Inventario2 = ( {almacen} ) => {
               <Text style={styles.productName}>{inventario.producto.nombre}</Text>
                 <HStack spacing={20}>
                   <VStack>
-                     <Text style={styles.productQuantity}>Tamaño: {inventario.medida}</Text>
+                     <Text style={styles.productQuantity}>Tamaño: {inventario.producto.Tamanio.descripcion}</Text>
                      <Text style={styles.productQuantity}>Cantidad: {inventario.cantidad}</Text>
                   </VStack>
                 </HStack>
