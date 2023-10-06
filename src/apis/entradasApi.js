@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-// const ip = '10.34.3.73';
+const ip = '192.168.1.69';
 const baseURL = `http://${ip}:8080`;
 
 const entradasApi = () => {
@@ -41,7 +41,28 @@ const entradasApi = () => {
         return [response.data];
     }
 
-    return { getAllEntradas, getAllEntradasAlm , getDetalles }
+//====================================== POST ENTRADA CONNECTION
+    async function postEntrada(data) {
+        let response = null;
+
+        try{
+            const response = await axios.post(`${baseURL}/entradas/entradas`, data);
+            
+        }
+        catch (error) {
+            if (error.response) {
+                if (error.response.status === 400) {
+                    console.log("Invalid Parameter");
+                }
+                console.log("Error: " + error);
+            }
+        }
+        return response;
+    }
+
+
+
+    return { getAllEntradas, getAllEntradasAlm , getDetalles, postEntrada }
 
 }
 
