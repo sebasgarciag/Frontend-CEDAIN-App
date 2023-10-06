@@ -67,7 +67,30 @@ const salidasApi = () => {
         return response.data;
     }
 
-    return { getAllSalidas, getAllSalidasAlm, getDetalles, getComunidades, getEventos }
+    // A PROBAR POST DE ENTRADA
+    async function postSalida(data) {
+        let response = null;
+        try {
+            response = await axios.post(`${baseURL}/salidas`, data);
+        } catch (error) {
+            console.error('Error posting salida: ' + error);
+        }
+        return response.data;
+    }
+
+
+    // A PROBAR POST DETALLES DE LA ENTRADA
+    async function postDetallesSalidas(data) {
+        let response = null;
+        try {
+            response = await axios.post(`${baseURL}/salidas/salidas-detalles`, data);
+        } catch (error) {
+            console.error('Error posting detalles salida: ' + error);
+        }
+        return response.data;
+    }
+
+    return { getAllSalidas, getAllSalidasAlm, getDetalles, getComunidades, getEventos, postSalida, postDetallesSalidas }
 
 }
 

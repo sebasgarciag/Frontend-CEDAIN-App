@@ -97,7 +97,17 @@ const useResumen = () => {
         setDatosSalida(newDatosSalida);
     }
 
-    return { salida, setSalida, datosSalida, handleCantidad, carrito, setCarrito };
+    async function terminar(salida, detallesSalida) {
+        try {
+            const response = await api.postSalida(salida);
+            const salidaId = response.data.id_salida;
+            await api.postDetallesSalida(salidaId, detallesSalida);
+        } catch (error) {
+            console.error('Error in terminar function: ' + error);
+        }
+    }
+
+    return { salida, setSalida, datosSalida, handleCantidad, carrito, setCarrito, terminar };
 }
 
 export default useResumen;

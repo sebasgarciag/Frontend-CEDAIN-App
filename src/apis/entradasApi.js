@@ -58,7 +58,7 @@ const entradasApi = () => {
     async function postDetallesEntrada(id, data) {
         let response = null;
         try {
-            response = await axios.post(`${baseURL}/entradas/entrada-detalles/${id}`, data);
+            response = await axios.post(`${baseURL}/entradas/entradas-detalles`, data);
         } catch (error) {
             console.error('Error posting detalles entrada: ' + error);
         }

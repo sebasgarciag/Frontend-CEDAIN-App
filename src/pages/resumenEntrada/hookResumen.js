@@ -83,6 +83,7 @@ const useResumen = () => {
         setDatosEntrada(newDatos);
     }
 
+
     async function terminar(entrada, detallesEntrada) {
         try {
             const response = await api.postEntrada(entrada);
