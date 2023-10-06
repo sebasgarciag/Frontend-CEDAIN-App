@@ -69,7 +69,6 @@ const EditarProducto = () => {
         </HStack>
       <View style={styles.View}>
         <Text style={{ fontSize: 26 }}>Editar Producto</Text>
-        <ArrowButton navigation={navigation} path={"Inventario"} />
       </View>
 
       <View>
