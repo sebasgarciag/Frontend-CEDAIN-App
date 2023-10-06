@@ -5,6 +5,10 @@ import ListaUsuarios from '../../components/UI/listaUsuarios';
 import useListadoUsuarios from './useListadoUsuarios';
 import styles from '../../assets/styles';
 import { useNavigation } from '@react-navigation/native';
+import { TouchableOpacity } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+
+
 
 const ListadoUsuarios = () => {
     const navigation = useNavigation();  
@@ -26,7 +30,14 @@ const ListadoUsuarios = () => {
             <Divider/>
             
             <Stack style={{justifyContent: 'center', alignItems: 'center', margin: 10}}>
-              <VolverButtonNDirect navigation={navigation} path="" />
+            <VolverButtonNDirect navigation={navigation} path="" />
+            <TouchableOpacity
+              style={[styles.button, { backgroundColor: '#59CD90' }]}
+              onPress={() => { navigation.navigate('AltaUsuario') }}
+            >
+              <Icon name="add-circle-outline" size={24} color="#F1EFE3" />
+              <Text style={styles.buttonText}>Agregar Usuario</Text>
+            </TouchableOpacity>
             </Stack>
 
           </Stack>

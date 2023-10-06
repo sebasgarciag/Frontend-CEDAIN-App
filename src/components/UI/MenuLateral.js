@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Text } from 'react-native';
+import { View, TouchableOpacity, Text } from 'react-native';
+import { AntDesign } from '@expo/vector-icons';
 import { DrawerContentScrollView, createDrawerNavigator} from '@react-navigation/drawer';
 import CrearSalida from '../../../app/crearSalida';
 import Carrito from '../../../app/carrito';
@@ -30,7 +31,10 @@ import EditarProductoPage from '../../../app/editarProducto';
 import EditarUsuarioPage from '../../pages/editarUsuario';
 import ListadoUsuariosRef from '../../../app/listadoUsuarios';
 import listadoProductos from '../../../app/listadoProductos';
-import AltaProductoPage from '../../../app/altaProducto';
+import altaUsuarioPage from '../../../app/altaUsuario';
+import log from '../../../app/logInn';
+
+
 
 const Drawer = createDrawerNavigator();
 
@@ -81,7 +85,13 @@ function Menulateral() {
       <Drawer.Screen name="editarUsuario" component={EditarUsuarioPage}  options={{headerShown: false}}/>
       <Drawer.Screen name="editarProducto" component={EditarProductoPage}  options={{headerShown: false}}/>
       <Drawer.Screen name="altaProducto" component={AltaProductoPage}  options={{headerShown: true}}/>
+      <Drawer.Screen name="AltaUsuario" component={altaUsuarioPage} options={{ headerShown: false }} />
+      
+      {/* Login*/} 
+      <Drawer.Screen name="login" component={log} options={{ headerShown: false }} />
 
+
+     
     </Drawer.Navigator>
   );
 }
@@ -114,58 +124,79 @@ const MenuItems = ({ navigation }) => {
         currentScreen={currentScreen}
         onPress={() => {
           navigation.navigate('listadoProductos');
-          setScreen("Productos")
-        }}
-      />
-        <MenuButtonItem 
-          text= "Inventario" 
-          currentScreen = {currentScreen}
-          onPress = {() => {
-            navigation.navigate('Inventario'); 
-            setScreen("Inventario")
+          setScreen("Productos");
+        } } />
+      <MenuButtonItem
+        text="Inventario"
+        currentScreen={currentScreen}
+        onPress={() => {
+          navigation.navigate('Inventario');
+          setScreen("Inventario");
+        } } />
+      <MenuButtonItem
+        text="Ver entradas"
+        currentScreen={currentScreen}
+        onPress={() => {
+          navigation.navigate('Entradas');
+          setScreen("Ver entradas");
+        } } />
+      <MenuButtonItem
+        text="Registrar Entrada"
+        currentScreen={currentScreen}
+        onPress={() => {
+          navigation.navigate('CrearEntrada');
+          setScreen("Registrar Entrada");
+        } } />
+      <MenuButtonItem
+        text="Ver Salidas"
+        currentScreen={currentScreen}
+        onPress={() => {
+          navigation.navigate('Salidas');
+          setScreen("Ver Salidas");
+        } } />
+      <MenuButtonItem
+        text="Registrar Salida"
+        currentScreen={currentScreen}
+        onPress={() => {
+          navigation.navigate('CrearSalida');
+          setScreen("Registrar Salida");
+        } } />
+      <MenuButtonItem
+        text="Cambiar almacén"
+        currentScreen={currentScreen}
+        onPress={() => {
+          navigation.navigate('DecidirInventario');
+          setScreen("Cambiar almacén");
+        } } />
+
+
+    </DrawerContentScrollView><View style={{ backgroundColor:"#F5E1B9"}}>
+        <TouchableOpacity
+          onPress={() => {
+            console.log('Button pressed!');
+          } }
+          style={{
+            backgroundColor: '#fff',
+            borderRadius: 50,
+            borderWidth: 1,
+            borderColor: '#ccc',
+            padding: 10,
+            flexDirection: 'row',
+            flex: 0,
+            width: 120,
+            bottom: 20,
+            left:10,
+            zIndex: 100,
+            backgroundColor: '#F5E1B9',
+            borderColor:"black",
           }}
-        />
-        <MenuButtonItem 
-          text= "Ver entradas" 
-          currentScreen = {currentScreen}
-          onPress = {() => {
-            navigation.navigate('Entradas'); 
-            setScreen("Ver entradas")
-          }}
-        />
-        <MenuButtonItem 
-          text= "Registrar Entrada" 
-          currentScreen = {currentScreen}
-          onPress = {() => {
-            navigation.navigate('CrearEntrada'); 
-            setScreen("Registrar Entrada")
-          }}
-        />
-        <MenuButtonItem 
-          text= "Ver Salidas" 
-          currentScreen = {currentScreen}
-          onPress = {() => {
-            navigation.navigate('Salidas'); 
-            setScreen("Ver Salidas")
-          }}
-        /> 
-        <MenuButtonItem 
-          text= "Registrar Salida" 
-          currentScreen = {currentScreen}
-          onPress = {() => {
-            navigation.navigate('CrearSalida'); 
-            setScreen("Registrar Salida")
-          }}
-        /> 
-        <MenuButtonItem 
-          text= "Cambiar almacén" 
-          currentScreen = {currentScreen}
-          onPress = {() => {
-            navigation.navigate('DecidirInventario'); 
-            setScreen("Cambiar almacén")
-          }}
-        /> 
-      </DrawerContentScrollView> 
+        >
+          <AntDesign name="logout" size={24} color="black" style={{ paddingRight: "5%" }} />
+          <Text style={{ fontSize: 20, color: '#8F8B36' }}>Log Out</Text>
+        </TouchableOpacity>
+      </View></>
+    
+    
   );
 }
 
@@ -194,4 +225,5 @@ const styles = StyleSheet.create({
     marginTop: 15,
     marginLeft: 20,
   },
+ 
 })

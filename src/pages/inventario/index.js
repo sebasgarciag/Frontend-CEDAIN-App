@@ -11,6 +11,7 @@ import { EntradaNueva, SalidaNueva } from '../../components/UI/uiButtons';
 
 
 
+
 const Inventario2 = () => {
   const navigation = useNavigation();
   const products = Array.from({ length: 20 }, (_, index) => ({
