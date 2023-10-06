@@ -1,8 +1,8 @@
 import EditProductScreen from "../src/pages/editarInventario/index";
 
-const editProductScreen = () => {
+const editProductScreen = ({object}) => {
     return (
-        <EditProductScreen />
+        <EditProductScreen  object = {object}/>
     );
 };
 

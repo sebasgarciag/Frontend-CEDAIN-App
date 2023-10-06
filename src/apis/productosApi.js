@@ -1,6 +1,5 @@
 import axios from 'axios';
-import ip from './infoIP';
-
+import ip from './ipApi';
 const baseUrl = `http://${ip}:8080`;
 
 const ProductosAPI = () => {
