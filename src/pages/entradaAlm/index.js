@@ -41,11 +41,7 @@ const EntradaAlm = ( {entrada} ) => {
                 </ScrollView>
                 {/* <ProductosEntrada datos={datosEntrada}/> */}
 
-                {/* <ShareExcelButton 
-                endpoint="http://192.168.1.211:8080/entradas/export"
-                entryId={entrada.idEntrada} 
-                buttonText="Descargar Entrada"
-                /> */}
+                <ShareExcelButton entryId={entrada.id_entrada} buttonText="Descargar Entrada" />
 
                 {/*Boton de volver atras */}
                 <Stack style={styles.volverContainer}>
