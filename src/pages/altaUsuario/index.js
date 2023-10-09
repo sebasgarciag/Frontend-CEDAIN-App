@@ -20,8 +20,8 @@ const AltaUsuarioPage = () => {
   ];
 
   const Almacenes = [
-    { label: "Almacén 1", value: "Almacén 1" },
-    { label: "Almacén 2", value: "Almacén 2" },
+    { label: "Creel", value: "Creel" },
+    { label: "Chihuahua", value: "Chihuahua" },
   ];
   
 
@@ -107,12 +107,14 @@ const AltaUsuarioPage = () => {
           inputSearchStyle={styles.inputSearchStyle}
           iconStyle={styles.iconStyle}
           data={roles}
-          
+          onChange={(value) => {
+            setTipo(value);
+          }}
           maxHeight={300}
           labelField="label"
           valueField="value"
           placeholder="Seleccione Rol"
-          //value={tipo}
+          value={tipo}
           
           renderLeftIcon={() => (
             <AntDesign
@@ -122,24 +124,24 @@ const AltaUsuarioPage = () => {
               size={20}
             />
           )}
-          renderItem={renderItem}
+          
         />
 
         <Text marginTop={10}>Almacén</Text>
         <Dropdown
           style={styles.dropdownRol}
           placeholderStyle={styles.placeholderStyle}
-          
           inputSearchStyle={styles.inputSearchStyle}
           iconStyle={styles.iconStyle}
           data={Almacenes}
-          
+          onChange={(value) => {
+            setAlmacen(value);
+          }}
           maxHeight={300}
           labelField="label"
           valueField="value"
           placeholder="Seleccione Almacén"
-          //value={almacen}
-          
+          value={almacen} // Set the value prop to your state variable
           renderLeftIcon={() => (
             <AntDesign
               style={styles.icon}
@@ -148,13 +150,15 @@ const AltaUsuarioPage = () => {
               size={20}
             />
           )}
-          renderItem={renderItem}
-          />
+        />
+
+          
+          
         <Flex direction="row" justify="around" marginTop={40}>
           
 
-          <TouchableOpacity style={[buttonStyles.button, { backgroundColor: '#59CD90', width: 250, justifyContent: 'center', alignItems: 'center', borderRadius: 50 }]}>
-            <Text style={{ fontSize: 25 }}>Crear Usuario</Text>
+          <TouchableOpacity style={[buttonStyles.button, {backgroundColor: '#59CD90', width: 250, justifyContent: 'center', alignItems: 'center', borderRadius: 50 }]}>
+            <Text style={{ fontSize: 25,color:"white" }}>Crear Usuario</Text>
           </TouchableOpacity>
 
         </Flex>

@@ -30,15 +30,22 @@ export const useAltaUsuario = () => {
     }
 
     // Encripta la contraseña antes de enviarla
-    const encryptedPassword = SHA256(password).toString();
+    setPassword(SHA256(password).toString());
+
+    
+    if(almacen === "Creel"){
+      setAlmacen(3);
+    } else if (almacen === "Chihuahua") {
+      setAlmacen(1);
+    }
 
    
-    UsuariosAPI().register(nombre, apellidoPaterno, apellidoMaterno, tipo, almacen, correo, encryptedPassword)
+    UsuariosAPI().register(nombre, apellidoPaterno, apellidoMaterno, tipo, almacen, correo, password)
       .then(function (data) {
         // El registro es exitoso
         console.log("Registrado");
         console.log(data);
-        navigation.navigate('login');
+        Alert.alert("Éxito", "Registro exitoso");
       })
       .catch(function (error) {
         // El registro falla

@@ -37,7 +37,7 @@ import ListadoUsuariosRef from '../../../app/listadoUsuarios';
 // import listadoProductos from '../../../app/listadoProductos';
 import altaUsuarioPage from '../../../app/altaUsuario';
 import log from '../../../app/logInn';
-import AltaProductoPage from '../../../app/altaProducto';
+
 
 
 import ListadoProductosRef from '../../../app/listadoProductos';
@@ -96,7 +96,7 @@ function Menulateral() {
       <Drawer.Screen name="AltaUsuario" component={altaUsuarioPage}  />
       
       {/* Login*/} 
-      <Drawer.Screen name="login" component={log} options={{ headerShown: false }} />
+      <Drawer.Screen name="log" component={log} options={{ headerShown: false }} />
 
 
 

@@ -42,7 +42,7 @@ const SignUpPage = () => {
             </TouchableOpacity>
 
             {/* <VolverButton onPress={() => { router.replace("/botonesChernobyl"); }} /> */}
-            <VolverButton ruta="/botonesChernobyl" />
+            <VolverButton ruta="log" />
 
         </ScrollView>
     )

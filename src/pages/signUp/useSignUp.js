@@ -33,7 +33,7 @@ export const useSignUp= () => {
                 // El registro es exitoso
                 console.log("Registrado");
                 console.log(data);
-                navigation.navigate('Inventario');
+                navigation.navigate('log');
             })
             .catch(function (error) {
                 // El registro falla
