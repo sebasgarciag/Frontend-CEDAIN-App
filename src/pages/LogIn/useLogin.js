@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import SHA256 from 'crypto-js/sha256';
+
 import UsuariosAPI from '../../apis/usuariosApi';
 import { useNavigation } from '@react-navigation/native';
 
@@ -7,6 +7,7 @@ const useLogin = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [borderColor, setBorderColor] = useState('normal');
+    const secretKey = "CEDAIN"
 
     const navigation = useNavigation();
 
@@ -27,7 +28,7 @@ const useLogin = () => {
         }
 
         // Encripta la contraseña antes de enviarla
-        const encryptedPassword = SHA256(password).toString();
+        const encryptedPassword = 1;
 
         // Llama al servicio de inicio de sesión
         UsuariosAPI().login(email, encryptedPassword)

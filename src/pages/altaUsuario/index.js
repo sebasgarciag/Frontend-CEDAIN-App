@@ -157,7 +157,7 @@ const AltaUsuarioPage = () => {
         <Flex direction="row" justify="around" marginTop={40}>
           
 
-          <TouchableOpacity style={[buttonStyles.button, {backgroundColor: '#59CD90', width: 250, justifyContent: 'center', alignItems: 'center', borderRadius: 50 }]}>
+          <TouchableOpacity onPress={handleRegister} style={[buttonStyles.button, {backgroundColor: '#59CD90', width: 250, justifyContent: 'center', alignItems: 'center', borderRadius: 50 }]} >
             <Text style={{ fontSize: 25,color:"white" }}>Crear Usuario</Text>
           </TouchableOpacity>
 

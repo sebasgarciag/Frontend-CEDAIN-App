@@ -37,7 +37,7 @@ const UsuariosAPI = () => {
 
     async function register(nombre, apellido_paterno, apellido_materno, tipo, id_almacen, correo, password) {
         let response = null;
-
+        console.log(nombre, apellido_paterno, apellido_materno, tipo, id_almacen, correo, password);
         try {
             response = await axios.post(`${baseUrl}/usuarios/newUsuario`, {
                 nombre,
@@ -60,6 +60,7 @@ const UsuariosAPI = () => {
 
         return response;
     }
+
 
 
     async function updateUsuario(usuario, id_usuario) {
