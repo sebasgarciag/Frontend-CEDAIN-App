@@ -4,14 +4,22 @@ import { ArrowButton } from '../../components/inventario/buttons';
 import styles from '../../assets/buttons/styles';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { router } from 'expo-router';
+import { useRoute } from '@react-navigation/native'; 
+import { useNavigation } from '@react-navigation/native';
 
 
-const EditProductScreen = () => {
+const EditProductScreen = ({object}) => {
+
+  const route = useRoute();
+  const inventario = route.params.object;
+  const navigation = useNavigation()
   const [name, setName] = useState('');
-  const [quantity, setQuantity] = useState('1');
+  const [quantity, setQuantity] = useState(inventario.cantidad.toString());
+
+  
 
   const handleSave = () => {
-    alert('Cambios guardados (no implementado)');
+    alert('Cambio guardado');
   };
 
   const incrementQuantity = () => {
@@ -29,17 +37,24 @@ const EditProductScreen = () => {
     <View style={[styles.container, { padding: 20, backgroundColor: '#F1EFE3' }]}>
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 30 }}>
         <Text style={{ fontSize: 26 }}>Editar Producto</Text>
-        <ArrowButton onPress={() => router.replace("/inventario")} />
+        <ArrowButton navigation={navigation} path={"Inventario"} />
       </View>
 
       <View style={{ marginBottom: 30 }}>
-    <Text style={{ fontSize: 26, fontWeight: 'bold' }}>Nombre del producto:</Text>
-    <Text style={{ fontSize: 24, fontWeight: 'bold', marginTop: 15, backgroundColor: '#fff', padding: 10, borderRadius: 10 }}>{name}</Text>
-</View>
-
-
+        <Text style={{ fontSize: 26, fontWeight: 'bold' }}>Nombre del producto:</Text>
+        <Text style={{ fontSize: 24,  marginTop: 15, backgroundColor: '#fff', padding: 10, borderRadius: 10 }}>{inventario.producto.nombre}</Text>
+        <Text style={{ fontSize: 26, fontWeight: 'bold' }}>Tamaño:</Text>
+        <Text style={{ fontSize: 24,  marginTop: 15, backgroundColor: '#fff', padding: 10, borderRadius: 10 }}>{inventario.producto.Tamanio.descripcion}</Text>
+        <Text style={{ fontSize: 26, fontWeight: 'bold' }}>Medida:</Text>
+        <Text style={{ fontSize: 24,  marginTop: 15, backgroundColor: '#fff', padding: 10, borderRadius: 10 }}>{inventario.producto.medida}</Text>
+        <Text style={{ fontSize: 26, fontWeight: 'bold' }}>Precio de Venta:</Text>
+        <Text style={{ fontSize: 24,  marginTop: 15, backgroundColor: '#fff', padding: 10, borderRadius: 10 }}>{inventario.producto.precio_venta}</Text>
+        <Text style={{ fontSize: 26, fontWeight: 'bold' }}>Precio de Trueque:</Text>
+        <Text style={{ fontSize: 24,  marginTop: 15, backgroundColor: '#fff', padding: 10, borderRadius: 10 }}>{inventario.producto.precio_trueque}</Text>
+        <Text style={{ fontSize: 26, fontWeight: 'bold' }}>Nombre Corto:</Text>
+        <Text style={{ fontSize: 24,  marginTop: 15, backgroundColor: '#fff', padding: 10, borderRadius: 10 }}>{inventario.producto.nombre_corto}</Text>
+      </View>
       
-
       <View style={{ marginBottom: 30 }}>
         <Text style={{ fontSize: 20, marginBottom: 10 }}>Cantidad:</Text>
         <View style={{ flexDirection: 'row', alignItems: 'center', backgroundColor: '#fff', borderRadius: 10, padding: 10, shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.23, shadowRadius: 2.62, elevation: 4 }}>

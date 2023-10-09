@@ -2,24 +2,24 @@ import { useState } from "react";
 import { useEffect } from "react";
 import ProductoCarrito from "../../components/entradasSalidas/productoCarrito";
 
-const useCarrito = () => {
-    const [carrito, setCarrito] = useState([]);
-    const [carrito2, setCarrito2] = useState([]);
-    const [salida, setSalida] = useState();
+const useCarritoEntradas = () => {
+    const [carritoEntradas, setCarritoEntradas] = useState([]);
+    const [carrito2Entradas, setCarrito2Entradas] = useState([]);
+    const [entrada, setEntrada] = useState();
   
     const aumentarCantidad = (producto) => {
-        const carritoActualizado = carrito2.map((item) => {
+        const carritoActualizado = carrito2Entradas.map((item) => {
             if (item.id_producto === producto.id_producto) {
               return { ...item, detallesSalida: {...producto.detallesSalida, cantidad: producto.detallesSalida.cantidad + 1 }};
             } else {
               return item;
             }
           });
-      setCarrito2(carritoActualizado);
+      setCarrito2Entradas(carritoActualizado);
     };
   
     const disminuirCantidad = (producto) => {
-      const carritoActualizado = carrito2.map((item) => {
+      const carritoActualizado = carrito2Entradas.map((item) => {
         if (item.id_producto === producto.id_producto && item.detallesSalida.cantidad > 0) {
             return { ...item, detallesSalida: {...producto.detallesSalida, cantidad: producto.detallesSalida.cantidad - 1 }};
           } else {
@@ -27,11 +27,11 @@ const useCarrito = () => {
           }
     });
 
-      setCarrito2(carritoActualizado);
+      setCarrito2Entradas(carritoActualizado);
     };
   
     function handleCantidad(producto, newCantidad) {
-        const newCarrito = carrito2.map((item) => {
+        const newCarrito = carrito2Entradas.map((item) => {
             if (item.id_producto === producto.id_producto) {
                 if (isNaN(parseInt(newCantidad))) {
                   return {...item, detallesSalida: {...producto.detallesSalida, cantidad: 0}}
@@ -41,24 +41,24 @@ const useCarrito = () => {
                 return item;
             }
         });
-        setCarrito2(newCarrito);
+        setCarrito2Entradas(newCarrito);
     }
 
     const handleCarrito = (producto) => {
       // Verifica si el producto ya está en el carrito
-      const productoExistenteIndex = carrito.findIndex(
+      const productoExistenteIndex = carritoEntradas.findIndex(
         (item) => item.id_producto === producto.producto.id_producto
       );
     
       if (productoExistenteIndex !== -1) {
         // Si el producto ya existe en el carrito, elimínalo
-        const carritoActualizado = [...carrito];
+        const carritoActualizado = [...carritoEntradas];
         carritoActualizado.splice(productoExistenteIndex, 1);
-        setCarrito(carritoActualizado);
+        setCarritoEntradas(carritoActualizado);
       } else {
         // Si el producto no existe en el carrito, agrégalo
         const carritoActualizado = [
-          ...carrito,
+          ...carritoEntradas,
           {
             ...producto.producto,
             detallesSalida: {
@@ -68,20 +68,13 @@ const useCarrito = () => {
             },
           },
         ];
-        setCarrito(carritoActualizado);
+        setCarritoEntradas(carritoActualizado);
       }
     };
 
     
-      return { carrito, carrito2, handleCantidad, aumentarCantidad, disminuirCantidad, handleCarrito, setCarrito2, salida, setSalida };
+      return { carritoEntradas, carrito2Entradas, handleCantidad, aumentarCantidad, disminuirCantidad, handleCarrito, setCarrito2Entradas, entrada, setEntrada};
 
   };
   
-  export default useCarrito;
-
-
-
-
-
-
-
+  export default useCarritoEntradas;

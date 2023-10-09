@@ -18,7 +18,7 @@ const ListadoUsuarios = () => {
         <>
           <Stack style={styles.container}>
             <View style={styles.headerContainer} >
-              <Text style={[styles.headerText, {marginLeft: "50%"]}>Usuarios</Text>
+              <Text style={[styles.headerText, {marginLeft: "50%"}]}>Usuarios</Text>
               <ProfileButton style={{ position: 'absolute', right: 10,  }} onPress={() => { alert('Perfil presionado'); }} />
               {/* <ImportInventoryButton style={styles.importInventoryButton} onPress={() => { alert('Importar Inventario presionado'); }} /> */}
             </View>

@@ -6,13 +6,14 @@ import { HStack } from "@react-native-material/core";
 import buttonStyles from "../../assets/buttons/styles";
 import styles from "../../assets/styles";
 import { useNavigation } from '@react-navigation/native';
-import { VolverButtonN, SiguienteButtonN } from "../../components/UI/uiButtons";
+import { VolverButtonN, SiguienteButtonNObject } from "../../components/UI/uiButtons";
 import useCurrentScreen from "../../components/UI/useCurrentScreen";
+import useCarrito from "../carrito/hookProductoCarrito";
 
 const SeleccionProductos = () => { 
     const navigation = useNavigation();
-    const { productos, categorias } = useSeleccion();
-    const {currentScreen,setScreen} = useCurrentScreen()
+    const { productos, categorias, salida } = useSeleccion();
+    const {carrito, handleCarrito } = useCarrito();
 
     return (
         <View style={styles.container}>
@@ -21,10 +22,10 @@ const SeleccionProductos = () => {
                 <Text style={styles.headerText}>Seleccionar Productos</Text>
             </HStack>
 
-            <ListaProductos productos={productos} categorias={categorias} />
+            <ListaProductos productos={productos} categorias={categorias} carrito={carrito} handleCarrito={handleCarrito}/>
             <View style={ buttonStyles.containerNavegacion }>
-                <VolverButtonN navigation={navigation} path={"Salidas"} setScreen={setScreen} screen={""}/>
-                <SiguienteButtonN navigation={navigation} path={"Carrito"} setScreen={setScreen} screen={"Carrito"}/>
+                <VolverButtonN navigation={navigation} path={"Salidas"}/>
+                <SiguienteButtonNObject navigation={navigation} path={"Carrito"} object={{carrito, salida}}/>
             </View>
         </View>
     );

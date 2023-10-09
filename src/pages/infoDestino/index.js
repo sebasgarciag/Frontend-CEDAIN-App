@@ -8,13 +8,19 @@ import { View, Text } from "react-native";
 import buttonStyles from "../../assets/buttons/styles";
 import styles from "../../assets/styles";
 import { VolverButtonN } from "../../components/UI/uiButtons";
-import { SiguienteButtonN } from "../../components/UI/uiButtons";
+import { SiguienteButtonNObject } from "../../components/UI/uiButtons";
 import { useNavigation } from '@react-navigation/native';
+import { useEffect } from "react";
 
-const Paginfo = () => { 
+const Paginfo = ( {objeto} ) => { 
     const { comunidades, eventos, comunidad, evento, 
-        setComunidad, setEvento, comentarios, setComentarios, 
-        receptor, setReceptor } = useInfoDestinoEvento();
+        setComunidad, setEvento, observaciones, setObservaciones, 
+        receptor, setReceptor, setSalida, carrito, setCarrito, salida } = useInfoDestinoEvento();
+
+    useEffect (() => {
+        setSalida(objeto.salida);
+        setCarrito(objeto.carrito2);
+    }, [objeto]);
 
     const navigation = useNavigation();
     
@@ -31,7 +37,7 @@ const Paginfo = () => {
 
 
                 <Dropdowns
-                    setValueEvento={setComunidad} 
+                    setValueEvento={setComunidad}
                     dataDropDownEvento={comunidades}
                     valueEvento={comunidad}
                     Titulo={"Comunidad"}/>
@@ -46,10 +52,10 @@ const Paginfo = () => {
                 
                 
                 <Textbox
-                    text={comentarios} 
-                    setText={setComentarios}
-                    placeholder={'Comentarios'}
-                    title={'Comentarios'}
+                    text={observaciones} 
+                    setText={setObservaciones}
+                    placeholder={'Observaciones'}
+                    title={'Observaciones'}
                 />
 
                 <Spacer/>
@@ -66,10 +72,8 @@ const Paginfo = () => {
             </ScrollView> 
             <View style={ buttonStyles.containerNavegacion }>
                     <VolverButtonN navigation={navigation} path={"Carrito"} />
-                    <SiguienteButtonN navigation={navigation} path={"ResumenSalida"} />
+                    <SiguienteButtonNObject navigation={navigation} path={"ResumenSalida"} object={{ carrito, salida }} />
             </View>
-    
-
         
         </View>
 

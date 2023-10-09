@@ -1,8 +1,8 @@
 import ArticulosCarrito from "../src/pages/carrito";
 
-const Carrito = () => {
+const Carrito = ({route}) => {
     return (
-        <ArticulosCarrito />
+        <ArticulosCarrito objeto={route.params.object}/>
     );
 };
 

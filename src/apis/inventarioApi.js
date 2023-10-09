@@ -1,5 +1,5 @@
 import axios from 'axios';
-import ip from './infoIP';
+import ip from './ipApi';
 
 const baseURL = `http://${ip}:8080`;
 
@@ -8,8 +8,7 @@ const inventarioApi = () => {
     async function getAllInventario(idAlmacen) {
         let response = null;
         try {
-            response = await axios.get(`${baseURL}/inventario/${idAlmacen}`);
-            // console.log('response', response.data);
+            response = await axios.get(`${baseURL}/inventario?idAlmacen=${idAlmacen}`);
         } catch (error) {
             console.error('error' + error);
         }

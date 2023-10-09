@@ -10,7 +10,7 @@ const Textbox = ({ text, setText, placeholder }) => {
 			numberOfLines={4}
 			placeholder={placeholder}
 			value={text}
-			onChangeText={(t) => setText(t)}
+			onChangeText={(text) => setText(text)}
 		/>
 		</View>
 	);
