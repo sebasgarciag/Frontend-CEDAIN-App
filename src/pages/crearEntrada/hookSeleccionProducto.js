@@ -14,8 +14,8 @@ const useSeleccion = () => {
         id_comunidad: 0,
         id_evento: 0,
         Comunidad: {
-            id_comunidad: 0,
-            nombre: ''
+            id_comunidad: 1,
+            nombre: 'si'
         },
         Evento: {
             id_evento: 0,
@@ -38,7 +38,6 @@ const useSeleccion = () => {
     const [categorias, setCategorias] = useState([]);
 
     async function getCategorias() {
-        console.log('hola')
         const categoriasApi = await getAllCategorias();
         setCategorias(categoriasApi);
     };

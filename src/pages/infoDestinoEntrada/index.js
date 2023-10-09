@@ -8,17 +8,22 @@ import { View, Text } from "react-native";
 import buttonStyles from "../../assets/buttons/styles";
 import styles from "../../assets/styles";
 import { VolverButtonN } from "../../components/UI/uiButtons";
-import { SiguienteButtonN } from "../../components/UI/uiButtons";
+import { SiguienteButtonNObject } from "../../components/UI/uiButtons";
 import { useNavigation } from '@react-navigation/native';
+import { useEffect } from "react";
 
-const Paginfo = (entrada) => { 
+const Paginfo = ( {objeto} ) => { 
     const { comunidades, eventos, comunidad, evento, 
         setComunidad, setEvento, observaciones, setObservaciones, 
-        emisor, setEmisor, setEntrada } = useInfoDestinoEvento();
+        emisor, setEmisor, setEntrada, entrada, carrito, setCarrito } = useInfoDestinoEvento();
 
     const navigation = useNavigation();
 
-    // setEntrada(entrada);
+    useEffect (() => {
+        setCarrito(objeto.carrito2Entradas);
+        setEntrada(objeto.entrada);
+    }, [objeto]);
+
     return ( 
     
         <View style={styles.container}>
@@ -67,7 +72,7 @@ const Paginfo = (entrada) => {
             </ScrollView> 
             <View style={ buttonStyles.containerNavegacion }>
                 <VolverButtonN navigation={navigation} path={"CarritoEntrada"} />
-                <SiguienteButtonN navigation={navigation} path={"ResumenEntrada"} />
+                <SiguienteButtonNObject navigation={navigation} path={"ResumenEntrada"} object={{carrito, entrada}} />
             </View>
     
 

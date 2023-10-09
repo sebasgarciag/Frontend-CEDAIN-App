@@ -1,14 +1,13 @@
 import React from 'react';
 import { TouchableOpacity, Text, Alert, StyleSheet, View } from 'react-native';
-import axios from 'axios';
+import { exportCombined } from '../../apis/exportarApi';
 import * as FileSystem from 'expo-file-system';
 import * as Sharing from 'expo-sharing';
 import base64 from 'base-64';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-function ShareExcelButton({ endpoint, entryId, buttonText = "Exportar Excel" }) {
+function ShareExcelButton({ entryId, buttonText = "Exportar Excel" }) {
     
-    // Función para convertir un ArrayBuffer en una cadena base64
     function arrayBufferToBase64(buffer) {
         let binary = '';
         const bytes = new Uint8Array(buffer);
@@ -20,30 +19,26 @@ function ShareExcelButton({ endpoint, entryId, buttonText = "Exportar Excel" }) 
     }
 
     const downloadAndShare = async () => {
-        const url = entryId ? `${endpoint}/${entryId}` : endpoint;
-
         try {
-            // 1. Descargar el archivo Excel desde el servidor
-            const { data } = await axios.get(url, { responseType: 'arraybuffer' });
+            const data = await exportCombined(entryId);
 
-            // 2. Convertir los datos descargados a una cadena base64
+            if (!data) {
+                throw new Error("No se recibieron datos del servidor.");
+            }
+
             const base64Data = arrayBufferToBase64(data);
-
-            // 3. Guardar el archivo en el sistema de archivos local de la aplicación
-            const filename = entryId ? `Entrada_${entryId}.xlsx` : 'Entradas.xlsx';
+            const filename = `Entrada_${entryId}.xlsx`;
             const uri = FileSystem.documentDirectory + filename;
             await FileSystem.writeAsStringAsync(uri, base64Data, {
                 encoding: FileSystem.EncodingType.Base64,
             });
 
-            // 4. Compartir el archivo utilizando Expo Sharing
             if (!(await Sharing.isAvailableAsync())) {
-                // Verificar si la compartición está disponible en la plataforma
-                Alert.alert('Error', 'Sharing is not available on this platform');
+                Alert.alert('Error', 'La compartición no está disponible en esta plataforma.');
                 return;
             }
 
-            await Sharing.shareAsync(uri); // Compartir el archivo
+            await Sharing.shareAsync(uri);
         } catch (error) {
             console.error("Error al descargar o compartir el archivo:", error);
             Alert.alert('Error', 'Error al descargar o compartir el archivo.');
@@ -73,21 +68,13 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         width: '37%',
         padding: 10,
-        backgroundColor: "#4CAF50", // Verde
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
-        elevation: 5,
+        backgroundColor: "#4CAF50",
     },
     buttonText: {
         color: "white",
         fontWeight: "bold",
         fontSize: 16,
-        marginRight: 10, // Espaciado entre el texto y el icono
+        marginRight: 10,
     }
 });
 

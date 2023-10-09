@@ -8,9 +8,6 @@ import { useState } from "react";
 
 function ListaProductos({ productos, categorias, carrito, handleCarrito }) { 
 
-    console.log('productos', productos);
-    console.log('categorias', categorias);
-
     const [productosSeleccionados, setProductosSeleccionados] = useState([]);
 
     const toggleProductoSeleccionado = (producto) => {
