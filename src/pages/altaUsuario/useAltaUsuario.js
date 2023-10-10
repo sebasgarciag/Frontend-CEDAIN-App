@@ -1,24 +1,29 @@
 import { useState } from "react";
 import UsuariosAPI from "../../apis/usuariosApi";
+import CryptoES from 'crypto-es';
+import { Alert } from "react-native";
 
 
-const useAltaUsuario = () => {
+
+export const useAltaUsuario = () => {
 
   const [nombre, setNombre] = useState();
   const [apellidoPaterno, setApellidoPaterno] = useState();
   const [apellidoMaterno, setApellidoMaterno] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState("Password123");
-  const [tipo, setTipo] = useState("");
+  const [tipo, setTipo] = useState();
   const [almacen, setAlmacen] = useState();
+  const secretKey="CEDAIN"
 
+  
 
   const validateEmail = (email) => {
     const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return regex.test(email);
   }
 
-  const handleRegister = () => {
+  const handleRegister = async () => {
     if (!email || !nombre || !apellidoPaterno || !apellidoMaterno || !tipo || !almacen) {
       Alert.alert("Error", "Por favor, ingresa todos los datos");
       return;
@@ -30,25 +35,31 @@ const useAltaUsuario = () => {
     }
 
     // Encripta la contraseña antes de enviarla
-    const encryptedPassword = SHA256(password).toString();
+    let encryptedPassword = CryptoES.AES.encrypt(password, secretKey).toString();
 
-   
-    UsuariosAPI().register(nombre, apellidoPaterno, apellidoMaterno, tipo, almacen, correo, encryptedPassword)
-      .then(function (data) {
-        // El registro es exitoso
-        console.log("Registrado");
-        console.log(data);
-        navigation.navigate('login');
-      })
-      .catch(function (error) {
-        // El registro falla
-        console.error(error);
-        if (error.message === 'Network Error') {
-          console.log("No se pudo conectar a la base de datos");
-        } else if (error.response.status === 401) {
-          Alert.alert("Error", "Registro fallido");
-        }
-      });
+    
+    let almacenId;
+    if (almacen.value === "Creel") {
+      almacenId = 3;
+    } else if (almacen.value === "Chihuahua") {
+      almacenId = 1;
+    }
+
+    console.log(almacen)
+
+    try {
+      let response = await UsuariosAPI().register(nombre, apellidoPaterno, apellidoMaterno, tipo.value, almacenId, email, encryptedPassword);
+      console.log("Registrado");
+      console.log(nombre, apellidoPaterno, apellidoMaterno, tipo.value, almacenId, email, encryptedPassword);
+      Alert.alert("Éxito", "Registro exitoso");
+    } catch (error) {
+      console.error(error);
+      if (error.message === 'Network Error') {
+        console.log("No se pudo conectar a la base de datos");
+      } else if (error.response.status === 401) {
+        Alert.alert("Error", "Registro fallido");
+      }
+    }
   }
 
   return {

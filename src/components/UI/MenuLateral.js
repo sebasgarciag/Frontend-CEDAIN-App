@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { View, TouchableOpacity, Text } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
-import { DrawerContentScrollView, createDrawerNavigator} from '@react-navigation/drawer';
+import { DrawerContentScrollView, createDrawerNavigator } from '@react-navigation/drawer';
 import CrearSalida from '../../../app/crearSalida';
 import Carrito from '../../../app/carrito';
 import InfoDestino from '../../../app/infoDestino';
@@ -39,6 +39,7 @@ import altaUsuarioPage from '../../../app/altaUsuario';
 import log from '../../../app/logInn';
 
 
+
 import ListadoProductosRef from '../../../app/listadoProductos';
 
 const Drawer = createDrawerNavigator();
@@ -54,7 +55,7 @@ function Menulateral() {
       },
       headerTitle: '',
     }}
-    drawerContent = { (props) => <MenuItems {...props} /> } >
+      drawerContent={(props) => <MenuItems {...props} />} >
       <Drawer.Screen name="Inventario" component={InventarioHome} options={{ headerTransparent: true }} />
       <Drawer.Screen name="InventarioAlmace" component = {InventarioAlm}options={{ headerTransparent: true }} />
        {/* Pantallas que si tendrán botón en el menú */}
@@ -62,23 +63,23 @@ function Menulateral() {
       <Drawer.Screen name="Eq2" component={Eq2} options={{ }} />
       <Drawer.Screen name="Adise" component={Adise} options={{ }} />
       <Drawer.Screen name="Salidas" component={ListadoSalidasAlmacenista} options={{ headerTransparent: true }} />
-      {/* Pantallas adicionales de Salidas */} 
+      {/* Pantallas adicionales de Salidas */}
       <Drawer.Screen name="CrearSalida" component={CrearSalida} options={{ headerShown: false }} />
-      <Drawer.Screen name="Carrito" component={Carrito} options={{headerShown: false}}/>
-      <Drawer.Screen name="InfoDestinoN" component={InfoDestino} options={{headerShown: false}}/>
-      <Drawer.Screen name="ResumenSalida" component={ResumenSalida}  options={{headerShown: false}}/>
-      <Drawer.Screen name="SalidaAlm" component={SalidaAlma}  options={{headerShown: false}}/>
+      <Drawer.Screen name="Carrito" component={Carrito} options={{ headerShown: false }} />
+      <Drawer.Screen name="InfoDestinoN" component={InfoDestino} options={{ headerShown: false }} />
+      <Drawer.Screen name="ResumenSalida" component={ResumenSalida} options={{ headerShown: false }} />
+      <Drawer.Screen name="SalidaAlm" component={SalidaAlma} options={{ headerShown: false }} />
       <Drawer.Screen name="SalidasAdmin" component={ListadoSalidasAdministrador} options={{ headerTransparent: true }} />
-      <Drawer.Screen name="SalidaAdmin" component={SalidaAdministrador}  options={{headerShown: false}}/>
+      <Drawer.Screen name="SalidaAdmin" component={SalidaAdministrador} options={{ headerShown: false }} />
       {/* Pantallas de Entradas */}
       <Drawer.Screen name="Entradas" component={ListadoEntradasAlmacenista} options={{ headerTransparent: true }} />
       <Drawer.Screen name="EntradasAdmin" component={ListadoEntradasAdministrador} options={{ headerTransparent: true }} />
       <Drawer.Screen name="CrearEntrada" component={CrearEntrada} options={{ headerShown: false }} />
-      <Drawer.Screen name="CarritoEntrada" component={CarritoEntrada} options={{headerShown: false}}/>
-      <Drawer.Screen name="InfoDestinoE" component={InfoDestinoEntrada} options={{headerShown: false}}/>
-      <Drawer.Screen name="ResumenEntrada" component={ResumenEntrada}  options={{headerShown: false}}/>
-      <Drawer.Screen name="EntradaAlm" component={EntradaAlma}  options={{headerShown: false}}/>
-      <Drawer.Screen name="EntradaAdmin" component={EntradaAdministrador}  options={{headerShown: false}}/>
+      <Drawer.Screen name="CarritoEntrada" component={CarritoEntrada} options={{ headerShown: false }} />
+      <Drawer.Screen name="InfoDestinoE" component={InfoDestinoEntrada} options={{ headerShown: false }} />
+      <Drawer.Screen name="ResumenEntrada" component={ResumenEntrada} options={{ headerShown: false }} />
+      <Drawer.Screen name="EntradaAlm" component={EntradaAlma} options={{ headerShown: false }} />
+      <Drawer.Screen name="EntradaAdmin" component={EntradaAdministrador} options={{ headerShown: false }} />
       {/* Inventario */}
       <Drawer.Screen name="DecidirInventario" component={DecidirInventario} options={{ headerTransparent: true }} />
       <Drawer.Screen name="EditarProducto" component={EditarProductoPage} options={{ headerTransparent: true, headerShown: false }} />
@@ -95,17 +96,17 @@ function Menulateral() {
       <Drawer.Screen name="AltaUsuario" component={altaUsuarioPage}  />
       
       {/* Login*/} 
-      <Drawer.Screen name="login" component={log} options={{ headerShown: false }} />
+      <Drawer.Screen name="log" component={log} options={{ headerShown: false }} />
 
 
-     
+
     </Drawer.Navigator>
   );
 }
 export default Menulateral
 
 const MenuItems = ({ navigation }) => {
-  const {currentScreen, setScreen} = useCurrentScreen();
+  const { currentScreen, setScreen } = useCurrentScreen();
 
   return (
       <><DrawerContentScrollView style={styles.container}>
@@ -193,6 +194,7 @@ const MenuItems = ({ navigation }) => {
           <Text style={{ fontSize: 20, color: '#8F8B36' }}>Log Out</Text>
         </TouchableOpacity>
       </View></>
+      
     
     
   );
@@ -204,7 +206,7 @@ const styles = StyleSheet.create({
     padding: 15,
     backgroundColor: '#F5E1B9',
   },
-  title:{
+  title: {
     fontSize: 20,
     fontWeight: 'bold',
     color: '#F74A3E',
@@ -223,5 +225,5 @@ const styles = StyleSheet.create({
     marginTop: 15,
     marginLeft: 20,
   },
- 
+
 })

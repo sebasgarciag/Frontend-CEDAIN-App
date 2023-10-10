@@ -1,8 +1,8 @@
 import Resumen from "../src/pages/resumenSalida";
 
-const ResumenSalida = () => {
+const ResumenSalida = ({route}) => {
     return (
-        <Resumen />
+        <Resumen objeto={route.params.object} />
     );
 };
 
