@@ -82,7 +82,7 @@ function Menulateral() {
       {/* Inventario */}
       <Drawer.Screen name="DecidirInventario" component={DecidirInventario} options={{ headerTransparent: true }} />
       <Drawer.Screen name="EditarProducto" component={EditarProductoPage} options={{ headerTransparent: true, headerShown: false }} />
-      <Drawer.Screen name="listadoProductos" component={ListadoProductosRef} options={{ headerTransparent: true, headerShown: false }} />
+      <Drawer.Screen name="listadoProductos" component={ListadoProductosRef} />
       <Drawer.Screen name="EditarInventario" component={EditarInventario} options={{ headerTransparent: true, headerShown: false }} />
 
 
@@ -116,13 +116,6 @@ const MenuItems = ({ navigation }) => {
         onPress={() => {
           navigation.navigate('ListadoUsuariosRef');
           setScreen("Usuarios");
-        } } />
-      <MenuButtonItem
-        text="alta producto"
-        currentScreen={currentScreen}
-        onPress={() => {
-          navigation.navigate('altaProducto');
-          setScreen("Alta productos");
         } } />
       <MenuButtonItem
         text="Productos"
