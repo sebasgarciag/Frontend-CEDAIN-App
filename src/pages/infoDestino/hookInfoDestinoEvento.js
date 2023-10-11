@@ -6,10 +6,11 @@ const useInfoDestinoEvento=()=>{
 	const [comunidades, setComunidades] = useState([]);
 	const [eventos, setEventos] = useState([]);
 
-	const [salida, setSalida] = useState({});
+	const [salida, setSalida] = useState();
+	const [carrito, setCarrito] = useState();
 
-	const [comunidad, setComunidad] = useState(null);
-	const [evento, setEvento] = useState(null);
+	const [comunidad, setComunidad] = useState({});
+	const [evento, setEvento] = useState({});
 
 	const [observaciones, setObservaciones] = useState('');
 	const [receptor, setReceptor] = useState('');
@@ -31,7 +32,7 @@ const useInfoDestinoEvento=()=>{
 	useEffect(()=>{
 		obtenerComunidades();
 		obtenerEventos();
-	},[]);
+	}, []);
 
 
 	useEffect(()=>{
@@ -48,7 +49,7 @@ const useInfoDestinoEvento=()=>{
 				id_evento: evento.id_evento
 			}
 		});
-	},[comunidad, evento]);
+	}, [comunidad, evento]);
 
 	useEffect(()=>{
 		setSalida({
@@ -56,10 +57,9 @@ const useInfoDestinoEvento=()=>{
 			receptor: receptor,
 			observaciones: observaciones,
 		});
-	},[receptor, observaciones]);
+	}, [receptor, observaciones]);
 
-
-	return { comunidades, eventos, comunidad, evento, setComunidad, setEvento, observaciones, setObservaciones, receptor, setReceptor, obtenerComunidades, obtenerEventos, setSalida }
+	return { comunidades, eventos, comunidad, evento, setComunidad, setEvento, observaciones, setObservaciones, receptor, setReceptor, obtenerComunidades, obtenerEventos, setSalida, carrito, setCarrito, salida }
 }
 
 export default useInfoDestinoEvento;

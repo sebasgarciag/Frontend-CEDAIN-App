@@ -1,12 +1,12 @@
 import React from 'react';
 import { TouchableOpacity, Text, Alert, StyleSheet, View } from 'react-native';
-import { exportCombined } from '../../apis/exportarApi';
+import { exportAllInventario } from '../../apis/exportarApi';
 import * as FileSystem from 'expo-file-system';
 import * as Sharing from 'expo-sharing';
 import base64 from 'base-64';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-function ShareExcelButton({ entryId, buttonText = "Exportar Excel" }) {
+function ShareInvButton({ invId, style }) {
     
     function arrayBufferToBase64(buffer) {
         let binary = '';
@@ -20,14 +20,14 @@ function ShareExcelButton({ entryId, buttonText = "Exportar Excel" }) {
 
     const downloadAndShare = async () => {
         try {
-            const data = await exportCombined(entryId);
+            const data = await exportAllInventario(invId);
 
             if (!data) {
                 throw new Error("No se recibieron datos del servidor.");
             }
 
             const base64Data = arrayBufferToBase64(data);
-            const filename = `Entrada_${entryId}.xlsx`;
+            const filename = `Inventario_${invId}.xlsx`;
             const uri = FileSystem.documentDirectory + filename;
             await FileSystem.writeAsStringAsync(uri, base64Data, {
                 encoding: FileSystem.EncodingType.Base64,
@@ -46,36 +46,16 @@ function ShareExcelButton({ entryId, buttonText = "Exportar Excel" }) {
     };
 
     return (
-        <View style={styles.container}>
-            <TouchableOpacity style={styles.button} onPress={downloadAndShare}>
-                <Text style={styles.buttonText}>{buttonText}</Text>
-                <Icon name="upload-file" size={30} color="#FFFFFF" />
+        
+            <TouchableOpacity style={style} onPress={downloadAndShare}>
+                <Icon name="upload-file" size={30} color="#333" />
             </TouchableOpacity>
-        </View>
+        
     );
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    button: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderRadius: 20,
-        width: '37%',
-        padding: 10,
-        backgroundColor: "#4CAF50",
-    },
-    buttonText: {
-        color: "white",
-        fontWeight: "bold",
-        fontSize: 16,
-        marginRight: 10,
-    }
-});
 
-export default ShareExcelButton;
+
+
+
+export default ShareInvButton;
