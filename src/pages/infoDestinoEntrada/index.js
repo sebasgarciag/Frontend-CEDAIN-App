@@ -8,7 +8,7 @@ import { View, Text } from "react-native";
 import buttonStyles from "../../assets/buttons/styles";
 import styles from "../../assets/styles";
 import { VolverButtonN } from "../../components/UI/uiButtons";
-import { SiguienteButtonNObject } from "../../components/UI/uiButtons";
+import { SiguienteButtonNObject, VolverButtonNDirect } from "../../components/UI/uiButtons";
 import { useNavigation } from '@react-navigation/native';
 import { useEffect } from "react";
 
@@ -71,7 +71,7 @@ const Paginfo = ( {objeto} ) => {
             </VStack>
             </ScrollView> 
             <View style={ buttonStyles.containerNavegacion }>
-                <VolverButtonN navigation={navigation} path={"CarritoEntrada"} />
+                <VolverButtonNDirect navigation={navigation}/>
                 <SiguienteButtonNObject navigation={navigation} path={"ResumenEntrada"} object={{carrito, entrada}} />
             </View>
     
