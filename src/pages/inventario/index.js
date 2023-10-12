@@ -9,7 +9,6 @@ import { useRoute } from '@react-navigation/native';
 import { ArrowButtonConObject, EntradaNueva, SalidaNueva } from '../../components/UI/uiButtons';
 import { useNavigation } from '@react-navigation/native';
 import useBusqueda from './useBusqueda';
-import SearchFilter from '../../components/inventario/SearchFilter';
 
 
 const Inventario2 = ({ almacen }) => {
