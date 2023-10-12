@@ -6,7 +6,7 @@ import { Surface } from "react-native-paper";
 import { ScrollView } from "react-native-gesture-handler";
 import buttonStyles from "../../assets/buttons/styles";
 import styles from "../../assets/styles";
-import { VolverButtonN, SiguienteButtonN } from "../../components/UI/uiButtons";
+import { VolverButtonN, SiguienteButtonN, ButtonTerminar } from "../../components/UI/uiButtons";
 import { useNavigation } from "expo-router";
 import InfoSalida from "../../components/UI/infoSalida";
 import { useEffect } from "react";
