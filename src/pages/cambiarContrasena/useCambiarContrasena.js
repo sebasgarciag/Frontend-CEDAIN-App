@@ -8,6 +8,7 @@ const useCambiarContrasena = (usuario) => {
   const [isNewPasswordVisible, setIsNewPasswordVisible] = useState(false);   
   const [arePasswordEqual, setArePasswordEqual] = useState(false);     
   const { updateUsuario } = UsuariosAPI();
+  const secretKey = "CEDAIN"
   
   const toggleNewPasswordVisibility = () => {
     setIsNewPasswordVisible(!isNewPasswordVisible);
@@ -17,7 +18,7 @@ const useCambiarContrasena = (usuario) => {
     
     if (newPassword == confirmPassword) {
       setArePasswordEqual(true);
-      const hashedPassword = CryptoES.SHA256(newPassword).toString();
+      const hashedPassword = CryptoES.AES.encrypt(newPassword,secretKey).toString();
 
       let new_usuario_data = {
         'password': hashedPassword,

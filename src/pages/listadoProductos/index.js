@@ -1,15 +1,16 @@
 import React from 'react';
-import { TextInput } from 'react-native';
+import { TextInput, TouchableOpacity } from 'react-native';
 import { HStack, Stack, Text, Divider, VStack } from "@react-native-material/core";
-import { MenuButton, FilterButton, ProfileButton, VolverButton } from '../../components/UI/uiButtons';
+import { MenuButton, FilterButton, ProfileButton, VolverButtonNDirect } from '../../components/UI/uiButtons';
 import ListaProductos from '../../components/UI/listaProductos';
 import useListadoProductos from './useListadoProductos';
 import styles from '../../assets/styles';
 import { router } from "expo-router";
-
+import { useNavigation } from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const ListadoProductos = () => {
-
+    const navigation = useNavigation();
     const {productos} = useListadoProductos();
 
     return (
@@ -19,7 +20,7 @@ const ListadoProductos = () => {
               <MenuButton  onPress={() => { alert('Menú presionado'); }} />
               <VStack style={{alignItems: 'center'}}>
                   <Text style={styles.headerText}>Listado de productos</Text>
-                  <Text style={{font: 16}}>Nombre Almacenista</Text>
+                  {/* <Text style={{font: 16}}>Nombre Almacenista</Text> */}
               </VStack>
               <ProfileButton  onPress={() => { alert('Perfil presionado'); }} />
             </HStack>
@@ -37,8 +38,14 @@ const ListadoProductos = () => {
             
             <Stack style={{justifyContent: 'center', alignItems: 'center', margin: 10}}>
               {/* <VolverButton onPress={() => { router.replace("/botonesChernobyl"); }} /> */}
-              <VolverButton ruta="/botonesChernobyl" />
-
+              <TouchableOpacity
+              style={[styles.button, { backgroundColor: '#59CD90' }]}
+              onPress={() => { navigation.navigate('altaProducto') }}
+              >
+                <Icon name="add-circle-outline" size={24} color="#F1EFE3" />
+                <Text style={styles.buttonText}>Agregar Producto</Text>
+              </TouchableOpacity>
+              <VolverButtonNDirect navigation={navigation} path="" />
 
               
             </Stack>

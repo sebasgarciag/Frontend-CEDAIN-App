@@ -216,7 +216,7 @@ const ButtonTerminar = ({ terminarFunction }) => {
   );
 };
 
-export {MenuButton, CambiarAlmacenCreel, CambiarAlmacenCuu, ButtonTerminar, VolverButton, ProfileButton, FilterButton, ArrowButton, ExportarButton, VolverButtonN, SiguienteButtonN, GenericButton, EntradaNueva, SalidaNueva, ArrowButtonConObject, VolverButtonNDirect};
+export {MenuButton, CambiarAlmacenCreel, CambiarAlmacenCuu, ButtonTerminar, VolverButton, ProfileButton, FilterButton, ArrowButton, ExportarButton, VolverButtonN, SiguienteButtonN, SiguienteButtonNObject, GenericButton, EntradaNueva, SalidaNueva, ArrowButtonConObject, VolverButtonNDirect};
 
 
 //nota: Es posible que apliquemos un solo style para todos los botones. por lo pronto, cada uno tiene el suyo.

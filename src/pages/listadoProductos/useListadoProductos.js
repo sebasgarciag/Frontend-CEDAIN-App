@@ -16,7 +16,7 @@ const useListadoProductos = () => {
 
     useEffect(() => {
         getListadoProductos();
-    }, []);
+    }, [productos]);
 
    
 
