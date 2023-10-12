@@ -1,7 +1,10 @@
 import axios from 'axios';
-import ip from './ipApi';
+import ipApi from './ipApi';
+const { ip, protocol, port } = ipApi;
+
+const baseUrl = `${protocol}${ip}${port}`;
 //const baseUrl = `http://${ip}:8080`;
-const baseUrl = `https://${ip}`;
+//const baseUrl = `https://${ip}`;
 
 const ProductosAPI = () => {
     async function getTodosProductos() {
