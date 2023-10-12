@@ -1,20 +1,98 @@
-const useObtenerProducto = (id_almacen, id_producto) => {
-    const [producto, setProducto] = useState(null);
+import { useState } from "react";
+import ProductosAPI from "../../apis/productosApi";
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await fetch(`http://localhost:8080/inventario/${id_almacen}/${id_producto}`);
-                setProducto(response.data);
-            } catch (error) {
-                console.error('Error al obtener el producto:', error);
-            }
-        };
+const useEditarProducto=(producto)=>{
+    const [isEditable, setEditable] = useState(false);
+    const [nombre, setNombre] = useState(producto.nombre);
+    const [medida, setMedida] = useState(producto.medida);
+    const [precioVenta, setPrecioVenta] = useState(producto.precio_venta);
+    const [precioTrueque, setPrecioTrueque] = useState(producto.precio_trueque);
+    const [nombreCorto, setNombreCorto] = useState(producto.nombre_corto);
+    const [image, setImage] = useState(null);
+	const [editarText, setEditarText] = useState("Editar");
+	const [open, setOpen] = useState(Boolean(producto.suspendido));
 
-        if (id_producto) {
-            fetchData();
-        }
-    }, [id_almacen, id_producto]);
 
-    return { producto };
-};
+
+    const { updateProducto } = ProductosAPI();
+	// nombre
+	// 					id_tamanio
+	// medida
+	// precio_venta
+	// precio_trueque
+	// 					id_categoria
+	// nombre_corto
+	const [dataDropDownEvento, setDataDropDownEvento] = useState( [
+		{ label: 'Item 1', value: '1' },
+		{ label: 'Item 2', value: '2' },
+		{ label: 'Item 3', value: '3' }
+	]);
+
+	const handleSubmit = async () => {
+		//request a backend
+		let new_producto_data = {
+		  'nombre': nombre,
+		  'medida': medida,
+		  'precio_venta': precioVenta,
+		  'precio_trueque': precioTrueque,
+			'nombre_corto': nombreCorto,
+		  'suspendido':open
+		}
+  
+		// alert("Enlace clickeado");
+		try {
+			let valorSuspendido = open ? 1 : 0;
+			await updateProducto(new_producto_data, producto.id_producto);
+			producto.nombre = nombre
+			producto.medida = medida
+			producto.precio_venta = precioVenta
+			producto.precio_trueque = precioTrueque
+			producto.nombre_corto = nombreCorto
+			producto.suspendido = valorSuspendido
+			alert('producto actualizado')
+			console.log('Producto Actualizado')
+		}
+
+		catch{
+		  alert('No se pudo actualizar el producto')
+		  setNombre(producto.nombre)
+		  setMedida(producto.medida)
+		  setPrecioVenta(producto.precio_venta)
+		  setPrecioTrueque(producto.precio_trueque)
+			setNombreCorto(producto.nombre_corto)
+			setOpen(producto.suspendido)
+		}
+		setEditarText("Editar");
+		setEditable(!isEditable);
+	  };
+
+	const handleEditable = () => {
+	// !isEditable
+	if (isEditable) {
+		// Qué pasar cuando cancelas
+		setEditarText("Editar");
+		setNombre(producto.nombre)
+		setMedida(producto.medida)
+		setPrecioVenta(producto.precio_venta)
+		setPrecioTrueque(producto.precio_trueque)
+		setNombreCorto(producto.nombre_corto)
+		setOpen(Boolean(producto.suspendido))
+		// volvera tomar los valores de la BDD
+	} else {
+		// Qué pasar cuando cambias de modo no editar a modo editar
+		setEditarText("Cancelar edición");
+	}
+
+	setEditable(!isEditable);
+	// togglear valor del botón editar-cancelar edición
+	// prender submit
+	// si se cancela edición
+	// volver los valores a los que estaban inicialmente
+	// apagar submit
+	};
+
+
+	return { isEditable, editarText, handleEditable, dataDropDownEvento, nombre, setNombre, medida, setMedida, precioVenta, setPrecioVenta, precioTrueque, setPrecioTrueque, nombreCorto, setNombreCorto, image, setImage, handleSubmit,open,setOpen }
+}
+
+export default useEditarProducto;

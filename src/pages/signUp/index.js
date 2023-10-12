@@ -5,29 +5,12 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { VolverButton } from '../../components/UI/uiButtons';
 import { router } from "expo-router";
+import { useSignUp } from './useSignUp';
+
 
 const SignUpPage = () => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState("");
+    const { email, setEmail, password, setPassword, confirmPassword, setConfirmPassword, handleRegister } = useSignUp();
 
-    const validateEmail = (email) => {
-        const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-        return regex.test(email);
-    }
-
-    const handleRegister = () => {
-
-        if (!email || !password || !confirmPassword) {
-            Alert.alert("Error", "Por favor llena todos los campos");
-            return;
-        }
-        if (!validateEmail(email)) {
-            Alert.alert("Error", "Por favor ingresa un correo electrónico válido");
-            return;
-        }
-        console.log("Registrado");
-    }
 
     return (
         <ScrollView style={styles.Container}>
@@ -59,7 +42,7 @@ const SignUpPage = () => {
             </TouchableOpacity>
 
             {/* <VolverButton onPress={() => { router.replace("/botonesChernobyl"); }} /> */}
-            <VolverButton ruta="/botonesChernobyl" />
+            <VolverButton ruta="log" />
 
         </ScrollView>
     )

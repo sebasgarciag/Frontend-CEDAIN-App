@@ -35,6 +35,34 @@ const UsuariosAPI = () => {
         return response;
     }
 
+    async function register(nombre, apellido_paterno, apellido_materno, tipo, id_almacen, correo, password) {
+        let response = null;
+        console.log(nombre, apellido_paterno, apellido_materno, tipo, id_almacen, correo, password);
+        try {
+            response = await axios.post(`${baseUrl}/usuarios/newUsuario`, {
+                nombre,
+                apellido_paterno,
+                apellido_materno,
+                tipo,
+                id_almacen,
+                correo,
+                password
+            });
+            console.log(response.data);
+        } catch (error) {
+            console.log("Error: " + error);
+            // Si el error es un error de red (lo que podría indicar un problema de conexión con la base de datos)
+            if (axios.isAxiosError(error) && !error.response) {
+                console.log("No se pudo conectar a la base de datos");
+                Alert.alert("Error", "No se pudo conectar a la base de datos");
+            }
+        }
+
+        return response;
+    }
+
+
+
     async function updateUsuario(usuario, id_usuario) {
         let response = null;
 
@@ -71,7 +99,7 @@ const UsuariosAPI = () => {
         return response;
     }
 
-    return { getTodosUsuarios, updateUsuario, getUsuario, login }
+    return { getTodosUsuarios, updateUsuario, getUsuario, login,register }
 }
 
 export default UsuariosAPI;

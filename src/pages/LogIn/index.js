@@ -1,55 +1,14 @@
-import React, { useState } from 'react';
-
+import React from 'react';
 import { ScrollView, Alert, StyleSheet } from "react-native";
 import { Text, TextInput, Title } from "react-native-paper";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { VolverButton } from '../../components/UI/uiButtons';
-import UsuariosAPI from '../../apis/usuariosApi';
+
+import useLogin from './useLogin';
 
 const LoginPage = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [borderColor, setBorderColor] = useState('normal');
-
-
-  const validateEmail = (email) => {
-    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    return regex.test(email);
-  }
-
-  const handleRegister = () => {
-    if (!email || !password) {
-      Alert.alert("Error", "Por favor, ingresa el correo y la contraseña");
-      return;
-    }
-
-    if (!validateEmail(email)) {
-      Alert.alert("Error", "Por favor, ingresa un correo electrónico válido");
-      return;
-    }
-
-    // Llama al servicio de inicio de sesión
-    UsuariosAPI().login(email, password)
-      .then(function (data) {
-        // La autenticación es exitosa
-        console.log("Connected");
-        console.log(data);
-        setBorderColor('normal'); // Restablece el color del borde a normal después de un inicio de sesión exitoso
-      })
-      .catch(function (error) {
-        // La autenticación falla
-        console.error(error);
-        if (error.message === 'Network Error') {
-          console.log("No se pudo conectar a la base de datos");
-        } else if (error.response.status === 401) {
-          setBorderColor('red'); // Cambia el color del borde de los inputs a rojo
-        }
-      });
-
-
-
-  }
+  const { email, setEmail, password, setPassword, borderColor, handleRegister } = useLogin();
 
 
   return (

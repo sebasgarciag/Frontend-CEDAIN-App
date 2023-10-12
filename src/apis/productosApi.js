@@ -8,7 +8,7 @@ const ProductosAPI = () => {
         let response = null;
 
         try {
-            console.log(ip)
+            // console.log(ip)
             response = await axios.get(`${baseUrl}/productos`);
             // console.log(response.data)
         } catch (error) {
