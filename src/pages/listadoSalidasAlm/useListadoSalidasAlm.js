@@ -44,7 +44,7 @@ const useListadoSalidasAlm = () => {
     async function getSalidas() {
         // TODO: pasar id de almacenista
         const salidasApi = await getAllSalidasAlm(1);
-        setSalidas(salidasApi);
+        setSalidas(salidasApi.reverse());
         return;
     };
 
