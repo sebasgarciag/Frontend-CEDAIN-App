@@ -33,6 +33,7 @@ import EditarInventario from '../../../app/editarInventario';
 import EditarProductoPage from '../../../app/editarProducto';
 import EditarUsuarioPage from '../../pages/editarUsuario';
 import ListadoUsuariosRef from '../../../app/listadoUsuarios';
+import CambiarContrasena from '../../../app/cambiarContrasena'
 
 // import listadoProductos from '../../../app/listadoProductos';
 import altaUsuarioPage from '../../../app/altaUsuario';
@@ -94,6 +95,7 @@ function Menulateral() {
       <Drawer.Screen name="editarProducto" component={EditarProductoPage}  />
       <Drawer.Screen name="altaProducto" component={AltaProductoPage}  />
       <Drawer.Screen name="AltaUsuario" component={altaUsuarioPage}  />
+      <Drawer.Screen name="cambiarContrasena" component={CambiarContrasena}  />
       
       {/* Login*/} 
       <Drawer.Screen name="log" component={log} options={{ headerShown: false }} />

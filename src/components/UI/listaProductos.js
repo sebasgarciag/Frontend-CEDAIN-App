@@ -12,19 +12,6 @@ function ListaProductos({listadoProductos}){
     const navigation = useNavigation();
         return(
             <ScrollView style={styles.listaMovs} >
-                {/* {listadoProductos.map((producto)=>
-                    <VStack key={producto.id_producto}>
-                        <HStack style={styles.movItem} spacing={10}>
-                            <VStack>
-                                <Text style={styles.movName}>Producto: {producto.folioSerie}</Text>
-                                <Text style={styles.movDato}>Fecha: {producto.fecha}</Text>
-                                <Text style={styles.movDato}>Almacenista: {producto.almacenista}</Text>
-                                <Text style={styles.movDato}>Cantidad: {producto.cantidadArticulos}</Text>
-                            </VStack>
-                            <ArrowButton style={styles.arrowButton} onPress={() => { alert('Flecha presionada'); }} />
-                        </HStack>
-                    </VStack>
-                )} */}
                 {listadoProductos.map((producto) => 
                 <Surface elevation={5} key={producto.id_producto} style={styles.productItem}> 
                     <HStack spacing={10} style={{ flex: 1 }}>
@@ -39,12 +26,12 @@ function ListaProductos({listadoProductos}){
                         <HStack spacing={20}>
                         <VStack>
                             <Text style={styles.productQuantity}>Tamaño: {producto.id_tamanio}</Text>
+                            <Text style={styles.productQuantity}>Medida: {producto.medida}</Text>
                             <Text style={styles.productQuantity}>Precio Venta: ${producto.precio_venta}</Text>
                         </VStack>
                         </HStack>
                     </VStack>
                     <ArrowButtonConObject navigation={navigation} path={"editarProducto"} object={producto} />
-                    {/* <ArrowButton navigation={navigation} path={"EditarProducto"} /> */}
                     </HStack>
                 </Surface>
                 )}
