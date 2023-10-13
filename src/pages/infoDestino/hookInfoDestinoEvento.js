@@ -38,12 +38,12 @@ const useInfoDestinoEvento=()=>{
 	useEffect(()=>{
 		setSalida({
 			...salida,
-			id_comunidad: comunidad.id,
+			id_comunidad: comunidad.id_comunidad,
 			Comunidad: {
 				nombre: comunidad.nombre,
 				id_comunidad: comunidad.id_comunidad
 			},
-			id_evento: evento.id,
+			id_evento: evento.id_evento,
 			Evento: {
 				nombre: evento.nombre,
 				id_evento: evento.id_evento

@@ -1,6 +1,10 @@
 import { useState } from "react";
+import { useNavigation } from "expo-router";
+import salidasApi from "../../apis/salidasApi";
 
 const useResumen = () => {
+    const navigation = useNavigation();
+    const { postSalida, postDetallesSalidas } = salidasApi();
     const [salida, setSalida] = useState({
         fecha: '',
         folio: '',
@@ -30,84 +34,48 @@ const useResumen = () => {
         },
     });
 
-    // const [carrito, setCarrito] = useState([
-    //     {
-    //         Tamanio: {
-    //             nombre: "mediano"
-    //         },
-    //         cantidad: 1,
-    //         id_producto: 1,
-    //         nombre: "producto1",
-    //         precio_venta: 1
-    //     }
-    // ]);
-
     const [carrito, setCarrito] = useState([]);
 
-    const [datosSalida, setDatosSalida] = useState([
-        {
-            producto: "producto1",
-            cantidad: 0,    
-            precio: 1,
-            tamano: "mediano",
-            foto: "../../assets/imagenes/ware.jpg"
-        },
-        {
-            producto: "producto2",
-            cantidad: 0,
-            precio: 2,
-            tamano: "grande",
-            foto: "../../assets/imagenes/ware.jpg"
-        },
-        {
-            producto: "producto3",
-            cantidad: 0,
-            precio: 3,
-            tamano: "chico",
-            foto: "../../assets/imagenes/ware.jpg"
-        },
-        {
-            producto: "producto4",
-            cantidad: 0,
-            precio: 4,
-            tamano: "mediano",
-            foto: "../../assets/imagenes/ware.jpg"
-        },
-        {
-            producto: "producto5",
-            cantidad: 0,
-            precio: 5,
-            tamano: "grande",
-            foto: "../../assets/imagenes/ware.jpg"
-        }
-    
-    ]);
-
-    function handleCantidad(producto, newCantidad) {
-        const newDatosSalida = datosSalida.map((datosSalida) => {
-            if (datosSalida.producto === producto) {
-                if (isNaN(parseInt(newCantidad))) {
-                    newCantidad = 0;
-                }
-                return { ...datosSalida, cantidad: parseInt(newCantidad) };
-            } else {
-                return datosSalida;
-            }
-        });
-        setDatosSalida(newDatosSalida);
-    }
-
     async function terminar(salida, detallesSalida) {
+        const date = new Date();
+        const fechaActual = date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate();
+        const serie = date.getFullYear() + 'S';
+        const salidaPost = {
+            fecha: fechaActual,
+            serie: serie,
+            observaciones: salida.observaciones,
+            id_usuario: salida.id_usuario,
+            id_almacen: salida.id_almacen,
+            receptor: salida.receptor,
+            id_evento: salida.id_evento,
+            facturar: 0,
+            id_tipo_pago: salida.id_tipo_pago
+        };
+        // console.log('salidaPost', salidaPost);
+        
         try {
-            const response = await api.postSalida(salida);
-            const salidaId = response.data.id_salida;
-            await api.postDetallesSalida(salidaId, detallesSalida);
+            const response = await postSalida(salidaPost);
+            console.log('response', response.id_salida);
+            const detallesPost = detallesSalida.map((detalle) => {
+                console.log('detalle', detalle);
+                return {
+                    id_producto: detalle.id_producto,
+                    cantidad: detalle.detallesSalida.cantidad,
+                    id_salida: response.id_salida,
+                    precio_unitario: detalle.detallesSalida.precio
+                };
+            });
+            console.log('detallesPost', detallesPost);
+
+            const salidaId = response.id_salida;
+            await postDetallesSalidas(detallesPost);
+            navigation.navigate('Salidas');
         } catch (error) {
             console.error('Error in terminar function: ' + error);
         }
     }
 
-    return { salida, setSalida, datosSalida, handleCantidad, carrito, setCarrito, terminar };
+    return { salida, setSalida, carrito, setCarrito, terminar };
 }
 
 export default useResumen;

@@ -8,7 +8,7 @@ const entradasApi = () => {
     async function getAllEntradas() {
 
         let response = null;
-
+        console.log('get all entradas');
         try {
             response = await axios.get(`${baseURL}/entradas`);
         } catch (error) {
@@ -38,7 +38,7 @@ const entradasApi = () => {
         } catch (error) {
             console.error('error' + error);
         }
-        return [response.data];
+        return response.data;
     }
 
 
@@ -46,7 +46,7 @@ const entradasApi = () => {
     async function postEntrada(data) {
         let response = null;
         try {
-            response = await axios.post(`${baseURL}/entradas`, data);
+            response = await axios.post(`${baseURL}/entradas/entradas`, data);
         } catch (error) {
             console.error('Error posting entrada: ' + error);
         }

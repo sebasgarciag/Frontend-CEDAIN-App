@@ -1,12 +1,15 @@
-import React, { useState } from "react";
-import { Alert} from "react-native";
+import { useState } from 'react';
 
+import UsuariosAPI from '../../apis/usuariosApi';
+import { useNavigation } from '@react-navigation/native';
 
-
-export const useSignUp= () => {
+const useLogin = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState("");
+    const [borderColor, setBorderColor] = useState('normal');
+    const secretKey = "CEDAIN"
+
+    const navigation = useNavigation();
 
     const validateEmail = (email) => {
         const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -25,34 +28,29 @@ export const useSignUp= () => {
         }
 
         // Encripta la contraseña antes de enviarla
-        const encryptedPassword = SHA256(password).toString();
+        const encryptedPassword = 1;
 
         // Llama al servicio de inicio de sesión
-        UsuariosAPI().register(nombre, apellido_paterno, apellido_materno, id_Tipo, id_almacen, correo, encryptedPassword)
+        UsuariosAPI().login(email, encryptedPassword)
             .then(function (data) {
-                // El registro es exitoso
-                console.log("Registrado");
+                // La autenticación es exitosa
+                console.log("Connected");
                 console.log(data);
-                navigation.navigate('log');
+                setBorderColor('normal'); // Restablece el color del borde a normal después de un inicio de sesión exitoso
+                navigation.navigate('Inventario');
             })
             .catch(function (error) {
-                // El registro falla
+                // La autenticación falla
                 console.error(error);
                 if (error.message === 'Network Error') {
                     console.log("No se pudo conectar a la base de datos");
                 } else if (error.response.status === 401) {
-                    Alert.alert("Error", "Registro fallido");
+                    setBorderColor('red'); // Cambia el color del borde de los inputs a rojo
                 }
             });
     }
 
-    return {
-        email,
-        setEmail,
-        password,
-        setPassword,
-        confirmPassword,
-        setConfirmPassword,
-        handleRegister
-    }
+    return { email, setEmail, password, setPassword, borderColor, handleRegister };
 }
+
+export default useLogin;

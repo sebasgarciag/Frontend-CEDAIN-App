@@ -44,7 +44,7 @@ const useListadoEntradasAlm = () => {
     async function getEntradas() {
         // TODO: pasar almacenista como parametro
         const entradasApi = await getAllEntradasAlm(1);
-        setEntradas(entradasApi);
+        setEntradas(entradasApi.reverse());
     };
 
     useEffect(() => {
