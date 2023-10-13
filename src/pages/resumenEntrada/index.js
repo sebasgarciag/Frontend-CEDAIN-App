@@ -12,6 +12,17 @@ import InfoSalida from "../../components/UI/infoSalida";
 import { useEffect } from "react";
 import ListaTerminar from "../../components/entradasSalidas/listaTerminar";
 
+/**
+ * Componente para mostrar un resumen de entrada.
+ * 
+ * Este componente presenta un resumen detallado de una entrada específica, 
+ * incluyendo los productos asociados.
+ * Utiliza el hook `useResumen` para manejar la lógica y el estado.
+ * 
+ * @param {Object} objeto - Datos que incluyen detalles de la entrada y el carrito.
+ * @returns {JSX.Element}
+ */
+
 const Resumen = ({objeto}) => { 
 
     const { entrada, setEntrada, carrito, setCarrito, terminar } = useResumen();

@@ -1,31 +1,15 @@
 import React from 'react';
 import { TouchableOpacity, Text, Alert, StyleSheet, View } from 'react-native';
-import { exportCombined } from '../../apis/exportarApi';
+import { exportSalida } from '../../apis/exportarApi';
 import * as FileSystem from 'expo-file-system';
 import * as Sharing from 'expo-sharing';
 import base64 from 'base-64';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-/**
- * Componente botón para exportar y compartir un archivo Excel.
- * 
- * Este componente facilita la descarga y compartición de un archivo Excel 
- * basado en una entrada específica, haciendo uso de la API para exportar datos.
- * 
- * @param {Object} props 
- * @param {number} props.entryId - ID de la entrada a exportar.
- * @param {string} [props.buttonText="Exportar Excel"] - Texto a mostrar en el botón.
- * @returns {JSX.Element}
- */
 
-function ShareExcelButton({ entryId, buttonText = "Exportar Excel" }) {
+function ShareSalidaButton({ salidaId, buttonText = "Exportar Excel" }) {
     
-    /**
-     * Convierte un ArrayBuffer en una cadena Base64.
-     * 
-     * @param {ArrayBuffer} buffer - El buffer a convertir.
-     * @returns {string} - Cadena en formato Base64.
-     */
+
     function arrayBufferToBase64(buffer) {
         let binary = '';
         const bytes = new Uint8Array(buffer);
@@ -35,19 +19,17 @@ function ShareExcelButton({ entryId, buttonText = "Exportar Excel" }) {
         }
         return base64.encode(binary);
     }
-    /**
-     * Función para descargar y compartir el archivo Excel.
-     */
+
     const downloadAndShare = async () => {
         try {
-            const data = await exportCombined(entryId);
+            const data = await exportSalida(salidaId);
 
             if (!data) {
                 throw new Error("No se recibieron datos del servidor.");
             }
 
             const base64Data = arrayBufferToBase64(data);
-            const filename = `Entrada_${entryId}.xlsx`;
+            const filename = `Salida_${salidaId}.xlsx`;
             const uri = FileSystem.documentDirectory + filename;
             await FileSystem.writeAsStringAsync(uri, base64Data, {
                 encoding: FileSystem.EncodingType.Base64,
@@ -98,4 +80,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default ShareExcelButton;
+export default ShareSalidaButton;
