@@ -1,6 +1,10 @@
 import axios from "axios";
-import ip from './ipApi';
-const baseURL = `http://${ip}:8080`;
+import ipApi from './ipApi';
+const { ip, protocol, port } = ipApi;
+//const baseURL = `http://${ip}:8080`;
+//const baseURL = `https://${ip}`;
+const baseURL = `${protocol}://${ip}:${port}`;
+
 
 export const exportCombined = async (entryId) => {
     try {
