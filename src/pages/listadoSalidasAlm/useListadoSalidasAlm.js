@@ -30,27 +30,39 @@ const useListadoSalidasAlm = () => {
             id_evento: '4'
         }
     ]);
- 
-    const filteredSalidas = salidas.filter((salida) =>{
-        // const almacenistaMatch = (salida.id_usuario || '').includes(busqueda.toLowerCase());
-        const folioSerie = salida.folio + salida.serie;
-        const folioSerieMatch = (folioSerie || '').toLowerCase().includes(busqueda.toLowerCase());
-        // const eventoMatch = (salida.id_evento || '').includes(busqueda.toLowerCase());
-    
-        // return almacenistaMatch || folioSerieMatch || eventoMatch;
-        return folioSerieMatch;
-    });
+/**
+ * Filters the salidas based on a search query. The filter checks if the concatenated value 
+ * of 'folio' and 'serie' includes the search query.
+ * 
+ * @constant
+ * @type {Array}
+ */
+const filteredSalidas = salidas.filter((salida) => {
+    const folioSerie = salida.folio + salida.serie;
+    const folioSerieMatch = (folioSerie || '').toLowerCase().includes(busqueda.toLowerCase());
+    return folioSerieMatch;
+});
 
-    async function getSalidas() {
-        // TODO: pasar id de almacenista
-        const salidasApi = await getAllSalidasAlm(1);
-        setSalidas(salidasApi.reverse());
-        return;
-    };
+/**
+ * Asynchronously fetches all salidas for a specific almacenista and updates the state 
+ * with the retrieved salidas, sorted in reverse order.
+ * Note: The hardcoded '1' as a parameter will be replaced with a dynamic almacenista ID later.
+ * 
+ * @async
+ * @returns {undefined} Nothing. Side-effect function that updates state.
+ */
+async function getSalidas() {
+    const salidasApi = await getAllSalidasAlm(1);
+    setSalidas(salidasApi.reverse());
+}
 
-    useEffect(() => {
-        getSalidas();
-    }, []);
+/**
+ * Hook to initialize salidas when the component mounts.
+ */
+useEffect(() => {
+    getSalidas();
+}, []);
+
    
     return {toggleDrawer, toggleUserDrawer, toggleModal, handlePress, setBusqueda, filteredSalidas, isDrawerOpen, isUserDrawerOpen, isModalVisible, setAlmValue, almValue, setEveValue, eveValue, getSalidas }
 }

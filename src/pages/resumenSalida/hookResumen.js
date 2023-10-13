@@ -35,7 +35,20 @@ const useResumen = () => {
     });
 
     const [carrito, setCarrito] = useState([]);
-
+/**
+ * Asynchronously processes and finalizes a "salida" transaction by creating a new salida 
+ * and its associated details.
+ * 
+ * The function constructs the salida object with the current date, series, and other parameters.
+ * It then posts this salida and subsequently posts the details of the salida.
+ * After successful transactions, it navigates to the 'Salidas' page.
+ *
+ * @async
+ * @param {Object} salida - The main object containing the details for the salida.
+ * @param {Array} detallesSalida - An array of product details associated with the salida.
+ * @returns {undefined} Nothing. Side-effect function that updates a database and navigates pages.
+ * @throws Will throw an error if any of the Axios POST operations fail.
+ */
     async function terminar(salida, detallesSalida) {
         const date = new Date();
         const fechaActual = date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate();
