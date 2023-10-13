@@ -30,22 +30,27 @@ const useListadoSalidasAdmin = () => {
         }
     ]);
  
-    const filteredSalidas = salidas.filter((salida) =>{
-        // const almacenistaMatch = (salida.id_usuario || '').includes(busqueda.toLowerCase());
-        const folioSerie = salida.folio + salida.serie;
-        const folioSerieMatch = (folioSerie || '').toLowerCase().includes(busqueda.toLowerCase());
-        // const eventoMatch = (salida.id_evento || '').includes(busqueda.toLowerCase());
-    
-        // return almacenistaMatch || folioSerieMatch || eventoMatch;
-        return folioSerieMatch;
-    });
+    /**
+ * Filters the salidas based on a search query. Currently, the filter checks if the concatenated value 
+ * of 'folio' and 'serie' includes the search query.
+ * 
+ * @constant
+ * @type {Array}
+ */
+const filteredSalidas = salidas.filter((salida) => {
+    const folioSerie = salida.folio + salida.serie;
+    const folioSerieMatch = (folioSerie || '').toLowerCase().includes(busqueda.toLowerCase());
+    return folioSerieMatch;
+});
 
-    async function getSalidas() {
-        // TODO: pasar id de almacenista
-        const salidasApi = await getAllSalidas();
-        setSalidas(salidasApi);
-        return;
-    };
+/**
+ * Asynchronously fetches all salidas and updates the state with the retrieved salidas.
+ * @async
+ */
+async function getSalidas() {
+    const salidasApi = await getAllSalidas();
+    setSalidas(salidasApi);
+}
 
    
     return {toggleDrawer, toggleUserDrawer, toggleModal, handlePress, setBusqueda, filteredSalidas, isDrawerOpen, isUserDrawerOpen, isModalVisible, setAlmValue, setAlmValue, almValue, setEveValue, eveValue, getSalidas}

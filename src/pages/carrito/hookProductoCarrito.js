@@ -30,48 +30,56 @@ const useCarrito = () => {
       setCarrito2(carritoActualizado);
     };
   
-    function handleCantidad(producto, newCantidad) {
-        const newCarrito = carrito2.map((item) => {
-            if (item.id_producto === producto.id_producto) {
-                if (isNaN(parseInt(newCantidad))) {
-                  return {...item, detallesSalida: {...producto.detallesSalida, cantidad: 0}}
-                }
-                return { ...item, detallesSalida: {...producto.detallesSalida, cantidad: parseInt(newCantidad)}  };
-            } else {
-                return item;
-            }
-        });
-        setCarrito2(newCarrito);
-    }
-
-    const handleCarrito = (producto) => {
-      // Verifica si el producto ya está en el carrito
-      const productoExistenteIndex = carrito.findIndex(
-        (item) => item.id_producto === producto.producto.id_producto
-      );
-    
-      if (productoExistenteIndex !== -1) {
-        // Si el producto ya existe en el carrito, elimínalo
-        const carritoActualizado = [...carrito];
-        carritoActualizado.splice(productoExistenteIndex, 1);
-        setCarrito(carritoActualizado);
+    /**
+ * Updates the quantity of a product in the cart.
+ * @param {Object} producto - The product whose quantity needs to be updated.
+ * @param {number|string} newCantidad - The new quantity to set for the product.
+ */
+function handleCantidad(producto, newCantidad) {
+  const newCarrito = carrito2.map((item) => {
+      if (item.id_producto === producto.id_producto) {
+          if (isNaN(parseInt(newCantidad))) {
+              return {...item, detallesSalida: {...producto.detallesSalida, cantidad: 0}}
+          }
+          return { ...item, detallesSalida: {...producto.detallesSalida, cantidad: parseInt(newCantidad)}  };
       } else {
-        // Si el producto no existe en el carrito, agrégalo
-        const carritoActualizado = [
+          return item;
+      }
+  });
+  setCarrito2(newCarrito);
+}
+
+/**
+* Adds a product to the cart or removes it if it already exists in the cart.
+* @param {Object} producto - The product to add or remove from the cart.
+*/
+const handleCarrito = (producto) => {
+  // Verifies if the product is already in the cart
+  const productoExistenteIndex = carrito.findIndex(
+      (item) => item.id_producto === producto.producto.id_producto
+  );
+
+  if (productoExistenteIndex !== -1) {
+      // If the product already exists in the cart, remove it
+      const carritoActualizado = [...carrito];
+      carritoActualizado.splice(productoExistenteIndex, 1);
+      setCarrito(carritoActualizado);
+  } else {
+      // If the product doesn't exist in the cart, add it
+      const carritoActualizado = [
           ...carrito,
           {
-            ...producto.producto,
-            detallesSalida: {
-              id_producto: producto.producto.id_producto,
-              cantidad: 0,
-              precio: producto.producto.precio_venta,
-            },
+              ...producto.producto,
+              detallesSalida: {
+                  id_producto: producto.producto.id_producto,
+                  cantidad: 0,
+                  precio: producto.producto.precio_venta,
+              },
           },
-        ];
-        setCarrito(carritoActualizado);
-      }
-    };
-
+      ];
+      setCarrito(carritoActualizado);
+  }
+};
     
       return { carrito, carrito2, handleCantidad, aumentarCantidad, disminuirCantidad, handleCarrito, setCarrito2, salida, setSalida };
 

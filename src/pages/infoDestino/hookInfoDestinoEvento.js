@@ -15,49 +15,59 @@ const useInfoDestinoEvento=()=>{
 	const [observaciones, setObservaciones] = useState('');
 	const [receptor, setReceptor] = useState('');
 
-	async function obtenerComunidades(){
-		const response= await getComunidades();
-		if (response !== null){
-			setComunidades(response);
-		}
-	}
+	/**
+ * Asynchronously fetches all communities and updates the state with the retrieved communities.
+ * @async
+ */
+async function obtenerComunidades(){
+    const response = await getComunidades();
+    if (response !== null){
+        setComunidades(response);
+    }
+}
 
-	async function obtenerEventos(){
-		const response= await getEventos();
-		if (response !== null){
-			setEventos(response);
-		}
-	}
+/**
+ * Asynchronously fetches all events and updates the state with the retrieved events.
+ * @async
+ */
+async function obtenerEventos(){
+    const response = await getEventos();
+    if (response !== null){
+        setEventos(response);
+    }
+}
 
-	useEffect(()=>{
-		obtenerComunidades();
-		obtenerEventos();
-	}, []);
+// This hook is responsible for fetching the initial data when the component mounts.
+useEffect(() => {
+    obtenerComunidades();
+    obtenerEventos();
+}, []);
 
+// This hook updates the salida state whenever comunidad or evento changes.
+useEffect(() => {
+    setSalida({
+        ...salida,
+        id_comunidad: comunidad.id_comunidad,
+        Comunidad: {
+            nombre: comunidad.nombre,
+            id_comunidad: comunidad.id_comunidad
+        },
+        id_evento: evento.id_evento,
+        Evento: {
+            nombre: evento.nombre,
+            id_evento: evento.id_evento
+        }
+    });
+}, [comunidad, evento]);
 
-	useEffect(()=>{
-		setSalida({
-			...salida,
-			id_comunidad: comunidad.id_comunidad,
-			Comunidad: {
-				nombre: comunidad.nombre,
-				id_comunidad: comunidad.id_comunidad
-			},
-			id_evento: evento.id_evento,
-			Evento: {
-				nombre: evento.nombre,
-				id_evento: evento.id_evento
-			}
-		});
-	}, [comunidad, evento]);
-
-	useEffect(()=>{
-		setSalida({
-			...salida,
-			receptor: receptor,
-			observaciones: observaciones,
-		});
-	}, [receptor, observaciones]);
+// This hook updates specific properties of the salida state based on receptor and observaciones changes.
+useEffect(() => {
+    setSalida({
+        ...salida,
+        receptor: receptor,
+        observaciones: observaciones,
+    });
+}, [receptor, observaciones]);
 
 	return { comunidades, eventos, comunidad, evento, setComunidad, setEvento, observaciones, setObservaciones, receptor, setReceptor, obtenerComunidades, obtenerEventos, setSalida, carrito, setCarrito, salida }
 }
