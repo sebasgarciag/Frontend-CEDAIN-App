@@ -53,7 +53,7 @@ const useSeleccion = () => {
         getProductos();
     }, []);    
 
-    return { productos, categorias, salida }
+    return { productos, categorias, salida}
 }
 
 export default useSeleccion;

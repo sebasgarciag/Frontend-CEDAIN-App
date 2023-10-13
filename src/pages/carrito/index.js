@@ -5,21 +5,23 @@ import { Surface } from "react-native-paper";
 import { ScrollView } from "react-native-gesture-handler";
 import buttonStyles from "../../assets/buttons/styles";
 import styles from "../../assets/styles";
-import { VolverButtonNDirect, SiguienteButtonNObject } from "../../components/UI/uiButtons";
+import { VolverButtonN, SiguienteButtonNObject } from "../../components/UI/uiButtons";
 import { useNavigation } from "expo-router";
 import ProductoCarrito from "../../components/entradasSalidas/productoCarrito";
 import useCarrito from "./hookProductoCarrito";
 import TotalProductos from "../../components/entradasSalidas/totalProductos";
 
-const ArticulosCarrito = ({objeto}) => {  
+const ArticulosCarrito = ({objeto}) => {
     const {handleCantidad, aumentarCantidad, disminuirCantidad, carrito2, setCarrito2, salida, setSalida} = useCarrito();
-    const navigation = useNavigation();
 
+    const navigation = useNavigation();
+    
 
     useEffect(() => {
         setCarrito2(objeto.carrito);
         setSalida(objeto.salida)
     }, [objeto]);
+
 
     return (
         <Stack style={styles.container}>
@@ -50,7 +52,7 @@ const ArticulosCarrito = ({objeto}) => {
             	</Surface>
             </ScrollView>
             <View style={ buttonStyles.containerNavegacion }>
-                    <VolverButtonNDirect navigation={navigation}  />
+                    <VolverButtonN navigation={navigation} path={"CrearSalida"} />
                     <SiguienteButtonNObject navigation={navigation} path={"InfoDestinoN"} object={{ carrito2, salida }}/>
             </View>
         </Stack>

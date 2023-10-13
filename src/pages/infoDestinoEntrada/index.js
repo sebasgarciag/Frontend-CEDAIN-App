@@ -1,5 +1,5 @@
 import { Spacer, VStack, HStack } from "@react-native-material/core";
-import { React } from 'react';
+import { React, useEffect } from 'react';
 import Dropdowns from "../../components/UI/dropDownE";
 import Textbox from "../../components/UI/textBox";
 import { ScrollView } from "react-native-gesture-handler";
@@ -7,10 +7,8 @@ import useInfoDestinoEvento from "./hookInfoDestinoEvento";
 import { View, Text } from "react-native";
 import buttonStyles from "../../assets/buttons/styles";
 import styles from "../../assets/styles";
-import { VolverButtonN } from "../../components/UI/uiButtons";
-import { SiguienteButtonNObject } from "../../components/UI/uiButtons";
+import { SiguienteButtonNObject, VolverButtonObject } from "../../components/UI/uiButtons";
 import { useNavigation } from '@react-navigation/native';
-import { useEffect } from "react";
 
 const Paginfo = ( {objeto} ) => { 
     const { comunidades, eventos, comunidad, evento, 
@@ -23,6 +21,9 @@ const Paginfo = ( {objeto} ) => {
         setCarrito(objeto.carrito2Entradas);
         setEntrada(objeto.entrada);
     }, [objeto]);
+
+    console.log("Carrito info Destino Entrada: ", carrito)
+    console.log("Entrada info Destino: ", entrada)
 
     return ( 
     
@@ -71,8 +72,8 @@ const Paginfo = ( {objeto} ) => {
             </VStack>
             </ScrollView> 
             <View style={ buttonStyles.containerNavegacion }>
-                <VolverButtonN navigation={navigation} path={"CarritoEntrada"} />
-                <SiguienteButtonNObject navigation={navigation} path={"ResumenEntrada"} object={{carrito, entrada}} />
+                <VolverButtonObject navigation={navigation} path={"CarritoEntrada"} object={{ carrito, entrada }}/>
+                <SiguienteButtonNObject navigation={navigation} path={"ResumenEntrada"} object={{ carrito, entrada }} />
             </View>
     
 

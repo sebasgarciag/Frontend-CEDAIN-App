@@ -38,7 +38,7 @@ const ArticulosCarritoEntrada = ({objeto}) => {
                                 aumentarCantidad={aumentarCantidad}
                                 disminuirCantidad={disminuirCantidad}
                                 handleCantidad={handleCantidad}
-                                tipo = "salida"
+                                tipo = "entrada"
                             />
                         </Surface> 
                     )}
@@ -49,7 +49,7 @@ const ArticulosCarritoEntrada = ({objeto}) => {
             	</Surface>
             </ScrollView>
             <View style={ buttonStyles.containerNavegacion }>
-                    <VolverButtonN navigation={navigation} path={"CrearSalida"} />
+                    <VolverButtonN navigation={navigation} path={"CrearEntrada"} />
                     <SiguienteButtonNObject navigation={navigation} path={"InfoDestinoE"} object={{ carrito2Entradas, entrada }} />
             </View>
         </Stack>
