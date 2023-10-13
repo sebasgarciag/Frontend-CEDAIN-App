@@ -20,18 +20,6 @@ function ListaProductos({ productos, categorias, carrito, handleCarrito }) {
       }
     };
 
-    const [productosSeleccionados, setProductosSeleccionados] = useState([]);
-
-    const toggleProductoSeleccionado = (producto) => {
-      if (productosSeleccionados.includes(producto)) {
-        // Si el producto ya está seleccionado, lo eliminamos de la lista
-        setProductosSeleccionados(productosSeleccionados.filter((p) => p !== producto));
-      } else {
-        // Si el producto no está seleccionado, lo agregamos a la lista
-        setProductosSeleccionados([...productosSeleccionados, producto]);
-      }
-    };
-
 
     // {"cantidad": 10, "id_almacen": 1, "id_inventario": 1, "id_producto": 1, "producto": {"Tamanio": null, "id_categoria": null, "id_producto": 1, "id_tamanio": null, "medida": null, "nombre": null, "nombre_corto": null, "precio_trueque": null, "precio_venta": null}}
 
