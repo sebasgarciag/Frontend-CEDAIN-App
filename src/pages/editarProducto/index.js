@@ -69,15 +69,15 @@ const EditarProducto = () => {
         <HStack
           direction="row"
           justify="center"
-          m={4}
+          marginTop={20}
           style={{ justifyContent: "space-between" }}
         >
-          <MenuButton onPress={() => { alert('Menú presionado'); }} />
+          {/* <MenuButton onPress={() => { alert('Menú presionado'); }} /> */}
+        <Text style={{ fontSize: 26, marginLeft:90 }}>Editar Producto</Text>
           <ProfileButton onPress={() => { alert('Perfil presionado'); }} />
         </HStack>
-      <View style={styles.View}>
-        <Text style={{ fontSize: 26 }}>Editar Producto</Text>
-      </View>
+      {/* <View style={styles.View}> */}
+      {/* </View> */}
 
       <View>
         <TextInput
@@ -97,7 +97,7 @@ const EditarProducto = () => {
                     Titulo={"Tamaño"} /> */}
 
         <TextInput
-          label="Medida"
+          label="Medida (cm)"
           value={medida}
           onChangeText={(text) => setMedida(text)}
           style={styles.Input}
@@ -106,11 +106,11 @@ const EditarProducto = () => {
         />
         <TextInput
           label="Precio Venta"
-          value={precioVenta.toString()}
+          value={'$' + precioVenta.toString()}
           onChangeText={(text) => {
             const newText = text.replace(/[^0-9.]/g, ""); // Solo permite números y puntos
             const validText = newText.replace(/(\..*)\./g, "$1"); // Solo permite un punto
-            setPrecioVenta(parseFloat(validText));
+            setPrecioVenta(parseFloat(newText));
           }}
           keyboardType="numeric"
           style={styles.Input}
@@ -119,11 +119,11 @@ const EditarProducto = () => {
         />
         <TextInput
           label="Precio Trueque"
-          value={precioTrueque.toString()}
+          value={'$' + precioTrueque.toString()}
           onChangeText={(text) => {
             const newText = text.replace(/[^0-9.]/g, ""); // Solo permite números y puntos
             const validText = newText.replace(/(\..*)\./g, "$1"); // Solo permite un punto
-            setPrecioTrueque(parseFloat(validText));
+            setPrecioTrueque(parseFloat(newText));
           }}
           keyboardType="numeric"
           style={styles.Input}
@@ -149,7 +149,7 @@ const EditarProducto = () => {
           inputStyle={isEditable ? styles.editable : styles.view_only}
         />
 
-        <TouchableOpacity
+        {/* <TouchableOpacity
           title="Seleccionar imagen"
           onPress={pickImage}
           style={styles2.ImageButton}
@@ -165,10 +165,10 @@ const EditarProducto = () => {
               style={{ width: 200, height: 200 }}
             />
           </View>
-        )}
+        )} */}
       </View>
 
-      <Flex direction="row" justify="around" marginTop={40}>
+      <Flex direction="row" justify="around" alignItems='center' marginTop={40}>
         <GenericButton
           onPress={handleEditable}
           style={buttonStyles.editarButton}
@@ -191,7 +191,7 @@ const EditarProducto = () => {
 
       <VolverButtonN navigation={navigation} path={"listadoProductos"} />
       
-      <Stack row align="center" style={{ width: '50%', bottom: 280,right:120 }}>
+      {/* <Stack row align="center" style={{ width: '50%', bottom: 280,right:120 }}>
         <Text style={{left:148}}>Suspendido</Text>
         <Switch
           value={open}
@@ -199,7 +199,7 @@ const EditarProducto = () => {
           color={open ? 'red' : 'gray'}
           disabled={!isEditable}
         />
-      </Stack>
+      </Stack> */}
       
     </ScrollView>
   );
