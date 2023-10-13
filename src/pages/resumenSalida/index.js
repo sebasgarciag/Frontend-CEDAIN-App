@@ -6,7 +6,7 @@ import { Surface } from "react-native-paper";
 import { ScrollView } from "react-native-gesture-handler";
 import buttonStyles from "../../assets/buttons/styles";
 import styles from "../../assets/styles";
-import { VolverButtonN, SiguienteButtonN, ButtonTerminar } from "../../components/UI/uiButtons";
+import { VolverButtonN, SiguienteButtonN, ButtonTerminar, VolverButtonNDirect } from "../../components/UI/uiButtons";
 import { useNavigation } from "expo-router";
 import InfoSalida from "../../components/UI/infoSalida";
 import ListaTerminar from "../../components/entradasSalidas/listaTerminar";
@@ -43,7 +43,7 @@ const Resumen = ({objeto}) => {
                 </VStack>
             </ScrollView>
             <View style={ buttonStyles.containerNavegacion }>
-                    <VolverButtonN navigation={navigation} path={"InfoDestinoN"} />
+                    <VolverButtonNDirect navigation={navigation} />
                     {/* <SiguienteButtonN navigation={navigation} path={"Salidas"} /> */}
                     <ButtonTerminar terminarFunction={() => terminar(salida, carrito)} />
             </View>

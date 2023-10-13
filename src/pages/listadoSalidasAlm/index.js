@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { TextInput, View } from 'react-native';
 import { HStack, Text, Stack, Divider, VStack } from "@react-native-material/core";
 import { Modal } from 'react-native-paper';
-import { MenuButton, ProfileButton, VolverButtonN, FilterButton } from '../../components/UI/uiButtons';
+import { MenuButton, ProfileButton, VolverButtonN, FilterButton, VolverButtonNDirect } from '../../components/UI/uiButtons';
 import ListaSalidasAlm from '../../components/UI/listaSalidasAlm';
 import useListadoSalidasAlm from './useListadoSalidasAlm';
 import styles from '../../assets/styles';
@@ -48,7 +48,7 @@ const ListadoSalidasAlm = () => {
 					
 
 					<View style={ buttonStyles.containerNavegacion }>
-								<VolverButtonN navigation={navigation} path={"Inventario"}/>
+								<VolverButtonNDirect navigation={navigation}/>
 					</View>
 
 					<Modal visible={isModalVisible} onDismiss={toggleModal}>
