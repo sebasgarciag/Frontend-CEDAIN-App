@@ -1,6 +1,25 @@
-import {useState}  from 'react';
+import {useState, useEffect}  from 'react';
 import entradasApi from '../../apis/entradasApi';
-import { useEffect } from 'react';
+
+/**
+ * `useListadoEntradasAlm` es un hook personalizado diseñado para gestionar el listado de entradas de almacén.
+ * Proporciona estado y funciones para manejar diferentes aspectos de la UI y la interacción con la API.
+ * 
+ * @returns {Object} 
+ * @property {Array} entradas - Listado completo de entradas.
+ * @property {Function} toggleDrawer - Función para abrir/cerrar el drawer principal.
+ * @property {Function} toggleUserDrawer - Función para abrir/cerrar el drawer de usuario.
+ * @property {Function} toggleModal - Función para mostrar/ocultar un modal.
+ * @property {Function} handlePress - Función para manejar eventos de presión (por ejemplo, en botones).
+ * @property {Function} setBusqueda - Función para establecer el valor de búsqueda.
+ * @property {Array} filteredEntradas - Listado de entradas filtradas según el valor de búsqueda.
+ * @property {boolean} isDrawerOpen - Estado del drawer principal (abierto/cerrado).
+ * @property {boolean} isUserDrawerOpen - Estado del drawer de usuario (abierto/cerrado).
+ * @property {boolean} isModalVisible - Estado del modal (visible/oculto).
+ * @property {Function} setComValue - Función para establecer el valor de la comunidad.
+ * @property {string} comValue - Valor actual de la comunidad seleccionada.
+ * @property {Function} getEntradas - Función para obtener y establecer el listado de entradas desde la API.
+ */
 
 const useListadoEntradasAlm = () => {
 
