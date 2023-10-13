@@ -36,6 +36,19 @@ const useInfoDestinoEvento=()=>{
 		}
 	}
 
+	function limpiar() {
+		setComunidad({
+			id_comunidad: 17,
+			nombre: "No aplica"
+		});
+		setEvento({
+			id_evento: 6,
+			nombre: "No aplica"
+		});
+		setObservaciones('');
+		setEmisor('');
+	}
+
 	useEffect(()=>{
 		obtenerComunidades();
 		obtenerEventos();
@@ -70,7 +83,7 @@ const useInfoDestinoEvento=()=>{
 		console.log('entrada', entrada);
 	}, [entrada]);
 
-	return { comunidades, eventos, comunidad, evento, setComunidad, setEvento, observaciones, setObservaciones, emisor, setEmisor, obtenerComunidades, obtenerEventos, setEntrada, carrito, setCarrito, entrada }
+	return { comunidades, eventos, comunidad, evento, setComunidad, setEvento, observaciones, setObservaciones, emisor, setEmisor, obtenerComunidades, obtenerEventos, setEntrada, carrito, setCarrito, entrada, limpiar }
 }
 
 export default useInfoDestinoEvento;

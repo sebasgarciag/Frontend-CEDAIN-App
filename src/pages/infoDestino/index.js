@@ -15,11 +15,12 @@ import { useEffect } from "react";
 const Paginfo = ( {objeto} ) => { 
     const { comunidades, eventos,
         setComunidad, setEvento, observaciones, setObservaciones, 
-        receptor, setReceptor, setSalida, carrito, setCarrito, salida } = useInfoDestinoEvento();
+        receptor, setReceptor, setSalida, carrito, setCarrito, salida, limpiar } = useInfoDestinoEvento();
 
     useEffect (() => {
         setSalida(objeto.salida);
         setCarrito(objeto.carrito2);
+        limpiar();
     }, [objeto]);
 
     const navigation = useNavigation();
