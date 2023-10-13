@@ -62,18 +62,19 @@ const AltaProducto = () => {
   
     return (
       <ScrollView style={styles.Container}>
-          <HStack
-            direction="row"
-            justify="center"
-            m={4}
-            style={{ justifyContent: "space-between" }}
-          >
-            <MenuButton onPress={() => { alert('Menú presionado'); }} />
-            <ProfileButton onPress={() => { alert('Perfil presionado'); }} />
-          </HStack>
-        <View style={styles.View}>
+        <HStack
+          direction="row"
+          justify="center"
+          marginTop={20}
+          style={{ justifyContent: "space-between" }}
+        >
+          {/* <MenuButton onPress={() => { alert('Menú presionado'); }} /> */}
+          <Text style={{ fontSize: 26, marginLeft:90 }}>Alta Producto</Text>
+          <ProfileButton onPress={() => { alert('Perfil presionado'); }} />
+        </HStack>
+        {/* <View style={styles.View}>
           <Text style={{ fontSize: 26 }}>Crear Producto</Text>
-        </View>
+        </View> */}
   
         <View>
           <TextInput
@@ -93,7 +94,7 @@ const AltaProducto = () => {
                       Titulo={"Tamaño"} /> */}
   
           <TextInput
-            label="Medida"
+            label="Medida (cm)"
             value={medida}
             onChangeText={(text) => setMedida(text)}
             style={styles.Input}
@@ -102,11 +103,11 @@ const AltaProducto = () => {
           />
           <TextInput
             label="Precio Venta"
-            value={precioVenta.toString()}
+            value={'$' + precioVenta.toString()}
             onChangeText={(text) => {
               const newText = text.replace(/[^0-9.]/g, ""); // Solo permite números y puntos
               const validText = newText.replace(/(\..*)\./g, "$1"); // Solo permite un punto
-              setPrecioVenta(parseFloat(validText));
+              setPrecioVenta(parseFloat(newText));
             }}
             keyboardType="numeric"
             style={styles.Input}
@@ -115,11 +116,11 @@ const AltaProducto = () => {
           />
           <TextInput
             label="Precio Trueque"
-            value={precioTrueque.toString()}
+            value={'$' + precioTrueque.toString()}
             onChangeText={(text) => {
               const newText = text.replace(/[^0-9.]/g, ""); // Solo permite números y puntos
               const validText = newText.replace(/(\..*)\./g, "$1"); // Solo permite un punto
-              setPrecioTrueque(parseFloat(validText));
+              setPrecioTrueque(parseFloat(newText));
             }}
             keyboardType="numeric"
             style={styles.Input}
@@ -144,7 +145,7 @@ const AltaProducto = () => {
             // inputStyle={isEditable ? styles.editable : styles.view_only}
           />
   
-          <TouchableOpacity
+          {/* <TouchableOpacity
             title="Seleccionar imagen"
             onPress={pickImage}
             style={styles2.ImageButton}
@@ -160,7 +161,7 @@ const AltaProducto = () => {
                 style={{ width: 200, height: 200 }}
               />
             </View>
-          )}
+          )} */}
         </View>
 
         <Flex direction="row" justify="around" marginTop={40}>
@@ -177,7 +178,7 @@ const AltaProducto = () => {
           </TouchableOpacity>
         </Flex>
   
-        <VolverButtonN navigation={navigation} path={"Inventario"} />
+        <VolverButtonN navigation={navigation} path={"listadoProductos"} />
       </ScrollView>
     );
   };
