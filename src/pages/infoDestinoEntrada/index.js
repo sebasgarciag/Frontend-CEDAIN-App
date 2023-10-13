@@ -20,9 +20,11 @@ const Paginfo = ( {objeto} ) => {
     const navigation = useNavigation();
 
     useEffect (() => {
+        if ( objeto.entrada.id_evento == 0 ) {
+            limpiar();
+        }
         setCarrito(objeto.carrito2Entradas);
         setEntrada(objeto.entrada);
-        limpiar();
     }, [objeto]);
 
     return ( 

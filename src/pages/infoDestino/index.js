@@ -18,9 +18,12 @@ const Paginfo = ( {objeto} ) => {
         receptor, setReceptor, setSalida, carrito, setCarrito, salida, limpiar } = useInfoDestinoEvento();
 
     useEffect (() => {
+        if ( objeto.salida.id_evento == 0 ) {
+            limpiar();
+        };
         setSalida(objeto.salida);
         setCarrito(objeto.carrito2);
-        limpiar();
+
     }, [objeto]);
 
     const navigation = useNavigation();
