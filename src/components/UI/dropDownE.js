@@ -29,7 +29,7 @@ const Dropdowns = ({ dataDropDownEvento, Titulo, setValueEvento, valueEvento }) 
 				onBlur={() => setIsFocusEvento(false)}
 				onChange={async item => {
 					console.log('item', item);
-					await setValueEvento(item.nombre);
+					await setValueEvento(item);
 					setIsFocusEvento(false);
 				}}
 				renderLeftIcon={() => (
