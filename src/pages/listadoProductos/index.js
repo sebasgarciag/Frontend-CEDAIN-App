@@ -20,7 +20,7 @@ const ListadoProductos = () => {
               <MenuButton  onPress={() => { alert('Menú presionado'); }} />
               <VStack style={{alignItems: 'center'}}>
                   <Text style={styles.headerText}>Listado de productos</Text>
-                  <Text style={{font: 16}}>Nombre Almacenista</Text>
+                  {/* <Text style={{font: 16}}>Nombre Almacenista</Text> */}
               </VStack>
               <ProfileButton  onPress={() => { alert('Perfil presionado'); }} />
             </HStack>
@@ -38,7 +38,6 @@ const ListadoProductos = () => {
             
             <Stack style={{justifyContent: 'center', alignItems: 'center', margin: 10}}>
               {/* <VolverButton onPress={() => { router.replace("/botonesChernobyl"); }} /> */}
-              <VolverButtonNDirect navigation={navigation} path="" />
               <TouchableOpacity
               style={[styles.button, { backgroundColor: '#59CD90' }]}
               onPress={() => { navigation.navigate('altaProducto') }}
@@ -46,6 +45,7 @@ const ListadoProductos = () => {
                 <Icon name="add-circle-outline" size={24} color="#F1EFE3" />
                 <Text style={styles.buttonText}>Agregar Producto</Text>
               </TouchableOpacity>
+              <VolverButtonNDirect navigation={navigation} path="" />
 
               
             </Stack>

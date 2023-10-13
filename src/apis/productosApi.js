@@ -1,13 +1,17 @@
 import axios from 'axios';
-import ip from './ipApi';
-const baseUrl = `http://${ip}:8080`;
+import ipApi from './ipApi';
+const { ip, protocol, port } = ipApi;
+
+const baseUrl = `${protocol}://${ip}:${port}`;
+//const baseUrl = `http://${ip}:8080`;
+//const baseUrl = `https://${ip}`;
 
 const ProductosAPI = () => {
     async function getTodosProductos() {
         let response = null;
 
         try {
-            console.log(ip)
+            // console.log(ip)
             response = await axios.get(`${baseUrl}/productos`);
             // console.log(response.data)
         } catch (error) {
