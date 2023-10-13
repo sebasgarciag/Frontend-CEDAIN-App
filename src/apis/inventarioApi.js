@@ -1,11 +1,13 @@
 import axios from 'axios';
-import ip from './ipApi';
+import ipApi from './ipApi';
+const { ip, protocol, port } = ipApi;
 
+//const baseURL = 'http://192.168.1.68:8080';
+const baseURL = `${protocol}://${ip}:${port}`;
 //const baseURL = `http://${ip}:8080`;
-const baseURL = `https://${ip}`;
+//const baseURL = `https://${ip}`;
 
 const inventarioApi = () => {
-
     async function getAllInventario(idAlmacen) {
         let response = null;
         try {
