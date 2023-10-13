@@ -8,26 +8,30 @@ const useCarrito = () => {
     const [salida, setSalida] = useState();
   
     const aumentarCantidad = (producto) => {
-        const carritoActualizado = carrito2.map((item) => {
-            if (item.id_producto === producto.id_producto) {
-              return { ...item, detallesSalida: {...producto.detallesSalida, cantidad: producto.detallesSalida.cantidad + 1 }};
-            } else {
-              return item;
-            }
-          });
-      setCarrito2(carritoActualizado);
+
+		const carritoActualizado = carrito2.map((item) => {
+			if (item.detallesSalida.cantidad === producto.cantidad) {
+				return {...item, detallesSalida: {...producto.detallesSalida, cantidad: producto.cantidad}}
+			} else if (item.id_producto === producto.id_producto) {
+				return { ...item, detallesSalida: {...producto.detallesSalida, cantidad: producto.detallesSalida.cantidad + 1 }};
+			} else {
+				return item;
+			}
+		});
+
+		setCarrito2(carritoActualizado);
     };
   
     const disminuirCantidad = (producto) => {
-      const carritoActualizado = carrito2.map((item) => {
-        if (item.id_producto === producto.id_producto && item.detallesSalida.cantidad > 0) {
-            return { ...item, detallesSalida: {...producto.detallesSalida, cantidad: producto.detallesSalida.cantidad - 1 }};
-          } else {
-            return item;
-          }
+		const carritoActualizado = carrito2.map((item) => {
+			if (item.id_producto === producto.id_producto && item.detallesSalida.cantidad > 0) {
+				return { ...item, detallesSalida: {...producto.detallesSalida, cantidad: producto.detallesSalida.cantidad - 1 }};
+			} else {
+				return item;
+			}
     });
 
-      setCarrito2(carritoActualizado);
+      	setCarrito2(carritoActualizado);
     };
   
     function handleCantidad(producto, newCantidad) {
@@ -35,6 +39,8 @@ const useCarrito = () => {
             if (item.id_producto === producto.id_producto) {
                 if (isNaN(parseInt(newCantidad))) {
                   return {...item, detallesSalida: {...producto.detallesSalida, cantidad: 0}}
+                } else if (parseInt(newCantidad) > producto.cantidad) {
+                  return {...item, detallesSalida: {...producto.detallesSalida, cantidad: producto.cantidad}}
                 }
                 return { ...item, detallesSalida: {...producto.detallesSalida, cantidad: parseInt(newCantidad)}  };
             } else {
@@ -66,6 +72,7 @@ const useCarrito = () => {
               cantidad: 0,
               precio: producto.producto.precio_venta,
             },
+            cantidad: producto.cantidad,
           },
         ];
         setCarrito(carritoActualizado);
