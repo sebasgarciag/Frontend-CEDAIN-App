@@ -13,7 +13,7 @@ import { useNavigation } from '@react-navigation/native';
 import { useEffect } from "react";
 
 const Paginfo = ( {objeto} ) => { 
-    const { comunidades, eventos, comunidad, evento, 
+    const { comunidades, eventos,
         setComunidad, setEvento, observaciones, setObservaciones, 
         receptor, setReceptor, setSalida, carrito, setCarrito, salida } = useInfoDestinoEvento();
 
@@ -36,16 +36,17 @@ const Paginfo = ( {objeto} ) => {
             <VStack spacing={20} style={{padding: 10}}> 
 
 
-                <Dropdowns
+                {/* <Dropdowns
                     setValueEvento={setComunidad}
                     dataDropDownEvento={comunidades}
-                    valueEvento={comunidad}
-                    Titulo={"Comunidad"}/>
+                    valueEvento={null}
+                    setEstado={setComunidad}
+                    Titulo={"Comunidad"}/> */}
 
                 <Dropdowns
                     setValueEvento={setEvento} 
                     dataDropDownEvento={eventos}
-                    valueEvento={evento}
+                    valueEvento={null}
                     Titulo={"Evento"}/>
 
                 <Spacer/>

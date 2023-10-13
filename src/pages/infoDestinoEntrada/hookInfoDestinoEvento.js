@@ -10,8 +10,14 @@ const useInfoDestinoEvento=()=>{
 	const [entrada, setEntrada] = useState();
 	const [carrito, setCarrito] = useState();
 
-	const [comunidad, setComunidad] = useState({});
-	const [evento, setEvento] = useState({});
+	const [comunidad, setComunidad] = useState({
+		id_comunidad: 17,
+		nombre: "No aplica"
+	});
+	const [evento, setEvento] = useState({
+		id_evento: 6,
+		nombre: "No aplica"
+	});
 
 	const [observaciones, setObservaciones] = useState('');
 	const [emisor, setEmisor] = useState('');
@@ -19,14 +25,14 @@ const useInfoDestinoEvento=()=>{
 	async function obtenerComunidades(){
 		const response= await getComunidades();
 		if (response !== null){
-			setComunidades(response);
+			setComunidades(response.reverse());
 		}
 	}
 
 	async function obtenerEventos(){
 		const response= await getEventos();
 		if (response !== null){
-			setEventos(response);
+			setEventos(response.reverse());
 		}
 	}
 

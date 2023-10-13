@@ -24,12 +24,11 @@ const Dropdowns = ({ dataDropDownEvento, Titulo, setValueEvento, valueEvento }) 
 				valueField="id"
 				placeholder={!isFocusEvento ? `Selecciona` : '...'}
 				searchPlaceholder="Search..."
-				value={valueEvento.nombre}
+				value={valueEvento}
 				onFocus={() => setIsFocusEvento(true)}
 				onBlur={() => setIsFocusEvento(false)}
-				onChange={async item => {
-					console.log('item', item);
-					await setValueEvento(item);
+				onChange={item => {
+					setValueEvento(item);
 					setIsFocusEvento(false);
 				}}
 				renderLeftIcon={() => (
