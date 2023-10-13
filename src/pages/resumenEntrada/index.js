@@ -8,7 +8,7 @@ import buttonStyles from "../../assets/buttons/styles";
 import styles from "../../assets/styles";
 import { VolverButtonN, ButtonTerminar } from "../../components/UI/uiButtons";
 import { useNavigation } from "expo-router";
-import InfoSalida from "../../components/UI/infoSalida";
+import InfoEntrada from "../../components/UI/infoEntrada";
 import { useEffect } from "react";
 import ListaTerminar from "../../components/entradasSalidas/listaTerminar";
 
@@ -29,7 +29,7 @@ const Resumen = ({objeto}) => {
                 <Text style={styles.headerText}>Resumen de entrada</Text>
             </HStack>
 
-            <InfoSalida salida={entrada} />
+            <InfoEntrada entrada={entrada} />
             
             <ScrollView>
                 <VStack>

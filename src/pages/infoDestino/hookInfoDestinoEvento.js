@@ -9,8 +9,14 @@ const useInfoDestinoEvento=()=>{
 	const [salida, setSalida] = useState();
 	const [carrito, setCarrito] = useState();
 
-	const [comunidad, setComunidad] = useState({});
-	const [evento, setEvento] = useState({});
+	const [comunidad, setComunidad] = useState({
+		id_comunidad: 17,
+		nombre: "No aplica"
+	});
+	const [evento, setEvento] = useState({
+		id_evento: 6,
+		nombre: "No aplica"
+	});
 
 	const [observaciones, setObservaciones] = useState('');
 	const [receptor, setReceptor] = useState('');
@@ -22,7 +28,7 @@ const useInfoDestinoEvento=()=>{
 async function obtenerComunidades(){
     const response = await getComunidades();
     if (response !== null){
-        setComunidades(response);
+        setComunidades(response.reverse());
     }
 }
 
@@ -33,9 +39,22 @@ async function obtenerComunidades(){
 async function obtenerEventos(){
     const response = await getEventos();
     if (response !== null){
-        setEventos(response);
+        setEventos(response.reverse());
     }
 }
+
+	function limpiar() {
+		setComunidad({
+			id_comunidad: 17,
+			nombre: "No aplica"
+		});
+		setEvento({
+			id_evento: 6,
+			nombre: "No aplica"
+		});
+		setObservaciones('');
+		setReceptor('');
+	}
 
 // This hook is responsible for fetching the initial data when the component mounts.
 useEffect(() => {
@@ -69,7 +88,7 @@ useEffect(() => {
     });
 }, [receptor, observaciones]);
 
-	return { comunidades, eventos, comunidad, evento, setComunidad, setEvento, observaciones, setObservaciones, receptor, setReceptor, obtenerComunidades, obtenerEventos, setSalida, carrito, setCarrito, salida }
+	return { comunidades, eventos, comunidad, evento, setComunidad, setEvento, observaciones, setObservaciones, receptor, setReceptor, obtenerComunidades, obtenerEventos, setSalida, carrito, setCarrito, salida, limpiar }
 }
 
 export default useInfoDestinoEvento;
