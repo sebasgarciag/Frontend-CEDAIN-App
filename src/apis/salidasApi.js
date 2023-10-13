@@ -2,7 +2,7 @@ import axios from 'axios';
 import ipApi from './ipApi';
 const { ip, protocol, port } = ipApi;
 
-const baseURL = `${protocol}${ip}${port}`;
+const baseURL = `${protocol}://${ip}:${port}`;
 //const baseURL = `http://${ip}:8080`;
 //const baseURL = `https://${ip}`;
 
