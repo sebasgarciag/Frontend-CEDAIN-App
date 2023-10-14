@@ -13,6 +13,9 @@ import { VolverButtonN, GenericButton, MenuButton, ProfileButton } from "../../c
 import { useNavigation, useRoute } from "@react-navigation/native";
 import styles from "../../assets/styles";
 import { Switch } from '@rneui/themed';
+import { Dropdown } from "react-native-element-dropdown";
+import AntDesign from "@expo/vector-icons/AntDesign";
+
 
 
 const EditarProducto = () => {
@@ -41,12 +44,18 @@ const EditarProducto = () => {
     editarText,
     isEditable,
     open,
-    setOpen
+    setOpen, 
+    tamaniosData, 
+    categoriasData, 
+    tamanio,
+    categoria, 
+    setTamanio,
+    setCategoria
   } = useEditarProducto(producto);
   const navigation = useNavigation();
 
-  console.log(producto)
-  console.log(open)
+  // console.log(producto)
+  // console.log(open)
 
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -62,6 +71,38 @@ const EditarProducto = () => {
     if (!result.cancelled) {
       setImage(result.uri);
     }
+  };
+
+  const renderItemTamanio = (item) => {
+    return (
+      <View style={styles.item}>
+        <Text style={styles.textItem}>{item.label}</Text>
+        {item.value === tamanio && (
+          <AntDesign
+            style={styles.icon}
+            color="black"
+            name="Safety"
+            size={20}
+          />
+        )}
+      </View>
+    );
+  };
+
+  const renderItemCategoria = (item) => {
+    return (
+      <View style={styles.item}>
+        <Text style={styles.textItem}>{item.label}</Text>
+        {item.value === categoria && (
+          <AntDesign
+            style={styles.icon}
+            color="black"
+            name="Safety"
+            size={20}
+          />
+        )}
+      </View>
+    );
   };
 
   return (
@@ -89,12 +130,6 @@ const EditarProducto = () => {
           inputStyle={isEditable ? styles.editable : styles.view_only}
         />
 
-        {/* <DropdownE
-                    
-                    setValueEvento={setValueEvento}
-                    dataDropDownEvento={dataDropDownEvento}
-                    valueEvento={valueEvento}
-                    Titulo={"Tamaño"} /> */}
 
         <TextInput
           label="Medida (cm)"
@@ -110,7 +145,7 @@ const EditarProducto = () => {
           onChangeText={(text) => {
             const newText = text.replace(/[^0-9.]/g, ""); // Solo permite números y puntos
             const validText = newText.replace(/(\..*)\./g, "$1"); // Solo permite un punto
-            setPrecioVenta(parseFloat(newText));
+            setPrecioVenta(parseFloat(validText));
           }}
           keyboardType="numeric"
           style={styles.Input}
@@ -123,7 +158,7 @@ const EditarProducto = () => {
           onChangeText={(text) => {
             const newText = text.replace(/[^0-9.]/g, ""); // Solo permite números y puntos
             const validText = newText.replace(/(\..*)\./g, "$1"); // Solo permite un punto
-            setPrecioTrueque(parseFloat(newText));
+            setPrecioTrueque(parseFloat(validText));
           }}
           keyboardType="numeric"
           style={styles.Input}
@@ -148,27 +183,90 @@ const EditarProducto = () => {
           editable={isEditable}
           inputStyle={isEditable ? styles.editable : styles.view_only}
         />
-
+        <Text marginTop={10} marginLeft={20}>Categoría</Text>
+        <Dropdown
+          style={styles.dropdownRol}
+          placeholderStyle={styles.placeholderStyle}
+          selectedTextStyle={isEditable ? styles.editable : styles.view_only}
+          inputSearchStyle={styles.inputSearchStyle}
+          iconStyle={styles.iconStyle}
+          data={tamaniosData}
+          disable={!isEditable}
+          maxHeight={300}
+          labelField="label"
+          valueField="value"
+          placeholder="Select item"
+          value={tamanio}
+          onChange={(item) => {
+            setTamanio(item.value);
+          }}
+          renderLeftIcon={() => (
+            <AntDesign
+              style={styles.icon}
+              color="black"
+              name="Safety"
+              size={20}
+            />
+          )}
+          renderItem={renderItemTamanio}
+        />
+        <Text marginTop={5} marginLeft={20}>Categoría</Text>
+        <Dropdown
+          style={styles.dropdownRol}
+          placeholderStyle={styles.placeholderStyle}
+          selectedTextStyle={isEditable ? styles.editable : styles.view_only}
+          inputSearchStyle={styles.inputSearchStyle}
+          iconStyle={styles.iconStyle}
+          data={categoriasData}
+          disable={!isEditable}
+          maxHeight={300}
+          labelField="label"
+          valueField="value"
+          placeholder="Select item"
+          value={categoria}
+          onChange={(item) => {
+            setCategoria(item.value);
+          }}
+          renderLeftIcon={() => (
+            <AntDesign
+              style={styles.icon}
+              color="black"
+              name="Safety"
+              size={20}
+            />
+          )}
+          renderItem={renderItemCategoria}
+        />
         {/* <TouchableOpacity
           title="Seleccionar imagen"
           onPress={pickImage}
           style={styles2.ImageButton}
         >
-          <Text style={styles2.Text}>Adjuntar Foto</Text>
+        <Text style={styles2.Text}>Adjuntar Foto</Text>
         </TouchableOpacity>
         {image && (
           <View
-            style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+          style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
           >
-            <Image
-              source={{ uri: image }}
-              style={{ width: 200, height: 200 }}
-            />
+          <Image
+          source={{ uri: image }}
+          style={{ width: 200, height: 200 }}
+          />
           </View>
         )} */}
+        <Flex direction="row" justify='end' justifySelf="center">
+          <Text>Suspendido</Text>
+          <Switch
+            value={open}
+            onValueChange={setOpen}
+            color={open ? 'red' : 'gray'}
+            disabled={!isEditable}
+            justifySelf='center'
+          />
+        </Flex>
       </View>
 
-      <Flex direction="row" justify="around" alignItems='center' marginTop={40}>
+      <Flex direction="row" justify="around" alignItems='center'>
         <GenericButton
           onPress={handleEditable}
           style={buttonStyles.editarButton}
@@ -191,15 +289,6 @@ const EditarProducto = () => {
 
       <VolverButtonN navigation={navigation} path={"listadoProductos"} />
       
-      {/* <Stack row align="center" style={{ width: '50%', bottom: 280,right:120 }}>
-        <Text style={{left:148}}>Suspendido</Text>
-        <Switch
-          value={open}
-          onValueChange={setOpen}
-          color={open ? 'red' : 'gray'}
-          disabled={!isEditable}
-        />
-      </Stack> */}
       
     </ScrollView>
   );

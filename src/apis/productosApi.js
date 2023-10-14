@@ -17,7 +17,53 @@ const ProductosAPI = () => {
         return response;
     }
 
+    async function getTodosTamanios() {
+        let response = null;
+
+        try {
+            // console.log(ip)
+            response = await axios.get(`${baseUrl}/productos/tamanios/todos`);
+            // console.log(response.data)
+        } catch (error) {
+            console.log("Error: " + error);
+        }
+
+        return response;
+    }
+
+    async function getTodasCategorias() {
+        let response = null;
+
+        try {
+            // console.log(ip)
+            response = await axios.get(`${baseUrl}/productos/categorias/todas`);
+            // console.log(response.data)
+        } catch (error) {
+            console.log("Error: " + error);
+        }
+
+        return response;
+    }
+
     async function createProducto(producto) {
+        let response = null;
+
+        try {
+            response = await axios.post(`${baseUrl}/productos`, producto);
+            console.log(response.data);
+        } catch (error) {
+            console.log("Error: " + error);
+            // Si el error es un error de red (lo que podría indicar un problema de conexión con la base de datos)
+            if (axios.isAxiosError(error) && !error.response) {
+                console.log("No se pudo conectar a la base de datos");
+                Alert.alert("Error", "No se pudo conectar a la base de datos");
+            }
+        }
+
+        return response;
+    }
+
+    async function createProductoConImagen(producto) {
         let response = null;
 
         try {
@@ -71,7 +117,7 @@ const ProductosAPI = () => {
         return response;
     }
 
-    return { getTodosProductos, updateProducto, getProducto, createProducto }
+    return { getTodosProductos, updateProducto, getProducto, createProducto, getTodosTamanios , getTodasCategorias }
 }
 
 export default ProductosAPI;

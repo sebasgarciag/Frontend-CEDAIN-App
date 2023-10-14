@@ -25,7 +25,7 @@ function ListaProductos({listadoProductos}){
                         <Text style={styles.productName}>{producto.nombre}</Text>
                         <HStack spacing={20}>
                         <VStack>
-                            <Text style={styles.productQuantity}>Tamaño: {producto.id_tamanio}</Text>
+                            <Text style={styles.productQuantity}>Tamaño: {producto.Tamanio.descripcion}</Text>
                             <Text style={styles.productQuantity}>Medida: {producto.medida}</Text>
                             <Text style={styles.productQuantity}>Precio Venta: ${producto.precio_venta}</Text>
                         </VStack>
