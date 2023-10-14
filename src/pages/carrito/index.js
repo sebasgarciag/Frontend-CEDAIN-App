@@ -41,7 +41,6 @@ const ArticulosCarrito = ({objeto}) => {
                                 aumentarCantidad={aumentarCantidad}
                                 disminuirCantidad={disminuirCantidad}
                                 handleCantidad={handleCantidad}
-                                tipo = "salida"
                             />
                         </Surface> 
                     )}

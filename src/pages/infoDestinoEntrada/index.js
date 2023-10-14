@@ -3,28 +3,36 @@ import { React, useEffect } from 'react';
 import Dropdowns from "../../components/UI/dropDownE";
 import Textbox from "../../components/UI/textBox";
 import { ScrollView } from "react-native-gesture-handler";
-import useInfoDestinoEvento from "./hookInfoDestinoEvento";
 import { View, Text } from "react-native";
 import buttonStyles from "../../assets/buttons/styles";
 import styles from "../../assets/styles";
 import { SiguienteButtonNObject, VolverButtonObject } from "../../components/UI/uiButtons";
 import { useNavigation } from '@react-navigation/native';
+import useInfoDestinoEventoEntradas from "./hookInfoDestinoEvento";
 
-const Paginfo = ( {objeto} ) => { 
+const PaginfoEntrada = ( {objeto} ) => { 
     const { comunidades, eventos,
         setComunidad, setEvento, observaciones, setObservaciones, 
-        emisor, setEmisor, setEntrada, entrada, carrito, setCarrito, limpiar } = useInfoDestinoEvento();
+        emisor, setEmisor, setEntrada, entrada, carrito, setCarrito, limpiar } = useInfoDestinoEventoEntradas();
 
-    const navigation = useNavigation();
+    //console.log("Objeto info Destino: ", objeto)
+    //console.log("Objeto carrito info Destino: ", objeto.carrito2Entradas)
+    //console.log("Objeto entrada info Destino: ", objeto.entrada)
 
     useEffect (() => {
-        setCarrito(objeto.carrito2Entradas);
         setEntrada(objeto.entrada);
+        setCarrito(objeto.carrito2Entradas);
         limpiar();
     }, [objeto]);
 
-    console.log("Carrito info Destino Entrada: ", carrito)
-    console.log("Entrada info Destino: ", entrada)
+    //console.log("Carrito info Destino Entrada: ", carrito)
+    //console.log("Entrada info Destino: ", entrada)
+
+    let carritoEntradas = [...carrito];
+
+    const navigation = useNavigation();
+
+
 
     return ( 
     
@@ -73,7 +81,7 @@ const Paginfo = ( {objeto} ) => {
             </VStack>
             </ScrollView> 
             <View style={ buttonStyles.containerNavegacion }>
-                <VolverButtonObject navigation={navigation} path={"CarritoEntrada"} object={{ carrito, entrada }}/>
+                <VolverButtonObject navigation={navigation} path={"CarritoEntrada"} object={{ carritoEntradas, entrada }}/>
                 <SiguienteButtonNObject navigation={navigation} path={"ResumenEntrada"} object={{ carrito, entrada }} />
             </View>
     
@@ -83,4 +91,4 @@ const Paginfo = ( {objeto} ) => {
 
 )}
 
-export default Paginfo;
+export default PaginfoEntrada;

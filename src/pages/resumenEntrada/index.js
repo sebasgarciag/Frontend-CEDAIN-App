@@ -10,7 +10,7 @@ import { VolverButtonObject, ButtonTerminar } from "../../components/UI/uiButton
 import { useNavigation } from "expo-router";
 import InfoEntrada from "../../components/UI/infoEntrada";
 import { useEffect } from "react";
-import ListaTerminar from "../../components/entradasSalidas/listaTerminar";
+import ListaTerminarEntradas from "../../components/entradasSalidas/listaTerminarEntradas";
 
 const Resumen = ({objeto}) => { 
 
@@ -22,8 +22,8 @@ const Resumen = ({objeto}) => {
         setCarrito(objeto.carrito);
     }, [objeto]);
 
-    console.log("Carrito resumen Entrada: ", carrito)
-    console.log("Entrada Resumen: ", entrada)
+    //console.log("Carrito resumen Entrada: ", carrito)
+    //console.log("Entrada Resumen: ", entrada)
 
     const carrito2Entradas = [...carrito];
 
@@ -42,7 +42,7 @@ const Resumen = ({objeto}) => {
                     
                     {carrito.map((producto) => 
                         <Surface elevation={5} key={producto.id_producto} style={styles.productItem}> 
-                            <ListaTerminar producto={producto}/>
+                            <ListaTerminarEntradas producto={producto}/>
                         </Surface> 
                     )}
 

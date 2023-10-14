@@ -21,8 +21,8 @@ const Resumen = ({objeto}) => {
         setCarrito(objeto.carrito);
     }, [objeto]);
 
-    console.log("Carrito resumen: ", carrito)
-    console.log("Salida Resumen: ", salida)
+    //console.log("Carrito resumen: ", carrito)
+    //console.log("Salida Resumen: ", salida)
 
     const carrito2 = [...carrito];
     return (

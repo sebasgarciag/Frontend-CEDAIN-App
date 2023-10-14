@@ -7,9 +7,9 @@ import buttonStyles from "../../assets/buttons/styles";
 import styles from "../../assets/styles";
 import { VolverButtonN, SiguienteButtonNObject } from "../../components/UI/uiButtons";
 import { useNavigation } from "expo-router";
-import ProductoCarrito from "../../components/entradasSalidas/productoCarrito";
 import useCarritoEntradas from "./hookProductoCarritoEntradas";
-import TotalProductos from "../../components/entradasSalidas/totalProductos";
+import ProductoCarritoEntradas from "../../components/entradasSalidas/productoCarritoEntradas";
+import TotalProductosEntradas from "../../components/entradasSalidas/totalProductosEntradas";
 
 const ArticulosCarritoEntrada = ({objeto}) => {  
     const {handleCantidad, aumentarCantidad, disminuirCantidad, carrito2Entradas, setCarrito2Entradas, entrada, setEntrada } = useCarritoEntradas();
@@ -19,6 +19,8 @@ const ArticulosCarritoEntrada = ({objeto}) => {
         setCarrito2Entradas(objeto.carritoEntradas);
         setEntrada(objeto.entrada);
     }, [objeto]);
+
+    //console.log("Carrito 2 Entradas: ", carrito2Entradas)
 
     return (
         <Stack style={styles.container}>
@@ -33,7 +35,7 @@ const ArticulosCarritoEntrada = ({objeto}) => {
                     
                     {carrito2Entradas.map((producto) => 
                         <Surface elevation={5} key={producto.id_producto} style={styles.productItem}> 
-                            <ProductoCarrito                 
+                            <ProductoCarritoEntradas                 
                                 producto={producto}
                                 aumentarCantidad={aumentarCantidad}
                                 disminuirCantidad={disminuirCantidad}
@@ -45,7 +47,7 @@ const ArticulosCarritoEntrada = ({objeto}) => {
 
                 </VStack>
                 <Surface style={styles.productItem}>
-           			<TotalProductos carrito={carrito2Entradas}/>
+           			<TotalProductosEntradas carrito={carrito2Entradas}/>
             	</Surface>
             </ScrollView>
             <View style={ buttonStyles.containerNavegacion }>

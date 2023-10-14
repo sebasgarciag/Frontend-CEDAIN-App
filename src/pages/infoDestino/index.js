@@ -15,6 +15,8 @@ const Paginfo = ( {objeto} ) => {
         setComunidad, setEvento, observaciones, setObservaciones, 
         receptor, setReceptor, setSalida, carrito, setCarrito, salida, limpiar } = useInfoDestinoEvento();
 
+    //console.log("objeto info Destino Salida: ", objeto)    
+
     useEffect (() => {
         setSalida(objeto.salida);
         setCarrito(objeto.carrito2);
@@ -22,8 +24,8 @@ const Paginfo = ( {objeto} ) => {
     }, [objeto]);
 
     const navigation = useNavigation();
-    console.log("Carrito info Destino: ", carrito)
-    console.log("Salida info Destino: ", salida)
+    //console.log("Carrito info Destino: ", carrito)
+    //console.log("Salida info Destino: ", salida)
 
     
     return ( 

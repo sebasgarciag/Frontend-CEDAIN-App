@@ -1,8 +1,8 @@
-import Paginfo from "../src/pages/infoDestinoEntrada";
+import PaginfoEntrada from "../src/pages/infoDestinoEntrada";
 
 const InfoDestinoEntrada = ({ route }) => {
     return (
-        <Paginfo objeto={route.params.object}/>
+        <PaginfoEntrada objeto={route.params.object}/>
     );
 };
 
