@@ -46,10 +46,10 @@ const ArticulosCarritoEntrada = ({objeto}) => {
                     )}
 
                 </VStack>
-                <Surface style={styles.productItem}>
-           			<TotalProductosEntradas carrito={carrito2Entradas}/>
-            	</Surface>
             </ScrollView>
+            <Surface style={styles.productItem}>
+           			<TotalProductosEntradas carrito={carrito2Entradas}/>
+            </Surface>
             <View style={ buttonStyles.containerNavegacion }>
                     <VolverButtonN navigation={navigation} path={"CrearEntrada"} />
                     <SiguienteButtonNObject navigation={navigation} path={"InfoDestinoE"} object={{ carrito2Entradas, entrada }} />

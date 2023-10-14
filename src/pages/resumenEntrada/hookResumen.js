@@ -55,7 +55,7 @@ const useResumen = () => {
 
         const id_almacen = entrada.id_almacen;
 
-        console.log("Detalles Entrada: ", detallesEntrada);
+        //console.log("Detalles Entrada: ", detallesEntrada);
 
         const entradaPut = detallesEntrada.map(producto => ({
             id_almacen: id_almacen,
@@ -78,12 +78,12 @@ const useResumen = () => {
                 };
             });
 
-            console.log('detallesPost', detallesPost);
+            //console.log('detallesPost', detallesPost);
 
             const entradaId = response.id_entrada;
             await postDetallesEntrada(entradaId, detallesPost);
 
-            console.log("Entrada Put: ", entradaPut);
+            //console.log("Entrada Put: ", entradaPut);
 
             await putActualizarExistencias(entradaPut);
 

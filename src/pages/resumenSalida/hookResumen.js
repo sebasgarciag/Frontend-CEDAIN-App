@@ -68,7 +68,8 @@ const useResumen = () => {
         };
         // console.log('salidaPost', salidaPost);
         
-        console.log("Detalles Salida: ", detallesSalida);
+        //console.log("Detalles Salida: ", detallesSalida);
+
         const id_almacen = salida.id_almacen;
 
         const salidaPut = detallesSalida.map(producto => ({
@@ -89,12 +90,12 @@ const useResumen = () => {
                     precio_unitario: detalle.detallesSalida.precio
                 };
             });
-            console.log('detallesPost', detallesPost);
+            //console.log('detallesPost', detallesPost);
 
             const salidaId = response.id_salida;
             await postDetallesSalidas(detallesPost);
 
-            console.log("SalidaPut: ", salidaPut);
+            //console.log("SalidaPut: ", salidaPut);
 
             await putActualizarExistencias(salidaPut);
 
