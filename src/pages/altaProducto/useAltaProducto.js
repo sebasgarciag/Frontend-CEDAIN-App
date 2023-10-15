@@ -42,12 +42,6 @@ const useAltaProducto = () => {
 		// alert("Enlace clickeado");
 		try{
 		  const response = await createProducto(formData);
-		  if (response.status != 201){
-			  alert('f')
-		  }
-		  else{
-			  alert('no f')
-		  }
 		}
 		catch{
 		  alert('No se pudo crear el producto')

@@ -19,7 +19,7 @@ function ListaProductos({listadoProductos}){
                     <HStack spacing={10} style={{ flex: 1 }}>
                     <VStack style={{justifyContent: 'center'}}>
                         <Image 
-                        source={ producto.imagen ? { uri: `${baseUrl}/productos/${producto.id_producto}/image?${new Date().getTime()}`} :  require('../../assets/imagenes/no-image.jpg')} // TODO: cambiar por imagen del producto
+                        source={ producto.imagen ? { uri: `${baseUrl}/productos/${producto.id_producto}/image?${new Date().getTime()}`} :  require('../../assets/imagenes/no-image.jpg') } // TODO: cambiar por imagen del producto
                         style={styles.productImage}
                         cache='reload'
                         />
