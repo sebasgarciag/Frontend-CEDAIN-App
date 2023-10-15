@@ -6,31 +6,30 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import { router } from 'expo-router';
 import { useRoute } from '@react-navigation/native'; 
 import { useNavigation } from '@react-navigation/native';
-
+import useEditarInventario from './useEditarInventario';
 
 const EditProductScreen = ({object}) => {
 
   const route = useRoute();
   const inventario = route.params.object;
-  const navigation = useNavigation()
-  const [name, setName] = useState('');
-  const [quantity, setQuantity] = useState(inventario.cantidad.toString());
+  const navigation = useNavigation();
 
-  
+  const [quantity, setQuantity] = useState(inventario.cantidad);
+
+  const { updateInventario,resultado } = useEditarInventario();
+
 
   const handleSave = () => {
-    alert('Cambio guardado');
+    updateInventario(inventario.id_inventario,quantity)
+    alert(resultado)
   };
 
   const incrementQuantity = () => {
-    setQuantity((prevQuantity) => (parseInt(prevQuantity) + 1).toString());
+    setQuantity((prevQuantity) => (prevQuantity+1));
   };
 
   const decrementQuantity = () => {
-    setQuantity((prevQuantity) => {
-      const newQuantity = parseInt(prevQuantity) - 1;
-      return newQuantity > 0 ? newQuantity.toString() : '1';
-    });
+    setQuantity((prevQuantity) => (prevQuantity-1));
   };
 
   return (

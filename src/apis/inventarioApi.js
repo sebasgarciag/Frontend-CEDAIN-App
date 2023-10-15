@@ -26,7 +26,18 @@ const inventarioApi = () => {
         return response.data;
     }
 
-    return { getAllInventario, getAllCategorias }
+    async function putInventario(idInventario,cantidad) {
+        let response = null;
+        try {
+            response = await axios.put(`${baseURL}/inventario?id_inventario=${idInventario}&cantidad=${cantidad}`);
+            // console.log('response', response.data);
+        } catch (error) {
+            console.error('error' + error);
+        }
+        return response.data;
+    }
+
+    return { getAllInventario, getAllCategorias,putInventario }
 }
 
 export default inventarioApi;
