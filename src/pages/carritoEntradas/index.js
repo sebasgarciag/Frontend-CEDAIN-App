@@ -12,6 +12,7 @@ import useCarritoEntradas from "./hookProductoCarritoEntradas";
 import TotalProductos from "../../components/entradasSalidas/totalProductos";
 
 const ArticulosCarritoEntrada = ({objeto}) => {  
+    console.log("ARTICULOS CARRITO ENTRADA")
     const {handleCantidad, aumentarCantidad, disminuirCantidad, carrito2Entradas, setCarrito2Entradas, entrada, setEntrada } = useCarritoEntradas();
     const navigation = useNavigation();
 

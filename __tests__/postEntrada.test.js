@@ -6,10 +6,10 @@ import { render, screen, fireEvent, waitFor } from "@testing-library/react-nativ
 
 import CrearEntrada from "../app/crearEntrada";
 import SeleccionProductos from '../src/pages/crearEntrada';
-import ArticulosCarritoEntrada from '../src/pages/carritoEntradas';
 import Inventario2 from "../app/inventario";
 import CarritoEntrada from "../app/carritoEntrada";
-
+import ProductoCarrito from "../src/components/entradasSalidas/productoCarrito";
+import ListaProductos from '../src/components/entradasSalidas/listaProductos';
 
 import InfoDestinoEntrada from "../app/infoDestinoEntrada";
 import ResumenEntrada from "../app/ResumenEntrada";
@@ -74,15 +74,21 @@ function SeleccionProductoScreen() {
         <SeleccionProductos/>
     );
 }
+
+function ListaProductosScreen() {
+    return (
+        <ListaProductos/>
+    );
+}
 function CarritoEntradaScreen() {
     return (
         <CarritoEntrada/>
     );
 }
-ArticulosCarritoEntrada
-function ArticulosCarritoEntradaScreen() {
+
+function ProductoCarritoScreen() {
     return (
-        <ArticulosCarritoEntrada/>
+        <ProductoCarrito/>
     );
 }
 function InfoDestinoEntradaScreen() {
@@ -127,25 +133,34 @@ describe('Pruebas de Crear Entrada', () => {
         );
 
         render(<SeleccionProductoScreen/>);
-        // await fireEvent.press(screen.findByText("Canasta de barro"));
-        // await fireEvent.press(screen.getByText("Siguiente"));
-        const canastaDeBarro = await screen.findByText("Silla");
-        fireEvent.press(canastaDeBarro);
+        render(<ListaProductosScreen/>);
+        console.log("==========================================");
+        await fireEvent.press(screen.findByText("Silla"));
+        console.log("==========================================");
+        await fireEvent.press(screen.getByText("Siguiente"));
+        console.log("==========================================");
+        // const canastaDeBarro = await screen.findByText("Silla");
+        // fireEvent.press(canastaDeBarro);
         
         await fireEvent.press(screen.getByText("Siguiente"));
 
-        await render(
-            <NavigationContainer>
-                <Stack.Navigator>
-                    <Stack.Screen name ="/carritoEntrada" component={CarritoEntradaScreen} />
-                </Stack.Navigator>
-            </NavigationContainer>
-        );
-        render(<ArticulosCarritoEntrada/>);
-        console.log("==========================================");
-        await fireEvent.press(screen.getByText("+"));
-        await fireEvent.press(screen.getByText("Siguiente"));
+        // await render(
+        //     <NavigationContainer>
+        //         <Stack.Navigator>
+        //             <Stack.Screen name ="/carritoEntrada" component={CarritoEntradaScreen} />
+        //         </Stack.Navigator>
+        //     </NavigationContainer>
+        // );
 
+        // console.log("==========================================");
+        // render(<ProductoCarrito/>);
+        // const increaseButton = screen.getByTestId('increaseQuantityButton');
+        // console.log("==========================================");
+        // const amountInput = await screen.findByIcon(increaseButton);
+        // //fireEvent.changeText(amountInput, '5');
+        
+        // await fireEvent.press(screen.getByText("Siguiente"));
+        
         // await render(
         //     <NavigationContainer>
         //         <Stack.Navigator>

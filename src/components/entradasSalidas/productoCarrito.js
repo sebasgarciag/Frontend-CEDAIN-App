@@ -58,6 +58,7 @@ const ProductoCarrito = ({ producto, aumentarCantidad, disminuirCantidad, handle
                     keyboardType="numeric"
             />
             <IconButton
+                testID="increaseQuantityButton"
                 icon="plus"
                 size={15}
                 onPress={() => aumentarCantidad(producto)}
