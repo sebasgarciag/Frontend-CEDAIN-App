@@ -35,23 +35,28 @@ const useListadoEntradasAlm = () => {
     ]);
 
     const [usuarios, setUsuarios] = useState([]);
-
     const [usuarioSeleccionado, setUsuarioSeleccionado] = useState({});
+
+    const [almacenes, setAlmacenes] = useState([
+        {
+            id_almacen: 1,
+            nombre: 'Central',
+            ciudad: 'Chihuahua'
+        },
+        {
+            id_almacen: 2,
+            nombre: 'Central',
+            ciudad: 'Creel'
+        }
+    ]);
+
+    const [almacenSeleccionado, setAlmacenSeleccionado] = useState({});
  
     const filteredEntradas = entradas.filter((entrada) => {
-        // const almacenistaMatch = entrada.id_usuario.includes(busqueda.toLowerCase());
-        // const folioSerie = entrada.folio + entrada.serie;
-        // const folioSerieMatch = folioSerie.toLowerCase().includes(busqueda.toLowerCase());
-        // const comunidadMatch = entrada.id_comunidad.includes(busqueda.toLowerCase());
-
         const fechaMatch = new Date(entrada.fecha) >= fechaInicial && new Date(entrada.fecha) <= fechaFinal;
-
-        console.log('fechaMatch', fechaMatch);
-        
         const usuarioMatch = entrada.id_usuario === usuarioSeleccionado.id_usuario || usuarioSeleccionado.id_usuario === undefined;
-        return usuarioMatch && fechaMatch;
-
-        // return almacenistaMatch || folioSerieMatch || comunidadMatch;
+        const almacenMatch = entrada.id_almacen === almacenSeleccionado.id_almacen || almacenSeleccionado.id_almacen === undefined;
+        return usuarioMatch && fechaMatch && almacenMatch;
     });
 
     async function getEntradas() {
@@ -70,7 +75,7 @@ const useListadoEntradasAlm = () => {
     }, []);
 
    
-    return { entradas, toggleDrawer, toggleUserDrawer, toggleModal, handlePress, setBusqueda, filteredEntradas, isDrawerOpen, isUserDrawerOpen, isModalVisible, setComValue, comValue, usuarios, usuarioSeleccionado, setUsuarioSeleccionado, fechaInicial, setFechaInicial, fechaFinal, setFechaFinal }
+    return { entradas, toggleDrawer, toggleUserDrawer, toggleModal, handlePress, setBusqueda, filteredEntradas, isDrawerOpen, isUserDrawerOpen, isModalVisible, setComValue, comValue, usuarios, usuarioSeleccionado, setUsuarioSeleccionado, fechaInicial, setFechaInicial, fechaFinal, setFechaFinal, almacenes, almacenSeleccionado, setAlmacenSeleccionado }
 }
 
 export default useListadoEntradasAlm;

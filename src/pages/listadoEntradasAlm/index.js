@@ -16,7 +16,8 @@ const ListadoEntradasAlm = () => {
 	const {toggleUserDrawer, toggleModal, handlePress, filteredEntradas, 
 		setComValue, isUserDrawerOpen, isModalVisible, comValue,
 		usuarios, usuarioSeleccionado, setUsuarioSeleccionado,
-		fechaInicial, setFechaInicial, fechaFinal, setFechaFinal
+		fechaInicial, setFechaInicial, fechaFinal, setFechaFinal,
+		almacenes, almacenSeleccionado, setAlmacenSeleccionado
 	} = useListadoEntradasAlm();
 
 	return (
@@ -60,6 +61,9 @@ const ListadoEntradasAlm = () => {
 							setFechaInicial={setFechaInicial}
 							fechaFinal={fechaFinal}
 							setFechaFinal={setFechaFinal}
+							almacenes={almacenes}
+							almacenSeleccionado={almacenSeleccionado}
+							setAlmacenSeleccionado={setAlmacenSeleccionado}
 						/>
 					</Modal>
 

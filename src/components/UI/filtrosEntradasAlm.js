@@ -5,7 +5,7 @@ import { RadioButton, List } from "react-native-paper";
 import styles from "../../assets/styles";
 import CalendarPicker from "react-native-calendar-picker";
 
-function FiltrosEntradasAlm({onPress, usuarios, setUsuarioSeleccionado, usuarioSeleccionado, fechaInicial, setFechaInicial, fechaFinal, setFechaFinal }){
+function FiltrosEntradasAlm({onPress, usuarios, setUsuarioSeleccionado, usuarioSeleccionado, fechaInicial, setFechaInicial, fechaFinal, setFechaFinal, setAlmacenSeleccionado, almacenSeleccionado, almacenes }) {
 
 
         return(
@@ -31,6 +31,25 @@ function FiltrosEntradasAlm({onPress, usuarios, setUsuarioSeleccionado, usuarioS
 					</RadioButton.Group>
 				</List.Accordion>
 
+				<List.Accordion
+					title="Almacen"
+					onPress={onPress}>
+					
+
+					<RadioButton.Group onValueChange={almacen => setAlmacenSeleccionado(almacen)} value={almacenSeleccionado}>
+						<HStack>
+							<Text style={{textAlignVertical: 'center'}}>Todos</Text>
+							<RadioButton value={{}}/>
+						</HStack>
+						{almacenes.map((almacen) => (
+							<HStack key={almacen.id_almacen}>
+								<Text style={{textAlignVertical: 'center'}}>{almacen.ciudad + " " + almacen.nombre}</Text>
+								<RadioButton value={almacen}/>
+							</HStack>
+						))}
+					</RadioButton.Group>
+				</List.Accordion>
+
 			  
 				<List.Accordion
 					title="Fecha Inicial"
@@ -47,7 +66,7 @@ function FiltrosEntradasAlm({onPress, usuarios, setUsuarioSeleccionado, usuarioS
 							months={['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Setiembre', 'Octubre', 'Nobiembre', 'Diciembre']}
 							weekdays={['Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab', 'Dom']}
 						/>
-						<Text>Fecha: {fechaInicial.toString()}</Text>
+						<Text>Fecha: {fechaInicial.toString().slice(0, 16)}</Text>
 					
 				</List.Accordion>
 
@@ -66,7 +85,7 @@ function FiltrosEntradasAlm({onPress, usuarios, setUsuarioSeleccionado, usuarioS
 							months={['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Setiembre', 'Octubre', 'Nobiembre', 'Diciembre']}
 							weekdays={['Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab', 'Dom']}
 						/>
-						<Text>Fecha: {fechaFinal.toString()}</Text>
+						<Text>Fecha: {fechaFinal.toString().slice(0, 16)}</Text>
 					
 				</List.Accordion>
 

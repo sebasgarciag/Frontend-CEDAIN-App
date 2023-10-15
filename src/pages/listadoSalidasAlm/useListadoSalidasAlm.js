@@ -1,6 +1,5 @@
 import { useState, useEffect }  from 'react';
 import salidasApi from '../../apis/salidasApi';
-import { useEffect } from 'react';
 import UsuariosAPI from '../../apis/usuariosApi';
 
 const useListadoSalidasAlm = () => {
@@ -37,8 +36,22 @@ const useListadoSalidasAlm = () => {
     ]);
 
     const [usuarios, setUsuarios] = useState([]);
-    
     const [usuarioSeleccionado, setUsuarioSeleccionado] = useState({});
+    
+    const [almacenes, setAlmacenes] = useState([
+        {
+            id_almacen: 1,
+            nombre: 'Central',
+            ciudad: 'Chihuahua'
+        },
+        {
+            id_almacen: 2,
+            nombre: 'Central',
+            ciudad: 'Creel'
+        }
+    ]);
+
+    const [almacenSeleccionado, setAlmacenSeleccionado] = useState({});
 
 /**
  * Filters the salidas based on a search query. The filter checks if the concatenated value 
@@ -48,14 +61,12 @@ const useListadoSalidasAlm = () => {
  * @type {Array}
  */
 const filteredSalidas = salidas.filter((salida) => {
-    // const folioSerie = salida.folio + salida.serie;
-    // const folioSerieMatch = (folioSerie || '').toLowerCase().includes(busqueda.toLowerCase());
-    // return folioSerieMatch;
 
     const fechaMatch = new Date(salida.fecha) >= fechaInicial && new Date(salida.fecha) <= fechaFinal;
     const usuarioMatch = salida.id_usuario === usuarioSeleccionado.id_usuario || usuarioSeleccionado.id_usuario === undefined;
-    
-    return usuarioMatch && fechaMatch;
+    const almacenMatch = salida.id_almacen === almacenSeleccionado.id_almacen || almacenSeleccionado.id_almacen === undefined;
+
+    return usuarioMatch && fechaMatch && almacenMatch;
 });
 
 /**
@@ -85,7 +96,7 @@ useEffect(() => {
 }, []);
 
    
-    return {toggleDrawer, toggleUserDrawer, toggleModal, handlePress, setBusqueda, filteredSalidas, isDrawerOpen, isUserDrawerOpen, isModalVisible, setAlmValue, almValue, setEveValue, eveValue, usuarios, usuarioSeleccionado, setUsuarioSeleccionado, fechaInicial, setFechaInicial, fechaFinal, setFechaFinal }
+    return {toggleDrawer, toggleUserDrawer, toggleModal, handlePress, setBusqueda, filteredSalidas, isDrawerOpen, isUserDrawerOpen, isModalVisible, setAlmValue, almValue, setEveValue, eveValue, usuarios, usuarioSeleccionado, setUsuarioSeleccionado, fechaInicial, setFechaInicial, fechaFinal, setFechaFinal, almacenes, almacenSeleccionado, setAlmacenSeleccionado }
 }
 
 export default useListadoSalidasAlm;
