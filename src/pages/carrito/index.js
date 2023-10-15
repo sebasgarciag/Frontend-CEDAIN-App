@@ -11,15 +11,17 @@ import ProductoCarrito from "../../components/entradasSalidas/productoCarrito";
 import useCarrito from "./hookProductoCarrito";
 import TotalProductos from "../../components/entradasSalidas/totalProductos";
 
-const ArticulosCarrito = ({objeto}) => {  
+const ArticulosCarrito = ({objeto}) => {
     const {handleCantidad, aumentarCantidad, disminuirCantidad, carrito2, setCarrito2, salida, setSalida} = useCarrito();
-    const navigation = useNavigation();
 
+    const navigation = useNavigation();
+    
 
     useEffect(() => {
         setCarrito2(objeto.carrito);
         setSalida(objeto.salida)
     }, [objeto]);
+
 
     return (
         <Stack style={styles.container}>
@@ -39,16 +41,16 @@ const ArticulosCarrito = ({objeto}) => {
                                 aumentarCantidad={aumentarCantidad}
                                 disminuirCantidad={disminuirCantidad}
                                 handleCantidad={handleCantidad}
-                                tipo = "salida"
                             />
                         </Surface> 
                     )}
 
                 </VStack>
-                <Surface style={styles.productItem}>
-           			<TotalProductos carrito={carrito2}/>
-            	</Surface>
+                
             </ScrollView>
+            <Surface style={styles.productItem}>
+           		    <TotalProductos carrito={carrito2}/>
+            </Surface>
             <View style={ buttonStyles.containerNavegacion }>
                     <VolverButtonN navigation={navigation} path={"CrearSalida"} />
                     <SiguienteButtonNObject navigation={navigation} path={"InfoDestinoN"} object={{ carrito2, salida }}/>
