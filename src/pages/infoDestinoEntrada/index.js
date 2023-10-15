@@ -1,28 +1,40 @@
 import { Spacer, VStack, HStack } from "@react-native-material/core";
-import { React } from 'react';
+import { React, useEffect } from 'react';
 import Dropdowns from "../../components/UI/dropDownE";
 import Textbox from "../../components/UI/textBox";
 import { ScrollView } from "react-native-gesture-handler";
-import useInfoDestinoEvento from "./hookInfoDestinoEvento";
 import { View, Text } from "react-native";
 import buttonStyles from "../../assets/buttons/styles";
 import styles from "../../assets/styles";
-import { VolverButtonN } from "../../components/UI/uiButtons";
-import { SiguienteButtonNObject } from "../../components/UI/uiButtons";
+import { SiguienteButtonNObject, VolverButtonObject } from "../../components/UI/uiButtons";
 import { useNavigation } from '@react-navigation/native';
-import { useEffect } from "react";
+import useInfoDestinoEventoEntradas from "./hookInfoDestinoEvento";
 
-const Paginfo = ( {objeto} ) => { 
-    const { comunidades, eventos, comunidad, evento, 
+const PaginfoEntrada = ( {objeto} ) => { 
+    const { comunidades, eventos,
         setComunidad, setEvento, observaciones, setObservaciones, 
-        emisor, setEmisor, setEntrada, entrada, carrito, setCarrito } = useInfoDestinoEvento();
+        emisor, setEmisor, setEntrada, entrada, carrito, setCarrito, limpiar } = useInfoDestinoEventoEntradas();
 
-    const navigation = useNavigation();
+    //console.log("Objeto info Destino: ", objeto)
+    //console.log("Objeto carrito info Destino: ", objeto.carrito2Entradas)
+    //console.log("Objeto entrada info Destino: ", objeto.entrada)
 
     useEffect (() => {
+        if ( objeto.entrada.id_evento == 0 ) {
+            limpiar();
+        }
         setCarrito(objeto.carrito2Entradas);
         setEntrada(objeto.entrada);
     }, [objeto]);
+
+    //console.log("Carrito info Destino Entrada: ", carrito)
+    //console.log("Entrada info Destino: ", entrada)
+
+    let carritoEntradas = [...carrito];
+
+    const navigation = useNavigation();
+
+
 
     return ( 
     
@@ -39,13 +51,13 @@ const Paginfo = ( {objeto} ) => {
                 <Dropdowns
                     setValueEvento={setComunidad} 
                     dataDropDownEvento={comunidades}
-                    valueEvento={comunidad}
+                    valueEvento={null}
                     Titulo={"Comunidad"}/>
 
                 <Dropdowns
                     setValueEvento={setEvento} 
                     dataDropDownEvento={eventos}
-                    valueEvento={evento}
+                    valueEvento={null}
                     Titulo={"Evento"}/>
 
                 <Spacer/>
@@ -71,8 +83,8 @@ const Paginfo = ( {objeto} ) => {
             </VStack>
             </ScrollView> 
             <View style={ buttonStyles.containerNavegacion }>
-                <VolverButtonN navigation={navigation} path={"CarritoEntrada"} />
-                <SiguienteButtonNObject navigation={navigation} path={"ResumenEntrada"} object={{carrito, entrada}} />
+                <VolverButtonObject navigation={navigation} path={"CarritoEntrada"} object={{ carritoEntradas, entrada }}/>
+                <SiguienteButtonNObject navigation={navigation} path={"ResumenEntrada"} object={{ carrito, entrada }} />
             </View>
     
 
@@ -81,4 +93,4 @@ const Paginfo = ( {objeto} ) => {
 
 )}
 
-export default Paginfo;
+export default PaginfoEntrada;

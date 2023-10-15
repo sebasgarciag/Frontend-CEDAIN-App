@@ -7,7 +7,6 @@ import buttonStyles from "../../assets/buttons/styles";
 import styles from "../../assets/styles";
 import { useNavigation } from '@react-navigation/native';
 import { VolverButtonN, SiguienteButtonNObject } from "../../components/UI/uiButtons";
-import useCurrentScreen from "../../components/UI/useCurrentScreen";
 import useCarrito from "../carrito/hookProductoCarrito";
 
 const SeleccionProductos = () => { 
@@ -24,7 +23,7 @@ const SeleccionProductos = () => {
 
             <ListaProductos productos={productos} categorias={categorias} carrito={carrito} handleCarrito={handleCarrito}/>
             <View style={ buttonStyles.containerNavegacion }>
-                <VolverButtonN navigation={navigation} path={"Salidas"}/>
+                <VolverButtonN navigation={navigation} path={"Inventario"} />
                 <SiguienteButtonNObject navigation={navigation} path={"Carrito"} object={{carrito, salida}}/>
             </View>
         </View>

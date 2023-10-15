@@ -20,11 +20,6 @@ function ListaProductos({ productos, categorias, carrito, handleCarrito }) {
       }
     };
 
-
-    // {"cantidad": 10, "id_almacen": 1, "id_inventario": 1, "id_producto": 1, "producto": {"Tamanio": null, "id_categoria": null, "id_producto": 1, "id_tamanio": null, "medida": null, "nombre": null, "nombre_corto": null, "precio_trueque": null, "precio_venta": null}}
-
-
-
     return (
         <ScrollView>
         {categorias.map((categoria) =>
@@ -36,13 +31,11 @@ function ListaProductos({ productos, categorias, carrito, handleCarrito }) {
                 <ScrollView horizontal>
                     <HStack spacing={10}>
 
-                        {productos.filter(producto => producto.producto.id_categoria === categoria.id_categoria).map((producto) => 
+                        {productos.filter(producto => producto.producto.id_categoria === categoria.id_categoria && producto.cantidad > 0).map((producto) => 
                             <Box key={producto.id_producto} style={{margin: 8}}>
 
-                                {/* TODO: funcion para anadir a carrito */}
-                                <Pressable onPress={() => {console.log('pressed' + producto.producto.id_producto), handleCarrito(producto), toggleProductoSeleccionado(producto)}}>
+                                <Pressable onPress={() => { handleCarrito(producto), toggleProductoSeleccionado(producto)}}>
 
-                                    {/* TODO: cambiar colores */}
                                     <Surface
                                         elevation={5}
                                         style={{

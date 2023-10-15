@@ -14,18 +14,15 @@ import styles from "../../assets/styles";
 import { Flex, HStack, TextInput } from "@react-native-material/core";
 import { VolverButtonN, GenericButton, MenuButton, ProfileButton } from "../../components/UI/uiButtons";
 import buttonStyles from "../../assets/buttons/styles";
+import { Dropdown } from "react-native-element-dropdown";
+import AntDesign from "@expo/vector-icons/AntDesign";
+import { Switch } from '@rneui/themed';
 
 
 
 
 const AltaProducto = () => {
-    // const route = useRoute();
-    // const producto = route.params.object;
     const {
-      // setValueEvento,
-      // dataDropDownEvento,
-      // valueEvento,
-      handleEditable,
       nombre,
       setNombre,
       medida,
@@ -39,27 +36,67 @@ const AltaProducto = () => {
       image,
       setImage,
       handleSubmit,
-      editarText,
-      isEditable,
+      tamanio,
+      categoria,
+      setTamanio,
+      setCategoria,
+      tamaniosData,
+      categoriasData,
+      open,
+      setOpen,
+      loading,
+      setLoading
     } = useAltaProducto();
     const navigation = useNavigation();
   
     const pickImage = async () => {
+      setLoading(true); // start the loading process
       let result = await ImagePicker.launchImageLibraryAsync({
         mediaTypes: ImagePicker.MediaTypeOptions.All,
         allowsEditing: true,
         aspect: [4, 3],
         quality: 1,
-      //   canceled: false,
       });
   
       console.log(result);
   
-      if (!result.cancelled) {
+      if (!result.canceled) {
         setImage(result.uri);
       }
+      setLoading(false); // end the loading process
+    };
+    const renderItemTamanio = (item) => {
+      return (
+        <View style={styles.item}>
+          <Text style={styles.textItem}>{item.label}</Text>
+          {item.value === tamanio && (
+            <AntDesign
+              style={styles.icon}
+              color="black"
+              name="Safety"
+              size={20}
+            />
+          )}
+        </View>
+      );
     };
   
+    const renderItemCategoria = (item) => {
+      return (
+        <View style={styles.item}>
+          <Text style={styles.textItem}>{item.label}</Text>
+          {item.value === categoria && (
+            <AntDesign
+              style={styles.icon}
+              color="black"
+              name="Safety"
+              size={20}
+            />
+          )}
+        </View>
+      );
+    };
+
     return (
       <ScrollView style={styles.Container}>
         <HStack
@@ -81,17 +118,7 @@ const AltaProducto = () => {
             label="Nombre del Producto"
             value={nombre}
             onChangeText={(text) => setNombre(text)}
-          //   style={styles2.Input}
-            // editable={isEditable}
-            // inputStyle={isEditable ? styles.editable : styles.view_only}
           />
-  
-          {/* <DropdownE
-                      
-                      setValueEvento={setValueEvento}
-                      dataDropDownEvento={dataDropDownEvento}
-                      valueEvento={valueEvento}
-                      Titulo={"Tamaño"} /> */}
   
           <TextInput
             label="Medida (cm)"
@@ -107,7 +134,7 @@ const AltaProducto = () => {
             onChangeText={(text) => {
               const newText = text.replace(/[^0-9.]/g, ""); // Solo permite números y puntos
               const validText = newText.replace(/(\..*)\./g, "$1"); // Solo permite un punto
-              setPrecioVenta(parseFloat(newText));
+              setPrecioVenta(parseFloat(validText));
             }}
             keyboardType="numeric"
             style={styles.Input}
@@ -120,32 +147,71 @@ const AltaProducto = () => {
             onChangeText={(text) => {
               const newText = text.replace(/[^0-9.]/g, ""); // Solo permite números y puntos
               const validText = newText.replace(/(\..*)\./g, "$1"); // Solo permite un punto
-              setPrecioTrueque(parseFloat(newText));
+              setPrecioTrueque(parseFloat(validText));
             }}
             keyboardType="numeric"
             style={styles.Input}
-            // editable={isEditable}
-            // inputStyle={isEditable ? styles.editable : styles.view_only}
-  
           />
-  
-          {/* <DropdownE
-  
-                      setValueEvento={setValueEvento}
-                      dataDropDownEvento={dataDropDownEvento}
-                      valueEvento={valueEvento}
-                      Titulo={"Categoría"} /> */}
   
           <TextInput
             label="Nombre Corto"
             value={nombreCorto}
             onChangeText={(text) => setNombreCorto(text)}
             style={styles.Input}
-            // editable={isEditable}
-            // inputStyle={isEditable ? styles.editable : styles.view_only}
           />
-  
-          {/* <TouchableOpacity
+          <Text marginTop={10} marginLeft={20}>Tamaño</Text>
+        <Dropdown
+          style={styles.dropdownRol}
+          placeholderStyle={styles.placeholderStyle}
+          selectedTextStyle={styles.editable}
+          inputSearchStyle={styles.inputSearchStyle}
+          iconStyle={styles.iconStyle}
+          data={tamaniosData}
+          maxHeight={300}
+          labelField="label"
+          valueField="value"
+          placeholder="Select item"
+          value={tamanio}
+          onChange={(item) => {
+            setTamanio(item.value);
+          }}
+          renderLeftIcon={() => (
+            <AntDesign
+              style={styles.icon}
+              color="black"
+              name="Safety"
+              size={20}
+            />
+          )}
+          renderItem={renderItemTamanio}
+        />
+        <Text marginTop={5} marginLeft={20}>Categoría</Text>
+        <Dropdown
+          style={styles.dropdownRol}
+          placeholderStyle={styles.placeholderStyle}
+          selectedTextStyle={styles.editable}
+          inputSearchStyle={styles.inputSearchStyle}
+          iconStyle={styles.iconStyle}
+          data={categoriasData}
+          maxHeight={300}
+          labelField="label"
+          valueField="value"
+          placeholder="Select item"
+          value={categoria}
+          onChange={(item) => {
+            setCategoria(item.value);
+          }}
+          renderLeftIcon={() => (
+            <AntDesign
+              style={styles.icon}
+              color="black"
+              name="Safety"
+              size={20}
+            />
+          )}
+          renderItem={renderItemCategoria}
+        />
+          <TouchableOpacity
             title="Seleccionar imagen"
             onPress={pickImage}
             style={styles2.ImageButton}
@@ -161,7 +227,16 @@ const AltaProducto = () => {
                 style={{ width: 200, height: 200 }}
               />
             </View>
-          )} */}
+          )}
+          <Flex direction="row" justify='end' justifySelf="center">
+          <Text>Suspendido</Text>
+          <Switch
+            value={open}
+            onValueChange={setOpen}
+            color={open ? 'red' : 'gray'}
+            justifySelf='center'
+          />
+        </Flex>
         </View>
 
         <Flex direction="row" justify="around" marginTop={40}>

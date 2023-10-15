@@ -1,6 +1,6 @@
 import React from 'react';
 import { Stack, Text} from "@react-native-material/core";
-import { ExportarButton } from '../../components/UI/uiButtons';
+import { ExportarButton, VolverButtonNDirect } from '../../components/UI/uiButtons';
 import useSalidaAdmin from './useSalidaAdmin';
 import InfoSalida from '../../components/UI/infoSalida';
 import ProductosSalida from '../../components/UI/productosSalida';
@@ -30,7 +30,7 @@ const SalidaAdmin = () => {
 
                 {/*Boton de volver atras */}
                 <Stack style={styles.volverContainer}>
-                    <VolverButtonN navigation={navigation} path={"SalidasAdmin"}/>
+                    <VolverButtonNDirect navigation={navigation}/>
                 </Stack>
             </Stack>
         </>
