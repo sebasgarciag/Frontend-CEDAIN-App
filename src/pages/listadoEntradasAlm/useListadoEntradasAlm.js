@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react';
 import entradasApi from '../../apis/entradasApi';
 import UsuariosAPI from '../../apis/usuariosApi';
+import { useIsFocused } from '@react-navigation/core';
 
 const useListadoEntradasAlm = () => {
+
+    const isFocused = useIsFocused();
 
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const toggleDrawer = () => {setIsDrawerOpen(!isDrawerOpen);};
@@ -70,10 +73,15 @@ const useListadoEntradasAlm = () => {
     };
 
     useEffect(() => {
-        getEntradas();
         getUsuarios();
     }, []);
 
+    useEffect(() => {
+        if (isFocused) {
+            console.log('==============================================');
+            getEntradas();
+        }
+    }, [isFocused]);
    
     return { entradas, toggleDrawer, toggleUserDrawer, toggleModal, handlePress, setBusqueda, filteredEntradas, isDrawerOpen, isUserDrawerOpen, isModalVisible, setComValue, comValue, usuarios, usuarioSeleccionado, setUsuarioSeleccionado, fechaInicial, setFechaInicial, fechaFinal, setFechaFinal, almacenes, almacenSeleccionado, setAlmacenSeleccionado }
 }

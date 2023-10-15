@@ -1,8 +1,11 @@
 import { useState, useEffect }  from 'react';
 import salidasApi from '../../apis/salidasApi';
 import UsuariosAPI from '../../apis/usuariosApi';
+import { useIsFocused } from '@react-navigation/core';
 
 const useListadoSalidasAlm = () => {
+
+    const isFocused = useIsFocused();
 
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const toggleDrawer = () => {setIsDrawerOpen(!isDrawerOpen);};
@@ -53,47 +56,53 @@ const useListadoSalidasAlm = () => {
 
     const [almacenSeleccionado, setAlmacenSeleccionado] = useState({});
 
-/**
- * Filters the salidas based on a search query. The filter checks if the concatenated value 
- * of 'folio' and 'serie' includes the search query.
- * 
- * @constant
- * @type {Array}
- */
-const filteredSalidas = salidas.filter((salida) => {
+    /**
+     * Filters the salidas based on a search query. The filter checks if the concatenated value 
+     * of 'folio' and 'serie' includes the search query.
+     * 
+     * @constant
+     * @type {Array}
+     */
+    const filteredSalidas = salidas.filter((salida) => {
 
-    const fechaMatch = new Date(salida.fecha) >= fechaInicial && new Date(salida.fecha) <= fechaFinal;
-    const usuarioMatch = salida.id_usuario === usuarioSeleccionado.id_usuario || usuarioSeleccionado.id_usuario === undefined;
-    const almacenMatch = salida.id_almacen === almacenSeleccionado.id_almacen || almacenSeleccionado.id_almacen === undefined;
+        const fechaMatch = new Date(salida.fecha) >= fechaInicial && new Date(salida.fecha) <= fechaFinal;
+        const usuarioMatch = salida.id_usuario === usuarioSeleccionado.id_usuario || usuarioSeleccionado.id_usuario === undefined;
+        const almacenMatch = salida.id_almacen === almacenSeleccionado.id_almacen || almacenSeleccionado.id_almacen === undefined;
 
-    return usuarioMatch && fechaMatch && almacenMatch;
-});
+        return usuarioMatch && fechaMatch && almacenMatch;
+    });
 
-/**
- * Asynchronously fetches all salidas for a specific almacenista and updates the state 
- * with the retrieved salidas, sorted in reverse order.
- * Note: The hardcoded '1' as a parameter will be replaced with a dynamic almacenista ID later.
- * 
- * @async
- * @returns {undefined} Nothing. Side-effect function that updates state.
- */
-async function getSalidas() {
-    const salidasApi = await getAllSalidas();
-    setSalidas(salidasApi.reverse());
-}
+    /**
+     * Asynchronously fetches all salidas for a specific almacenista and updates the state 
+     * with the retrieved salidas, sorted in reverse order.
+     * Note: The hardcoded '1' as a parameter will be replaced with a dynamic almacenista ID later.
+     * 
+     * @async
+     * @returns {undefined} Nothing. Side-effect function that updates state.
+     */
+    async function getSalidas() {
+        const salidasApi = await getAllSalidas();
+        setSalidas(salidasApi.reverse());
+    }
 
-async function getUsuarios() {
-    const usuariosApi = await getTodosUsuarios();
-    setUsuarios(usuariosApi.data);
-};
+    async function getUsuarios() {
+        const usuariosApi = await getTodosUsuarios();
+        setUsuarios(usuariosApi.data);
+    };
 
-/**
- * Hook to initialize salidas when the component mounts.
- */
-useEffect(() => {
-    getSalidas();
-    getUsuarios();
-}, []);
+    /**
+     * Hook to initialize salidas when the component mounts.
+     */
+    useEffect(() => {
+        getUsuarios();
+    }, []);
+
+    useEffect(() => {
+        if (isFocused) {
+            console.log('==============================================');
+            getSalidas();
+        }
+    }, [isFocused]);
 
    
     return {toggleDrawer, toggleUserDrawer, toggleModal, handlePress, setBusqueda, filteredSalidas, isDrawerOpen, isUserDrawerOpen, isModalVisible, setAlmValue, almValue, setEveValue, eveValue, usuarios, usuarioSeleccionado, setUsuarioSeleccionado, fechaInicial, setFechaInicial, fechaFinal, setFechaFinal, almacenes, almacenSeleccionado, setAlmacenSeleccionado }
