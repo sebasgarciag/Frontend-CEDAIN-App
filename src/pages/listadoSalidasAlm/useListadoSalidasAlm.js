@@ -1,8 +1,11 @@
-import {useState}  from 'react';
+import { useState, useEffect }  from 'react';
 import salidasApi from '../../apis/salidasApi';
-import { useEffect } from 'react';
+import UsuariosAPI from '../../apis/usuariosApi';
+import { useIsFocused } from '@react-navigation/core';
 
 const useListadoSalidasAlm = () => {
+
+    const isFocused = useIsFocused();
 
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const toggleDrawer = () => {setIsDrawerOpen(!isDrawerOpen);};
@@ -16,8 +19,12 @@ const useListadoSalidasAlm = () => {
     const [busqueda, setBusqueda]=useState('');
     const [almValue, setAlmValue] = useState('');
     const [eveValue, setEveValue] = useState('');
+
+    const [fechaInicial, setFechaInicial] = useState(new Date("2023-01-01"));
+    const [fechaFinal, setFechaFinal] = useState(new Date());
     
-    const { getAllSalidasAlm } = salidasApi();
+    const { getAllSalidas } = salidasApi();
+    const { getTodosUsuarios } = UsuariosAPI();
 
     const [salidas, setSalidas] = useState([
         {
@@ -30,29 +37,75 @@ const useListadoSalidasAlm = () => {
             id_evento: '4'
         }
     ]);
- 
-    const filteredSalidas = salidas.filter((salida) =>{
-        // const almacenistaMatch = (salida.id_usuario || '').includes(busqueda.toLowerCase());
-        const folioSerie = salida.folio + salida.serie;
-        const folioSerieMatch = (folioSerie || '').toLowerCase().includes(busqueda.toLowerCase());
-        // const eventoMatch = (salida.id_evento || '').includes(busqueda.toLowerCase());
+
+    const [usuarios, setUsuarios] = useState([]);
+    const [usuarioSeleccionado, setUsuarioSeleccionado] = useState({});
     
-        // return almacenistaMatch || folioSerieMatch || eventoMatch;
-        return folioSerieMatch;
+    const [almacenes, setAlmacenes] = useState([
+        {
+            id_almacen: 1,
+            nombre: 'Central',
+            ciudad: 'Chihuahua'
+        },
+        {
+            id_almacen: 2,
+            nombre: 'Central',
+            ciudad: 'Creel'
+        }
+    ]);
+
+    const [almacenSeleccionado, setAlmacenSeleccionado] = useState({});
+
+    /**
+     * Filters the salidas based on a search query. The filter checks if the concatenated value 
+     * of 'folio' and 'serie' includes the search query.
+     * 
+     * @constant
+     * @type {Array}
+     */
+    const filteredSalidas = salidas.filter((salida) => {
+
+        const fechaMatch = new Date(salida.fecha) >= fechaInicial && new Date(salida.fecha) <= fechaFinal;
+        const usuarioMatch = salida.id_usuario === usuarioSeleccionado.id_usuario || usuarioSeleccionado.id_usuario === undefined;
+        const almacenMatch = salida.id_almacen === almacenSeleccionado.id_almacen || almacenSeleccionado.id_almacen === undefined;
+
+        return usuarioMatch && fechaMatch && almacenMatch;
     });
 
+    /**
+     * Asynchronously fetches all salidas for a specific almacenista and updates the state 
+     * with the retrieved salidas, sorted in reverse order.
+     * Note: The hardcoded '1' as a parameter will be replaced with a dynamic almacenista ID later.
+     * 
+     * @async
+     * @returns {undefined} Nothing. Side-effect function that updates state.
+     */
     async function getSalidas() {
-        // TODO: pasar id de almacenista
-        const salidasApi = await getAllSalidasAlm(1);
-        setSalidas(salidasApi);
-        return;
+        const salidasApi = await getAllSalidas();
+        setSalidas(salidasApi.reverse());
+    }
+
+    async function getUsuarios() {
+        const usuariosApi = await getTodosUsuarios();
+        setUsuarios(usuariosApi.data);
     };
 
+    /**
+     * Hook to initialize salidas when the component mounts.
+     */
     useEffect(() => {
-        getSalidas();
+        getUsuarios();
     }, []);
+
+    useEffect(() => {
+        if (isFocused) {
+            console.log('==============================================');
+            getSalidas();
+        }
+    }, [isFocused]);
+
    
-    return {toggleDrawer, toggleUserDrawer, toggleModal, handlePress, setBusqueda, filteredSalidas, isDrawerOpen, isUserDrawerOpen, isModalVisible, setAlmValue, almValue, setEveValue, eveValue, getSalidas }
+    return {toggleDrawer, toggleUserDrawer, toggleModal, handlePress, setBusqueda, filteredSalidas, isDrawerOpen, isUserDrawerOpen, isModalVisible, setAlmValue, almValue, setEveValue, eveValue, usuarios, usuarioSeleccionado, setUsuarioSeleccionado, fechaInicial, setFechaInicial, fechaFinal, setFechaFinal, almacenes, almacenSeleccionado, setAlmacenSeleccionado }
 }
 
 export default useListadoSalidasAlm;

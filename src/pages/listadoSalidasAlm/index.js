@@ -1,26 +1,24 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { TextInput, View } from 'react-native';
 import { HStack, Text, Stack, Divider, VStack } from "@react-native-material/core";
 import { Modal } from 'react-native-paper';
-import { MenuButton, ProfileButton, VolverButtonN, FilterButton } from '../../components/UI/uiButtons';
+import { MenuButton, ProfileButton, VolverButtonN, FilterButton, VolverButtonNDirect } from '../../components/UI/uiButtons';
 import ListaSalidasAlm from '../../components/UI/listaSalidasAlm';
 import useListadoSalidasAlm from './useListadoSalidasAlm';
 import styles from '../../assets/styles';
 import UserMenu from '../../components/UI/userMenu';
 import FiltrosSalidasAlm from '../../components/UI/filtrosSalidasAlm';
 import buttonStyles from '../../assets/buttons/styles';
-import { useNavigation, useIsFocused } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 
 const ListadoSalidasAlm = () => {
 	const navigation = useNavigation();  
-	const { toggleUserDrawer, toggleModal, handlePress, filteredSalidas, setBusqueda, setEveValue,  isUserDrawerOpen, isModalVisible, eveValue, getSalidas} = useListadoSalidasAlm();
-
-	// const isFocused = useIsFocused();
-	// useEffect(() => {
-	// 	if(isFocused) {
-	// 		getSalidas();
-	// 	}
-	// }, [isFocused]);
+	const { toggleUserDrawer, toggleModal, handlePress, filteredSalidas, 
+		setEveValue,  isUserDrawerOpen, isModalVisible, eveValue, 
+		usuarios, usuarioSeleccionado, setUsuarioSeleccionado, 
+		fechaInicial, setFechaInicial, fechaFinal, setFechaFinal,
+		almacenes, almacenSeleccionado, setAlmacenSeleccionado
+	} = useListadoSalidasAlm();
 
 	return (
 		<>
@@ -37,7 +35,8 @@ const ListadoSalidasAlm = () => {
 	
 							{/*Boton de aplicar Filtros a lista de entradas */}
 					<Stack style={styles.searchFilterContainer}>
-						<TextInput style={styles.searchInput} placeholder="Buscar..." placeholderTextColor="#8E8D8A" onChangeText={(text) => setBusqueda(text)}/>
+						{/* <TextInput style={styles.searchInput} placeholder="Buscar..." placeholderTextColor="#8E8D8A" onChangeText={(text) => setBusqueda(text)}/> */}
+						<Text style={styles.searchInput}>Filtros</Text>
 						<FilterButton  onPress={toggleModal} />
 					</Stack>
 	
@@ -48,11 +47,25 @@ const ListadoSalidasAlm = () => {
 					
 
 					<View style={ buttonStyles.containerNavegacion }>
-								<VolverButtonN navigation={navigation} path={"Inventario"}/>
+								<VolverButtonNDirect navigation={navigation}/>
 					</View>
 
 					<Modal visible={isModalVisible} onDismiss={toggleModal}>
-								<FiltrosSalidasAlm onPress={handlePress} setEveValue={setEveValue} eveValue={eveValue}/>
+						<FiltrosSalidasAlm 
+							onPress={handlePress} 
+							setEveValue={setEveValue} 
+							eveValue={eveValue}
+							usuarios={usuarios}
+							usuarioSeleccionado={usuarioSeleccionado}
+							setUsuarioSeleccionado={setUsuarioSeleccionado}
+							fechaInicial={fechaInicial}
+							setFechaInicial={setFechaInicial}
+							fechaFinal={fechaFinal}
+							setFechaFinal={setFechaFinal}
+							almacenes={almacenes}
+							almacenSeleccionado={almacenSeleccionado}
+							setAlmacenSeleccionado={setAlmacenSeleccionado}
+						/>
 					</Modal>
 
 				</Stack>

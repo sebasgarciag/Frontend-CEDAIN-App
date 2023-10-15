@@ -1,5 +1,5 @@
 import { Spacer, VStack, HStack } from "@react-native-material/core";
-import { React } from 'react';
+import { React, useEffect } from 'react';
 import Dropdowns from "../../components/UI/dropDownE";
 import Textbox from "../../components/UI/textBox";
 import { ScrollView } from "react-native-gesture-handler";
@@ -7,22 +7,29 @@ import useInfoDestinoEvento from "./hookInfoDestinoEvento";
 import { View, Text } from "react-native";
 import buttonStyles from "../../assets/buttons/styles";
 import styles from "../../assets/styles";
-import { VolverButtonN } from "../../components/UI/uiButtons";
-import { SiguienteButtonNObject } from "../../components/UI/uiButtons";
+import { VolverButtonObject, SiguienteButtonNObject } from "../../components/UI/uiButtons";
 import { useNavigation } from '@react-navigation/native';
-import { useEffect } from "react";
 
 const Paginfo = ( {objeto} ) => { 
-    const { comunidades, eventos, comunidad, evento, 
+    const { comunidades, eventos,
         setComunidad, setEvento, observaciones, setObservaciones, 
-        receptor, setReceptor, setSalida, carrito, setCarrito, salida } = useInfoDestinoEvento();
+        receptor, setReceptor, setSalida, carrito, setCarrito, salida, limpiar } = useInfoDestinoEvento();
+
+    //console.log("objeto info Destino Salida: ", objeto)    
 
     useEffect (() => {
+        if ( objeto.salida.id_evento == 0 ) {
+            limpiar();
+        };
         setSalida(objeto.salida);
         setCarrito(objeto.carrito2);
+
     }, [objeto]);
 
     const navigation = useNavigation();
+    //console.log("Carrito info Destino: ", carrito)
+    //console.log("Salida info Destino: ", salida)
+
     
     return ( 
     
@@ -36,16 +43,17 @@ const Paginfo = ( {objeto} ) => {
             <VStack spacing={20} style={{padding: 10}}> 
 
 
-                <Dropdowns
+                {/* <Dropdowns
                     setValueEvento={setComunidad}
                     dataDropDownEvento={comunidades}
-                    valueEvento={comunidad}
-                    Titulo={"Comunidad"}/>
+                    valueEvento={null}
+                    setEstado={setComunidad}
+                    Titulo={"Comunidad"}/> */}
 
                 <Dropdowns
                     setValueEvento={setEvento} 
                     dataDropDownEvento={eventos}
-                    valueEvento={evento}
+                    valueEvento={null}
                     Titulo={"Evento"}/>
 
                 <Spacer/>
@@ -71,7 +79,7 @@ const Paginfo = ( {objeto} ) => {
             </VStack>
             </ScrollView> 
             <View style={ buttonStyles.containerNavegacion }>
-                    <VolverButtonN navigation={navigation} path={"Carrito"} />
+                    <VolverButtonObject navigation={navigation} path={"Carrito"} object={{ carrito, salida }}/>
                     <SiguienteButtonNObject navigation={navigation} path={"ResumenSalida"} object={{ carrito, salida }} />
             </View>
         

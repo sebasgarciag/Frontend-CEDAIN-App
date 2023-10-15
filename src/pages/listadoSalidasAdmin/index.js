@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { TextInput } from 'react-native';
 import { HStack, Text, Stack, Divider} from "@react-native-material/core";
 import { Modal } from 'react-native-paper';
-import { MenuButton, ProfileButton, VolverButtonN, FilterButton } from '../../components/UI/uiButtons';
+import { MenuButton, ProfileButton, VolverButtonN, FilterButton, VolverButtonNDirect } from '../../components/UI/uiButtons';
 import ListaSalidasAdmin from '../../components/UI/listaSalidasAdmin';
 import useListadoSalidasAdmin from './useListadoSalidasAdmin';
 import styles from '../../assets/styles';
@@ -46,7 +46,7 @@ const ListadoSalidasAdmin = () => {
                 <Divider/>
                 
                 <Stack style={{justifyContent: 'center', alignItems: 'center', margin: 10}}>
-                    <VolverButtonN navigation={navigation} path={"Inventario"}/>
+                    <VolverButtonNDirect navigation={navigation}/>
                 </Stack>
 
                 <Modal visible={isModalVisible} onDismiss={toggleModal}>
