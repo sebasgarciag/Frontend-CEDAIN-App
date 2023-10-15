@@ -7,8 +7,10 @@ import styles from '../../assets/buttons/styles';
 // import styles from '../../assets/buttons/styles';
 import { Surface } from "react-native-paper";
 import { useNavigation } from '@react-navigation/native';
-import ip from "../../apis/ipApi";
-const baseUrl = `http://${ip}:8080`;
+import ipApi from "../../apis/ipApi";
+
+const { ip, protocol, port } = ipApi;
+const baseUrl = `${protocol}://${ip}:${port}`;
 
 function ListaProductos({listadoProductos}){    
     const navigation = useNavigation();
