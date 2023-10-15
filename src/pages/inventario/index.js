@@ -1,23 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Image, TextInput, ScrollView } from 'react-native';
-import { ProfileButton,  MenuButton, FilterButton, ArrowButton,ImportInventoryButton } from '../../components/inventario/buttons';
+import { FlatList,View, Text, Image, TextInput, ScrollView } from 'react-native';
+import { ProfileButton, MenuButton, FilterButton, ArrowButton, ImportInventoryButton } from '../../components/inventario/buttons';
 import styles from '../../assets/buttons/styles';
 import { HStack, VStack } from "@react-native-material/core";
 import { Surface } from "react-native-paper";
 import useInventario from './useInventario';
-import { useRoute } from '@react-navigation/native'; 
+import { useRoute } from '@react-navigation/native';
 import { ArrowButtonConObject, EntradaNueva, SalidaNueva } from '../../components/UI/uiButtons';
 import { useNavigation } from '@react-navigation/native';
+import useBusqueda from './useBusqueda';
 import ShareInvButton from '../../components/UI/ShareInvButton';
 
+const Inventario2 = ({ almacen }) => {
 
-
-const Inventario2 = ( {almacen} ) => {
-  
   const navigation = useNavigation()
-
-  const { listaInventario} = useInventario(almacen);
-
+  const { listaInventario } = useInventario(almacen);
+  const { busqueda, setBusqueda } = useBusqueda();
   return (
     <View style={styles.container}>
       <View style={styles.headerContainer}>
@@ -27,38 +25,92 @@ const Inventario2 = ( {almacen} ) => {
       </View>
 
       <View style={styles.searchFilterContainer}>
-        <TextInput style={styles.searchInput} placeholder="Buscar..." placeholderTextColor="#8E8D8A" />
-        <FilterButton style={styles.filterButton} onPress={() => { alert('Filtro presionado'); }} />
+        <TextInput style={styles.searchInput}
+          value={busqueda}
+          onChangeText = {(text) => setBusqueda(text)}
+          placeholder="Buscar..."
+          placeholderTextColor="#8E8D8A" 
+          />
       </View>
-
+      
+    
       <ScrollView>
-      {listaInventario.map((inventario) => 
-          <Surface elevation={5} key={inventario.id_producto} style={styles.productItem}> 
+        {listaInventario.map((inventario) => {
+          if(busqueda === ""){
+            return(
+          
+          <Surface elevation={5} key={inventario.id_producto} style={styles.productItem}>
             <HStack spacing={10} style={{ flex: 1 }}>
-              <VStack style={{justifyContent: 'center'}}>
-                <Image 
+              <VStack style={{ justifyContent: 'center' }}>
+                <Image
                   source={require('../../assets/imagenes/ware.jpg')} // TODO: cambiar por imagen del producto
                   style={styles.productImage}
                 />
               </VStack>
               <VStack spacing={3} style={[styles.textoProdMov, { flex: 1 }]}>
-              <Text style={styles.productName}>{inventario.producto.nombre}</Text>
+                <Text style={styles.productName}>{inventario.producto.nombre}</Text>
                 <HStack spacing={20}>
                   <VStack>
-                     <Text style={styles.productQuantity}>Tamaño: {inventario.producto.Tamanio.descripcion}</Text>
-                     <Text style={styles.productQuantity}>Cantidad: {inventario.cantidad}</Text>
+                    <Text style={styles.productQuantity}>Tamaño: {inventario.producto.Tamanio.descripcion}</Text>
+                    <Text style={styles.productQuantity}>Cantidad: {inventario.cantidad}</Text>
                   </VStack>
                 </HStack>
               </VStack>
-              <ArrowButtonConObject navigation={navigation} path={"EditarInventario"} object={inventario}/>
+              <ArrowButtonConObject navigation={navigation} path={"EditarInventario"} object={inventario} />
             </HStack>
-          </Surface>
-        )}
+          </Surface>)}
+          if(inventario.producto.nombre.toLowerCase().includes(busqueda.toLowerCase())){
+            return(          <Surface elevation={5} key={inventario.id_producto} style={styles.productItem}>
+              <HStack spacing={10} style={{ flex: 1 }}>
+                <VStack style={{ justifyContent: 'center' }}>
+                  <Image
+                    source={require('../../assets/imagenes/ware.jpg')} // TODO: cambiar por imagen del producto
+                    style={styles.productImage}
+                  />
+                </VStack>
+                <VStack spacing={3} style={[styles.textoProdMov, { flex: 1 }]}>
+                  <Text style={styles.productName}>{inventario.producto.nombre}</Text>
+                  <HStack spacing={20}>
+                    <VStack>
+                      <Text style={styles.productQuantity}>Tamaño: {inventario.producto.Tamanio.descripcion}</Text>
+                      <Text style={styles.productQuantity}>Cantidad: {inventario.cantidad}</Text>
+                    </VStack>
+                  </HStack>
+                </VStack>
+                <ArrowButtonConObject navigation={navigation} path={"EditarInventario"} object={inventario} />
+              </HStack>
+            </Surface>)
+          }
+          if(Number(busqueda) >= inventario.cantidad){
+            return(          
+            <Surface elevation={5} key={inventario.id_producto} style={styles.productItem}>
+              <HStack spacing={10} style={{ flex: 1 }}>
+                <VStack style={{ justifyContent: 'center' }}>
+                  <Image
+                    source={require('../../assets/imagenes/ware.jpg')} // TODO: cambiar por imagen del producto
+                    style={styles.productImage}
+                  />
+                </VStack>
+                <VStack spacing={3} style={[styles.textoProdMov, { flex: 1 }]}>
+                  <Text style={styles.productName}>{inventario.producto.nombre}</Text>
+                  <HStack spacing={20}>
+                    <VStack>
+                      <Text style={styles.productQuantity}>Tamaño: {inventario.producto.Tamanio.descripcion}</Text>
+                      <Text style={styles.productQuantity}>Cantidad: {inventario.cantidad}</Text>
+                    </VStack>
+                  </HStack>
+                </VStack>
+                <ArrowButtonConObject navigation={navigation} path={"EditarInventario"} object={inventario} />
+              </HStack>
+            </Surface>)
+          }
+
+})}
       </ScrollView>
 
       <View style={styles.buttonsContainer}>
-        <EntradaNueva navigation={navigation}/>
-        <SalidaNueva navigation={navigation}/>
+        <EntradaNueva navigation={navigation} />
+        <SalidaNueva navigation={navigation} />
       </View>
     </View>
   );

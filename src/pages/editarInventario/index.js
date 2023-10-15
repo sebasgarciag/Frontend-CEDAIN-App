@@ -6,7 +6,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import { router } from 'expo-router';
 import { useRoute } from '@react-navigation/native'; 
 import { useNavigation } from '@react-navigation/native';
-
+import useEditarInventario from './useEditarInventario';
 
 /**
  * `EditProductScreen` es un componente funcional de React que proporciona una interfaz de usuario
@@ -28,24 +28,24 @@ const EditProductScreen = ({object}) => {
 
   // Almacena la información del producto obtenida de los parámetros de la ruta.
   const inventario = route.params.object;
-
   // Proporciona la navegación entre pantallas utilizando el hook `useNavigation` de `@react-navigation/native`.
   const navigation = useNavigation();
 
   // Define y maneja el estado local `name` para el nombre del producto (sin uso actual en el código proporcionado).
-  const [name, setName] = useState('');
+  const [quantity, setQuantity] = useState(inventario.cantidad);
 
   // Define y maneja el estado local `quantity` para la cantidad del producto, inicializado con la cantidad del producto en el inventario.
-  const [quantity, setQuantity] = useState(inventario.cantidad.toString());
+  const { updateInventario,resultado } = useEditarInventario();
 
-  /**
+    /**
    * Maneja la acción de guardar los cambios realizados en el producto.
    * Actualmente, muestra una alerta de confirmación; es posible que desees expandir esta función para implementar la lógica de actualización real.
    */
 
 
   const handleSave = () => {
-    alert('Cambio guardado');
+    updateInventario(inventario.id_inventario,quantity)
+    alert(resultado)
   };
 
   /**
@@ -53,7 +53,7 @@ const EditProductScreen = ({object}) => {
    */
 
   const incrementQuantity = () => {
-    setQuantity((prevQuantity) => (parseInt(prevQuantity) + 1).toString());
+    setQuantity((prevQuantity) => (prevQuantity+1));
   };
 
 /**
@@ -62,10 +62,7 @@ const EditProductScreen = ({object}) => {
 
 
   const decrementQuantity = () => {
-    setQuantity((prevQuantity) => {
-      const newQuantity = parseInt(prevQuantity) - 1;
-      return newQuantity > 0 ? newQuantity.toString() : '1';
-    });
+    setQuantity((prevQuantity) => (prevQuantity-1));
   };
 
 /**
