@@ -2,26 +2,6 @@ import { useState, useEffect } from "react";
 import ProductosAPI from "../../apis/productosApi";
 import { useIsFocused } from "@react-navigation/native";
 
-
-// {
-// 	"id_producto": 1,
-// 	"nombre": "cuchara",
-// 	"id_tamanio": 1,
-// 	"medida": "1",
-// 	"precio_venta": "100.00",
-// 	"precio_trueque": "210.00",
-// 	"id_categoria": 2,
-// 	"nombre_corto": "cra",
-// 	"suspendido": false,
-// 	"Tamanio": {
-// 		"id_tamanio": 1,
-// 		"descripcion": "Mini"
-// 	},
-// 	"Categorium": {
-// 		"id_categoria": 2,
-// 		"nombre": "Madera"
-// 	}
-// },
 const useEditarProducto=(producto)=>{
     const [isEditable, setEditable] = useState(false);
     const [nombre, setNombre] = useState(producto.nombre);
@@ -36,33 +16,38 @@ const useEditarProducto=(producto)=>{
     const [image, setImage] = useState(null);
 	const [editarText, setEditarText] = useState("Editar");
 	const [open, setOpen] = useState(Boolean(producto.suspendido));
+	const [loading, setLoading] = useState(false);
 	
-    const { updateProducto, getTodosTamanios , getTodasCategorias } = ProductosAPI();
+    const { getTodosTamanios , getTodasCategorias, updateProductoConImagen } = ProductosAPI();
 	const isFocused = useIsFocused();
 
 	const handleSubmit = async () => {
-		//request a backend
-		let new_producto_data = {
-		  'nombre': nombre,
-		  'medida': medida,
-		  'precio_venta': precioVenta,
-		  'precio_trueque': precioTrueque,
-		  'nombre_corto': nombreCorto,
-		  'suspendido':open,
-		  'id_tamanio':tamanio,
-		  'id_categoria':categoria,
-		}
-  
-		// alert("Enlace clickeado");
+		const formData = new FormData();
+        formData.append('nombre', nombre,);
+        formData.append('medida', medida,);
+        formData.append('precio_venta', precioVenta,);
+        formData.append('precio_trueque', precioTrueque,);
+        formData.append('nombre_corto', nombreCorto,);
+        formData.append('suspendido', open,);
+        formData.append('id_tamanio', tamanio,);
+        formData.append('id_categoria', categoria,);
+
+        if (image) {
+            formData.append('imagen', {
+                uri: image,
+                type: 'image/jpeg',
+                name: 'product-image.jpg',
+            });
+        }
+
 		try {
-			let valorSuspendido = open ? 1 : 0;
-			await updateProducto(new_producto_data, producto.id_producto);
+			await updateProductoConImagen(formData, producto.id_producto)
 			producto.nombre = nombre
 			producto.medida = medida
 			producto.precio_venta = precioVenta
 			producto.precio_trueque = precioTrueque
 			producto.nombre_corto = nombreCorto
-			producto.suspendido = valorSuspendido
+			producto.suspendido = open
 			producto.id_tamanio = tamanio
 			producto.id_categoria = categoria
 			alert('producto actualizado')
@@ -104,11 +89,6 @@ const useEditarProducto=(producto)=>{
 	}
 	
 	setEditable(!isEditable);
-	// togglear valor del botón editar-cancelar edición
-	// prender submit
-	// si se cancela edición
-	// volver los valores a los que estaban inicialmente
-	// apagar submit
 };
 
 async function getListadoTamanios() {
@@ -160,11 +140,12 @@ async function getListadoTamanios() {
     useEffect(() => {
         if(isFocused){ 
             getListadoTamanios();
-			getListadoCategorias()
+			getListadoCategorias();
+			setImage(null);
         }
     }, [isFocused]);
 
-	return { isEditable, editarText, handleEditable, nombre, setNombre, medida, setMedida, precioVenta, setPrecioVenta, precioTrueque, setPrecioTrueque, nombreCorto, setNombreCorto, image, setImage, handleSubmit, open, setOpen, tamaniosData, categoriasData, tamanio, categoria, setTamanio, setCategoria }
+	return { isEditable, editarText, handleEditable, nombre, setNombre, medida, setMedida, precioVenta, setPrecioVenta, precioTrueque, setPrecioTrueque, nombreCorto, setNombreCorto, image, setImage, handleSubmit, open, setOpen, tamaniosData, categoriasData, tamanio, categoria, setTamanio, setCategoria, loading, setLoading}
 }
 
 export default useEditarProducto;

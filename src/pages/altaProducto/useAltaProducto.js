@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ProductosAPI from "../../apis/productosApi";
+import { useIsFocused } from "@react-navigation/native";
+
 
 const useAltaProducto = () => {
     const [nombre, setNombre] = useState("");
@@ -8,45 +10,103 @@ const useAltaProducto = () => {
     const [precioTrueque, setPrecioTrueque] = useState("");
     const [nombreCorto, setNombreCorto] = useState("");
     const [image, setImage] = useState(null);
+	const [tamanio, setTamanio] = useState();
+    const [categoria, setCategoria] = useState();
+    const [tamaniosData, setTamaniosData] = useState([]);
+    const [categoriasData, setCategoriasData] = useState([]);
+	const [open, setOpen] = useState(false);    
+	const [loading, setLoading] = useState(false);
 
-    const { createProducto } = ProductosAPI();
-	// nombre
-	// 					id_tamanio
-	// medida
-	// precio_venta
-	// precio_trueque
-	// 					id_categoria
-	// nombre_corto
-	const [dataDropDownEvento, setDataDropDownEvento] = useState( [
-		{ label: 'Item 1', value: '1' },
-		{ label: 'Item 2', value: '2' },
-		{ label: 'Item 3', value: '3' }
-	]);
+    const { createProducto, getTodosTamanios, getTodasCategorias } = ProductosAPI();
+	const isFocused = useIsFocused();
 
 	const handleSubmit = async () => {
-		//request a backend
-		let new_producto = {
-		  'nombre': nombre,
-		  'medida': medida,
-		  'precio_venta': precioVenta,
-		  'precio_trueque': precioTrueque,
-		  'nombre_corto': nombreCorto,
-		  'id_categoria': 1,
-		  'id_tamanio': 1,
-		}
-  
+		const formData = new FormData();
+        formData.append('nombre', nombre,);
+        formData.append('medida', medida,);
+        formData.append('precio_venta', precioVenta,);
+        formData.append('precio_trueque', precioTrueque,);
+        formData.append('nombre_corto', nombreCorto,);
+        formData.append('suspendido', open,);
+        formData.append('id_tamanio', tamanio,);
+        formData.append('id_categoria', categoria,);
+
+        if (image) {
+            formData.append('imagen', {
+                uri: image,
+                type: 'image/jpeg',
+                name: 'product-image.jpg',
+            });
+        }
+
 		// alert("Enlace clickeado");
 		try{
-		  await createProducto(new_producto);
-		  alert('producto creado')
+		  const response = await createProducto(formData);
+		  if (response.status != 201){
+			  alert('f')
+		  }
+		  else{
+			  alert('no f')
+		  }
 		}
 		catch{
 		  alert('No se pudo crear el producto')
 		}
 	  };
+	async function getListadoTamanios() {
+	const response = await getTodosTamanios();
+	
+	if (response !== null) {
+		console.log('tamanios');
+		console.log(response.data);
+		// Create an array to hold the tamanios data
+		const tamaniosDataList = [];
+		
+		// Iterate over the response data and create objects
+		for (const item of response.data) {
+			// Assuming 'id_tamanio' and 'descripcion' are properties in each 'item'
+			const tamanioObject = {
+				label: item.descripcion,
+				value: item.id_tamanio,
+			};
+			console.log(tamanioObject)
+			tamaniosDataList.push(tamanioObject);
+		}
+		setTamaniosData(tamaniosDataList);
+		}
+	}
+	
+	async function getListadoCategorias() {
+		const response = await getTodasCategorias();
+		
+		if (response !== null) {
+			console.log('categorias');
+			console.log(response.data);
+			// Create an array to hold the tamanios data
+			const categoriasDataList = [];
+			
+			// Iterate over the response data and create objects
+			for (const item of response.data) {
+				// Assuming 'id_tamanio' and 'descripcion' are properties in each 'item'
+				const categoriaObject = {
+					label: item.nombre,
+					value: item.id_categoria,
+				};
+				console.log(categoriaObject)
+				categoriasDataList.push(categoriaObject);
+			}
+			setCategoriasData(categoriasDataList);
+		}
+	}
 
+	useEffect(() => {
+		if(isFocused){ 
+			getListadoTamanios();
+			getListadoCategorias()
+		}
+	}, [isFocused]);
 
-	return { dataDropDownEvento, nombre, setNombre, medida, setMedida, precioVenta, setPrecioVenta, precioTrueque, setPrecioTrueque, nombreCorto, setNombreCorto, image, setImage, handleSubmit }
+	return { nombre, setNombre, medida, setMedida, precioVenta, setPrecioVenta, precioTrueque, setPrecioTrueque, nombreCorto, setNombreCorto, image, setImage, handleSubmit,setTamanio, setCategoria, tamaniosData, categoriasData, open, setOpen, loading, setLoading }
 }
 
 export default useAltaProducto;

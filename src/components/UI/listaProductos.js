@@ -7,6 +7,8 @@ import styles from '../../assets/buttons/styles';
 // import styles from '../../assets/buttons/styles';
 import { Surface } from "react-native-paper";
 import { useNavigation } from '@react-navigation/native';
+import ip from "../../apis/ipApi";
+const baseUrl = `http://${ip}:8080`;
 
 function ListaProductos({listadoProductos}){    
     const navigation = useNavigation();
@@ -17,8 +19,9 @@ function ListaProductos({listadoProductos}){
                     <HStack spacing={10} style={{ flex: 1 }}>
                     <VStack style={{justifyContent: 'center'}}>
                         <Image 
-                        source={require('../../assets/imagenes/ware.jpg')} // TODO: cambiar por imagen del producto
+                        source={ producto.imagen ? { uri: `${baseUrl}/productos/${producto.id_producto}/image?${new Date().getTime()}`} :  require('../../assets/imagenes/no-image.jpg')} // TODO: cambiar por imagen del producto
                         style={styles.productImage}
+                        cache='reload'
                         />
                     </VStack>
                     <VStack spacing={3} style={[styles.textoProdMov, { flex: 1 }]}>

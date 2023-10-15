@@ -1,15 +1,13 @@
-import React, { useState } from "react";
-import { ScrollView, StyleSheet, Alert, View, Image } from "react-native";
-import { Text, Title } from "react-native-paper";
-import { Flex, TextInput, HStack, Stack } from "@react-native-material/core";
+import React from "react";
+import { ScrollView, StyleSheet, View, Image } from "react-native";
+import { Text } from "react-native-paper";
+import { Flex, TextInput, HStack } from "@react-native-material/core";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Icon from "react-native-vector-icons/MaterialIcons";
-import { ArrowButton } from "../../components/inventario/buttons";
-import DropdownE from "../../components/UI/dropDownE";
 import useEditarProducto from "./useEditarProducto";
 import * as ImagePicker from "expo-image-picker";
 import buttonStyles from "../../assets/buttons/styles";
-import { VolverButtonN, GenericButton, MenuButton, ProfileButton } from "../../components/UI/uiButtons";
+import { VolverButtonN, GenericButton, ProfileButton } from "../../components/UI/uiButtons";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import styles from "../../assets/styles";
 import { Switch } from '@rneui/themed';
@@ -20,13 +18,9 @@ import AntDesign from "@expo/vector-icons/AntDesign";
 
 const EditarProducto = () => {
   
-  
   const route = useRoute();
   const producto = route.params.object;
   const {
-    // setValueEvento,
-    // dataDropDownEvento,
-    // valueEvento,
     handleEditable,
     nombre,
     setNombre,
@@ -50,27 +44,26 @@ const EditarProducto = () => {
     tamanio,
     categoria, 
     setTamanio,
-    setCategoria
+    setCategoria,
+    loading,
+    setLoading
   } = useEditarProducto(producto);
   const navigation = useNavigation();
-
-  // console.log(producto)
-  // console.log(open)
-
   const pickImage = async () => {
+    setLoading(true); // start the loading process
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
       allowsEditing: true,
       aspect: [4, 3],
       quality: 1,
-    //   canceled: false,
     });
 
     console.log(result);
 
-    if (!result.cancelled) {
+    if (!result.canceled) {
       setImage(result.uri);
     }
+    setLoading(false); // end the loading process
   };
 
   const renderItemTamanio = (item) => {
@@ -166,14 +159,6 @@ const EditarProducto = () => {
           inputStyle={isEditable ? styles.editable : styles.view_only}
 
         />
-
-        {/* <DropdownE
-
-                    setValueEvento={setValueEvento}
-                    dataDropDownEvento={dataDropDownEvento}
-                    valueEvento={valueEvento}
-                    Titulo={"Categoría"} /> */}
-        
         
         <TextInput
           label="Nombre Corto"
@@ -183,7 +168,7 @@ const EditarProducto = () => {
           editable={isEditable}
           inputStyle={isEditable ? styles.editable : styles.view_only}
         />
-        <Text marginTop={10} marginLeft={20}>Categoría</Text>
+        <Text marginTop={10} marginLeft={20}>Tamaño</Text>
         <Dropdown
           style={styles.dropdownRol}
           placeholderStyle={styles.placeholderStyle}
@@ -237,10 +222,11 @@ const EditarProducto = () => {
           )}
           renderItem={renderItemCategoria}
         />
-        {/* <TouchableOpacity
+        <TouchableOpacity
           title="Seleccionar imagen"
           onPress={pickImage}
-          style={styles2.ImageButton}
+          style={isEditable ? styles2.ImageButton : styles2.ImageButtonViewOnly}
+          disabled={!isEditable}
         >
         <Text style={styles2.Text}>Adjuntar Foto</Text>
         </TouchableOpacity>
@@ -253,7 +239,7 @@ const EditarProducto = () => {
           style={{ width: 200, height: 200 }}
           />
           </View>
-        )} */}
+        )}
         <Flex direction="row" justify='end' justifySelf="center">
           <Text>Suspendido</Text>
           <Switch
@@ -274,7 +260,7 @@ const EditarProducto = () => {
           mode="contained"
           disabled={false}
         />
-        <TouchableOpacity onPress={handleSubmit} style={styles2.Button} disabled={!isEditable} >
+        <TouchableOpacity onPress={handleSubmit} style={styles2.Button} disabled={!isEditable || loading} >
           <Icon
             name="check-circle"
             size={24}
@@ -358,6 +344,24 @@ const styles2 = StyleSheet.create({
     elevation: 4,
     alignSelf: "center",
     marginBottom: "10%",
+  },
+  ImageButtonViewOnly: {
+    marginTop: 20,
+    justifyContent: "center",
+    textAlign: "center",
+    backgroundColor: "gray",
+    paddingVertical: 15,
+    paddingHorizontal: 40,
+    borderRadius: 30,
+    flexDirection: "row",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.23,
+    shadowRadius: 2.62,
+    elevation: 4,
+    alignSelf: "center",
+    marginBottom: "10%",
+    color: 'gray',
   },
   Text: {
     color: "white",
