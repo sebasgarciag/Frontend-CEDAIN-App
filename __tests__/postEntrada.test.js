@@ -5,18 +5,41 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { render, screen, fireEvent, waitFor } from "@testing-library/react-native";
 
 import CrearEntrada from "../app/crearEntrada";
+import SeleccionProductos from '../src/pages/crearEntrada';
+import ArticulosCarritoEntrada from '../src/pages/carritoEntradas';
 import Inventario2 from "../app/inventario";
 import CarritoEntrada from "../app/carritoEntrada";
+
+
 import InfoDestinoEntrada from "../app/infoDestinoEntrada";
 import ResumenEntrada from "../app/ResumenEntrada";
+import { EntradaNueva } from '../src/components/UI/uiButtons';
 
 const Stack = createNativeStackNavigator();
 
+//MOCKS?
+// jest.mock("expo-router", () => ({
+//     useRouter: () => ({
+//       replace: jest.fn()
+//     }),
+// }));
+
+jest.mock("expo-router", () => ({
+    ...jest.requireActual("expo-router"),
+    useRouter: () => ({
+        replace: jest.fn().mockImplementation(() => {})
+    }),
+}));
+
 jest.mock('@react-navigation/native-stack', () => ({
     ...jest.requireActual('@react-navigation/native-stack'),
-    createNativeStackNavigator: jest.fn(),
+    createNativeStackNavigator: jest.fn(() => ({
+        Navigator: jest.fn(),
+        Screen: jest.fn(),
+    })),
   }));
 
+////delete this bellow?
 jest.mock('@react-navigation/native', () => ({
     ...jest.requireActual('@react-navigation/native'),
     useNavigation: () => ({
@@ -25,12 +48,20 @@ jest.mock('@react-navigation/native', () => ({
         // add other navigation functions you want to mock here
     }),
 }));
+////delete this above?
 
 
-//POSTS
+
+
+//Paginas
 function InventarioScreen() {
     return (
         <Inventario2/>
+    );
+}
+function CrearnEntradaButtonScreen() {
+    return (
+        <EntradaNueva/>
     );
 }
 function CrearEntradaScreen() {
@@ -38,9 +69,20 @@ function CrearEntradaScreen() {
         <CrearEntrada/>
     );
 }
+function SeleccionProductoScreen() {
+    return (
+        <SeleccionProductos/>
+    );
+}
 function CarritoEntradaScreen() {
     return (
         <CarritoEntrada/>
+    );
+}
+ArticulosCarritoEntrada
+function ArticulosCarritoEntradaScreen() {
+    return (
+        <ArticulosCarritoEntrada/>
     );
 }
 function InfoDestinoEntradaScreen() {
@@ -71,31 +113,38 @@ describe('Pruebas de Crear Entrada', () => {
                 </Stack.Navigator>
             </NavigationContainer>
         );
+            
+        const mockNavigate = jest.fn();
+        render(<EntradaNueva navigation={{ navigate: mockNavigate }} />);
+        await fireEvent.press(screen.getByText("Entrada Nueva"));
+        
+        await render(
+            <NavigationContainer>
+                <Stack.Navigator>
+                    <Stack.Screen name ="/CrearEntrada" component={CrearEntradaScreen} />
+                </Stack.Navigator>
+            </NavigationContainer>
+        );
 
-        console.log("================================")
-        // await fireEvent.press(screen.getByText("Entrada Nueva"));
-
-        // await render(
-        //     <NavigationContainer>
-        //         <Stack.Navigator>
-        //             <Stack.Screen name ="/CrearEntrada" component={CrearEntradaScreen} />
-        //         </Stack.Navigator>
-        //     </NavigationContainer>
-        // );
-
-        // await fireEvent.press(screen.getByText("Canasta de barro"));
+        render(<SeleccionProductoScreen/>);
+        // await fireEvent.press(screen.findByText("Canasta de barro"));
         // await fireEvent.press(screen.getByText("Siguiente"));
+        const canastaDeBarro = await screen.findByText("Silla");
+        fireEvent.press(canastaDeBarro);
+        
+        await fireEvent.press(screen.getByText("Siguiente"));
 
-        // await render(
-        //     <NavigationContainer>
-        //         <Stack.Navigator>
-        //             <Stack.Screen name ="/carritoEntrada" component={CarritoEntradaScreen} />
-        //         </Stack.Navigator>
-        //     </NavigationContainer>
-        // );
-
-        // await fireEvent.press(screen.getByText("+"));
-        // await fireEvent.press(screen.getByText("Siguiente"));
+        await render(
+            <NavigationContainer>
+                <Stack.Navigator>
+                    <Stack.Screen name ="/carritoEntrada" component={CarritoEntradaScreen} />
+                </Stack.Navigator>
+            </NavigationContainer>
+        );
+        render(<ArticulosCarritoEntrada/>);
+        console.log("==========================================");
+        await fireEvent.press(screen.getByText("+"));
+        await fireEvent.press(screen.getByText("Siguiente"));
 
         // await render(
         //     <NavigationContainer>
