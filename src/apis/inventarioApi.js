@@ -14,6 +14,7 @@ const inventarioApi = () => {
             response = await axios.get(`${baseURL}/inventario?idAlmacen=${idAlmacen}`);
         } catch (error) {
             console.error('error' + error);
+            
         }
         return response.data;
     }
