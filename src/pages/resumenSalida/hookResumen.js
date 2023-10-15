@@ -53,7 +53,7 @@ const useResumen = () => {
  */
     async function terminar(salida, detallesSalida) {
         const date = new Date();
-        const fechaActual = date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate();
+        const fechaActual = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
         const serie = date.getFullYear() + 'S';
         const salidaPost = {
             fecha: fechaActual,
