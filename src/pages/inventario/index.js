@@ -10,14 +10,11 @@ import { ArrowButtonConObject, EntradaNueva, SalidaNueva } from '../../component
 import { useNavigation } from '@react-navigation/native';
 import useBusqueda from './useBusqueda';
 
-
 const Inventario2 = ({ almacen }) => {
 
   const navigation = useNavigation()
-
   const { listaInventario } = useInventario(almacen);
   const { busqueda, setBusqueda } = useBusqueda();
-  console.log(busqueda)
   return (
     <View style={styles.container}>
       <View style={styles.headerContainer}>
@@ -33,36 +30,8 @@ const Inventario2 = ({ almacen }) => {
           placeholder="Buscar..."
           placeholderTextColor="#8E8D8A" 
           />
-        <FilterButton style={styles.filterButton} onPress={() => { alert('Filtro presionado'); }} />
       </View>
-      {/* {listaInventario.map((inventario) => 
-      <FlatList data={listaInventario} renderItem={({item}) => {
-			if(busqueda === "")
-			return(
-			<ScrollView>
-				<Surface elevation={5} key={item.id_producto} style={styles.productItem}>
-				<HStack spacing={10} style={{ flex: 1 }}>
-              <VStack style={{ justifyContent: 'center' }}>
-                <Image
-                  source={require('../../assets/imagenes/ware.jpg')} // TODO: cambiar por imagen del producto
-                  style={styles.productImage}
-                />
-              </VStack>
-              <VStack spacing={3} style={[styles.textoProdMov, { flex: 1 }]}>
-                <Text style={styles.productName}>{item.producto.nombre}</Text>
-                <HStack spacing={20}>
-                  <VStack>
-                    <Text style={styles.productQuantity}>Tamaño: {item.producto.Tamanio.descripcion}</Text>
-                    <Text style={styles.productQuantity}>Cantidad: {item.cantidad}</Text>
-                  </VStack>
-                </HStack>
-              </VStack>
-              <ArrowButtonConObject navigation={navigation} path={"EditarInventario"} object={inventario} />
-            </HStack>
-			</Surface>
-			</ScrollView>
-			)
-		}}/>)} */}
+      
     
       <ScrollView>
         {listaInventario.map((inventario) => {
