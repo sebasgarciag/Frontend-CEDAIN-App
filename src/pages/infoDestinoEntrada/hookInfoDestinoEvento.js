@@ -1,14 +1,13 @@
 import { useState,useEffect } from "react";
-import entradasApi from "../../apis/entradasApi";
 import salidasApi from "../../apis/salidasApi";
 
-const useInfoDestinoEvento=()=>{
+const useInfoDestinoEventoEntradas=()=>{
 	const {getComunidades, getEventos}=salidasApi();
 	const [comunidades, setComunidades] = useState([]);
 	const [eventos, setEventos] = useState([]);
 
-	const [entrada, setEntrada] = useState();
-	const [carrito, setCarrito] = useState();
+	const [entrada, setEntrada] = useState([]);
+	const [carrito, setCarrito] = useState([]);
 
 	const [comunidad, setComunidad] = useState({
 		id_comunidad: 17,
@@ -79,11 +78,11 @@ const useInfoDestinoEvento=()=>{
 		});
 	}, [emisor, observaciones]);
 
-	useEffect(()=>{
-		console.log('entrada', entrada);
-	}, [entrada]);
+	//useEffect(()=>{
+	//	console.log('entrada', entrada);
+	//}, [entrada]);
 
 	return { comunidades, eventos, comunidad, evento, setComunidad, setEvento, observaciones, setObservaciones, emisor, setEmisor, obtenerComunidades, obtenerEventos, setEntrada, carrito, setCarrito, entrada, limpiar }
 }
 
-export default useInfoDestinoEvento;
+export default useInfoDestinoEventoEntradas;
