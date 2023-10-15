@@ -29,7 +29,18 @@ const inventarioApi = () => {
         return response.data;
     }
 
-    return { getAllInventario, getAllCategorias }
+    async function putActualizarExistencias(data) {
+        let response = null;
+        try {
+            response = await axios.put(`${baseURL}/inventario/incrementar-inventario`, data);
+        } catch (error) {
+            console.error('Error put actualizar existencias: ' + error);
+        }
+        return response.data;
+    }
+
+
+    return { getAllInventario, getAllCategorias, putActualizarExistencias }
 }
 
 export default inventarioApi;

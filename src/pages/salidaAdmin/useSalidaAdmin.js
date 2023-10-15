@@ -56,7 +56,19 @@ const useSalidaAdmin = () => {
         }
     
     ]);
-
+/**
+ * Updates the quantity of a given product in the datosSalida array.
+ * 
+ * Iterates over the `datosSalida` array and, when it finds the specified product,
+ * it updates its quantity based on the provided `newCantidad`. If the new quantity
+ * is not a valid number, it defaults to 0.
+ * 
+ * After processing, the function updates the state of `datosSalida`.
+ *
+ * @param {Object} producto - The product object to be updated.
+ * @param {string|number} newCantidad - The new quantity value (can be a string to be parsed).
+ * @returns {undefined} Nothing. Side-effect function that updates a state variable.
+ */
     function handleCantidad(producto, newCantidad) {
         const newDatosSalida = datosSalida.map((datosSalida) => {
             if (datosSalida.producto === producto) {
