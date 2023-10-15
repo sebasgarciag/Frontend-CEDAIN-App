@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { useNavigation } from "expo-router";
 import salidasApi from "../../apis/salidasApi";
+import inventarioApi from "../../apis/inventarioApi";
 
 const useResumen = () => {
     const navigation = useNavigation();
     const { postSalida, postDetallesSalidas } = salidasApi();
+    const {putActualizarExistencias} = inventarioApi();
     const [salida, setSalida] = useState({
         fecha: '',
         folio: '',
@@ -66,6 +68,16 @@ const useResumen = () => {
         };
         // console.log('salidaPost', salidaPost);
         
+        //console.log("Detalles Salida: ", detallesSalida);
+
+        const id_almacen = salida.id_almacen;
+
+        const salidaPut = detallesSalida.map(producto => ({
+            id_almacen: id_almacen,
+            id_producto: producto.detallesSalida.id_producto,
+            cantidad: -1 * producto.detallesSalida.cantidad, // Multiplicación por -1 para hacerlo negativo
+          }));
+        
         try {
             const response = await postSalida(salidaPost);
             console.log('response', response.id_salida);
@@ -78,10 +90,15 @@ const useResumen = () => {
                     precio_unitario: detalle.detallesSalida.precio
                 };
             });
-            console.log('detallesPost', detallesPost);
+            //console.log('detallesPost', detallesPost);
 
             const salidaId = response.id_salida;
             await postDetallesSalidas(detallesPost);
+
+            //console.log("SalidaPut: ", salidaPut);
+
+            await putActualizarExistencias(salidaPut);
+
             navigation.navigate('Salidas');
         } catch (error) {
             console.error('Error in terminar function: ' + error);

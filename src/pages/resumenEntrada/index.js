@@ -6,11 +6,11 @@ import { Surface } from "react-native-paper";
 import { ScrollView } from "react-native-gesture-handler";
 import buttonStyles from "../../assets/buttons/styles";
 import styles from "../../assets/styles";
-import { VolverButtonN, ButtonTerminar } from "../../components/UI/uiButtons";
+import { VolverButtonObject, ButtonTerminar } from "../../components/UI/uiButtons";
 import { useNavigation } from "expo-router";
 import InfoEntrada from "../../components/UI/infoEntrada";
 import { useEffect } from "react";
-import ListaTerminar from "../../components/entradasSalidas/listaTerminar";
+import ListaTerminarEntradas from "../../components/entradasSalidas/listaTerminarEntradas";
 
 const Resumen = ({objeto}) => { 
 
@@ -21,6 +21,11 @@ const Resumen = ({objeto}) => {
         setEntrada(objeto.entrada);
         setCarrito(objeto.carrito);
     }, [objeto]);
+
+    //console.log("Carrito resumen Entrada: ", carrito)
+    //console.log("Entrada Resumen: ", entrada)
+
+    const carrito2Entradas = [...carrito];
 
     return (
         <Stack style={styles.container}>
@@ -37,15 +42,14 @@ const Resumen = ({objeto}) => {
                     
                     {carrito.map((producto) => 
                         <Surface elevation={5} key={producto.id_producto} style={styles.productItem}> 
-                            <ListaTerminar producto={producto}/>
+                            <ListaTerminarEntradas producto={producto}/>
                         </Surface> 
                     )}
 
                 </VStack>
             </ScrollView>
             <View style={ buttonStyles.containerNavegacion }>
-                    <VolverButtonN navigation={navigation} path={"InfoDestinoE"} />
-                    {/* <SiguienteButtonN navigation={navigation} path={"Entradas"} /> */}
+                    <VolverButtonObject navigation={navigation} path={"InfoDestinoE"} object={{ carrito2Entradas, entrada }}/>
                     <ButtonTerminar terminarFunction={() => terminar(entrada, carrito)} />
             </View>
         </Stack>

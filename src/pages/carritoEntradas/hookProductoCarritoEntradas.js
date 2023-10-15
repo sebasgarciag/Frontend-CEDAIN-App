@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useEffect } from "react";
-import ProductoCarrito from "../../components/entradasSalidas/productoCarrito";
 
 const useCarritoEntradas = () => {
     const [carritoEntradas, setCarritoEntradas] = useState([]);
@@ -10,7 +9,7 @@ const useCarritoEntradas = () => {
     const aumentarCantidad = (producto) => {
         const carritoActualizado = carrito2Entradas.map((item) => {
             if (item.id_producto === producto.id_producto) {
-              return { ...item, detallesSalida: {...producto.detallesSalida, cantidad: producto.detallesSalida.cantidad + 1 }};
+              return { ...item, detallesEntrada: {...producto.detallesEntrada, cantidad: producto.detallesEntrada.cantidad + 1 }};
             } else {
               return item;
             }
@@ -20,8 +19,8 @@ const useCarritoEntradas = () => {
   
     const disminuirCantidad = (producto) => {
       const carritoActualizado = carrito2Entradas.map((item) => {
-        if (item.id_producto === producto.id_producto && item.detallesSalida.cantidad > 0) {
-            return { ...item, detallesSalida: {...producto.detallesSalida, cantidad: producto.detallesSalida.cantidad - 1 }};
+        if (item.id_producto === producto.id_producto && item.detallesEntrada.cantidad > 0) {
+            return { ...item, detallesEntrada: {...producto.detallesEntrada, cantidad: producto.detallesEntrada.cantidad - 1 }};
           } else {
             return item;
           }
@@ -34,9 +33,9 @@ const useCarritoEntradas = () => {
         const newCarrito = carrito2Entradas.map((item) => {
             if (item.id_producto === producto.id_producto) {
                 if (isNaN(parseInt(newCantidad))) {
-                  return {...item, detallesSalida: {...producto.detallesSalida, cantidad: 0}}
+                  return {...item, detallesEntrada: {...producto.detallesEntrada, cantidad: 0}}
                 }
-                return { ...item, detallesSalida: {...producto.detallesSalida, cantidad: parseInt(newCantidad)}  };
+                return { ...item, detallesEntrada: {...producto.detallesEntrada, cantidad: parseInt(newCantidad)}  };
             } else {
                 return item;
             }
@@ -61,7 +60,7 @@ const useCarritoEntradas = () => {
           ...carritoEntradas,
           {
             ...producto.producto,
-            detallesSalida: {
+            detallesEntrada: {
               id_producto: producto.producto.id_producto,
               cantidad: 0,
               precio: producto.producto.precio_venta,

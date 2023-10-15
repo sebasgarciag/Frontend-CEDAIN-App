@@ -24,7 +24,7 @@ const SeleccionProductos = () => {
 
             <ListaProductos productos={productos} categorias={categorias} carrito={carritoEntradas} handleCarrito={handleCarrito}/>
             <View style={ buttonStyles.containerNavegacion }>
-                <VolverButtonN navigation={navigation} path={"Entradas"}/>
+                <VolverButtonN navigation={navigation} path={"Inventario"}/>
                 <SiguienteButtonNObject navigation={navigation} path={"CarritoEntrada"} object={{carritoEntradas, entrada}}/>
             </View>
         </View>
