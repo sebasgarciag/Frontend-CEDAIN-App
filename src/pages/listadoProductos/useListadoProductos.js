@@ -1,25 +1,25 @@
 import {useState, useEffect}  from 'react';
 import ProductosAPI from '../../apis/productosApi';
+import { useIsFocused } from "@react-navigation/native";
 
 const useListadoProductos = () => {
     const [productos, setProductos] = useState([]);
     const { getTodosProductos } = ProductosAPI();
+    const isFocused = useIsFocused();
 
     async function getListadoProductos() {
         const response = await getTodosProductos();
-        // console.log(response)
 
         if (response !== null) {
-            setProductos(response.data);
+                setProductos(response.data);
         }
     }
 
     useEffect(() => {
-        getListadoProductos();
-    }, [productos]);
-
-   
-
+        if(isFocused){ 
+            getListadoProductos();
+        }
+    }, [isFocused]);
 
     return { productos }
 }
