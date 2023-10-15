@@ -26,6 +26,11 @@ const useEditarUsuario = (usuario) => {
       // alert("Enlace clickeado");
       try{
         await updateUsuario(new_usuario_data, usuario.id_usuario);
+        usuario.nombre = nombre
+        usuario.apellido_paterno = apellidoPaterno
+        usuario.apellido_materno = apellidoMaterno
+        usuario.correo = email
+        usuario.tipo = rol
         alert('usuario actualizado')
       }
       catch{

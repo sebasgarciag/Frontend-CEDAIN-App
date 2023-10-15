@@ -5,6 +5,7 @@ import ProductoCarrito from "../../components/entradasSalidas/productoCarrito";
 const useCarritoEntradas = () => {
     const [carritoEntradas, setCarritoEntradas] = useState([]);
     const [carrito2Entradas, setCarrito2Entradas] = useState([]);
+    const [entrada, setEntrada] = useState();
   
     const aumentarCantidad = (producto) => {
         const carritoActualizado = carrito2Entradas.map((item) => {
@@ -19,7 +20,6 @@ const useCarritoEntradas = () => {
   
     const disminuirCantidad = (producto) => {
       const carritoActualizado = carrito2Entradas.map((item) => {
-        //console.log("item: ", item)
         if (item.id_producto === producto.id_producto && item.detallesSalida.cantidad > 0) {
             return { ...item, detallesSalida: {...producto.detallesSalida, cantidad: producto.detallesSalida.cantidad - 1 }};
           } else {
@@ -31,11 +31,8 @@ const useCarritoEntradas = () => {
     };
   
     function handleCantidad(producto, newCantidad) {
-      
-      // console.log("producto", producto)
         const newCarrito = carrito2Entradas.map((item) => {
             if (item.id_producto === producto.id_producto) {
-              console.log("item", item.detallesSalida)
                 if (isNaN(parseInt(newCantidad))) {
                   return {...item, detallesSalida: {...producto.detallesSalida, cantidad: 0}}
                 }
@@ -73,12 +70,10 @@ const useCarritoEntradas = () => {
         ];
         setCarritoEntradas(carritoActualizado);
       }
-    
-      console.log("carrito actualizado: ", carritoEntradas);
     };
 
     
-      return { carritoEntradas, carrito2Entradas, handleCantidad, aumentarCantidad, disminuirCantidad, handleCarrito, setCarrito2Entradas};
+      return { carritoEntradas, carrito2Entradas, handleCantidad, aumentarCantidad, disminuirCantidad, handleCarrito, setCarrito2Entradas, entrada, setEntrada};
 
   };
   

@@ -171,6 +171,7 @@ const buttonStyles = {
         alignItems: "center",
         padding: "auto",
         backgroundColor: "gray",
+        height: 50
       },
       view_only_button: {
         color: "#CCCCCC",

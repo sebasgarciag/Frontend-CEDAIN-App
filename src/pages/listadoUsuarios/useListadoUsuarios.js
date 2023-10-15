@@ -7,7 +7,7 @@ const useListadoUsuarios = () => {
 
     async function getListadoUsuarios() {
         const response = await getTodosUsuarios();
-        // console.log(response)
+        console.log(response)
 
         if (response !== null) {
             setUsuarios(response.data);

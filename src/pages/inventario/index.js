@@ -9,6 +9,7 @@ import { useRoute } from '@react-navigation/native';
 import { ArrowButtonConObject, EntradaNueva, SalidaNueva } from '../../components/UI/uiButtons';
 import { useNavigation } from '@react-navigation/native';
 import useBusqueda from './useBusqueda';
+import ShareInvButton from '../../components/UI/ShareInvButton';
 
 const Inventario2 = ({ almacen }) => {
 
@@ -20,7 +21,7 @@ const Inventario2 = ({ almacen }) => {
       <View style={styles.headerContainer}>
         <Text style={styles.headerText}>Inventario</Text>
         <ProfileButton style={{ position: 'absolute', right: 10 }} onPress={() => { alert('Perfil presionado'); }} />
-        <ImportInventoryButton style={styles.importInventoryButton} onPress={() => { alert('Importar Inventario presionado'); }} />
+        <ShareInvButton style={styles.importInventoryButton} invId={1} />
       </View>
 
       <View style={styles.searchFilterContainer}>
