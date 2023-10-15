@@ -20,12 +20,16 @@ const styles = StyleSheet.create({
     marginTop: 15,
   },
   searchFilterContainer: {
+    alignSelf: 'flex-end',
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 10,
+    marginRight: 10
   },
   searchInput: {
     flex: 1,
+    textAlign: 'right',
+    verticalAlign: 'middle',
     height: 40,
     borderColor: '#8E8D8A',
     borderWidth: 1,
@@ -33,7 +37,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     backgroundColor: '#FFFFFF',
     color: '#333',
-    marginRight: 10,
+    marginHorizontal: 10,
   },
   filterButton: {
     padding: 10,
