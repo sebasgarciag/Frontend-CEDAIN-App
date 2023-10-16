@@ -21,7 +21,7 @@ const Inventario2 = ({ almacen }) => {
       <View style={styles.headerContainer}>
         <Text style={styles.headerText}>Inventario</Text>
         <ProfileButton style={{ position: 'absolute', right: 10 }} onPress={() => { alert('Perfil presionado'); }} />
-        <ShareInvButton style={styles.importInventoryButton} invId={1} />
+        <ShareInvButton style={styles.importInventoryButton} invId={almacen} />
       </View>
 
       <View style={styles.searchFilterContainer}>

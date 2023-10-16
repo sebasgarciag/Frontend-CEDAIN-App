@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity } from 'react-native';
-import { ArrowButton } from '../../components/inventario/buttons';
+import { ArrowButton, ArrowButtonAlmacen } from '../../components/inventario/buttons';
 import styles from '../../assets/buttons/styles';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { router } from 'expo-router';
@@ -81,7 +81,7 @@ const EditProductScreen = ({object}) => {
     <View style={[styles.container, { padding: 20, backgroundColor: '#F1EFE3' }]}>
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 30 }}>
         <Text style={{ fontSize: 26 }}>Editar Producto</Text>
-        <ArrowButton navigation={navigation} path={"Inventario"} />
+        <ArrowButtonAlmacen navigation={navigation} path={"Inventario"} almacen ={inventario.id_almacen}/>
       </View>
 
       <View style={{ marginBottom: 30 }}>
