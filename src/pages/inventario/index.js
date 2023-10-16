@@ -1,5 +1,8 @@
+/**
+ * Importa los módulos necesarios para la aplicación.
+ */
 import React, { useEffect, useState } from 'react';
-import { FlatList,View, Text, Image, TextInput, ScrollView } from 'react-native';
+import { FlatList, View, Text, Image, TextInput, ScrollView } from 'react-native';
 import { ProfileButton, MenuButton, FilterButton, ArrowButton, ImportInventoryButton } from '../../components/inventario/buttons';
 import styles from '../../assets/buttons/styles';
 import { HStack, VStack } from "@react-native-material/core";
@@ -11,11 +14,23 @@ import { useNavigation } from '@react-navigation/native';
 import useBusqueda from './useBusqueda';
 import ShareInvButton from '../../components/UI/ShareInvButton';
 
+/**
+ * Componente Inventario2.
+ * @param {object} almacen - El almacén a mostrar.
+ * @returns {JSX.Element} - Retorna el componente de inventario.
+ */
 const Inventario2 = ({ almacen }) => {
 
+  /**
+   * Navegación y estado del inventario y búsqueda.
+   */
   const navigation = useNavigation()
   const { listaInventario } = useInventario(almacen);
   const { busqueda, setBusqueda } = useBusqueda();
+
+  /**
+   * Renderiza el componente.
+   */
   return (
     <View style={styles.container}>
       <View style={styles.headerContainer}>
@@ -27,40 +42,41 @@ const Inventario2 = ({ almacen }) => {
       <View style={styles.searchFilterContainer}>
         <TextInput style={styles.searchInput}
           value={busqueda}
-          onChangeText = {(text) => setBusqueda(text)}
+          onChangeText={(text) => setBusqueda(text)}
           placeholder="Buscar..."
-          placeholderTextColor="#8E8D8A" 
-          />
+          placeholderTextColor="#8E8D8A"
+        />
       </View>
-      
-    
+
+
       <ScrollView>
         {listaInventario.map((inventario) => {
-          if(busqueda === ""){
-            return(
-          
-          <Surface elevation={5} key={inventario.id_producto} style={styles.productItem}>
-            <HStack spacing={10} style={{ flex: 1 }}>
-              <VStack style={{ justifyContent: 'center' }}>
-                <Image
-                  source={require('../../assets/imagenes/ware.jpg')} // TODO: cambiar por imagen del producto
-                  style={styles.productImage}
-                />
-              </VStack>
-              <VStack spacing={3} style={[styles.textoProdMov, { flex: 1 }]}>
-                <Text style={styles.productName}>{inventario.producto.nombre}</Text>
-                <HStack spacing={20}>
-                  <VStack>
-                    <Text style={styles.productQuantity}>Tamaño: {inventario.producto.Tamanio.descripcion}</Text>
-                    <Text style={styles.productQuantity}>Cantidad: {inventario.cantidad}</Text>
+          if (busqueda === "") {
+            return (
+
+              <Surface elevation={5} key={inventario.id_producto} style={styles.productItem}>
+                <HStack spacing={10} style={{ flex: 1 }}>
+                  <VStack style={{ justifyContent: 'center' }}>
+                    <Image
+                      source={require('../../assets/imagenes/ware.jpg')} // TODO: cambiar por imagen del producto
+                      style={styles.productImage}
+                    />
                   </VStack>
+                  <VStack spacing={3} style={[styles.textoProdMov, { flex: 1 }]}>
+                    <Text style={styles.productName}>{inventario.producto.nombre}</Text>
+                    <HStack spacing={20}>
+                      <VStack>
+                        <Text style={styles.productQuantity}>Tamaño: {inventario.producto.Tamanio.descripcion}</Text>
+                        <Text style={styles.productQuantity}>Cantidad: {inventario.cantidad}</Text>
+                      </VStack>
+                    </HStack>
+                  </VStack>
+                  <ArrowButtonConObject navigation={navigation} path={"EditarInventario"} object={inventario} />
                 </HStack>
-              </VStack>
-              <ArrowButtonConObject navigation={navigation} path={"EditarInventario"} object={inventario} />
-            </HStack>
-          </Surface>)}
-          if(inventario.producto.nombre.toLowerCase().includes(busqueda.toLowerCase())){
-            return(          <Surface elevation={5} key={inventario.id_producto} style={styles.productItem}>
+              </Surface>)
+          }
+          if (inventario.producto.nombre.toLowerCase().includes(busqueda.toLowerCase())) {
+            return (<Surface elevation={5} key={inventario.id_producto} style={styles.productItem}>
               <HStack spacing={10} style={{ flex: 1 }}>
                 <VStack style={{ justifyContent: 'center' }}>
                   <Image
@@ -81,31 +97,31 @@ const Inventario2 = ({ almacen }) => {
               </HStack>
             </Surface>)
           }
-          if(Number(busqueda) >= inventario.cantidad){
-            return(          
-            <Surface elevation={5} key={inventario.id_producto} style={styles.productItem}>
-              <HStack spacing={10} style={{ flex: 1 }}>
-                <VStack style={{ justifyContent: 'center' }}>
-                  <Image
-                    source={require('../../assets/imagenes/ware.jpg')} // TODO: cambiar por imagen del producto
-                    style={styles.productImage}
-                  />
-                </VStack>
-                <VStack spacing={3} style={[styles.textoProdMov, { flex: 1 }]}>
-                  <Text style={styles.productName}>{inventario.producto.nombre}</Text>
-                  <HStack spacing={20}>
-                    <VStack>
-                      <Text style={styles.productQuantity}>Tamaño: {inventario.producto.Tamanio.descripcion}</Text>
-                      <Text style={styles.productQuantity}>Cantidad: {inventario.cantidad}</Text>
-                    </VStack>
-                  </HStack>
-                </VStack>
-                <ArrowButtonConObject navigation={navigation} path={"EditarInventario"} object={inventario} />
-              </HStack>
-            </Surface>)
+          if (Number(busqueda) >= inventario.cantidad) {
+            return (
+              <Surface elevation={5} key={inventario.id_producto} style={styles.productItem}>
+                <HStack spacing={10} style={{ flex: 1 }}>
+                  <VStack style={{ justifyContent: 'center' }}>
+                    <Image
+                      source={require('../../assets/imagenes/ware.jpg')} // TODO: cambiar por imagen del producto
+                      style={styles.productImage}
+                    />
+                  </VStack>
+                  <VStack spacing={3} style={[styles.textoProdMov, { flex: 1 }]}>
+                    <Text style={styles.productName}>{inventario.producto.nombre}</Text>
+                    <HStack spacing={20}>
+                      <VStack>
+                        <Text style={styles.productQuantity}>Tamaño: {inventario.producto.Tamanio.descripcion}</Text>
+                        <Text style={styles.productQuantity}>Cantidad: {inventario.cantidad}</Text>
+                      </VStack>
+                    </HStack>
+                  </VStack>
+                  <ArrowButtonConObject navigation={navigation} path={"EditarInventario"} object={inventario} />
+                </HStack>
+              </Surface>)
           }
 
-})}
+        })}
       </ScrollView>
 
       <View style={styles.buttonsContainer}>
