@@ -11,7 +11,7 @@ import { useNavigation, useRoute  } from '@react-navigation/native';
 
 const AltaUsuarioPage = () => {
   
-  const { nombre, setNombre, apellidoPaterno, setApellidoPaterno, apellidoMaterno, setApellidoMaterno, email, setEmail, tipo, setTipo, almacen, setAlmacen, handleRegister } = useAltaUsuario();
+  const { nombre, setNombre, apellidoPaterno, setApellidoPaterno, apellidoMaterno, setApellidoMaterno, email, setEmail, tipo, setTipo, handleRegister } = useAltaUsuario();
   const navigation = useNavigation();
 
   const roles = [
@@ -19,11 +19,7 @@ const AltaUsuarioPage = () => {
     { label: "Almacenista", value: "Almacenista" },
   ];
 
-  const Almacenes = [
-    { label: "Creel", value: "Creel" },
-    { label: "Chihuahua", value: "Chihuahua" },
-  ];
-  
+
 
  
   const renderItem = () => {
@@ -127,30 +123,7 @@ const AltaUsuarioPage = () => {
           
         />
 
-        <Text marginTop={10}>Almacén</Text>
-        <Dropdown
-          style={styles.dropdownRol}
-          placeholderStyle={styles.placeholderStyle}
-          inputSearchStyle={styles.inputSearchStyle}
-          iconStyle={styles.iconStyle}
-          data={Almacenes}
-          onChange={(value) => {
-            setAlmacen(value);
-          }}
-          maxHeight={300}
-          labelField="label"
-          valueField="value"
-          placeholder="Seleccione Almacén"
-          value={almacen} // Set the value prop to your state variable
-          renderLeftIcon={() => (
-            <AntDesign
-              style={styles.icon}
-              color="black"
-              name="Safety"
-              size={20}
-            />
-          )}
-        />
+       
 
           
           

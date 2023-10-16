@@ -13,10 +13,9 @@ export const useAltaUsuario = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState("Password123");
   const [tipo, setTipo] = useState();
-  const [almacen, setAlmacen] = useState();
-  const secretKey="CEDAIN"
+  const secretKey = "CEDAIN"
 
-  
+
 
   const validateEmail = (email) => {
     const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -24,7 +23,7 @@ export const useAltaUsuario = () => {
   }
 
   const handleRegister = async () => {
-    if (!email || !nombre || !apellidoPaterno || !apellidoMaterno || !tipo || !almacen) {
+    if (!email || !nombre || !apellidoPaterno || !apellidoMaterno || !tipo) {
       Alert.alert("Error", "Por favor, ingresa todos los datos");
       return;
     }
@@ -37,27 +36,20 @@ export const useAltaUsuario = () => {
     // Encripta la contraseña antes de enviarla
     let encryptedPassword = CryptoES.AES.encrypt(password, secretKey).toString();
 
-    
-    let almacenId;
-    if (almacen.value === "Creel") {
-      almacenId = 3;
-    } else if (almacen.value === "Chihuahua") {
-      almacenId = 1;
-    }
 
-    console.log(almacen)
 
     try {
-      let response = await UsuariosAPI().register(nombre, apellidoPaterno, apellidoMaterno, tipo.value, almacenId, email, encryptedPassword);
+      console.log(nombre, apellidoPaterno, apellidoMaterno, tipo.value, email, encryptedPassword);
+      let response = await UsuariosAPI().register(nombre, apellidoPaterno, apellidoMaterno, tipo.value, email, encryptedPassword);
       console.log("Registrado");
-      console.log(nombre, apellidoPaterno, apellidoMaterno, tipo.value, almacenId, email, encryptedPassword);
+      console.log(nombre, apellidoPaterno, apellidoMaterno, tipo.value, email, encryptedPassword);
       Alert.alert("Éxito", "Registro exitoso");
     } catch (error) {
       console.error(error);
       if (error.message === 'Network Error') {
         console.log("No se pudo conectar a la base de datos");
       } else if (error.response.status === 401) {
-        Alert.alert("Error", "Registro fallido");
+        console.log("Registro Fallido");
       }
     }
   }
@@ -75,8 +67,6 @@ export const useAltaUsuario = () => {
     setPassword,
     tipo,
     setTipo,
-    almacen,
-    setAlmacen,
     handleRegister
   }
 }

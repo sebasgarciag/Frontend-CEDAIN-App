@@ -2,7 +2,8 @@ import { useState } from 'react';
 
 import UsuariosAPI from '../../apis/usuariosApi';
 import { useNavigation } from '@react-navigation/native';
-import AsyncStorage from '@react-native-community/async-storage';
+
+import CryptoES from 'crypto-es';
 
 const useLogin = () => {
     const [email, setEmail] = useState("");
@@ -12,28 +13,8 @@ const useLogin = () => {
 
     const navigation = useNavigation();
 
-    
 
-    // Guarda el token
-    const storeToken = async (token) => {
-        try {
-            await AsyncStorage.setItem('userToken', token);
-        } catch (e) {
-            // Guardar el token falló
-        }
-    }
 
-    // Obtiene el token
-    const getToken = async () => {
-        try {
-            const value = await AsyncStorage.getItem('userToken')
-            if (value !== null) {
-                return value;
-            }
-        } catch (e) {
-            // error al leer el valor
-        }
-    }
 
     const validateEmail = (email) => {
         const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -52,7 +33,7 @@ const useLogin = () => {
         }
 
         // Encripta la contraseña antes de enviarla
-        const encryptedPassword = 1;
+        let encryptedPassword = CryptoES.AES.encrypt(password, secretKey).toString();
 
         // Llama al servicio de inicio de sesión
         UsuariosAPI().login(email, encryptedPassword)
@@ -60,8 +41,18 @@ const useLogin = () => {
                 // La autenticación es exitosa
                 console.log("Connected");
                 console.log(data);
-                localStorage.setItem('token', data.token);
                 setBorderColor('normal'); // Restablece el color del borde a normal después de un inicio de sesión exitoso
+
+                UsuariosAPI().getToken(email)
+                    .then(function (usuarioData) {
+                      
+                        // Almacena el token en el almacenamiento local
+                        localStorage.setItem('token', usuarioData.token);
+                    })
+                    .catch(function (error) {
+                        console.error("Error al obtener los datos del usuario: ", error);
+                    });
+
                 navigation.navigate('Inventario');
             })
             .catch(function (error) {
@@ -73,11 +64,11 @@ const useLogin = () => {
                     setBorderColor('red'); // Cambia el color del borde de los inputs a rojo
                 }
             });
-        
-        
+
+
     }
 
-  
+
 
     return { email, setEmail, password, setPassword, borderColor, handleRegister };
 }
