@@ -2,6 +2,8 @@ import { useState } from 'react';
 
 import UsuariosAPI from '../../apis/usuariosApi';
 import { useNavigation } from '@react-navigation/native';
+import { Alert } from 'react-native';
+
 
 import CryptoES from 'crypto-es';
 
@@ -48,12 +50,14 @@ const useLogin = () => {
                       
                         // Almacena el token en el almacenamiento local
                         localStorage.setItem('token', usuarioData.token);
+                        navigation.navigate('MenuLateral')
+                        
                     })
                     .catch(function (error) {
                         console.error("Error al obtener los datos del usuario: ", error);
                     });
 
-                navigation.navigate('Inventario');
+                ;
             })
             .catch(function (error) {
                 // La autenticación falla
@@ -62,6 +66,7 @@ const useLogin = () => {
                     console.log("No se pudo conectar a la base de datos");
                 } else if (error.response.status === 401) {
                     setBorderColor('red'); // Cambia el color del borde de los inputs a rojo
+                    Alert.alert("Error", "El usuario o la contraseña son incorrectos"); // Muestra un mensaje de error
                 }
             });
 

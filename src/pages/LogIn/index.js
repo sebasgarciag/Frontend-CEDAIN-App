@@ -33,8 +33,7 @@ const LoginPage = () => {
         <Icon name="check-circle" size={24} color="#F1EFE3" style={{ marginRight: 10 }}></Icon>
         <Text style={{ fontSize: 18, color: '#F1EFE3', textAlign: 'center' }}>Iniciar Sesion</Text>
       </TouchableOpacity>
-      {/* <VolverButton onPress={() => { router.replace("/botonesChernobyl"); }} /> */}
-      <VolverButton ruta="/botonesChernobyl" />
+      
 
     </ScrollView>
   )
