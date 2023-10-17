@@ -4,7 +4,10 @@ import { Card, IconButton } from 'react-native-paper';
 import { Box} from "@react-native-material/core";
 import { Flex, HStack, VStack } from "@react-native-material/core";
 import styles from "../../assets/styles";
+import ipApi from "../../apis/ipApi";
 
+const { ip, protocol, port } = ipApi;
+const baseUrl = `${protocol}://${ip}:${port}`;
 
 const ProductoCarritoEntradas = ({ producto, aumentarCantidad, disminuirCantidad, handleCantidad }) => {
     const { nombre, imagen, medida, precio_trueque } = producto;
@@ -15,7 +18,7 @@ const ProductoCarritoEntradas = ({ producto, aumentarCantidad, disminuirCantidad
         <HStack spacing={10}>
             <VStack style={{justifyContent: "center"}} >
                 <Image 
-                    source={imagen} // TODO: cambiar por imagen del producto
+                    source={ producto.imagen ? { uri: `${baseUrl}/productos/${producto.id_producto}/image?${new Date().getTime()}`} :  require('../../assets/imagenes/no-image.jpg') } // TODO: cambiar por imagen del producto
                     style={ styles.productImage }
                 />
             </VStack>

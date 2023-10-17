@@ -4,6 +4,10 @@ import { Spacer, HStack, VStack, Box } from "@react-native-material/core";
 import { Surface } from "react-native-paper";
 import useCarrito from "../../pages/carrito/hookProductoCarrito";
 import { useState } from "react";
+import ipApi from "../../apis/ipApi";
+
+const { ip, protocol, port } = ipApi;
+const baseUrl = `${protocol}://${ip}:${port}`;
 
 
 function ListaProductos({ productos, categorias, carrito, handleCarrito }) { 
@@ -47,7 +51,7 @@ function ListaProductos({ productos, categorias, carrito, handleCarrito }) {
                                     }}
                                     > 
                                         <Image 
-                                            source={require('../../assets/imagenes/ware.jpg')} // TODO: cambiar por imagen del producto
+                                            source={ producto.producto.imagen ? { uri: `${baseUrl}/productos/${producto.producto.id_producto}/image?${new Date().getTime()}`} :  require('../../assets/imagenes/no-image.jpg')} // TODO: cambiar por imagen del producto
                                             style={{width: 96, height: 96, borderRadius: 10}}
                                         />
                                     </Surface>
