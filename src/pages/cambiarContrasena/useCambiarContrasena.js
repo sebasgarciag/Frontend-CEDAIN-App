@@ -1,6 +1,6 @@
 import { useState } from "react";
 import UsuariosAPI from "../../apis/usuariosApi";
-import CryptoES from 'crypto-es';
+
 
 const useCambiarContrasena = (usuario) => {
   const [newPassword, setNewPassword] = useState("");
@@ -18,10 +18,10 @@ const useCambiarContrasena = (usuario) => {
     
     if (newPassword == confirmPassword) {
       setArePasswordEqual(true);
-      const hashedPassword = CryptoES.AES.encrypt(newPassword,secretKey).toString();
+      
 
       let new_usuario_data = {
-        'password': hashedPassword,
+        'password': newPassword,
       }
       try{
           await updateUsuario(new_usuario_data, usuario.id_usuario);

@@ -249,6 +249,7 @@ const styles = StyleSheet.create({
   dropdownRol: {
     margin: 16,
     marginTop: 0,
+    marginBottom: 0,
     height: 50,
     backgroundColor: "white",
     borderRadius: 12,
