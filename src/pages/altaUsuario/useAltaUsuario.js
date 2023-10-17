@@ -1,10 +1,12 @@
 import { useState } from "react";
 import UsuariosAPI from "../../apis/usuariosApi";
-import CryptoES from 'crypto-es';
 import { Alert } from "react-native";
 
 
-
+/**
+ * Custom React hook for handling user registration.
+ * @returns {Object} An object containing the state and setters for nombre, apellidoPaterno, apellidoMaterno, email, password, tipo, and the handleRegister function.
+ */
 export const useAltaUsuario = () => {
 
   const [nombre, setNombre] = useState();
@@ -13,15 +15,23 @@ export const useAltaUsuario = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState("Password123");
   const [tipo, setTipo] = useState();
-  const secretKey = "CEDAIN"
 
 
 
+  /**
+    * Validates an email address.
+    * @param {string} email - The email address to validate.
+    * @returns {boolean} True if the email is valid, false otherwise.
+    */
   const validateEmail = (email) => {
     const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return regex.test(email);
   }
 
+
+  /**
+  * Handles the registration process.
+  */
   const handleRegister = async () => {
     if (!email || !nombre || !apellidoPaterno || !apellidoMaterno || !tipo) {
       Alert.alert("Error", "Por favor, ingresa todos los datos");
@@ -33,16 +43,12 @@ export const useAltaUsuario = () => {
       return;
     }
 
-    // Encripta la contraseña antes de enviarla
-    let encryptedPassword = CryptoES.AES.encrypt(password, secretKey).toString();
-
-
 
     try {
-      console.log(nombre, apellidoPaterno, apellidoMaterno, tipo.value, email, encryptedPassword);
-      let response = await UsuariosAPI().register(nombre, apellidoPaterno, apellidoMaterno, tipo.value, email, encryptedPassword);
+      console.log(nombre, apellidoPaterno, apellidoMaterno, tipo.value, email, password);
+      let response = await UsuariosAPI().register(nombre, apellidoPaterno, apellidoMaterno, tipo.value, email, password);
       console.log("Registrado");
-      console.log(nombre, apellidoPaterno, apellidoMaterno, tipo.value, email, encryptedPassword);
+      console.log(nombre, apellidoPaterno, apellidoMaterno, tipo.value, email, password);
       Alert.alert("Éxito", "Registro exitoso");
     } catch (error) {
       console.error(error);
