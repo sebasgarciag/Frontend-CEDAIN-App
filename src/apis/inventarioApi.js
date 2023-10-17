@@ -9,8 +9,8 @@ const { ip, protocol, port } = ipApi;
  * Define la URL base para las solicitudes de la API.
  */
 
-//const baseURL = `${protocol}://${ip}:${port}`;
-const baseURL = `http://192.168.1.69:8080`;
+const baseURL = `${protocol}://${ip}:${port}`;
+
 
 /**
  * Funciones para interactuar con la API de inventario.
@@ -58,6 +58,8 @@ const inventarioApi = () => {
         } catch (error) {
             console.error('error' + error);
         }
+        return response.data;
+
     }
 
     /**

@@ -44,8 +44,8 @@ const EditProductScreen = ({object}) => {
 
 
   const handleSave = () => {
-    updateInventario(inventario.id_inventario,quantity)
-    alert(resultado)
+    updateInventario(inventario.id_inventario,quantity);
+    alert(resultado);
   };
 
   /**
