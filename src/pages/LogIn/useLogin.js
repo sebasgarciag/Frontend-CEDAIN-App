@@ -3,6 +3,7 @@ import { useState } from 'react';
 import UsuariosAPI from '../../apis/usuariosApi';
 import { useNavigation } from '@react-navigation/native';
 import { Alert } from 'react-native';
+import useLoggedIn from '../../../app/loggedIn';
 
 
 import CryptoES from 'crypto-es';
@@ -11,6 +12,7 @@ const useLogin = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [borderColor, setBorderColor] = useState('normal');
+    const { loggedIn, setloggedIn } = useLoggedIn();
     const secretKey = "CEDAIN"
 
     const navigation = useNavigation();
@@ -50,7 +52,7 @@ const useLogin = () => {
                       
                         // Almacena el token en el almacenamiento local
                         localStorage.setItem('token', usuarioData.token);
-                        navigation.navigate('MenuLateral')
+                        setloggedIn(true); // Establece el estado de loggedIn en verdadero
                         
                     })
                     .catch(function (error) {
