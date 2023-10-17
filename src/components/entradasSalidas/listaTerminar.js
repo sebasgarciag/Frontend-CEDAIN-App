@@ -2,6 +2,10 @@ import React from "react";
 import { Text, Image, TextInput } from "react-native";
 import { Flex, HStack, VStack } from "@react-native-material/core";
 import styles from "../../assets/styles";
+import ipApi from "../../apis/ipApi";
+
+const { ip, protocol, port } = ipApi;
+const baseUrl = `${protocol}://${ip}:${port}`;
 
 function ListaTerminar({ producto }) { 
 
@@ -10,7 +14,7 @@ function ListaTerminar({ producto }) {
         <HStack spacing={10}>
             <VStack style={{justifyContent: "center"}} >
                 <Image 
-                    source={require('../../assets/imagenes/ware.jpg')} // TODO: cambiar por imagen del producto
+                    source={ producto.imagen ? { uri: `${baseUrl}/productos/${producto.id_producto}/image?${new Date().getTime()}`} :  require('../../assets/imagenes/no-image.jpg') } // TODO: cambiar por imagen del producto
                     style={ styles.productImage }
                 />
             </VStack>

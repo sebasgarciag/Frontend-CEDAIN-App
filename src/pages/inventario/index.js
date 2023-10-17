@@ -10,6 +10,10 @@ import { ArrowButtonConObject, EntradaNueva, SalidaNueva } from '../../component
 import { useNavigation } from '@react-navigation/native';
 import useBusqueda from './useBusqueda';
 import ShareInvButton from '../../components/UI/ShareInvButton';
+import ipApi from "../../apis/ipApi";
+
+const { ip, protocol, port } = ipApi;
+const baseUrl = `${protocol}://${ip}:${port}`;
 
 const Inventario2 = ({ almacen }) => {
 
@@ -43,7 +47,7 @@ const Inventario2 = ({ almacen }) => {
             <HStack spacing={10} style={{ flex: 1 }}>
               <VStack style={{ justifyContent: 'center' }}>
                 <Image
-                  source={require('../../assets/imagenes/ware.jpg')} // TODO: cambiar por imagen del producto
+                  source={ inventario.producto.imagen ? { uri: `${baseUrl}/productos/${inventario.producto.id_producto}/image?${new Date().getTime()}`} :  require('../../assets/imagenes/no-image.jpg') } // TODO: cambiar por imagen del producto
                   style={styles.productImage}
                 />
               </VStack>
@@ -64,7 +68,7 @@ const Inventario2 = ({ almacen }) => {
               <HStack spacing={10} style={{ flex: 1 }}>
                 <VStack style={{ justifyContent: 'center' }}>
                   <Image
-                    source={require('../../assets/imagenes/ware.jpg')} // TODO: cambiar por imagen del producto
+                    source={ inventario.producto.imagen ? { uri: `${baseUrl}/productos/${inventario.producto.id_producto}/image?${new Date().getTime()}`} :  require('../../assets/imagenes/no-image.jpg') } // TODO: cambiar por imagen del producto
                     style={styles.productImage}
                   />
                 </VStack>
@@ -87,7 +91,7 @@ const Inventario2 = ({ almacen }) => {
               <HStack spacing={10} style={{ flex: 1 }}>
                 <VStack style={{ justifyContent: 'center' }}>
                   <Image
-                    source={require('../../assets/imagenes/ware.jpg')} // TODO: cambiar por imagen del producto
+                    source={ inventario.producto.imagen ? { uri: `${baseUrl}/productos/${inventario.producto.id_producto}/image?${new Date().getTime()}`} :  require('../../assets/imagenes/no-image.jpg') } // TODO: cambiar por imagen del producto
                     style={styles.productImage}
                   />
                 </VStack>
