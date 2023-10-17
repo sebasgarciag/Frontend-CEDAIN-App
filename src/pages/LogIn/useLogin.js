@@ -46,44 +46,42 @@ const useLogin = () => {
 
 
         // Llama al servicio de inicio de sesión
-        UsuariosAPI().login(email, password)
-            .then(async function (data) {
-                // Authentication is successful
+       UsuariosAPI().login(email, password)
+    .then(async function (response) {
+        // Authentication is successful
+        
+        // Save the token to AsyncStorage
+        try {
+            if (response && response.data) {
+                console.log(response.data.user);
+                await AsyncStorage.setItem('@user', JSON.stringify(response.data.user));
+                navigation.navigate('MenuLateral');
+            } else {
+                console.log("No data in response");
+                console.log("Correo o Contraseña Incorrectos");
+                Alert.alert("Error", "Correo o Contraseña Incorrectos"); // Shows an error message
+            }
+        } catch (e) {
+            // saving error
+            console.log(e);
+        }
+    })
+    .catch(function (error) {
+        // Authentication fails
+        console.error(error);
+        
+        if (error.message === 'Network Error') {
+            console.log("Could not connect to the database");
+        }
+        if (error.response && error.response.status === 401) {
+            console.log("Correo o Contraseña Incorrectos");
+            Alert.alert("Error", "Correo o Contraseña Incorrectos"); // Shows an error message
+        }
+    });
 
-                // Save the token to AsyncStorage
-                try {
-                    
-                    await AsyncStorage.setItem('@user', JSON.stringify(data.user));
-                    navigation.navigate('MenuLateral');
-                    /*
-                    try {
-                        const value = await AsyncStorage.getItem('@user');
-                        if(value !== null) {
-                        // value previously stored
-                        console.log(value);
-                        }
-                    } catch(e) {
-                        // error reading value
-                        console.log(e);
-                    }
-                    */
-                } catch (e) {
-                    // saving error
-                    console.log(e);
-                }
 
 
-            })
-            .catch(function (error) {
-                // Authentication fails
-                console.error(error);
-                if (error.message === 'Network Error') {
-                    console.log("Could not connect to the database");
-                } else if (error.response.status === 401) {
-                    setBorderColor('red'); // Changes the border color of the inputs to red
-                    Alert.alert("Error", "The username or password is incorrect"); // Shows an error message
-                }
-            });
+
 
 
     }

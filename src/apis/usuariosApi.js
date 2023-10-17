@@ -35,7 +35,7 @@ const UsuariosAPI = () => {
             }
         }
 
-        return response.data;
+        return response;
     }
 
  
