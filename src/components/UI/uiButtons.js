@@ -5,7 +5,7 @@ import buttonStyles from '../../assets/buttons/styles';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Icon2 from 'react-native-vector-icons/AntDesign';
 import styles from '../../assets/styles';
-import { router } from 'expo-router';
+// import { router } from 'expo-router';
 import { useNavigation } from '@react-navigation/native';
 
 

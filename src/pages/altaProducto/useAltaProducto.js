@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import ProductosAPI from "../../apis/productosApi";
 import { useIsFocused } from "@react-navigation/native";
+import { useNavigation } from '@react-navigation/native';
 
 
 const useAltaProducto = () => {
@@ -16,6 +17,7 @@ const useAltaProducto = () => {
     const [categoriasData, setCategoriasData] = useState([]);
 	const [open, setOpen] = useState(false);    
 	const [loading, setLoading] = useState(false);
+	const navigation = useNavigation();
 
     const { createProducto, getTodosTamanios, getTodasCategorias } = ProductosAPI();
 	const isFocused = useIsFocused();
@@ -42,6 +44,11 @@ const useAltaProducto = () => {
 		// alert("Enlace clickeado");
 		try{
 		  const response = await createProducto(formData);
+		//   console.log(response.status)
+		  if (response.status == 201){
+			// console.log('entra')
+			navigation.navigate('listadoProductos')
+		  }
 		}
 		catch{
 		  alert('No se pudo crear el producto')
@@ -51,8 +58,8 @@ const useAltaProducto = () => {
 	const response = await getTodosTamanios();
 	
 	if (response !== null) {
-		console.log('tamanios');
-		console.log(response.data);
+		// console.log('tamanios');
+		// console.log(response.data);
 		// Create an array to hold the tamanios data
 		const tamaniosDataList = [];
 		
@@ -63,7 +70,7 @@ const useAltaProducto = () => {
 				label: item.descripcion,
 				value: item.id_tamanio,
 			};
-			console.log(tamanioObject)
+			// console.log(tamanioObject)
 			tamaniosDataList.push(tamanioObject);
 		}
 		setTamaniosData(tamaniosDataList);
@@ -74,8 +81,8 @@ const useAltaProducto = () => {
 		const response = await getTodasCategorias();
 		
 		if (response !== null) {
-			console.log('categorias');
-			console.log(response.data);
+			// console.log('categorias');
+			// console.log(response.data);
 			// Create an array to hold the tamanios data
 			const categoriasDataList = [];
 			
@@ -86,7 +93,7 @@ const useAltaProducto = () => {
 					label: item.nombre,
 					value: item.id_categoria,
 				};
-				console.log(categoriaObject)
+				// console.log(categoriaObject)
 				categoriasDataList.push(categoriaObject);
 			}
 			setCategoriasData(categoriasDataList);
@@ -100,7 +107,7 @@ const useAltaProducto = () => {
 		}
 	}, [isFocused]);
 
-	return { nombre, setNombre, medida, setMedida, precioVenta, setPrecioVenta, precioTrueque, setPrecioTrueque, nombreCorto, setNombreCorto, image, setImage, handleSubmit,setTamanio, setCategoria, tamaniosData, categoriasData, open, setOpen, loading, setLoading }
+	return { nombre, setNombre, medida, setMedida, precioVenta, setPrecioVenta, precioTrueque, setPrecioTrueque, nombreCorto, setNombreCorto, image, setImage, handleSubmit, setTamanio, setCategoria, tamaniosData, categoriasData, open, setOpen, loading, setLoading }
 }
 
 export default useAltaProducto;

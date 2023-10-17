@@ -1,22 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import { ScrollView, StyleSheet, Alert, View, Image } from "react-native";
-import { Text, Title } from "react-native-paper";
+import { Text } from "react-native-paper";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { ArrowButton } from "../../components/inventario/buttons";
-import DropdownE from "../../components/UI/dropDownE";
 import useAltaProducto from "./useAltaProducto.js";
 import * as ImagePicker from 'expo-image-picker';
-// import { VolverButton } from '../../components/UI/uiButtons';
-import { router } from "expo-router";
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import styles from "../../assets/styles";
 import { Flex, HStack, TextInput } from "@react-native-material/core";
-import { VolverButtonN, GenericButton, MenuButton, ProfileButton } from "../../components/UI/uiButtons";
-import buttonStyles from "../../assets/buttons/styles";
+import { VolverButtonN, ProfileButton } from "../../components/UI/uiButtons";
 import { Dropdown } from "react-native-element-dropdown";
 import AntDesign from "@expo/vector-icons/AntDesign";
-import { Switch } from '@rneui/themed';
+// import { Switch } from '@rneui/themed';
 
 
 
@@ -58,7 +53,7 @@ const AltaProducto = () => {
         quality: 1,
       });
   
-      console.log(result);
+      // console.log(result);
   
       if (!result.canceled) {
         setImage(result.uri);
@@ -118,6 +113,7 @@ const AltaProducto = () => {
             label="Nombre del Producto"
             value={nombre}
             onChangeText={(text) => setNombre(text)}
+            accessibilityLabel="nombre"
           />
   
           <TextInput
@@ -125,6 +121,7 @@ const AltaProducto = () => {
             value={medida}
             onChangeText={(text) => setMedida(text)}
             style={styles.Input}
+            accessibilityLabel="medida"
             // editable={isEditable}
             // inputStyle={isEditable ? styles.editable : styles.view_only}
           />
@@ -138,6 +135,7 @@ const AltaProducto = () => {
             }}
             keyboardType="numeric"
             style={styles.Input}
+            accessibilityLabel="precio_venta"
             // editable={isEditable}
             // inputStyle={isEditable ? styles.editable : styles.view_only}
           />
@@ -151,6 +149,7 @@ const AltaProducto = () => {
             }}
             keyboardType="numeric"
             style={styles.Input}
+            accessibilityLabel="precio_trueque"
           />
   
           <TextInput
@@ -158,6 +157,7 @@ const AltaProducto = () => {
             value={nombreCorto}
             onChangeText={(text) => setNombreCorto(text)}
             style={styles.Input}
+            accessibilityLabel="nombre_corto"
           />
           <Text marginTop={10} marginLeft={20}>Tamaño</Text>
         <Dropdown
@@ -184,6 +184,8 @@ const AltaProducto = () => {
             />
           )}
           renderItem={renderItemTamanio}
+          accessibilityLabel="tamanio"
+
         />
         <Text marginTop={5} marginLeft={20}>Categoría</Text>
         <Dropdown
@@ -210,6 +212,7 @@ const AltaProducto = () => {
             />
           )}
           renderItem={renderItemCategoria}
+          accessibilityLabel="categoria"
         />
           <TouchableOpacity
             title="Seleccionar imagen"
@@ -230,17 +233,17 @@ const AltaProducto = () => {
           )}
           <Flex direction="row" justify='end' justifySelf="center">
           <Text>Suspendido</Text>
-          <Switch
+          {/* <Switch
             value={open}
             onValueChange={setOpen}
             color={open ? 'red' : 'gray'}
             justifySelf='center'
-          />
+          /> */}
         </Flex>
         </View>
 
         <Flex direction="row" justify="around" marginTop={40}>
-          <TouchableOpacity onPress={handleSubmit} style={styles2.Button} >
+          <TouchableOpacity onPress={handleSubmit} style={styles2.Button} accessibilityLabel="guardar">
             <Icon
               name="check-circle"
               size={24}
