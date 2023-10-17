@@ -33,10 +33,23 @@ const ArrowButton = ({navigation, path, nombre, cantidad}) => {
   );
 };
 
+const ArrowButtonAlmacen = ({navigation, path, almacen}) => {
+
+  return(
+  <TouchableOpacity 
+      onPress={() => {
+      navigation.navigate(`${path}`, almacen);
+      }}>
+      <Icon name="arrow-forward-ios" size={24} color="#333" />
+  </TouchableOpacity>
+  );
+};
+
+
 export const ImportInventoryButton = ({ onPress, style }) => (
   <TouchableOpacity style={style} onPress={onPress}>
     <Icon name="upload-file" size={30} color="#333" />
   </TouchableOpacity>
 )
 
-export {ArrowButton};
+export {ArrowButton, ArrowButtonAlmacen};
