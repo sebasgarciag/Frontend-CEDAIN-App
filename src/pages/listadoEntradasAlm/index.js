@@ -11,6 +11,14 @@ import FiltrosEntradasAlm from '../../components/UI/filtrosEntradasAlm';
 import { useNavigation } from '@react-navigation/native';
 import buttonStyles from '../../assets/buttons/styles';
 
+/**
+ * Componente para mostrar el listado de entradas de almacén.
+ * 
+ * Este componente presenta una lista filtrable de entradas de almacén, 
+ * además de opciones de usuario y navegación.
+ * Utiliza el hook `useListadoEntradasAlm` para manejar la lógica y el estado.
+ */
+
 const ListadoEntradasAlm = () => {
 	const navigation = useNavigation();
 	const {toggleUserDrawer, toggleModal, handlePress, filteredEntradas, 
