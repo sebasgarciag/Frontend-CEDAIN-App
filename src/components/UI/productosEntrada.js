@@ -6,7 +6,7 @@ import styles from "../../assets/styles";
 import ipApi from "../../apis/ipApi";
 
 const { ip, protocol, port } = ipApi;
-const baseUrl = `${protocol}://${ip}:${port}`;
+const baseUrl = `${protocol}${ip}:${port}`;
 
 function ProductosEntrada( entradaDetalle ) { 
 

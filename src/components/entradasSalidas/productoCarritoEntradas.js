@@ -7,7 +7,7 @@ import styles from "../../assets/styles";
 import ipApi from "../../apis/ipApi";
 
 const { ip, protocol, port } = ipApi;
-const baseUrl = `${protocol}://${ip}:${port}`;
+const baseUrl = `${protocol}${ip}:${port}`;
 
 const ProductoCarritoEntradas = ({ producto, aumentarCantidad, disminuirCantidad, handleCantidad }) => {
     const { nombre, imagen, medida, precio_trueque } = producto;
