@@ -7,7 +7,7 @@ import { Surface } from "react-native-paper";
 import useInventario from './useInventario';
 import { useRoute } from '@react-navigation/native';
 import { ArrowButtonConObject, EntradaNueva, SalidaNueva } from '../../components/UI/uiButtons';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useIsFocused } from '@react-navigation/native';
 import useBusqueda from './useBusqueda';
 import ShareInvButton from '../../components/UI/ShareInvButton';
 import ipApi from "../../apis/ipApi";
@@ -17,9 +17,23 @@ const baseUrl = `${protocol}://${ip}:${port}`;
 
 const Inventario2 = ({ almacen }) => {
 
+  /**
+   * Navegación y estado del inventario y búsqueda.
+   */
   const navigation = useNavigation()
-  const { listaInventario } = useInventario(almacen);
+  const { listaInventario, getInventario } = useInventario(almacen);
   const { busqueda, setBusqueda } = useBusqueda();
+
+  const isFocused = useIsFocused();
+	useEffect(() => {
+		if(isFocused) {
+			getInventario(almacen);
+		}
+	}, [isFocused]);
+
+  /**
+   * Renderiza el componente.
+   */
   return (
     <View style={styles.container}>
       <View style={styles.headerContainer}>

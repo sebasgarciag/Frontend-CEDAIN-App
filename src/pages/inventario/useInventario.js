@@ -16,8 +16,17 @@ const useInventario = (id_almacen) => {
             
         })();
     }, [id_almacen]);
+    async function getInventario(id_almacen){
+        const listaInventarioResponse = await getAllInventario(id_almacen);
+        setlistaInventario(listaInventarioResponse);
+        return;
+    }
 
-    return { listaInventario };
+    /**
+     * Retorna la lista de inventario.
+     */
+    return { listaInventario, getInventario };
+
 };
 
 export default useInventario;
