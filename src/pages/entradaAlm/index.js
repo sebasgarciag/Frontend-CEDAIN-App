@@ -9,7 +9,13 @@ import { useNavigation } from '@react-navigation/native';
 import { ScrollView } from 'react-native';
 import ShareExcelButton from '../../components/UI/ShareExcelButton'; 
 
-
+/**
+ *  Componente que funciona como pantalla de detalles de una entrada.
+ *
+ * @param {Object} props - Propiedades pasadas al componente.
+ * @param {Object} props.entrada - Datos de la entrada a mostrar.
+ * @returns {JSX.Element} - Elemento JSX que representa los detalles de la entrada.
+ */
 const EntradaAlm = ( {entrada} ) => {
 
     const {datosEntrada, getDetallesEntrada} = useEntradaAlm();

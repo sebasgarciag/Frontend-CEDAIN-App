@@ -2,7 +2,7 @@ import axios from 'axios';
 import ipApi from './ipApi';
 const { ip, protocol, port } = ipApi;
 
-const baseUrl = `${protocol}://${ip}:${port}`;
+const baseUrl = `${protocol}${ip}:${port}`;
 //const baseUrl = `http://${ip}:8080`;
 //const baseUrl = `https://${ip}`;
 
@@ -31,7 +31,7 @@ const UsuariosAPI = () => {
             // Si el error es un error de red (lo que podría indicar un problema de conexión con la base de datos)
             if (axios.isAxiosError(error) && !error.response) {
                 console.log("No se pudo conectar a la base de datos");
-                Alert.alert("Error", "No se pudo conectar a la base de datos");
+               
             }
         }
 
@@ -58,7 +58,7 @@ const UsuariosAPI = () => {
             // Si el error es un error de red (lo que podría indicar un problema de conexión con la base de datos)
             if (axios.isAxiosError(error) && !error.response) {
                 console.log("No se pudo conectar a la base de datos");
-                Alert.alert("Error", "No se pudo conectar a la base de datos");
+                
             }
         }
 

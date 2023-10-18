@@ -5,7 +5,6 @@ import { MenuButton, FilterButton, ProfileButton, VolverButtonNDirect } from '..
 import ListaProductos from '../../components/UI/listaProductos';
 import useListadoProductos from './useListadoProductos';
 import styles from '../../assets/styles';
-import { router } from "expo-router";
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
