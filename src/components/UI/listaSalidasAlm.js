@@ -11,7 +11,7 @@ function ListaSalidasAlm({listadoSalidas}){
         
         return(
             <ScrollView style={styles.listaMovs}>
-                {listadoSalidas.map((salida)=>
+                {listadoSalidas.slice(0, 50).map((salida)=>
                     <VStack spacing={10} key={salida.id_salida}>
                         <HStack style={styles.movItem} spacing={10}>
                             <VStack>
