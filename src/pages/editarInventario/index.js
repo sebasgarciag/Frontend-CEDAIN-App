@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, TextInput, TouchableOpacity,ScrollView } from 'react-native';
 import { ArrowButton, ArrowButtonAlmacen } from '../../components/inventario/buttons';
 import styles from '../../assets/buttons/styles';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -37,6 +37,11 @@ const EditProductScreen = ({object}) => {
   // Define y maneja el estado local `quantity` para la cantidad del producto, inicializado con la cantidad del producto en el inventario.
   const { updateInventario,resultado } = useEditarInventario();
 
+  useEffect(() => {
+    // Resetea la cantidad cuando el objeto cambie
+    setQuantity(inventario.cantidad);
+  }, [inventario]);
+
     /**
    * Maneja la acción de guardar los cambios realizados en el producto.
    * Actualmente, muestra una alerta de confirmación; es posible que desees expandir esta función para implementar la lógica de actualización real.
@@ -45,7 +50,7 @@ const EditProductScreen = ({object}) => {
 
   const handleSave = () => {
     updateInventario(inventario.id_inventario,quantity)
-    alert(resultado)
+    navigation.navigate(`Inventario`, inventario.id_almacen);
   };
 
   /**
@@ -78,6 +83,8 @@ const EditProductScreen = ({object}) => {
   return (
         // Contenedor principal para la pantalla de edición del producto
 
+  
+        <ScrollView>
     <View style={[styles.container, { padding: 20, backgroundColor: '#F1EFE3' }]}>
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 30 }}>
         <Text style={{ fontSize: 26 }}>Editar Producto</Text>
@@ -125,6 +132,7 @@ const EditProductScreen = ({object}) => {
         </TouchableOpacity>
       </View>
     </View>
+    </ScrollView>
   );
 };
 
