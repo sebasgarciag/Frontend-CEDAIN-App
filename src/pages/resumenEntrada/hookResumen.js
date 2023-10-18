@@ -3,6 +3,20 @@ import entradasApi from "../../apis/entradasApi";
 import { useNavigation } from "expo-router";
 import inventarioApi from "../../apis/inventarioApi";
 
+/**
+ * Hook personalizado para manejar la lógica y el estado del resumen de entrada.
+ * 
+ * Proporciona estado y funciones para gestionar una entrada específica y su 
+ * respectivo carrito de productos, así como la funcionalidad para finalizar una entrada.
+ * 
+ * @returns {Object} 
+ * @property {Object} entrada - Detalles de la entrada.
+ * @property {Function} setEntrada - Función para actualizar los detalles de la entrada.
+ * @property {Array} carrito - Lista de productos asociados.
+ * @property {Function} setCarrito - Función para actualizar la lista de productos.
+ * @property {Function} terminar - Función para finalizar y registrar una entrada en la base de datos.
+ */
+
 const useResumen = () => {
     const navigation = useNavigation();
     const { postEntrada, postDetallesEntrada } = entradasApi(); // TODO: cambiar por el api de entradas
@@ -36,7 +50,12 @@ const useResumen = () => {
 
     const [carrito, setCarrito] = useState([]);
 
-
+    /**
+     * Función para finalizar y registrar una entrada en la base de datos.
+     * 
+     * @param {Object} entrada - Detalles de la entrada.
+     * @param {Array} detallesEntrada - Lista de productos asociados.
+     */
     async function terminar(entrada, detallesEntrada) {
         const date = new Date();
         const fechaActual = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
