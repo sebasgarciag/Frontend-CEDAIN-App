@@ -4,7 +4,7 @@ const { ip, protocol, port } = ipApi;
 
 //const baseURL = `http://${ip}:8080`;
 //const baseURL = `https://${ip}`;
-const baseURL = `${protocol}://${ip}:${port}`;
+const baseURL = `${protocol}${ip}:${port}`;
 
 /**
  * Módulo de funciones para interactuar con la API de entradas de almacén.

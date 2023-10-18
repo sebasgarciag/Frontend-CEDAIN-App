@@ -3,7 +3,7 @@ import ipApi from './ipApi';
 const { ip, protocol, port } = ipApi;
 
 //const baseURL = 'http://192.168.1.68:8080';
-const baseURL = `${protocol}://${ip}:${port}`;
+const baseURL = `${protocol}${ip}:${port}`;
 //const baseURL = `http://${ip}:8080`;
 //const baseURL = `https://${ip}`;
 
