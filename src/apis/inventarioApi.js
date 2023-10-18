@@ -3,13 +3,14 @@
  */
 import axios from 'axios';
 import ipApi from './ipApi';
-const { ip, protocol, port } = ipApi;
+//const { ip, protocol, port } = ipApi;
 
 /**
  * Define la URL base para las solicitudes de la API.
  */
 
-const baseURL = `${protocol}://${ip}:${port}`;
+const baseURL = 'http://192.168.1.69:8080';
+//const baseURL = `${protocol}://${ip}:${port}`;
 
 
 /**

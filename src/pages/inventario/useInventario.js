@@ -20,18 +20,24 @@ const useInventario = (id_almacen) => {
     /**
      * Efecto para obtener todos los inventarios cuando el ID del almacén cambia.
      */
-    useEffect(() => {
+    /*useEffect(() => {
         (async () => {
             const listaInventarioResponse = await getAllInventario(id_almacen);
             setlistaInventario(listaInventarioResponse);
             
         })();
-    }, [id_almacen]);
+    }, [id_almacen]);*/
+
+    async function getInventario(id_almacen){
+        const listaInventarioResponse = await getAllInventario(id_almacen);
+        setlistaInventario(listaInventarioResponse);
+        return;
+    }
 
     /**
      * Retorna la lista de inventario.
      */
-    return { listaInventario };
+    return { listaInventario, getInventario };
 };
 
 /**

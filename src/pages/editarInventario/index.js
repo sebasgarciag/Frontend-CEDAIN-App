@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState, useEffect, } from 'react';
 import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 import { ArrowButton, ArrowButtonAlmacen } from '../../components/inventario/buttons';
 import styles from '../../assets/buttons/styles';
@@ -45,7 +45,7 @@ const EditProductScreen = ({object}) => {
 
   const handleSave = () => {
     updateInventario(inventario.id_inventario,quantity);
-    alert(resultado);
+    navigation.navigate('Inventario', inventario.id_almacen);
   };
 
   /**
@@ -64,6 +64,11 @@ const EditProductScreen = ({object}) => {
   const decrementQuantity = () => {
     setQuantity((prevQuantity) => (prevQuantity-1));
   };
+
+  useEffect(() => {
+    // Resetea la cantidad cuando el objeto cambie
+    setQuantity(inventario.cantidad);
+  }, [inventario]);
 
 /**
  * Renderiza la interfaz de usuario para la pantalla de edición de producto.
