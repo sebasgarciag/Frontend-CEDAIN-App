@@ -38,22 +38,30 @@ const useSeleccion = () => {
 
     const [categorias, setCategorias] = useState([]);
 
-    async function getCategorias() {
-        const categoriasApi = await getAllCategorias();
-        setCategorias(categoriasApi);
-    };
+   /**
+ * Asynchronously fetches all categories and updates the state with the retrieved categories.
+ * @async
+ */
+async function getCategorias() {
+    const categoriasApi = await getAllCategorias();
+    setCategorias(categoriasApi);
+}
 
-    async function getProductos() {
-        const productosApi = await getAllInventario(1);
-        setProductos(productosApi);
-    };
+/**
+ * Asynchronously fetches all products from the inventory of a specified type (in this case, type 1) and updates the state with the retrieved products.
+ * @async
+ */
+async function getProductos() {
+    const productosApi = await getAllInventario(1);
+    setProductos(productosApi);
+}
 
     useEffect(() => {
         getCategorias();
         getProductos();
     }, []);    
 
-    return { productos, categorias, salida }
+    return { productos, categorias, salida}
 }
 
 export default useSeleccion;

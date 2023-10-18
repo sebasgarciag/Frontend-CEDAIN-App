@@ -8,7 +8,10 @@ import { Surface } from "react-native-paper";
 import useInventario from './useInventario';
 import { useNavigation } from '@react-navigation/native';
 import { EntradaNueva, SalidaNueva } from '../../components/UI/uiButtons';
+import ipApi from "../../apis/ipApi";
 
+const { ip, protocol, port } = ipApi;
+const baseUrl = `${protocol}://${ip}:${port}`;
 
 
 const Inventario3 = () => {
@@ -41,7 +44,7 @@ const Inventario3 = () => {
             <HStack spacing={10} style={{ flex: 1 }}>
               <VStack style={{justifyContent: 'center'}}>
                 <Image 
-                  source={require('../../assets/imagenes/ware.jpg')} // TODO: cambiar por imagen del producto
+                  source={ producto.producto.imagen ? { uri: `${baseUrl}/productos/${producto.producto.id_producto}/image?${new Date().getTime()}`} :  require('../../assets/imagenes/no-image.jpg') } // TODO: cambiar por imagen del producto
                   style={styles.productImage}
                 />
               </VStack>

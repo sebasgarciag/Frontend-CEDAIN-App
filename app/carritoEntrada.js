@@ -1,6 +1,7 @@
 import ArticulosCarritoEntrada from "../src/pages/carritoEntradas"
 
 const CarritoEntrada = ({route}) => {
+  //console.log("Route", route.params.object)
   return (
     console.log("================ CARRITO ENTRADA =============="),
     console.log(route.params.object),

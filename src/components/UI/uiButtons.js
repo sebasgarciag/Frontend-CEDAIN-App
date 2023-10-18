@@ -5,7 +5,7 @@ import buttonStyles from '../../assets/buttons/styles';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Icon2 from 'react-native-vector-icons/AntDesign';
 import styles from '../../assets/styles';
-import { router } from 'expo-router';
+// import { router } from 'expo-router';
 import { useNavigation } from '@react-navigation/native';
 
 
@@ -88,6 +88,20 @@ const VolverButtonNDirect = ({navigation}) => {
   </TouchableOpacity>
   );
 }
+
+const VolverButtonObject = ({navigation, path, object}) => {
+
+  return (
+    <TouchableOpacity style={[styles.volverButton, { backgroundColor: '#8F8B36' }]} 
+      onPress={() => {
+      navigation.navigate(`${path}`, { object });
+      }}>
+    <Text style={styles.buttonText}>Volver</Text>
+    <Icon2 name="left" size={24} color="#F1EFE3" />
+  </TouchableOpacity>
+  );
+}
+
 
 const SiguienteButtonN = ({navigation, path}) => {
 
@@ -216,7 +230,7 @@ const ButtonTerminar = ({ terminarFunction }) => {
   );
 };
 
-export {MenuButton, CambiarAlmacenCreel, CambiarAlmacenCuu, ButtonTerminar, VolverButton, ProfileButton, FilterButton, ArrowButton, ExportarButton, VolverButtonN, SiguienteButtonN, SiguienteButtonNObject, GenericButton, EntradaNueva, SalidaNueva, ArrowButtonConObject, VolverButtonNDirect};
+export {MenuButton, CambiarAlmacenCreel, CambiarAlmacenCuu, ButtonTerminar, VolverButton, ProfileButton, FilterButton, ArrowButton, ExportarButton, VolverButtonN, SiguienteButtonN, SiguienteButtonNObject, GenericButton, EntradaNueva, SalidaNueva, ArrowButtonConObject, VolverButtonNDirect, VolverButtonObject};
 
 
 //nota: Es posible que apliquemos un solo style para todos los botones. por lo pronto, cada uno tiene el suyo.

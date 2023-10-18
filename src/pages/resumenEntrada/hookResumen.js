@@ -1,6 +1,7 @@
 import { useState } from "react";
 import entradasApi from "../../apis/entradasApi";
 import { useNavigation } from "expo-router";
+import inventarioApi from "../../apis/inventarioApi";
 
 /**
  * Hook personalizado para manejar la lógica y el estado del resumen de entrada.
@@ -19,6 +20,7 @@ import { useNavigation } from "expo-router";
 const useResumen = () => {
     const navigation = useNavigation();
     const { postEntrada, postDetallesEntrada } = entradasApi(); // TODO: cambiar por el api de entradas
+    const {putActualizarExistencias} = inventarioApi();
     const [entrada, setEntrada] = useState({
         fecha: '',
         folio: '',
@@ -56,7 +58,7 @@ const useResumen = () => {
      */
     async function terminar(entrada, detallesEntrada) {
         const date = new Date();
-        const fechaActual = date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate();
+        const fechaActual = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
         const serie = date.getFullYear() + 'E';
         console.log('entrada', entrada)
         const entradaPost = {
@@ -70,6 +72,16 @@ const useResumen = () => {
             id_comunidad: entrada.id_comunidad
         };
 
+        const id_almacen = entrada.id_almacen;
+
+        //console.log("Detalles Entrada: ", detallesEntrada);
+
+        const entradaPut = detallesEntrada.map(producto => ({
+            id_almacen: id_almacen,
+            id_producto: producto.detallesEntrada.id_producto,
+            cantidad: producto.detallesEntrada.cantidad, // Multiplicación por -1 para hacerlo negativo
+          }));
+
         console.log('entradaPost', entradaPost);
         try {
             const response = await postEntrada(entradaPost);
@@ -80,15 +92,20 @@ const useResumen = () => {
                 return {
                     id_entrada: response.id_entrada,
                     id_producto: detalle.id_producto,
-                    cantidad: detalle.detallesSalida.cantidad,
-                    precio_unitario: detalle.detallesSalida.precio
+                    cantidad: detalle.detallesEntrada.cantidad,
+                    precio_unitario: detalle.detallesEntrada.precio
                 };
             });
 
-            console.log('detallesPost', detallesPost);
+            //console.log('detallesPost', detallesPost);
 
             const entradaId = response.id_entrada;
             await postDetallesEntrada(entradaId, detallesPost);
+
+            //console.log("Entrada Put: ", entradaPut);
+
+            await putActualizarExistencias(entradaPut);
+
             navigation.navigate('Entradas');
         } catch (error) {
             console.error('Error in terminar function: ' + error);

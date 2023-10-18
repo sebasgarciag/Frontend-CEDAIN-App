@@ -3,6 +3,10 @@ import { Text, Image } from "react-native";
 import { HStack, VStack } from "@react-native-material/core";
 import { Surface } from "react-native-paper";
 import styles from "../../assets/styles";
+import ipApi from "../../apis/ipApi";
+
+const { ip, protocol, port } = ipApi;
+const baseUrl = `${protocol}://${ip}:${port}`;
 
 function ProductosEntrada( entradaDetalle ) { 
 
@@ -14,7 +18,7 @@ function ProductosEntrada( entradaDetalle ) {
             <HStack spacing={10}>
                 <VStack style={{justifyContent: "center"}}>
                     <Image 
-                    source={require('../../assets/imagenes/ware.jpg')} // TODO: cambiar por imagen del producto
+                    source={{ uri: `${baseUrl}/productos/${entradaDetalle.id_producto}/image?${new Date().getTime()}`}} // TODO: cambiar por imagen del producto
                     style={styles.productImage}
                 />
             </VStack>

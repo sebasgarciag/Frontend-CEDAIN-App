@@ -25,29 +25,30 @@ const UsuariosAPI = () => {
 
         try {
             response = await axios.post(`${baseUrl}/usuarios/login`, { correo, password });
-            console.log(response.data);
+            
         } catch (error) {
             console.log("Error: " + error);
             // Si el error es un error de red (lo que podría indicar un problema de conexión con la base de datos)
             if (axios.isAxiosError(error) && !error.response) {
                 console.log("No se pudo conectar a la base de datos");
-                Alert.alert("Error", "No se pudo conectar a la base de datos");
+               
             }
         }
 
         return response;
     }
 
-    async function register(nombre, apellido_paterno, apellido_materno, tipo, id_almacen, correo, password) {
+ 
+
+    async function register(nombre, apellido_paterno, apellido_materno, tipo,correo, password) {
         let response = null;
-        console.log(nombre, apellido_paterno, apellido_materno, tipo, id_almacen, correo, password);
+        console.log(nombre, apellido_paterno, apellido_materno, tipo ,correo, password);
         try {
             response = await axios.post(`${baseUrl}/usuarios/newUsuario`, {
                 nombre,
                 apellido_paterno,
                 apellido_materno,
                 tipo,
-                id_almacen,
                 correo,
                 password
             });
@@ -57,7 +58,7 @@ const UsuariosAPI = () => {
             // Si el error es un error de red (lo que podría indicar un problema de conexión con la base de datos)
             if (axios.isAxiosError(error) && !error.response) {
                 console.log("No se pudo conectar a la base de datos");
-                Alert.alert("Error", "No se pudo conectar a la base de datos");
+                
             }
         }
 
@@ -102,7 +103,7 @@ const UsuariosAPI = () => {
         return response;
     }
 
-    return { getTodosUsuarios, updateUsuario, getUsuario, login,register }
+    return { getTodosUsuarios, updateUsuario, getUsuario, login,register}
 }
 
 export default UsuariosAPI;

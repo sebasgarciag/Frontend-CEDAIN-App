@@ -9,9 +9,9 @@ import ipApi from "../../apis/ipApi";
 const { ip, protocol, port } = ipApi;
 const baseUrl = `${protocol}://${ip}:${port}`;
 
+const ProductoCarritoEntradas = ({ producto, aumentarCantidad, disminuirCantidad, handleCantidad }) => {
+    const { nombre, imagen, medida, precio_trueque } = producto;
 
-const ProductoCarrito = ({ producto, aumentarCantidad, disminuirCantidad, handleCantidad }) => {
-    const { nombre, imagen, medida, precio_venta } = producto;
 
       return (
                 
@@ -29,7 +29,7 @@ const ProductoCarrito = ({ producto, aumentarCantidad, disminuirCantidad, handle
                 <HStack spacing={20}>
                     <VStack>
                         <Text style={styles.productDato}>Medida: {medida}</Text>
-                        <Text style={styles.productDato}>Precio Venta: {precio_venta}</Text>
+                        <Text style={styles.productDato}>Precio Trueque: {precio_trueque}</Text>
                     </VStack>
                 </HStack>
             </VStack>
@@ -44,7 +44,7 @@ const ProductoCarrito = ({ producto, aumentarCantidad, disminuirCantidad, handle
                     style={styles.textoCantidadCarrito} 
                     defaultValue="0"
                     onChangeText={ newCantidad => handleCantidad(producto, newCantidad) } // TODO: agregar verificacion de inventario
-                    value={( producto.detallesSalida.cantidad.toString() )}
+                    value={( producto.detallesEntrada.cantidad.toString() )}
                     keyboardType="numeric"
             />
             <IconButton
@@ -60,4 +60,4 @@ const ProductoCarrito = ({ producto, aumentarCantidad, disminuirCantidad, handle
     );
   };
   
-  export default ProductoCarrito;
+  export default ProductoCarritoEntradas;

@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity } from 'react-native';
-import { ArrowButton } from '../../components/inventario/buttons';
+import React, { useState, useEffect } from 'react';
+import { View, Text, TextInput, TouchableOpacity,ScrollView } from 'react-native';
+import { ArrowButton, ArrowButtonAlmacen } from '../../components/inventario/buttons';
 import styles from '../../assets/buttons/styles';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { router } from 'expo-router';
 import { useRoute } from '@react-navigation/native'; 
 import { useNavigation } from '@react-navigation/native';
-
+import useEditarInventario from './useEditarInventario';
 
 /**
  * `EditProductScreen` es un componente funcional de React que proporciona una interfaz de usuario
@@ -28,24 +28,29 @@ const EditProductScreen = ({object}) => {
 
   // Almacena la información del producto obtenida de los parámetros de la ruta.
   const inventario = route.params.object;
-
   // Proporciona la navegación entre pantallas utilizando el hook `useNavigation` de `@react-navigation/native`.
   const navigation = useNavigation();
 
   // Define y maneja el estado local `name` para el nombre del producto (sin uso actual en el código proporcionado).
-  const [name, setName] = useState('');
+  const [quantity, setQuantity] = useState(inventario.cantidad);
 
   // Define y maneja el estado local `quantity` para la cantidad del producto, inicializado con la cantidad del producto en el inventario.
-  const [quantity, setQuantity] = useState(inventario.cantidad.toString());
+  const { updateInventario,resultado } = useEditarInventario();
 
-  /**
+  useEffect(() => {
+    // Resetea la cantidad cuando el objeto cambie
+    setQuantity(inventario.cantidad);
+  }, [inventario]);
+
+    /**
    * Maneja la acción de guardar los cambios realizados en el producto.
    * Actualmente, muestra una alerta de confirmación; es posible que desees expandir esta función para implementar la lógica de actualización real.
    */
 
 
   const handleSave = () => {
-    alert('Cambio guardado');
+    updateInventario(inventario.id_inventario,quantity)
+    navigation.navigate(`Inventario`, inventario.id_almacen);
   };
 
   /**
@@ -53,7 +58,7 @@ const EditProductScreen = ({object}) => {
    */
 
   const incrementQuantity = () => {
-    setQuantity((prevQuantity) => (parseInt(prevQuantity) + 1).toString());
+    setQuantity((prevQuantity) => (prevQuantity+1));
   };
 
 /**
@@ -62,10 +67,7 @@ const EditProductScreen = ({object}) => {
 
 
   const decrementQuantity = () => {
-    setQuantity((prevQuantity) => {
-      const newQuantity = parseInt(prevQuantity) - 1;
-      return newQuantity > 0 ? newQuantity.toString() : '1';
-    });
+    setQuantity((prevQuantity) => (prevQuantity-1));
   };
 
 /**
@@ -81,10 +83,12 @@ const EditProductScreen = ({object}) => {
   return (
         // Contenedor principal para la pantalla de edición del producto
 
+  
+        <ScrollView>
     <View style={[styles.container, { padding: 20, backgroundColor: '#F1EFE3' }]}>
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 30 }}>
         <Text style={{ fontSize: 26 }}>Editar Producto</Text>
-        <ArrowButton navigation={navigation} path={"Inventario"} />
+        <ArrowButtonAlmacen navigation={navigation} path={"Inventario"} almacen ={inventario.id_almacen}/>
       </View>
 
       <View style={{ marginBottom: 30 }}>
@@ -128,6 +132,7 @@ const EditProductScreen = ({object}) => {
         </TouchableOpacity>
       </View>
     </View>
+    </ScrollView>
   );
 };
 

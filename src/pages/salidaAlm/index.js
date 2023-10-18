@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Stack, Text} from "@react-native-material/core";
-import {VolverButtonN } from '../../components/UI/uiButtons';
+import {VolverButtonN, VolverButtonNDirect } from '../../components/UI/uiButtons';
 import useSalidaAlm from './useSalidaAlm';
 import InfoSalida from '../../components/UI/infoSalida';
 import ProductosSalida from '../../components/UI/productosSalida';
@@ -41,7 +41,7 @@ const SalidaAlm = ( {salida} ) => {
                 <ShareSalidaButton salidaId={salida.id_salida} buttonText="Descargar Salida" />
                 {/*Boton de volver atras */}
                 <Stack style={styles.volverContainer}>
-                    <VolverButtonN navigation={navigation} path={'Salidas'}/>
+                    <VolverButtonNDirect navigation={navigation} />
                 </Stack>
 
             </Stack>
