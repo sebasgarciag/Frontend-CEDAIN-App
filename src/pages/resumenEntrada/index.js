@@ -60,8 +60,8 @@ const Resumen = ({objeto}) => {
                 </VStack>
             </ScrollView>
             <View style={ buttonStyles.containerNavegacion }>
-                    {/*<VolverButtonObject navigation={navigation} path={"InfoDestinoE"} object={{ carrito2Entradas, entrada }}/>*/}
-                    <VolverButtonObjectDirect navigation={navigation} object={{ carrito2Entradas, entrada }}/>
+                    <VolverButtonObject navigation={navigation} path={"InfoDestinoE"} object={{ carrito2Entradas, entrada }}/>
+                    {/*<VolverButtonObjectDirect navigation={navigation} object={{ carrito2Entradas, entrada }}/>*/}
                     <ButtonTerminar terminarFunction={() => terminar(entrada, carrito)} />
             </View>
         </Stack>
