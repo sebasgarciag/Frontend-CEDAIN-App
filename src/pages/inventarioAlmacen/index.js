@@ -11,7 +11,7 @@ import { EntradaNueva, SalidaNueva } from '../../components/UI/uiButtons';
 import ipApi from "../../apis/ipApi";
 
 const { ip, protocol, port } = ipApi;
-const baseUrl = `${protocol}://${ip}:${port}`;
+const baseUrl = `${protocol}${ip}:${port}`;
 
 
 const Inventario3 = () => {

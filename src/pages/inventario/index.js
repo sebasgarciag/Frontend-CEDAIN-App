@@ -13,7 +13,7 @@ import ShareInvButton from '../../components/UI/ShareInvButton';
 import ipApi from "../../apis/ipApi";
 
 const { ip, protocol, port } = ipApi;
-const baseUrl = `${protocol}://${ip}:${port}`;
+const baseUrl = `${protocol}${ip}:${port}`;
 
 const Inventario2 = ({ almacen }) => {
 
