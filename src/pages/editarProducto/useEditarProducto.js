@@ -142,6 +142,14 @@ async function getListadoTamanios() {
             getListadoTamanios();
 			getListadoCategorias();
 			setImage(null);
+			setNombre(producto.nombre)
+			setMedida(producto.medida)
+			setPrecioVenta(producto.precio_venta)
+			setPrecioTrueque(producto.precio_trueque)
+			setNombreCorto(producto.nombre_corto)
+			setOpen(Boolean(producto.suspendido))
+			setTamanio(producto.id_tamanio)
+			setCategoria(producto.id_categoria)
         }
     }, [isFocused]);
 
