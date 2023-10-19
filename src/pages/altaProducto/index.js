@@ -11,7 +11,7 @@ import { Flex, HStack, TextInput } from "@react-native-material/core";
 import { VolverButtonN, ProfileButton } from "../../components/UI/uiButtons";
 import { Dropdown } from "react-native-element-dropdown";
 import AntDesign from "@expo/vector-icons/AntDesign";
-// import { Switch } from '@rneui/themed';
+import { Switch } from '@rneui/themed';
 
 
 
@@ -233,12 +233,12 @@ const AltaProducto = () => {
           )}
           <Flex direction="row" justify='end' justifySelf="center">
           <Text>Suspendido</Text>
-          {/* <Switch
+          <Switch
             value={open}
             onValueChange={setOpen}
             color={open ? 'red' : 'gray'}
             justifySelf='center'
-          /> */}
+          />
         </Flex>
         </View>
 

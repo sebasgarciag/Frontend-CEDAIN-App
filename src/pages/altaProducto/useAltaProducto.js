@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import ProductosAPI from "../../apis/productosApi";
+import inventarioApi from "../../apis/inventarioApi"
 import { useIsFocused } from "@react-navigation/native";
 import { useNavigation } from '@react-navigation/native';
+import almacenesReales from "../../assets/almacenes";
 
 
 const useAltaProducto = () => {
@@ -20,6 +22,7 @@ const useAltaProducto = () => {
 	const navigation = useNavigation();
 
     const { createProducto, getTodosTamanios, getTodasCategorias } = ProductosAPI();
+	const { postCrearInventario } = inventarioApi();
 	const isFocused = useIsFocused();
 
 	const handleSubmit = async () => {
@@ -41,12 +44,29 @@ const useAltaProducto = () => {
             });
         }
 
+
+
+
 		// alert("Enlace clickeado");
 		try{
 		  const response = await createProducto(formData);
 		//   console.log(response.status)
 		  if (response.status == 201){
 			// console.log('entra')
+			try{
+				for (let i = 0; i < almacenesReales.length; i++) {
+					const idAlmacen = almacenesReales[i].id_almacen;
+					console.log(idAlmacen);
+					await postCrearInventario({
+						"id_producto":response.data.id_producto, 
+						"id_almacen": idAlmacen, 
+						"cantidad":0
+					})
+				}
+			}
+			catch{
+				//
+			}
 			navigation.navigate('listadoProductos')
 		  }
 		}
@@ -103,7 +123,15 @@ const useAltaProducto = () => {
 	useEffect(() => {
 		if(isFocused){ 
 			getListadoTamanios();
-			getListadoCategorias()
+			getListadoCategorias();
+			setNombre("");
+			setMedida("");
+			setPrecioVenta(0);
+			setPrecioTrueque(0);
+			setNombreCorto("");
+			setOpen(Boolean(0));
+			setTamanio(null);
+			setCategoria(null);
 		}
 	}, [isFocused]);
 
