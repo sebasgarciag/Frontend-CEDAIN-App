@@ -3,3 +3,5 @@ ipApi = {
     protocol: 'https://',
     port: ''
 }
+
+export default ipApi;
