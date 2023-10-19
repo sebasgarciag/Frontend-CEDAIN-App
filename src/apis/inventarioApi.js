@@ -50,8 +50,19 @@ const inventarioApi = () => {
         return response.data;
     }
 
+    async function postCrearInventario(data) {
+        let response = null;
+        try {
+            response = await axios.post(`${baseURL}/inventario`, data);
+        } catch (error) {
+            console.error('Error post actualizar inventario: ' + error);
+        }
+        return response.data;
+    }
 
-    return { getAllInventario, getAllCategorias, putActualizarExistencias, putInventario }
+
+
+    return { getAllInventario, getAllCategorias, putActualizarExistencias, putInventario,postCrearInventario }
 }
 
 export default inventarioApi;
