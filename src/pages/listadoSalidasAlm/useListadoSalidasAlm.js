@@ -2,6 +2,7 @@ import { useState, useEffect }  from 'react';
 import salidasApi from '../../apis/salidasApi';
 import UsuariosAPI from '../../apis/usuariosApi';
 import { useIsFocused } from '@react-navigation/core';
+import almacenesReales from '../../assets/almacenes';
 
 const useListadoSalidasAlm = () => {
 
@@ -41,18 +42,7 @@ const useListadoSalidasAlm = () => {
     const [usuarios, setUsuarios] = useState([]);
     const [usuarioSeleccionado, setUsuarioSeleccionado] = useState({});
     
-    const [almacenes, setAlmacenes] = useState([
-        {
-            id_almacen: 1,
-            nombre: 'Central',
-            ciudad: 'Chihuahua'
-        },
-        {
-            id_almacen: 2,
-            nombre: 'Central',
-            ciudad: 'Creel'
-        }
-    ]);
+    const [almacenes, setAlmacenes] = useState(almacenesReales);
 
     const [almacenSeleccionado, setAlmacenSeleccionado] = useState({});
 
