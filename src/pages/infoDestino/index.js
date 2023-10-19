@@ -43,12 +43,6 @@ const Paginfo = ( {objeto} ) => {
             <VStack spacing={20} style={{padding: 10}}> 
 
 
-                {/* <Dropdowns
-                    setValueEvento={setComunidad}
-                    dataDropDownEvento={comunidades}
-                    valueEvento={null}
-                    setEstado={setComunidad}
-                    Titulo={"Comunidad"}/> */}
 
                 <Dropdowns
                     setValueEvento={setEvento} 

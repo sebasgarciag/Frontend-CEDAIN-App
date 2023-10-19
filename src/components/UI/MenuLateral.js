@@ -174,7 +174,7 @@ const MenuItems = ({ navigation }) => {
     </DrawerContentScrollView><View style={{ backgroundColor: "#F5E1B9" }}>
         <TouchableOpacity
           onPress={() => {
-            console.log('Button pressed!');
+            navigation.navigate('Login');
           } }
           style={{
             backgroundColor: '#fff',
