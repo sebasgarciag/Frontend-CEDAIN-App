@@ -2,6 +2,7 @@ import {useState, useEffect}  from 'react';
 import entradasApi from '../../apis/entradasApi';
 import UsuariosAPI from '../../apis/usuariosApi';
 import { useIsFocused } from '@react-navigation/core';
+import almacenesReales from '../../assets/almacenes';
 
 /**
  * `useListadoEntradasAlm` es un hook personalizado diseñado para gestionar el listado de entradas de almacén.
@@ -60,18 +61,7 @@ const useListadoEntradasAlm = () => {
     const [usuarios, setUsuarios] = useState([]);
     const [usuarioSeleccionado, setUsuarioSeleccionado] = useState({});
 
-    const [almacenes, setAlmacenes] = useState([
-        {
-            id_almacen: 1,
-            nombre: 'Central',
-            ciudad: 'Chihuahua'
-        },
-        {
-            id_almacen: 2,
-            nombre: 'Central',
-            ciudad: 'Creel'
-        }
-    ]);
+    const [almacenes, setAlmacenes] = useState(almacenesReales);
 
     const [almacenSeleccionado, setAlmacenSeleccionado] = useState({});
  
