@@ -8,6 +8,17 @@
       "expo-router"
     ],
     "name": "Frontend-CEDAIN-App",
-    "slug": "Frontend-CEDAIN-App"
+    "slug": "Frontend-CEDAIN-App",
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "619f5dc4-7da5-491a-bba9-dd75cf17127d"
+      }
+    },
+    "android": {
+      "package": "com.alexisgargo.FrontendCEDAINApp"
+    }
   }
 }
