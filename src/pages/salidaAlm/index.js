@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
 import { Stack, Text} from "@react-native-material/core";
-import {VolverButtonN } from '../../components/UI/uiButtons';
+import {VolverButtonN, VolverButtonNDirect } from '../../components/UI/uiButtons';
 import useSalidaAlm from './useSalidaAlm';
 import InfoSalida from '../../components/UI/infoSalida';
 import ProductosSalida from '../../components/UI/productosSalida';
 import styles from '../../assets/styles';
 import { useNavigation } from '@react-navigation/native';
 import { ScrollView } from 'react-native';
+import ShareSalidaButton from '../../components/UI/ShareSalidaButton'; 
 
 const SalidaAlm = ( {salida} ) => {
 
@@ -37,9 +38,10 @@ const SalidaAlm = ( {salida} ) => {
                         <ProductosSalida salidaDetalle={datoSalida} key={datoSalida.id_salida}/>
                     )}
             </ScrollView>
+                <ShareSalidaButton salidaId={salida.id_salida} buttonText="Descargar Salida" />
                 {/*Boton de volver atras */}
                 <Stack style={styles.volverContainer}>
-                    <VolverButtonN navigation={navigation} path={'Salidas'}/>
+                    <VolverButtonNDirect navigation={navigation} />
                 </Stack>
 
             </Stack>

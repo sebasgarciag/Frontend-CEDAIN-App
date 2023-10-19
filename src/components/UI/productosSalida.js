@@ -4,6 +4,10 @@ import { HStack, VStack } from "@react-native-material/core";
 import { Surface } from "react-native-paper";
 import styles from "../../assets/styles";
 import useInventario from "../../pages/inventario/useInventario";
+import ipApi from "../../apis/ipApi";
+
+const { ip, protocol, port } = ipApi;
+const baseUrl = `${protocol}${ip}:${port}`;
 
 function ProductosSalida( salidaDetalle ) { 
 
@@ -15,7 +19,7 @@ function ProductosSalida( salidaDetalle ) {
             <HStack spacing={10}>
                 <VStack style={{justifyContent: 'center'}}>
                     <Image 
-                        source={require('../../assets/imagenes/ware.jpg')} // TODO: cambiar por imagen del producto
+                        source={{uri: `${baseUrl}/productos/${salidaDetalle.id_producto}/image?${new Date().getTime()}`}} // TODO: cambiar por imagen del producto
                         style={styles.productImage}
                     />
                 </VStack>

@@ -1,8 +1,31 @@
-import {useState}  from 'react';
+import {useState, useEffect}  from 'react';
 import entradasApi from '../../apis/entradasApi';
-import { useEffect } from 'react';
+import UsuariosAPI from '../../apis/usuariosApi';
+import { useIsFocused } from '@react-navigation/core';
+
+/**
+ * `useListadoEntradasAlm` es un hook personalizado diseñado para gestionar el listado de entradas de almacén.
+ * Proporciona estado y funciones para manejar diferentes aspectos de la UI y la interacción con la API.
+ * 
+ * @returns {Object} 
+ * @property {Array} entradas - Listado completo de entradas.
+ * @property {Function} toggleDrawer - Función para abrir/cerrar el drawer principal.
+ * @property {Function} toggleUserDrawer - Función para abrir/cerrar el drawer de usuario.
+ * @property {Function} toggleModal - Función para mostrar/ocultar un modal.
+ * @property {Function} handlePress - Función para manejar eventos de presión (por ejemplo, en botones).
+ * @property {Function} setBusqueda - Función para establecer el valor de búsqueda.
+ * @property {Array} filteredEntradas - Listado de entradas filtradas según el valor de búsqueda.
+ * @property {boolean} isDrawerOpen - Estado del drawer principal (abierto/cerrado).
+ * @property {boolean} isUserDrawerOpen - Estado del drawer de usuario (abierto/cerrado).
+ * @property {boolean} isModalVisible - Estado del modal (visible/oculto).
+ * @property {Function} setComValue - Función para establecer el valor de la comunidad.
+ * @property {string} comValue - Valor actual de la comunidad seleccionada.
+ * @property {Function} getEntradas - Función para obtener y establecer el listado de entradas desde la API.
+ */
 
 const useListadoEntradasAlm = () => {
+
+    const isFocused = useIsFocused();
 
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const toggleDrawer = () => {setIsDrawerOpen(!isDrawerOpen);};
@@ -15,8 +38,12 @@ const useListadoEntradasAlm = () => {
   
     const [busqueda, setBusqueda]=useState('');
     const [comValue, setComValue] = useState('');
+
+    const [fechaInicial, setFechaInicial] = useState(new Date("2023-01-01"));
+    const [fechaFinal, setFechaFinal] = useState(new Date());
     
-    const { getAllEntradasAlm } = entradasApi();
+    const { getAllEntradas } = entradasApi();
+    const { getTodosUsuarios } = UsuariosAPI();
 
     const [entradas, setEntradas] = useState([
         {
@@ -30,29 +57,53 @@ const useListadoEntradasAlm = () => {
         },
     ]);
 
+    const [usuarios, setUsuarios] = useState([]);
+    const [usuarioSeleccionado, setUsuarioSeleccionado] = useState({});
+
+    const [almacenes, setAlmacenes] = useState([
+        {
+            id_almacen: 1,
+            nombre: 'Central',
+            ciudad: 'Chihuahua'
+        },
+        {
+            id_almacen: 2,
+            nombre: 'Central',
+            ciudad: 'Creel'
+        }
+    ]);
+
+    const [almacenSeleccionado, setAlmacenSeleccionado] = useState({});
  
-    const filteredEntradas = entradas.filter((entrada) =>{
-        // const almacenistaMatch = entrada.id_usuario.includes(busqueda.toLowerCase());
-        const folioSerie = entrada.folio + entrada.serie;
-        const folioSerieMatch = folioSerie.toLowerCase().includes(busqueda.toLowerCase());
-        // const comunidadMatch = entrada.id_comunidad.includes(busqueda.toLowerCase());
-    
-        // return almacenistaMatch || folioSerieMatch || comunidadMatch;
-        return folioSerieMatch;
+    const filteredEntradas = entradas.filter((entrada) => {
+        const fechaMatch = new Date(entrada.fecha) >= fechaInicial && new Date(entrada.fecha) <= fechaFinal;
+        const usuarioMatch = entrada.id_usuario === usuarioSeleccionado.id_usuario || usuarioSeleccionado.id_usuario === undefined;
+        const almacenMatch = entrada.id_almacen === almacenSeleccionado.id_almacen || almacenSeleccionado.id_almacen === undefined;
+        return usuarioMatch && fechaMatch && almacenMatch;
     });
 
     async function getEntradas() {
-        // TODO: pasar almacenista como parametro
-        const entradasApi = await getAllEntradasAlm(1);
-        setEntradas(entradasApi);
+        const entradasApi = await getAllEntradas();
+        setEntradas(entradasApi.reverse());
+    };
+
+    async function getUsuarios() {
+        const usuariosApi = await getTodosUsuarios();
+        setUsuarios(usuariosApi.data);
     };
 
     useEffect(() => {
-        getEntradas();
+        getUsuarios();
     }, []);
 
+    useEffect(() => {
+        if (isFocused) {
+            console.log('==============================================');
+            getEntradas();
+        }
+    }, [isFocused]);
    
-    return { entradas, toggleDrawer, toggleUserDrawer, toggleModal, handlePress, setBusqueda, filteredEntradas, isDrawerOpen, isUserDrawerOpen, isModalVisible, setComValue,comValue, getEntradas}
+    return { entradas, toggleDrawer, toggleUserDrawer, toggleModal, handlePress, setBusqueda, filteredEntradas, isDrawerOpen, isUserDrawerOpen, isModalVisible, setComValue, comValue, usuarios, usuarioSeleccionado, setUsuarioSeleccionado, fechaInicial, setFechaInicial, fechaFinal, setFechaFinal, almacenes, almacenSeleccionado, setAlmacenSeleccionado }
 }
 
 export default useListadoEntradasAlm;

@@ -7,7 +7,7 @@ import ipApi from "../../apis/ipApi";
 const { ip, protocol, port } = ipApi;
 const baseUrl = `${protocol}${ip}:${port}`;
 
-function ListaTerminar({ producto }) { 
+function ListaTerminarEntradas({ producto }) { 
 
     return (
                 
@@ -30,7 +30,7 @@ function ListaTerminar({ producto }) {
                 </HStack>
             </VStack>
             
-            <Text style={styles.textoCantidad}>{producto.detallesSalida.cantidad}</Text> 
+            <Text style={styles.textoCantidad}>{producto.detallesEntrada.cantidad}</Text> 
 
             </HStack>
         </HStack>
@@ -38,4 +38,4 @@ function ListaTerminar({ producto }) {
     );
 };
 
-export default ListaTerminar;
+export default ListaTerminarEntradas;
