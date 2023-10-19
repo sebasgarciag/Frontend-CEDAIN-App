@@ -17,5 +17,5 @@ package-lock.json
 .DS_Store
 
 # archivo ip
-/src/apis/ipApi.js
-/src/apis/infoIP.js
+# /src/apis/ipApi.js
+# /src/apis/infoIP.js
