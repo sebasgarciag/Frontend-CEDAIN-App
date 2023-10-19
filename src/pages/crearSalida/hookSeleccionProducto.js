@@ -1,9 +1,33 @@
 import {useState}  from 'react';
 import inventarioApi from '../../apis/inventarioApi';
 import { useEffect } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const useSeleccion = () => {
     const { getAllInventario, getAllCategorias } = inventarioApi();
+    const [usuario, setUsuario] = useState({});
+
+
+    async function sacarUsuario() {
+        const value = await AsyncStorage.getItem('@user');
+        if (value !== null) {
+            // value previously stored
+            // Parseamos el valor previamente almacenado
+            const user = JSON.parse(value);
+
+
+            setSalida({
+                ...salida,
+                id_usuario: user.id,
+                Usuario: {
+                    nombre: user.nombre,
+                    apellido_paterno: user.apellido_paterno
+                }
+            })
+        }
+    }
+
+    
 
     const [salida, setSalida] = useState({
         fecha: '',
@@ -57,6 +81,7 @@ async function getProductos() {
 }
 
     useEffect(() => {
+        sacarUsuario();
         getCategorias();
         getProductos();
     }, []);    

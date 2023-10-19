@@ -88,7 +88,6 @@ const useListadoEntradasAlm = () => {
 
     useEffect(() => {
         if (isFocused) {
-            console.log('==============================================');
             getEntradas();
         }
     }, [isFocused]);

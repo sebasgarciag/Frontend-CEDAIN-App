@@ -17,7 +17,6 @@ function ListaSalidasAlm({listadoSalidas}){
                             <VStack>
                                 <Text style={styles.movName}>Salida: {salida.id_salida}</Text>
                                 <Text style={styles.movDato}>Fecha: {salida.fecha.slice(0, 16).replace('T', ' ')}</Text>
-                                <Text style={styles.movDato}>Articulos: {salida.cantidad}</Text>
                             </VStack>
                             
                             <ArrowButtonConObject navigation={navigation} path={"SalidaAlm"} object={salida}/>
