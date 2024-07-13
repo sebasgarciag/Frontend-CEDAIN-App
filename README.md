@@ -6,7 +6,9 @@
 - Express.js
 - MySQL
 
-This repository contains the front-end code for the [Inventory Management mobile] application. The front end is built using React Native and is responsible for the user interface and client-side functionality of the application.
+This repository contains the front-end code for the Inventory Management mobile application. The front end is built using React Native and is responsible for the user interface and client-side functionality of the application.
+
+Here is a link to the [`backend repo`](https://github.com/sebasgarciag/Backend-CEDAIN-App)
 
 
 # Expo Router Example
